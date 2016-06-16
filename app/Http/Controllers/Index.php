@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 class Index extends Controller
 {
-    public function Index()
+    public function Welcome()
     {
-      return view('welcome');
+      return view('Welcome');
     }
 
     public function About()
     {
-      return view('about');
+      return view('About');
     }
 
-    public function Users()
+    public function Contact()
     {
-      return view('users');
+      return view('Contact');
     }
-
 }
