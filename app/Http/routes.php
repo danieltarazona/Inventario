@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', 'Index@Index');
-
+Route::get('/', 'Index@Welcome');
 Route::get('/about', 'Index@About');
+Route::get('/contact', 'Index@Contact');
 
-Route::get('/users', 'Index@Users');
+Route::get('/users', 'Users@Users');
+Route::get('/users/register', 'Users@Register');
+Route::get('/users/{user}', 'Users@Profile');
 
-Route::get('/users/{user}', 'Index@User');
+Route::get('/inventory', 'Inventories@Dashboard');
+Route::get('/inventory/info', 'Inventories@Info');
