@@ -2,6 +2,6 @@
 
 @section('content')
 
-Welcome
+About
 
 @stop
