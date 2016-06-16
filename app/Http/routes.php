@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Index@Index');
+
+Route::get('/about', 'Index@About');
+
+Route::get('/users', 'Index@Users');
+
+Route::get('/users/{user}', 'Index@User');
