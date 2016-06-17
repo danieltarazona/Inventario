@@ -16,14 +16,13 @@ class CreateDevicesTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned()->index();
             $table->integer('manufacturer_id')->unsigned()->index();
-            $table->integer('maintenance_id')->unsigned()->index();
+            $table->integer('state_id')->unsigned()->index();
             $table->date('next_maintenance');
             $table->string('serial');
             $table->string('model');
             $table->string('name');
             $table->date('date_buy');
             $table->string('price');
-            $table->string('state');
             $table->integer('quantity');
             $table->integer('remain_life');
             $table->string('warranty');

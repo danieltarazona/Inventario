@@ -15,6 +15,7 @@ class CreateMaintenancesTable extends Migration
         Schema::create('maintenances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('storer_id')->unsigned()->index();
+            $table->integer('device_id')->unsigned()->index();
             $table->text('description');
             $table->text('price');
             $table->date('date');
