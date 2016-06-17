@@ -16,7 +16,7 @@
   <input type="textbox" name="adress" value="{{ $user->adress }}" placeholder="Adress">
   <br>
   <input type="submit" class="btn btn-primary" name="submit" value="Guardar">
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  {{ csrf_field() }}
 </form>
 
 @stop
