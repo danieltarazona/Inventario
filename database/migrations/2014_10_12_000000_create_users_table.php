@@ -14,19 +14,28 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('dni')->unique();
-            $table->integer('status')->unsigned();
-            $table->integer('state')->unsigned();
+            $table->integer('dni')->unsigned()->unique();
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('email_alt')->unique();
+            $table->string('status');
+            $table->string('state');
+            $table->string('reserve');
+            $table->string('loan');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('first_lastname');
             $table->string('last_lastname');
             $table->string('adress');
+            $table->string('telephone');
+            $table->string('cellphone');
             $table->string('password');
+            $table->string('photo');
             $table->rememberToken();
             $table->timestamps();
+            # city
+            # headquarters
+            # program
         });
     }
 
