@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->hasOne(Headquarter::class);
     }
 
+    public function state()
+    {
+        return $this->hasOne(State::class);
+    }
+
     public function loan()
     {
         return $this->hasMany(Loan::class);

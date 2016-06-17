@@ -26,6 +26,11 @@ class Device extends Model
         return $this->belongsTo(Storer::class);
     }
 
+    public function state()
+    {
+        return $this->hasOne(State::class);
+    }
+
     public function maintenances()
     {
         return $this->hasMany(Maintenance::class);

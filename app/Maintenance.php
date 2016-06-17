@@ -8,11 +8,11 @@ class Maintenance extends Model
 {
     public function devices()
     {
-        return $this->belongToMany(Device::class);
+        return $this->HasMany(Device::class);
     }
 
     public function storer()
     {
-        return $this->belongTo(Storer::class);
+        return $this->hasOne(Storer::class);
     }
 }
