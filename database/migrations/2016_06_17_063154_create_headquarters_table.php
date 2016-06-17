@@ -14,6 +14,9 @@ class CreateHeadquartersTable extends Migration
     {
         Schema::create('headquarters', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('device_id')->unsigned()->index();
+            $table->integer('program_id')->unsigned()->index();
             $table->string('name');
             $table->timestamps();
         });

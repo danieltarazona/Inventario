@@ -16,6 +16,7 @@ class CreateDevicesTable extends Migration
             $table->increments('id');
             $table->string('serial');
             $table->string('model');
+            $table->string('name');
             $table->date('date_buy');
             $table->string('price');
             $table->integer('state');

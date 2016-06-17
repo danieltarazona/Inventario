@@ -14,6 +14,13 @@ class CreateDashboardsTable extends Migration
     {
         Schema::create('dashboards', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('reserve_id')->unsigned()->index();
+            $table->integer('loan_id')->unsigned()->index();
+            $table->integer('maintenance_id')->unsigned()->index();
+            $table->integer('device_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('log_id')->unsigned()->index();
+            $table->integer('stat_id')->unsigned()->index();
             $table->timestamps();
         });
     }

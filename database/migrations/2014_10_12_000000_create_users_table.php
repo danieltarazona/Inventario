@@ -33,9 +33,6 @@ class CreateUsersTable extends Migration
             $table->string('photo');
             $table->rememberToken();
             $table->timestamps();
-            # city
-            # headquarters
-            # program
         });
     }
 
