@@ -11,20 +11,31 @@
 |
 */
 
-Route::get('/users', 'Users@users');
+Route::group(['namespace' => 'Admin'], function()
+{
+    // Controllers Within The "App\Http\Controllers\Admin" Namespace
+});
 
-Route::get('/users/register', 'Users@dashboard');
+Route::group(['namespace' => 'User'], function()
+{
+  Route::get('/users', 'Users@read');
 
-Route::get('/users/{user}', 'Users@profile');
-Route::patch('/users/{user}', 'Users@update');
+  Route::get('/users/{user}', 'Users@profile');
+  Route::patch('/users/{user}', 'Users@update');
 
-Route::get('/inventory', 'InventoryController@dashboard');
-Route::post('/inventory', 'InventoryController@save');
+  Route::get('/users/delete', 'Users@delete');
 
-Route::get('/', 'HomeController@index');
-Route::get('/dashboard', 'HomeController@welcome');
-Route::get('/home', 'Users@users');
-Route::get('/about', 'HomeController@about');
-Route::get('/contact', 'HomeController@contact');
+  Route::get('/', 'HomeController@index');
+  Route::get('/dashboard', 'HomeController@welcome');
+  Route::get('/home', 'Users@users');
+  Route::get('/about', 'HomeController@about');
+  Route::get('/contact', 'HomeController@contact');
 
-Route::auth();
+  Route::auth();
+
+});
+
+Route::group(['namespace' => 'Storer'], function()
+{
+    // Controllers Within The "App\Http\Controllers\Admin" Namespace
+});
