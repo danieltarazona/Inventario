@@ -1,4 +1,4 @@
-# InventARIO
+# InventAR.io
 
 ## Official Documentation
 
