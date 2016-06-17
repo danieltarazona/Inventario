@@ -15,9 +15,14 @@ Route::get('/', 'Index@Welcome');
 Route::get('/about', 'Index@About');
 Route::get('/contact', 'Index@Contact');
 
+
 Route::get('/users', 'Users@Users');
-Route::get('/users/register', 'Users@Register');
+
+Route::get('/users/register', 'Users@Dashboard');
+Route::post('/users/register', 'Users@Create');
+
 Route::get('/users/{user}', 'Users@Profile');
+Route::patch('/users/{user}', 'Users@Update');
 
 Route::get('/inventory', 'Inventories@Dashboard');
-Route::get('/inventory/info', 'Inventories@Info');
+Route::post('/inventory', 'Inventories@Save');

@@ -17,7 +17,21 @@ class Users extends Controller
     return view('/Users/Profile', compact('user'));
   }
 
-  public function Register() {
-    return "Register";
+  public function Dashboard() {
+    return view('/Users/Register');
+  }
+
+  public function Create(Request $request) {
+    $user = new User;
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = bcrypt($request->password);
+    $user->save();
+    return back();
+  }
+
+  public function Update(Request $request, User $user) {
+    $user->update($request->all());
+    return redirect('users');
   }
 }
