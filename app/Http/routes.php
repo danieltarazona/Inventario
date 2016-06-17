@@ -27,7 +27,6 @@ Route::group(['namespace' => 'User'], function()
 
   Route::get('/', 'HomeController@index');
   Route::get('/dashboard', 'HomeController@welcome');
-  Route::get('/home', 'Users@users');
   Route::get('/about', 'HomeController@about');
   Route::get('/contact', 'HomeController@contact');
 
