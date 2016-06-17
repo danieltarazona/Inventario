@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHeadquartersTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateHeadquartersTable extends Migration
      */
     public function up()
     {
-        Schema::create('headquarters', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('device_id')->unsigned()->index();
-            $table->integer('program_id')->unsigned()->index();
-            $table->string('name');
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateHeadquartersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('headquarters');
+        Schema::drop('admins');
     }
 }

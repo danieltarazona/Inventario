@@ -14,18 +14,20 @@ class CreateDevicesTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->unsigned()->index();
+            $table->integer('manufacturer_id')->unsigned()->index();
+            $table->integer('maintenance_id')->unsigned()->index();
+            $table->date('next_maintenance');
             $table->string('serial');
             $table->string('model');
             $table->string('name');
             $table->date('date_buy');
             $table->string('price');
-            $table->integer('state');
-            $table->string('quantity');
+            $table->string('state');
+            $table->integer('quantity');
             $table->integer('remain_life');
-            $table->date('last_maintenance');
-            $table->date('next_maintenance');
             $table->string('warranty');
-            $table->string('warranty_expiration');
+            $table->date('warranty_expiration');
             $table->timestamps();
         });
     }

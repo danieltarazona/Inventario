@@ -14,6 +14,7 @@ class CreateStorersTable extends Migration
     {
         Schema::create('storers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });
     }
