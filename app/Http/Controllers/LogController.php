@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class Logs extends Controller
+class LogController extends Controller
 {
     //
 }

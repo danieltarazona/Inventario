@@ -11,18 +11,20 @@
 |
 */
 
-Route::get('/', 'Index@Welcome');
-Route::get('/about', 'Index@About');
-Route::get('/contact', 'Index@Contact');
+Route::get('/users', 'Users@users');
 
+Route::get('/users/register', 'Users@dashboard');
 
-Route::get('/users', 'Users@Users');
+Route::get('/users/{user}', 'Users@profile');
+Route::patch('/users/{user}', 'Users@update');
 
-Route::get('/users/register', 'Users@Dashboard');
-Route::post('/users/register', 'Users@Create');
+Route::get('/inventory', 'InventoryController@dashboard');
+Route::post('/inventory', 'InventoryController@save');
 
-Route::get('/users/{user}', 'Users@Profile');
-Route::patch('/users/{user}', 'Users@Update');
+Route::get('/', 'HomeController@index');
+Route::get('/dashboard', 'HomeController@welcome');
+Route::get('/home', 'Users@users');
+Route::get('/about', 'HomeController@about');
+Route::get('/contact', 'HomeController@contact');
 
-Route::get('/inventory', 'Inventories@Dashboard');
-Route::post('/inventory', 'Inventories@Save');
+Route::auth();

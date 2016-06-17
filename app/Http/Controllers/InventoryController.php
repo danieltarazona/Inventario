@@ -6,16 +6,12 @@ use App\Inventory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-class Inventories extends Controller
+class InventoryController extends Controller
 {
-  public function Dashboard() {
+  public function dashboard() {
     return "Inventory Dashboard";
     # $inventarios = Inventario::all();
     # return view('/Inventario/Dashboard', compact($inventarios));
   }
 
-  public function Info() {
-    return "Info";
-    # return view('Info');
-  }
 }

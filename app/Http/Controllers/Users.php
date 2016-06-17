@@ -8,30 +8,28 @@ use App\Http\Requests;
 
 class Users extends Controller
 {
-  public function Users() {
+  public function users() {
     $users = User::all();
-    return view('/Users/Users', compact('users'));
+    return view('/users/users', compact('users'));
   }
 
-  public function Profile(User $user) {
-    return view('/Users/Profile', compact('user'));
+  public function profile(User $user) {
+    return view('/users/profile', compact('user'));
   }
 
-  public function Dashboard() {
-    return view('/Users/Register');
+  public function dashboard() {
+    return view('/users/register');
   }
 
-  public function Create(Request $request) {
-    $user = new User;
-    $user->name = $request->name;
+  public function update(Request $request, User $user) {
+    # $user->update($request->all());
+    $user->first_name = $request->first_name;
+    $user->last_name = $request->last_name;
+    $user->first_lastname = $request->first_lastname;
+    $user->last_lastname = $request->last_lastname;
     $user->email = $request->email;
-    $user->password = bcrypt($request->password);
+    $user->adress = $request->adress;
     $user->save();
-    return back();
-  }
-
-  public function Update(Request $request, User $user) {
-    $user->update($request->all());
     return redirect('users');
   }
 }
