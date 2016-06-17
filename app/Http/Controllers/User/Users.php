@@ -8,17 +8,13 @@ use App\Http\Requests;
 
 class Users extends Controller
 {
-  public function users() {
+  public function read() {
     $users = User::all();
     return view('/users/users', compact('users'));
   }
 
   public function profile(User $user) {
     return view('/users/profile', compact('user'));
-  }
-
-  public function dashboard() {
-    return view('/users/register');
   }
 
   public function update(Request $request, User $user) {
@@ -30,6 +26,7 @@ class Users extends Controller
     $user->email = $request->email;
     $user->adress = $request->adress;
     $user->save();
+
     return redirect('users');
   }
 }
