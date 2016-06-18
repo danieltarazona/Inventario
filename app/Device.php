@@ -8,31 +8,31 @@ class Device extends Model
 {
     public function manufacturer()
     {
-        return $this->hasOne(Manufacturer::class);
+        return $this->belongsTo(Manufacturer::class);
     }
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function headquarter()
     {
-        return $this->hasOne(Headquarter::class);
+        return $this->belongsTo(Headquarter::class);
     }
 
     public function storer()
     {
-        return $this->hasOne(Storer::class);
+        return $this->belongsTo(Storer::class);
     }
 
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo(State::class);
     }
 
     public function maintenance()
     {
-        return $this->hasMany(Maintenance::class);
+        return $this->belongsToMany('App\Maintenance', 'devices_maintenances', 'device_id', 'maintenance_id');
     }
 }
