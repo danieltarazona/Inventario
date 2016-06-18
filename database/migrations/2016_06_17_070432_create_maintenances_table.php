@@ -18,7 +18,6 @@ class CreateMaintenancesTable extends Migration
             $table->integer('device_id')->unsigned()->index();
             $table->text('description');
             $table->text('price');
-            $table->date('date');
             $table->timestamps();
         });
     }

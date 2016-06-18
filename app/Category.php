@@ -8,6 +8,6 @@ class Category extends Model
 {
     public function devices()
     {
-        return $this->hasMany(Device::class);
+        return $this->belongsTo(Device::class);
     }
 }

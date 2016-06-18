@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Maintenance extends Model
 {
-    public function devices()
+    public function device()
     {
-        return $this->HasMany(Device::class);
+        return $this->belongsTo(Device::class);
     }
 
     public function storer()
