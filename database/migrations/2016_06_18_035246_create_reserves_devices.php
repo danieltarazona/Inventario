@@ -14,8 +14,8 @@ class CreateReservesDevices extends Migration
     {
         Schema::create('reserves_devices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('device_id')->unsigned()->index();
             $table->integer('reserve_id')->unsigned()->index();
+            $table->integer('device_id')->unsigned()->index();
             $table->timestamps();
         });
     }

@@ -14,6 +14,10 @@ class CreateDevicesTable extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('headquarter_id')->unsigned();
+            $table->integer('manufacturer_id')->unsigned();
+            $table->integer('storer_id')->unsigned();
             $table->string('serial');
             $table->string('model');
             $table->string('name');

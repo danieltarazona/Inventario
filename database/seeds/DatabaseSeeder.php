@@ -58,15 +58,17 @@ class DatabaseSeeder extends Seeder
         /*
         $device = App\Device::find(1);
         $category = App\Category::find(1);
+        $device->category()->save($category);
+
         $manufacturer = App\Manufacturer::find(1);
         $maintenance = App\Maintenance::find(1);
-        $device->maintenances()->save($maintenance);
+        $device->maintenance()->save($maintenance);
 
 
         $maintenance = App\Maintenance::find(2);
-        $device->maintenances()->save($maintenance);
+        $device->maintenance()->save($maintenance);
 
-        $device->category()->save($category);
+
         $device->manufacturer()->save($manufacturer);
         */
 

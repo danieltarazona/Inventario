@@ -14,8 +14,8 @@ class CreateDevicesMaintenances extends Migration
     {
         Schema::create('devices_maintenances', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('device_id')->unsigned()->index();
             $table->integer('maintenance_id')->unsigned()->index();
+            $table->integer('device_id')->unsigned()->index();
             $table->timestamps();
         });
     }
