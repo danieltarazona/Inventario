@@ -16,7 +16,6 @@ class CreateIssuesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->text('name');
-            $table->text('issue');
             $table->timestamps();
         });
     }

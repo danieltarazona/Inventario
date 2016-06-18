@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDashboardsTable extends Migration
+class CreateUsersIssues extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class CreateDashboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('dashboards', function (Blueprint $table) {
+        Schema::create('users_issues', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('issue_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ class CreateDashboardsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dashboards');
+        Schema::drop('users_issues');
     }
 }
