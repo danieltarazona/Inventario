@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManufacturersDevices extends Migration
+class CreateDevicesCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateManufacturersDevices extends Migration
      */
     public function up()
     {
-        Schema::create('manufacturers_devices', function (Blueprint $table) {
+        Schema::create('devices_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('manufacturer_id')->unsigned()->index();
+            $table->integer('category_id')->unsigned()->index();
             $table->integer('device_id')->unsigned()->index();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateManufacturersDevices extends Migration
      */
     public function down()
     {
-        Schema::drop('manufacturers_devices');
+        Schema::drop('devices_categories');
     }
 }

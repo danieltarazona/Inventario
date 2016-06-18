@@ -39,10 +39,36 @@ class DatabaseSeeder extends Seeder
             'name' => "Good",
         ]);
 
-        $main1 = App\Maintenance::find(1);
-        $main2 = App\Maintenance::find(2);
+        DB::table('states')->insert([
+            'name' => "Bad",
+        ]);
+
+        DB::table('states')->insert([
+            'name' => "Repair",
+        ]);
+
+        DB::table('states')->insert([
+            'name' => "Offline",
+        ]);
+
+        DB::table('states')->insert([
+            'name' => "Online",
+        ]);
+
+        /*
         $device = App\Device::find(1);
         $category = App\Category::find(1);
         $manufacturer = App\Manufacturer::find(1);
+        $maintenance = App\Maintenance::find(1);
+        $device->maintenances()->save($maintenance);
+
+
+        $maintenance = App\Maintenance::find(2);
+        $device->maintenances()->save($maintenance);
+
+        $device->category()->save($category);
+        $device->manufacturer()->save($manufacturer);
+        */
+
     }
 }

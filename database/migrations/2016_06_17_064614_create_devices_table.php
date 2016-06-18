@@ -24,12 +24,6 @@ class CreateDevicesTable extends Migration
             $table->string('warranty');
             $table->date('warranty_expiration');
             $table->date('next_maintenance');
-
-            $table->integer('state_id')->unsigned();
-            $table->integer('category_id')->unsigned();
-            $table->integer('headquarter_id')->unsigned();
-            $table->integer('manufacturer_id')->unsigned();
-
             $table->timestamps();
         });
     }
