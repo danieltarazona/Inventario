@@ -15,9 +15,4 @@ class Reserve extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function storer()
-    {
-        return $this->belongsTo(Storer::class);
-    }
 }

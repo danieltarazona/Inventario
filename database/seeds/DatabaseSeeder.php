@@ -11,49 +11,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('manufacturers')->insert([
-            'name' => "Apple",
-        ]);
 
-        DB::table('categories')->insert([
-            'name' => "Computers",
-        ]);
+        $manufacturer = new Manufacturer;
+        $manufacturer->name = "Apple";
+        $manufacturer->save();
 
-        DB::table('devices')->insert([
-            'name' => "Macbook",
-        ]);
+        $category = new Category;
+        $category->name = "Notebooks";
+        $category ->save();
 
-        DB::table('maintenances')->insert([
-            'name' => "Install Windows 10",
-        ]);
+        $device = new Device;
+        $device->name = "Macbook";
+        $device ->save();
 
-        DB::table('maintenances')->insert([
-            'name' => "Install Atom",
-        ]);
+        $maintenance = new Maintenance;
+        $maintenance->name = "Install Windows 10";
+        $maintenance ->save();
 
-        DB::table('users')->insert([
-            'username' => "codeapps",
-        ]);
+        $maintenance = new Maintenance;
+        $maintenance->name = "Install Atom";
+        $maintenance ->save();
 
-        DB::table('states')->insert([
-            'name' => "Good",
-        ]);
-
-        DB::table('states')->insert([
-            'name' => "Bad",
-        ]);
-
-        DB::table('states')->insert([
-            'name' => "Repair",
-        ]);
-
-        DB::table('states')->insert([
-            'name' => "Offline",
-        ]);
-
-        DB::table('states')->insert([
-            'name' => "Online",
-        ]);
+        $state = new State;
+        $state->name = "Good";
+        $state->save();
 
         /*
         $state = App\State::find(1);
@@ -70,6 +51,7 @@ class DatabaseSeeder extends Seeder
 
         $manufacturer = App\Manufacturer::find(1);
         $device->manufacturer()->save($manufacturer);
+
         */
 
     }

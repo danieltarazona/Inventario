@@ -31,9 +31,19 @@ class Device extends Model
         return $this->hasOne(State::class);
     }
 
+    public function loan()
+    {
+        return $this->belongsToMany(Loan::class);
+    }
+
+    public function reserve()
+    {
+        return $this->belongsToMany(Reserve::class);
+    }
+
     public function maintenance()
     {
-        return $this->hasMany(Maintenance::class);
+        return $this->belongsToMany(Maintenance::class);
         ## Devices have to Many Maintenances
         ## Table device_maintenance -> device_id and maintenance_id
     }
