@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersLoans extends Migration
+class CreateDeviceReserve extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateUsersLoans extends Migration
      */
     public function up()
     {
-        Schema::create('users_loans', function (Blueprint $table) {
+        Schema::create('device_reserve', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('loan_id')->unsigned()->index();
+            $table->integer('reserve_id')->unsigned()->index();
+            $table->integer('device_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateUsersLoans extends Migration
      */
     public function down()
     {
-        Schema::drop('users_loans');
+        Schema::drop('device_reserve');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersReserves extends Migration
+class CreateStateUser extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateUsersReserves extends Migration
      */
     public function up()
     {
-        Schema::create('users_reserves', function (Blueprint $table) {
+        Schema::create('state_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('reserve_id')->unsigned()->index();
+            $table->integer('state_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateUsersReserves extends Migration
      */
     public function down()
     {
-        Schema::drop('users_reserves');
+        Schema::drop('state_user');
     }
 }

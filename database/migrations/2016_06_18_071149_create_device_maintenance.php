@@ -17,6 +17,7 @@ class CreateDeviceMaintenance extends Migration
             $table->integer('device_id')->unsigned()->index();
             $table->integer('maintenance_id')->unsigned()->index();
             $table->timestamps();
+            
         });
     }
 

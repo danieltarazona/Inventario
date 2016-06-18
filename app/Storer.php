@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Storer extends Model
 {
-    public function devices()
+    public function device()
     {
         return $this->hasMany(Device::class);
     }
@@ -16,8 +16,18 @@ class Storer extends Model
         return $this->hasMany(Maintenance::class);
     }
 
-    public function loans()
+    public function loan()
     {
         return $this->hasMany(Loan::class);
+    }
+
+    public function headquarter()
+    {
+        return $this->belongsTo(Headquarter::class);
+    }
+
+    public function reserve()
+    {
+        return $this->hasMany(Reserve::class);
     }
 }

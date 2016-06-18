@@ -27,17 +27,17 @@ class User extends Authenticatable
 
     public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     public function program()
     {
-        return $this->hasOne(Program::class);
+        return $this->belongsTo(Program::class);
     }
 
     public function headquarter()
     {
-        return $this->hasOne(Headquarter::class);
+        return $this->belongsTo(Headquarter::class);
     }
 
     public function state()

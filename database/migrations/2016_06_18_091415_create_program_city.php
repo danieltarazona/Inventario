@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDevicesCategories extends Migration
+class CreateProgramCity extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateDevicesCategories extends Migration
      */
     public function up()
     {
-        Schema::create('devices_categories', function (Blueprint $table) {
+        Schema::create('program_city', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->unsigned()->index();
-            $table->integer('device_id')->unsigned()->index();
+            $table->integer('program_id')->unsigned()->index();
+            $table->integer('city_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateDevicesCategories extends Migration
      */
     public function down()
     {
-        Schema::drop('devices_categories');
+        Schema::drop('program_city');
     }
 }
