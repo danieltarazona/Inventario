@@ -8,11 +8,11 @@ class State extends Model
 {
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function device()
     {
-        return $this->hasMany(Device::class);
+        return $this->belongsTo(Device::class);
     }
 }

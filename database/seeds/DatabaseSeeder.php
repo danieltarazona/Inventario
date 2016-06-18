@@ -56,19 +56,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /*
+        $state = App\State::find(1);
         $device = App\Device::find(1);
-        $category = App\Category::find(1);
-        $device->category()->save($category);
 
-        $manufacturer = App\Manufacturer::find(1);
+        $category = App\Category::find(1);
+        $category->device()->save($device);
+
         $maintenance = App\Maintenance::find(1);
         $device->maintenance()->save($maintenance);
-
 
         $maintenance = App\Maintenance::find(2);
         $device->maintenance()->save($maintenance);
 
-
+        $manufacturer = App\Manufacturer::find(1);
         $device->manufacturer()->save($manufacturer);
         */
 

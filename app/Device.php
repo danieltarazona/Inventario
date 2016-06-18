@@ -28,11 +28,13 @@ class Device extends Model
 
     public function state()
     {
-        return $this->belongsTo(State::class);
+        return $this->hasOne(State::class);
     }
 
     public function maintenance()
     {
-        return $this->belongsToMany('App\Maintenance', 'devices_maintenances', 'device_id', 'maintenance_id');
+        return $this->hasMany(Maintenance::class);
+        ## Devices have to Many Maintenances
+        ## Table device_maintenance -> device_id and maintenance_id
     }
 }

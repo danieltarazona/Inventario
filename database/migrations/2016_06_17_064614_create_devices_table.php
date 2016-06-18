@@ -17,6 +17,7 @@ class CreateDevicesTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('headquarter_id')->unsigned();
             $table->integer('manufacturer_id')->unsigned();
+            $table->integer('maintenance_id')->unsigned();
             $table->integer('storer_id')->unsigned();
             $table->string('serial');
             $table->string('model');

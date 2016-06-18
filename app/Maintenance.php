@@ -8,7 +8,8 @@ class Maintenance extends Model
 {
     public function device()
     {
-        return $this->belongsTo(Device::class);
+        return $this->hasMany(Device::class);
+        // Maintenance has Many Devices 
     }
 
     public function storer()

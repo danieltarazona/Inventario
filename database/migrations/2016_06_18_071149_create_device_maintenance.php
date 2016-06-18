@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDevicesMaintenances extends Migration
+class CreateDeviceMaintenance extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateDevicesMaintenances extends Migration
      */
     public function up()
     {
-        Schema::create('devices_maintenances', function (Blueprint $table) {
+        Schema::create('device_maintenance', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('maintenance_id')->unsigned()->index();
             $table->integer('device_id')->unsigned()->index();
+            $table->integer('maintenance_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateDevicesMaintenances extends Migration
      */
     public function down()
     {
-        Schema::drop('devices_maintenances');
+        Schema::drop('device_maintenance');
     }
 }
