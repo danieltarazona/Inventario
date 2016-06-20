@@ -7,11 +7,11 @@
 - User hasOne State
 - State belongsToMany User
 
-- User hasMany Reserve
-- Reserve belongsTo User
+- User hasMany Order
+- Order belongsTo User
 
-- User hasMany Loans
-- Loan belongsTo User
+- User hasMany Sales
+- Sale belongsTo User
 
 - Program hasMany User
 - User belongsTo Program
@@ -22,38 +22,38 @@
 - Headquarter hasMany User
 - User belongsTo Headquarter
 
-- Manufacturer hasMany Device
-- Device belongsTo Manufacturer
+- Manufacturer hasMany Product
+- Product belongsTo Manufacturer
 
-- Maintenance hasMany Device
-- Device belongsToMany Maintenance
+- Maintenance hasMany Product
+- Product belongsToMany Maintenance
 
-- Device hasOne State
-- State belongsToMany Device
+- Product hasOne State
+- State belongsToMany Product
 
-- Headquarter hasMany Device
-- Device belongsTo Headquarter
+- Headquarter hasMany Product
+- Product belongsTo Headquarter
 
-- Headquarter hasMany Storer
-- Storer belongsTo Headquarter
+- Headquarter hasMany Owner
+- Owner belongsTo Headquarter
 
-- Storer hasMany Device
-- Device belongsTo Storer
+- Owner hasMany Product
+- Product belongsTo Owner
 
-- Category hasMany Device
-- Device belongsTo Category
+- Category hasMany Product
+- Product belongsTo Category
 
-- Reserve hasMany Device
-- Device belongsToMany Reserve
+- Order hasMany Product
+- Product belongsToMany Order
 
-- Storer hasMany Reserve
-- Reserve belongsTo Storer
+- Owner hasMany Order
+- Order belongsTo Owner
 
-- Loan hasMany Device
-- Device belongsToMany Loan
+- Sale hasMany Product
+- Product belongsToMany Sale
 
-- Storer hasMany Loan
-- Loan belongsTo Storer
+- Owner hasMany Sale
+- Sale belongsTo Owner
 
 - City hasMany User
 - User belongsTo City
