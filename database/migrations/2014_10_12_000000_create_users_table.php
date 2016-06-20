@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('dni')->unsigned()->unique();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('email_reset')->unique();
+            $table->string('email_reset');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('first_lastname');
@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
     }
 
     /**

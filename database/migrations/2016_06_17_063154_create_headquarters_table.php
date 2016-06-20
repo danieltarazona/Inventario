@@ -14,6 +14,7 @@ class CreateHeadquartersTable extends Migration
     {
         Schema::create('headquarters', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('city_id')->unsigned();
             $table->string('name');
             $table->timestamps();
         });

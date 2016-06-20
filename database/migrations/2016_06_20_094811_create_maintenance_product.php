@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgramCity extends Migration
+class CreateMaintenanceProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateProgramCity extends Migration
      */
     public function up()
     {
-        Schema::create('program_city', function (Blueprint $table) {
+        Schema::create('maintenance_product', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('program_id')->unsigned()->index();
-            $table->integer('city_id')->unsigned()->index();
+            $table->integer('maintenance_id')->unsigned()->index();
+            $table->integer('product_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateProgramCity extends Migration
      */
     public function down()
     {
-        Schema::drop('program_city');
+        Schema::drop('maintenance_product');
     }
 }
