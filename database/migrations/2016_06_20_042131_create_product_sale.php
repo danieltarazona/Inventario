@@ -14,8 +14,8 @@ class CreateProductSale extends Migration
     {
         Schema::create('product_sale', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('sale_id')->unsigned();
+            $table->integer('product_id')->unsigned()->index();
+            $table->integer('sale_id')->unsigned()->index();
             $table->integer('quantity')->unsigned();
             $table->timestamps();
         });

@@ -16,8 +16,8 @@ class Sale extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function storer()
+    public function owner()
     {
-        return $this->belongsTo(Storer::class);
+        return $this->belongsTo(Owner::class);
     }
 }

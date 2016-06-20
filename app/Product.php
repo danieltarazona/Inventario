@@ -21,9 +21,9 @@ class Product extends Model
         return $this->belongsTo(Headquarter::class);
     }
 
-    public function storer()
+    public function owner()
     {
-        return $this->belongsTo(Storer::class);
+        return $this->belongsTo(Owner::class);
     }
 
     public function state()

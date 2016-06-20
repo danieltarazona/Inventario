@@ -34,7 +34,7 @@ Route::group(['namespace' => 'User'], function()
 
 });
 
-Route::group(['namespace' => 'Storer'], function()
+Route::group(['namespace' => 'Owner'], function()
 {
     // Controllers Within The "App\Http\Controllers\Admin" Namespace
 });

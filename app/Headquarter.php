@@ -16,9 +16,9 @@ class Headquarter extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function storer()
+    public function owner()
     {
-        return $this->hasMany(Storer::class);
+        return $this->hasMany(Owner::class);
     }
 
     public function city()

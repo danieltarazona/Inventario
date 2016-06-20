@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Owner extends Model
 {
-    public function Product()
+    public function product()
     {
         return $this->hasMany(Product::class);
     }

@@ -12,8 +12,8 @@ class Maintenance extends Model
         // Maintenance has Many Devices
     }
 
-    public function storer()
+    public function owner()
     {
-        return $this->hasOne(Storer::class);
+        return $this->hasOne(Owner::class);
     }
 }
