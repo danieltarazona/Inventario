@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'dni', 'email', 'password',
+        'username', 'dni', 'email', 'password', 'city_id', 'state_id',
     ];
 
     /**
@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo(State::class);
     }
 
     public function sale()
@@ -65,4 +65,8 @@ class User extends Authenticatable
         return $this->hasMany(Issue::class);
     }
 
+    public function owner()
+    {
+        return $this->hasOne(Owner::class);
+    }
 }

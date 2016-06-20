@@ -44,7 +44,7 @@ class Product extends Model
     public function maintenance()
     {
         return $this->belongsToMany(Maintenance::class);
-        ## Devices have to Many Maintenances
+        ## Products have to Many Maintenances
         ## Table device_maintenance -> device_id and maintenance_id
     }
 }

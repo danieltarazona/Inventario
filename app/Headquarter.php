@@ -8,7 +8,7 @@ class Headquarter extends Model
 {
     public function program()
     {
-        return $this->hasMany(Program::class);
+        return $this->belongsToMany(Program::class);
     }
 
     public function product()

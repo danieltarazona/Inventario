@@ -8,12 +8,11 @@ class Maintenance extends Model
 {
     public function product()
     {
-        return $this->hasMany(Product::class);
-        // Maintenance has Many Devices
+        return $this->belongsToMany(Product::class);
     }
 
     public function owner()
     {
-        return $this->hasOne(Owner::class);
+        return $this->belongsTo(Owner::class);
     }
 }

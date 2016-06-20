@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
-    public function city()
+    public function headquarter()
     {
-        return $this->belongsToMany(City::class);
+        return $this->belongsToMany(Headquarter::class);
     }
 
     public function user()
