@@ -4,8 +4,8 @@
 - User haveMany Issue
 - Issue belongsTo User
 
-- User hasOne State
-- State belongsToMany User
+- State hasMany User
+- User belongsTo State
 
 - User hasMany Order
 - Order belongsTo User
@@ -16,8 +16,8 @@
 - Program hasMany User
 - User belongsTo Program
 
-- Headquarter hasMany Programs
-- Programs belongsToMany City
+- Headquarter hasMany Program
+- Program belongsToMany City
 
 - Headquarter hasMany User
 - User belongsTo Headquarter
