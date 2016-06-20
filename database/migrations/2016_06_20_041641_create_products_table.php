@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDevicesTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,23 +12,22 @@ class CreateDevicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->integer('headquarter_id')->unsigned();
             $table->integer('manufacturer_id')->unsigned();
+            $table->integer('owner_id')->unsigned();
+            $table->integer('state_id')->unsigned();
             $table->integer('maintenance_id')->unsigned();
-            $table->integer('storer_id')->unsigned();
+            $table->date('next_maintenance');
+            $table->integer('stock');
             $table->string('serial');
-            $table->string('model');
+            $table->string('year');
             $table->string('name');
             $table->date('buy');
             $table->string('price');
-            $table->integer('quantity');
-            $table->integer('remain_life');
             $table->string('warranty');
-            $table->date('warranty_expiration');
-            $table->date('next_maintenance');
             $table->timestamps();
         });
     }
@@ -40,6 +39,6 @@ class CreateDevicesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('devices');
+        Schema::drop('products');
     }
 }

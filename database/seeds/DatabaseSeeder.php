@@ -12,27 +12,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $manufacturer = new Manufacturer;
+        $manufacturer = new App\Manufacturer;
         $manufacturer->name = "Apple";
         $manufacturer->save();
 
-        $category = new Category;
+        $category = new App\Category;
         $category->name = "Notebooks";
         $category ->save();
 
-        $device = new Device;
-        $device->name = "Macbook";
-        $device ->save();
+        $product = new App\Product;
+        $product->name = "Macbook";
+        $product ->save();
 
-        $maintenance = new Maintenance;
+        $maintenance = new App\Maintenance;
         $maintenance->name = "Install Windows 10";
         $maintenance ->save();
 
-        $maintenance = new Maintenance;
+        $maintenance = new App\Maintenance;
         $maintenance->name = "Install Atom";
         $maintenance ->save();
 
-        $state = new State;
+        $state = new App\State;
         $state->name = "Good";
         $state->save();
 

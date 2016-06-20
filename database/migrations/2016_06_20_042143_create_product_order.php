@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStorersTable extends Migration
+class CreateProductOrder extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateStorersTable extends Migration
      */
     public function up()
     {
-        Schema::create('storers', function (Blueprint $table) {
+        Schema::create('product_order', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('room');
-            $table->integer('user_id')->unsigned()->index();
+            $table->integer('product_id')->unsigned()->index();
+            $table->integer('order_id')->unsigned()->index();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateStorersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('storers');
+        Schema::drop('product_order');
     }
 }

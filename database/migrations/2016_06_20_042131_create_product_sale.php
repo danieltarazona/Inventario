@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStateUser extends Migration
+class CreateProductSale extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class CreateStateUser extends Migration
      */
     public function up()
     {
-        Schema::create('state_user', function (Blueprint $table) {
+        Schema::create('product_sale', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('state_id')->unsigned()->index();
+            $table->integer('product_id')->unsigned();
+            $table->integer('sale_id')->unsigned();
+            $table->integer('quantity')->unsigned();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateStateUser extends Migration
      */
     public function down()
     {
-        Schema::drop('state_user');
+        Schema::drop('product_sale');
     }
 }
