@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Maintenance extends Model
 {
-    public function device()
+    public function product()
     {
-        return $this->hasMany(Device::class);
-        // Maintenance has Many Devices 
+        return $this->hasMany(Product::class);
+        // Maintenance has Many Devices
     }
 
     public function storer()

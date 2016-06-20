@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manufacturer extends Model
 {
-    public function devices()
+    public function product()
     {
-        return $this->hasMany(Device::class);
+        return $this->hasMany(Product::class);
     }
 }

@@ -11,9 +11,9 @@ class Headquarter extends Model
         return $this->hasMany(Program::class);
     }
 
-    public function device()
+    public function product()
     {
-        return $this->hasMany(Device::class);
+        return $this->hasMany(Product::class);
     }
 
     public function storer()

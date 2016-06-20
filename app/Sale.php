@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reserve extends Model
+class Sale extends Model
 {
-    public function device()
+    public function product()
     {
-        return $this->hasMany(Device::class);
+        return $this->hasMany(Product::class);
     }
 
     public function user()

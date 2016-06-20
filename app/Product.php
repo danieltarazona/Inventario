@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Device extends Model
+class Product extends Model
 {
     public function manufacturer()
     {
@@ -31,14 +31,14 @@ class Device extends Model
         return $this->hasOne(State::class);
     }
 
-    public function loan()
+    public function sale()
     {
-        return $this->belongsToMany(Loan::class);
+        return $this->belongsToMany(Sale::class);
     }
 
-    public function reserve()
+    public function order()
     {
-        return $this->belongsToMany(Reserve::class);
+        return $this->belongsToMany(Order::class);
     }
 
     public function maintenance()

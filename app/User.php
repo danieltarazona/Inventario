@@ -45,14 +45,14 @@ class User extends Authenticatable
         return $this->hasOne(State::class);
     }
 
-    public function loan()
+    public function sale()
     {
-        return $this->hasMany(Loan::class);
+        return $this->hasMany(Sale::class);
     }
 
-    public function reserve()
+    public function order()
     {
-        return $this->hasMany(Reserve::class);
+        return $this->hasMany(Order::class);
     }
 
     public function comment()

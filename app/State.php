@@ -11,8 +11,8 @@ class State extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function device()
+    public function product()
     {
-        return $this->belongsToMany(Device::class);
+        return $this->belongsToMany(Product::class);
     }
 }

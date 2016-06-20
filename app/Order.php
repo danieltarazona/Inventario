@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Loan extends Model
+class Order extends Model
 {
-    public function device()
+    public function product()
     {
-        return $this->hasMany(Device::class);
+        return $this->hasMany(Product::class);
     }
 
     public function user()
