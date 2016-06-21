@@ -73,6 +73,21 @@ class DatabaseSeeder extends Seeder
       $owner->save();
       $user->owner()->save($owner);
 
+      $order = new App\Order;
+      $order->save();
+
+      $sale = new App\Sale;
+      $sale->save();
+
+      $owner->order()->save($order);
+      $user->order()->save($order);
+
+      $owner->sale()->save($sale);
+      $user->sale()->save($sale);
+
+      $product->order()->save($order);
+      $product->sale()->save($sale);
+
       $category->product()->save($product);
       $headquarter->product()->save($product);
       $manufacturer->product()->save($product);
