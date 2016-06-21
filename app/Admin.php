@@ -10,9 +10,4 @@ class Admin extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function admin()
-    {
-        return $this->hasOne(Admin::class);
-    }
 }
