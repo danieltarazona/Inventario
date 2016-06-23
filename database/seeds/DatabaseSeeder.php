@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
       $user->save();
 
       $userowner = new App\User;
-      $userowner->username = "UserOwner";
+      $userowner->username = "Owner";
       $userowner->dni = 88888888;
       $userowner->email = "userowner@aol.com";
       $userowner->save();
@@ -54,11 +54,27 @@ class DatabaseSeeder extends Seeder
       $comment->save();
 
       $program = new App\Program;
+      $program->name = "Architecture";
+      $program->save();
+
+      $program = new App\Program;
       $program->name = "Computer Science";
       $program->save();
 
+      $program = new App\Program;
+      $program->name = "Robotics";
+      $program->save();
+
       $headquarter = new App\Headquarter;
-      $headquarter->name = "Cupertino";
+      $headquarter->name = "Apple Loop";
+      $headquarter->save();
+
+      $headquarter = new App\Headquarter;
+      $headquarter->name = "Shibuya";
+      $headquarter->save();
+
+      $headquarter = new App\Headquarter;
+      $headquarter->name = "Sacre Coeur";
       $headquarter->save();
 
       $issue = new App\Issue;
@@ -66,7 +82,15 @@ class DatabaseSeeder extends Seeder
       $issue->save();
 
       $city = new App\City;
-      $city->name = "New York";
+      $city->name = "Cupertino";
+      $city->save();
+
+      $city = new App\City;
+      $city->name = "Tokio";
+      $city->save();
+
+      $city = new App\City;
+      $city->name = "Paris";
       $city->save();
 
       $owner = new App\Owner;
