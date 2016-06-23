@@ -21,6 +21,7 @@ Route::get('/contact', 'HomeController@contact');
 
 // UserController
 Route::resource('users', 'UsersController');
+Route::resource('cities', 'CitiesController');
 
 // ProductController
 // Route::resource('products', 'ProductController');

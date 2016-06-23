@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\City;
+use App\Headquarter;
+use App\Program;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -42,7 +45,12 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        $cities = City::lists('name', 'id');
+        $headquarters = Headquarter::lists('name', 'id');
+        $programs = Program::lists('name', 'id');
+        return view('users.edit', compact('user', 'cities', 'programs', 'headquarters'));
+
+
     }
 
     /**
@@ -54,16 +62,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request->input('city'));
+
         $user = User::FindOrFail($id);
 
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->first_lastname = $request->first_lastname;
-        $user->last_lastname = $request->last_lastname;
-        $user->email = $request->email;
-        $user->adress = $request->adress;
-        $user->telephone = $request->telephone;
-        $user->cellphone = $request->cellphone;
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->first_lastname = $request->input('first_lastname');
+        $user->last_lastname = $request->input('last_lastname');
+        $user->email = $request->input('email');
+        $user->adress = $request->input('adress');
+        $user->telephone = $request->input('telephone');
+        $user->cellphone = $request->input('cellphone');
+        $user->city_id = $request->input('city_id');
+        $user->program_id = $request->input('program_id');
+        $user->headquarter_id = $request->input('headquarter_id');
         $user->save();
 
         return redirect('users');

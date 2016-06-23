@@ -30,14 +30,29 @@ class User extends Authenticatable
         return $this->belongsTo(City::class);
     }
 
+    public function city_id()
+    {
+      return $this->city->id;
+    }
+
     public function program()
     {
         return $this->belongsTo(Program::class);
     }
 
+    public function program_id()
+    {
+        return $this->program_id->id;
+    }
+
     public function headquarter()
     {
         return $this->belongsTo(Headquarter::class);
+    }
+
+    public function headquarter_id()
+    {
+        return $this->headquarter->id;
     }
 
     public function state()
@@ -74,4 +89,5 @@ class User extends Authenticatable
     {
         return $this->hasOne(Admin::class);
     }
+
 }
