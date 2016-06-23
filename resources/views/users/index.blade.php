@@ -2,37 +2,42 @@
 
 @section('content')
 
-<style media="screen">
-  th, td {
-    padding: 10px;
-  }
-</style>
-
 <h1>Users</h1>
+<a href="{{ url('register') }}" class="btn btn-success">Create</a>
 
-<table>
+<table class="table">
+  <thead>
+   <tr>
+       <th>ID</th>
+       <th>Username</th>
+       <th>DNI</th>
+       <th>Email</th>
+       <th colspan="3">Actions</th>
+   </tr>
+   </thead>
 
 @foreach ($users as $user)
 
-    <tr>
-      <td>Username: {{ $user->username }}</td>
-      <td>DNI: {{ $user->dni }}</td>
-      <td>Email: {{ $user->email }}</td>
+  <tr>
+    <td>{{ $user->id }}</td>
+    <td>{{ $user->username }}</td>
+    <td>{{ $user->dni }}</td>
+    <td>{{ $user->email }}</td>
 
-      <td>
-        <a href="users/{{ $user->id }}">PROFILE</a>
-      </td>
+    <td>
+      <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">Read</a>
+    </td>
 
-      <td>
-        <a href="users/{{ $user->id }}/edit">EDIT</a>
-      </td>
+    <td>
+      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Update</a>
+    </td>
 
-      <td>
-        {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
-          <button class="btn btn-danger" type="submit" >DELETE</button>
-        {!! Form::close() !!}
-      </td>
-    </tr>
+    <td>
+      {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+        <button class="btn btn-danger" type="submit" >Delete</button>
+      {!! Form::close() !!}
+    </td>
+  </tr>
 
 @endforeach
 </table>
