@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/users', 'Users@read');
+Route::auth();
 
-Route::get('/users/{user}', 'Users@profile');
-Route::patch('/users/{user}', 'Users@update');
-
-Route::get('/users/delete', 'Users@delete');
-
-Route::get('/', 'HomeController@index');
-Route::get('/dashboard', 'HomeController@welcome');
+// HomeController
+Route::get('/', 'HomeController@welcome');
+Route::get('/home', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
-Route::auth();
+// UserController
+Route::resource('users', 'UsersController');
+
+// ProductController
+// Route::resource('products', 'ProductController');
+
+// SaleController
+// Route::resource('sales', 'SalesController');
+
+// OrderController
+// Route::resource('orders', 'OrdersController');

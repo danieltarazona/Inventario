@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
       $user->save();
 
       $userowner = new App\User;
-      $userowner->username = "userowner";
+      $userowner->username = "UserOwner";
       $userowner->dni = 88888888;
       $userowner->email = "userowner@aol.com";
       $userowner->save();
 
       $admin = new App\User;
-      $admin->username = "admin";
+      $admin->username = "Admin";
       $admin->dni = 666666;
       $admin->email = "admin@aol.com";
       $admin->save();
