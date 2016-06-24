@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductSale extends Migration
+class CreateProductOrder extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateProductSale extends Migration
      */
     public function up()
     {
-        Schema::create('product_sale', function (Blueprint $table) {
+        Schema::create('product_order', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id')->unsigned()->index();
             $table->integer('product_id')->unsigned()->index();
-            $table->integer('sale_id')->unsigned()->index();
-            $table->integer('quantity')->unsigned();
+            $table->integer('quantity')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateProductSale extends Migration
      */
     public function down()
     {
-        Schema::drop('product_sale');
+        Schema::drop('product_order');
     }
 }
