@@ -21,4 +21,9 @@ class Maintenance extends Model
         return $this->belongsTo(Owner::class);
     }
 
+    public function owner_id()
+    {
+        return $this->owner->id;
+    }
+
 }

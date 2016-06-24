@@ -14,8 +14,11 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('region_id')->unsigned()->nullable();
             $table->integer('city_id')->unsigned()->nullable();
             $table->string('name');
+            $table->string('telephone');
+            $table->string('adress');
             $table->timestamps();
         });
     }

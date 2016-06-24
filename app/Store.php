@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    public function program()
-    {
-        return $this->belongsToMany(Program::class)->withTimestamps();
-    }
-
     public function product()
     {
         return $this->hasMany(Product::class);

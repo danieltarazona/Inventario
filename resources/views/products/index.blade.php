@@ -12,7 +12,6 @@
        <th>Name</th>
        <th>Category</th>
        <th>Manufacturer</th>
-       <th>Owner</th>
        <th>State</th>
        <th>Store</th>
        <th>Stock</th>
@@ -33,13 +32,12 @@
        <td>{{ $product->name }}</td>
        <td>{{ $product->category_id or 'Blank' }}</td>
        <td>{{ $product->manufacturer_id or 'Blank' }}</td>
-       <td>{{ $product->owner_id or 'Blank' }}</td>
        <td>{{ $product->state_id or 'Blank' }}</td>
        <td>{{ $product->store_id or 'Blank' }}</td>
        <td>{{ $product->stock or 'Blank' }}</td>
        <td>{{ $product->serial or 'Blank' }}</td>
        <td>{{ $product->year or 'Blank' }}</td>
-       <td>{{ $product->buy or 'Blank' }}</td>
+       <td>{{ $product->date or 'Blank' }}</td>
        <td>{{ $product->price or 'Blank' }}</td>
        <td>{{ $product->warranty or 'Blank' }}</td>
        <td>

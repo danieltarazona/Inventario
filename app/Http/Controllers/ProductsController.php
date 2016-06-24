@@ -8,6 +8,7 @@ use App\Store;
 use App\Category;
 use App\Manufacturer;
 use App\State;
+use App\Region;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,10 +41,11 @@ class ProductsController extends Controller
         $stores = Store::lists('name', 'id');
         $cities = City::lists('name', 'id');
         $states = State::lists('name', 'id');
+        $regions = Region::lists('name', 'id');
 
         return view('products.create', compact(
             'categories', 'manufacturers',
-            'states', 'stores', 'cities'
+            'states', 'stores', 'cities', 'regions'
         ));
     }
 
@@ -70,6 +72,7 @@ class ProductsController extends Controller
             $product->price = $request->price;
             $product->warranty = $request->warranty;
             $product->buy = $request->buy;
+            $product->region_id = $request->region_id;
             $product->city_id = $request->city_id;
             $product->store_id = $request->store_id;
             $product->state_id = $request->state_id;

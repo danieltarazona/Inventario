@@ -21,23 +21,17 @@
   {!! Form::label('Price') !!}
   <input type="textbox" name="price"     value="{{ $product->price }}"    placeholder="Numeric">
 
-  <br>
   {!! Form::label('Warranty') !!}
   <input type="textbox" name="warranty"  value="{{ $product->warranty }}" placeholder="Months">
 
   {!! Form::label('Buy Date') !!}
   <input type="date" name="buy" value="{{ $product->buy }}">
 
-  <br>
-
   {!! Form::label('State') !!}
   {!! Form::select('state_id', $states, $product->state_id) !!}
 
-  {!! Form::label('Category') !!}
-  {!! Form::select('category_id', $categories, $product->category_id) !!}
-
-  {!! Form::label('Manufacturer') !!}
-  {!! Form::select('manufacturer_id', $manufacturers, $product->manufacturer_id) !!}
+  {!! Form::label('Region') !!}
+  {!! Form::select('region_id', $states, $product->region_id) !!}
 
   {!! Form::label('City') !!}
   {!! Form::select('city_id', $cities, $product->city_id) !!}
@@ -45,7 +39,11 @@
   {!! Form::label('Store') !!}
   {!! Form::select('store_id', $stores, $product->store_id) !!}
 
-  <br>
+  {!! Form::label('Category') !!}
+  {!! Form::select('category_id', $categories, $product->category_id) !!}
+
+  {!! Form::label('Manufacturer') !!}
+  {!! Form::select('manufacturer_id', $manufacturers, $product->manufacturer_id) !!}
 
   <input type="submit" class="btn btn-success" name="submit" value="Save">
 

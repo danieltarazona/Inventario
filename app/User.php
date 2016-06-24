@@ -35,16 +35,6 @@ class User extends Authenticatable
       return $this->city->id;
     }
 
-    public function program()
-    {
-        return $this->belongsTo(Program::class);
-    }
-
-    public function program_id()
-    {
-        return $this->program_id->id;
-    }
-
     public function store()
     {
         return $this->belongsTo(store::class);
@@ -55,14 +45,24 @@ class User extends Authenticatable
         return $this->store->id;
     }
 
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
     public function state_id()
     {
         return $this->state->id;
     }
 
-    public function state()
+    public function region()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(Region::class);
+    }
+
+    public function region_id()
+    {
+        return $this->region->id;
     }
 
     public function sale()

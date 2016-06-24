@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('region_id')->unsigned()->nullable();
             $table->integer('city_id')->unsigned()->nullable();
             $table->integer('store_id')->unsigned()->nullable();
             $table->integer('manufacturer_id')->unsigned()->nullable();
@@ -24,10 +25,9 @@ class CreateProductsTable extends Migration
             $table->integer('stock');
             $table->string('serial');
             $table->string('year');
-            $table->date('buy');
+            $table->date('date');
             $table->string('price');
             $table->string('warranty');
-            $table->date('next_maintenance');
             $table->timestamps();
         });
     }

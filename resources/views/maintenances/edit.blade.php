@@ -7,7 +7,6 @@
 {!! Form::open(array('route' => array('maintenances.update', $maintenance->id), 'method' => 'patch')) !!}
 
   <input type="textbox" name="name"      value="{{ $maintenance->name }}"     placeholder="Name">
-  <input type="date" name="date"         value="{{ $maintenance->date }}"     placeholder="Date">
   <input type="textbox" name="price"     value="{{ $maintenance->price }}"    placeholder="Price">
   <br>
   <br>

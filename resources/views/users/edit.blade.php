@@ -38,8 +38,8 @@
   {!! Form::label('Store') !!}
   {!! Form::select('store_id', $stores, $user->store_id) !!}
 
-  {!! Form::label('Program') !!}
-  {!! Form::select('program_id', $programs, $user->program_id) !!}
+  {!! Form::label('Region') !!}
+  {!! Form::select('region_id', $regions, $user->region_id) !!}
 
   {!! Form::label('State') !!}
   {!! Form::select('state_id', $states, $user->state_id) !!}

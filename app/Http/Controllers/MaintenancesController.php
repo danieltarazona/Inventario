@@ -52,8 +52,8 @@ class MaintenancesController extends Controller
         } else {
             $maintenance = new Maintenance;
             $maintenance->product()->sync($request->product_id);
+            $maintenance->owner_id = $request->owner_id;
             $maintenance->name = $request->name;
-            $maintenance->date = $request->date;
             $maintenance->price = $request->price;
             $maintenance->description = $request->description;
             $maintenance->save();
@@ -101,7 +101,6 @@ class MaintenancesController extends Controller
         $maintenance = Maintenance::findOrFail($id);
         $maintenance->product()->sync($request->product_id);
         $maintenance->name = $request->name;
-        $maintenance->date = $request->date;
         $maintenance->price = $request->price;
         $maintenance->description = $request->description;
         $maintenance->save();
@@ -126,7 +125,6 @@ class MaintenancesController extends Controller
     {
         return [
           'name'    => 'required|max:255',
-          'date'    => 'required|date',
           'price'   => 'required|numeric',
           'description'=> 'required',
         ];

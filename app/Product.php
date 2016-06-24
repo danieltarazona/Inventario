@@ -78,11 +78,6 @@ class Product extends Model
         ## Table device_maintenance -> device_id and maintenance_id
     }
 
-    public function maintenance_last()
-    {
-      return $this->maintenance->first();
-    }
-
     public function maintenance_id()
     {
         return $this->maintenance->lists('id');

@@ -21,18 +21,17 @@
   {!! Form::label('Price') !!}
   <input type="textbox" name="price" placeholder="Price">
 
-  <br>
-
   {!! Form::label('Warranty') !!}
   <input type="textbox" name="warranty" placeholder="Months">
 
   {!! Form::label('Date Buy') !!}
-  <input type="date" name="buy">
-
-  <br>
+  <input type="date" name="date">
 
   {!! Form::label('State') !!}
   {!! Form::select('state_id', $states) !!}
+
+  {!! Form::label('Region') !!}
+  {!! Form::select('region_id', $regions) !!}
 
   {!! Form::label('City') !!}
   {!! Form::select('city_id', $cities) !!}
@@ -45,8 +44,6 @@
 
   {!! Form::label('Manufacturer') !!}
   {!! Form::select('manufacturer_id', $manufacturers) !!}
-
-  <br>
 
   <input type="submit" class="btn btn-success" name="submit" value="Create">
 

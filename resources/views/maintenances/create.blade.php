@@ -8,7 +8,6 @@
 
   <input type="textbox" name="name" placeholder="Name">
   <input type="textbox" name="price" placeholder="Price">
-  <input type="date" name="date" placeholder="Date">
 
   <br>
   <br>

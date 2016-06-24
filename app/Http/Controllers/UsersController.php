@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\City;
 use App\Store;
-use App\Program;
 use App\State;
+use App\Region;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -48,11 +48,13 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $cities = City::lists('name', 'id');
+        $regions = Region::lists('name', 'id');
         $stores = Store::lists('name', 'id');
-        $programs = Program::lists('name', 'id');
         $states = State::lists('name', 'id');
 
-        return view('users.edit', compact('user', 'cities', 'programs', 'stores', 'states'));
+        return view('users.edit', compact(
+          'user', 'cities', 'stores', 'states', 'regions'
+        ));
 
     }
 
@@ -78,9 +80,9 @@ class UsersController extends Controller
         $user->telephone = $request->input('telephone');
         $user->cellphone = $request->input('cellphone');
         $user->city_id = $request->input('city_id');
-        $user->program_id = $request->input('program_id');
         $user->store_id = $request->input('store_id');
         $user->state_id = $request->input('state_id');
+        $user->region_id = $request->input('region_id');
         $user->save();
 
         return redirect('users');
