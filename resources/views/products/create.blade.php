@@ -6,18 +6,47 @@
 
 {!! Form::open(array('route' => array('products.store'), 'method' => 'post')) !!}
 
+  {!! Form::label('Name') !!}
   <input type="textbox" name="name" placeholder="Name">
-  <input type="textbox" name="stock" placeholder="Stock">
-  <input type="textbox" name="serial" placeholder="Serial">
-  <input type="textbox" name="year" placeholder="Model">
-  <input type="textbox" name="price" placeholder="Price">
-  <input type="textbox" name="warranty" placeholder="warranty">
-  <input type="date" name="buy" placeholder="Buy">
 
-  {!! Form::select('category_id', $categories) !!}
-  {!! Form::select('store_id', $stores) !!}
-  {!! Form::select('manufacturer_id', $manufacturers) !!}
+  {!! Form::label('Stock') !!}
+  <input type="textbox" name="stock" placeholder="Stock">
+
+  {!! Form::label('Serial') !!}
+  <input type="textbox" name="serial" placeholder="Serial">
+
+  {!! Form::label('Model') !!}
+  <input type="textbox" name="year" placeholder="Year">
+
+  {!! Form::label('Price') !!}
+  <input type="textbox" name="price" placeholder="Price">
+
+  <br>
+
+  {!! Form::label('Warranty') !!}
+  <input type="textbox" name="warranty" placeholder="Months">
+
+  {!! Form::label('Date Buy') !!}
+  <input type="date" name="buy">
+
+  <br>
+
+  {!! Form::label('State') !!}
   {!! Form::select('state_id', $states) !!}
+
+  {!! Form::label('City') !!}
+  {!! Form::select('city_id', $cities) !!}
+
+  {!! Form::label('Store') !!}
+  {!! Form::select('store_id', $stores) !!}
+
+  {!! Form::label('Category') !!}
+  {!! Form::select('category_id', $categories) !!}
+
+  {!! Form::label('Manufacturer') !!}
+  {!! Form::select('manufacturer_id', $manufacturers) !!}
+
+  <br>
 
   <input type="submit" class="btn btn-success" name="submit" value="Create">
 

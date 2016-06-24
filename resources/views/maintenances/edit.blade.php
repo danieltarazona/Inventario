@@ -2,26 +2,23 @@
 
 @section('content')
 
-<h1>{{ $user->username }}</h1>
-<h2>{{ $user->dni }}</h2>
+<h1>Edit</h1>
 
-{!! Form::open(array('route' => array('users.update', $user->id), 'method' => 'patch')) !!}
+{!! Form::open(array('route' => array('maintenances.update', $maintenance->id), 'method' => 'patch')) !!}
 
-  <input type="textbox" name="first_name" value="{{ $user->first_name }}" placeholder="Name">
-  <input type="textbox" name="last_name" value="{{ $user->last_name }}" placeholder="Second Name">
-  <input type="textbox" name="first_lastname" value="{{ $user->first_lastname }}" placeholder="Lastname">
-  <input type="textbox" name="last_lastname" value="{{ $user->last_lastname }}" placeholder="Second Lastname">
-  <input type="textbox" name="email" value="{{ $user->email }}" placeholder="Email">
-  <input type="textbox" name="adress" value="{{ $user->adress }}" placeholder="Adress">
-  <input type="textbox" name="telephone" value="{{ $user->telephone }}" placeholder="Telephone">
-  <input type="textbox" name="cellphone" value="{{ $user->cellphone }}" placeholder="Cellphone">
+  <input type="textbox" name="name"      value="{{ $maintenance->name }}"     placeholder="Name">
+  <input type="date" name="date"         value="{{ $maintenance->date }}"     placeholder="Date">
+  <input type="textbox" name="price"     value="{{ $maintenance->price }}"    placeholder="Price">
+  <br>
+  <br>
 
-  {!! Form::select('city_id', $cities, $user->city_id) !!}
-  {!! Form::select('store_id', $stores, $user->store_id) !!}
-  {!! Form::select('program_id', $programs, $user->program_id) !!}
-  {!! Form::select('state_id', $states, $user->state_id) !!}
+  {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control')) !!}
+  <br>
 
-  <input type="submit" class="btn btn-primary" name="submit" value="Save">
+  <textarea class="form-control" name="description" cols="40" rows="5" placeholder="Description" value="{{ $maintenance->description }}"></textarea>
+  <br>
+
+  <input type="submit" class="btn btn-success" name="submit" value="Save">
 
 {!! Form::close() !!}
 

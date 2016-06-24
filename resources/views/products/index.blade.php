@@ -18,11 +18,10 @@
        <th>Stock</th>
        <th>Serial</th>
        <th>Model</th>
-       <th>Buy Date</th>
+       <th colspan="1">Buy Date</th>
        <th>Price</th>
        <th>Warranty</th>
-       <th>Last Maintenance</th>
-       <th>Next Maintenance</th>
+       <th>Maintenance</th>
        <th colspan="3">Actions</th>
      </tr>
    </thead>
@@ -43,8 +42,11 @@
        <td>{{ $product->buy or 'Blank' }}</td>
        <td>{{ $product->price or 'Blank' }}</td>
        <td>{{ $product->warranty or 'Blank' }}</td>
-       <td>{{ $product->maintenance_id or 'Blank' }}</td>
-       <td>{{ $product->next_maintenance or 'Blank' }}</td>
+       <td>
+         @foreach($product->maintenance as $maintenance)
+            {{ $maintenance->id }}
+         @endforeach
+       </td>
 
        <td>
          <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Read</a>

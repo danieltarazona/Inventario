@@ -2,21 +2,35 @@
 
 @section('content')
 
-<h1>Profile</h1>
+<h1>Detail Maintenance</h1>
 
-<h3>Username {{ $user->username }}</h3>
-<h3>ID {{ $user->dni }}</h3>
-<h3>State {{ $user->state_id->name or 'Blank' }}</h3>
-<h3>City {{ $user->city_id->name or 'Blank' }}</h3>
-<h3>Career {{ $user->program_id->name or 'Blank' }}</h3>
-<h3>store {{ $user->store_id->name or 'Blank' }}</h3>
-<h3>First Name {{ $user->first_name or 'Blank' }}</h3>
-<h3>Second Name {{ $user->last_name or 'Blank' }}</h3>
-<h3>First Lastname {{ $user->first_lastname or 'Blank' }}</h3>
-<h3>Last Lastname {{ $user->last_lastname or 'Blank' }}</h3>
-<h3>Adress {{ $user->adress or 'Blank' }}</h3>
-<h3>Cellphone {{ $user->cellphone or 'Blank' }}</h3>
-<h3>Telephone {{ $user->telephone or 'Blank' }}</h3>
-<h3>Email {{ $user->email }}</h3>
+<h3>ID {{ $maintenance->id }}</h3>
+<h3>Name {{ $maintenance->name }}</h3>
+<h3>Owner {{ $maintenance->owner_id }}</h3>
+<h3>Owner Name {{ $maintenance->owner->name }}</h3>
+<h3>Price {{ $maintenance->price }}</h3>
+<h3>Description {{ $maintenance->description }}</h3>
+
+<br>
+<h1>Products Maintenance</h1>
+
+<table class="table">
+
+<thead>
+   <tr>
+     <th>ID</th>
+     <th>Product Name</th>
+   </tr>
+</thead>
+
+@foreach($maintenance->product as $product)
+   <tr>
+    <td>{{ $product->id }}</td>
+    <td>{{ $product->name }}</td>
+  </tr>
+@endforeach
+
+</table>
+
 
 @stop
