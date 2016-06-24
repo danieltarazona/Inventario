@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\Manufacturer;
-use App\Category;
-use App\State;
+use App\City;
 use App\Store;
+use App\Category;
+use App\Manufacturer;
+use App\State;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,11 +38,12 @@ class ProductsController extends Controller
         $categories = Category::lists('name', 'id');
         $manufacturers = Manufacturer::lists('name', 'id');
         $stores = Store::lists('name', 'id');
+        $cities = City::lists('name', 'id');
         $states = State::lists('name', 'id');
 
         return view('products.create', compact(
             'categories', 'manufacturers',
-            'stores', 'states'
+            'states', 'stores', 'cities'
         ));
     }
 
@@ -68,6 +70,7 @@ class ProductsController extends Controller
             $product->price = $request->price;
             $product->warranty = $request->warranty;
             $product->buy = $request->buy;
+            $product->city_id = $request->city_id;
             $product->store_id = $request->store_id;
             $product->state_id = $request->state_id;
             $product->category_id = $request->category_id;
@@ -99,15 +102,17 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
+        $product = Product::findOrFail($id);
+
         $categories = Category::lists('name', 'id');
         $manufacturers = Manufacturer::lists('name', 'id');
         $stores = Store::lists('name', 'id');
+        $cities = City::lists('name', 'id');
         $states = State::lists('name', 'id');
-        $product = Product::findOrFail($id);
 
         return view('products.edit', compact(
-            'product', 'categories', 'stores',
-            'manufacturers', 'states'
+            'product', 'categories', 'manufacturers',
+            'states', 'stores', 'cities'
         ));
     }
 
@@ -121,17 +126,18 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-        $product->name = $request->input('name');
-        $product->stock = $request->input('stock');
-        $product->serial = $request->input('serial');
-        $product->year = $request->input('year');
-        $product->price = $request->input('price');
-        $product->warranty = $request->input('warranty');
-        $product->buy = $request->input('buy');
-        $product->store_id = $request->input('store_id');
-        $product->state_id = $request->input('state_id');
-        $product->category_id = $request->input('category_id');
-        $product->manufacturer_id = $request->input('manufacturer_id');
+        $product->name = $request->name;
+        $product->stock = $request->stock;
+        $product->serial = $request->serial;
+        $product->year = $request->year;
+        $product->price = $request->price;
+        $product->warranty = $request->warranty;
+        $product->buy = $request->buy;
+        $product->city_id = $request->city_id;
+        $product->store_id = $request->store_id;
+        $product->state_id = $request->state_id;
+        $product->category_id = $request->category_id;
+        $product->manufacturer_id = $request->manufacturer_id;
         $product->save();
 
         return redirect('products');

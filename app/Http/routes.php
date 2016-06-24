@@ -22,7 +22,14 @@ Route::get('/contact', 'HomeController@contact');
 // UserController
 Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
 
+// ProductsController
 Route::resource('products', 'ProductsController');
+
+// MaintenancesController
+Route::resource('maintenances', 'MaintenancesController');
+
+// OwnersController
+Route::resource('owners', 'OwnersController');
 
 // SaleController
 // Route::resource('sales', 'SalesController');

@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function city_id()
+    {
+        return $this->city->id;
+    }
+
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class);
@@ -66,5 +76,15 @@ class Product extends Model
         return $this->belongsToMany(Maintenance::class);
         ## Products have to Many Maintenances
         ## Table device_maintenance -> device_id and maintenance_id
+    }
+
+    public function maintenance_last()
+    {
+      return $this->maintenance->first();
+    }
+
+    public function maintenance_id()
+    {
+        return $this->maintenance->lists('id');
     }
 }

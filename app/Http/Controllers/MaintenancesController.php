@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Maintenance;
+use App\Product;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,9 +19,9 @@ class MaintenancesController extends Controller
      */
     public function index()
     {
-        $maintenances = Product::all();
-        
-        return view('products.index', compact('maintenances'));
+        $maintenances = Maintenance::all();
+
+        return view('maintenances.index', compact('maintenances'));
     }
 
     /**
@@ -30,7 +31,8 @@ class MaintenancesController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::lists('name', 'id');
+        return view('maintenances.create', compact('products'));
     }
 
     /**
@@ -41,7 +43,23 @@ class MaintenancesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), $this->rules());
+
+        if ($validator->fails()) {
+           return redirect('maintenances/create')
+               ->withErrors($validator)
+               ->withInput();
+        } else {
+            $maintenance = new Maintenance;
+            $maintenance->product()->sync($request->product_id);
+            $maintenance->name = $request->name;
+            $maintenance->date = $request->date;
+            $maintenance->price = $request->price;
+            $maintenance->description = $request->description;
+            $maintenance->save();
+
+            return redirect('maintenances');
+        }
     }
 
     /**
@@ -52,7 +70,9 @@ class MaintenancesController extends Controller
      */
     public function show($id)
     {
-        //
+        $maintenance = Maintenance::findOrFail($id);
+
+        return view('maintenances.show', compact('maintenance'));
     }
 
     /**
@@ -63,7 +83,10 @@ class MaintenancesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = Product::lists('name', 'id');
+        $maintenance = Maintenance::findOrFail($id);
+
+        return view('maintenances.edit', compact('maintenance', 'products'));
     }
 
     /**
@@ -75,7 +98,15 @@ class MaintenancesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $maintenance = Maintenance::findOrFail($id);
+        $maintenance->product()->sync($request->product_id);
+        $maintenance->name = $request->name;
+        $maintenance->date = $request->date;
+        $maintenance->price = $request->price;
+        $maintenance->description = $request->description;
+        $maintenance->save();
+
+        return redirect('maintenances');
     }
 
     /**
@@ -86,6 +117,18 @@ class MaintenancesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Maintenance::findOrFail($id)->delete();
+
+        return redirect('maintenances');
+    }
+
+    public function rules()
+    {
+        return [
+          'name'    => 'required|max:255',
+          'date'    => 'required|date',
+          'price'   => 'required|numeric',
+          'description'=> 'required',
+        ];
     }
 }
