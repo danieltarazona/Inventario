@@ -17,7 +17,8 @@ class CreateMaintenancesTable extends Migration
             $table->integer('owner_id')->unsigned()->nullable();
             $table->string('name');
             $table->integer('price');
-            $table->text('maintenance');
+            $table->date('date');
+            $table->text('description');
             $table->timestamps();
         });
     }

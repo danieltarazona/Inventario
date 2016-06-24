@@ -68,6 +68,8 @@ class CreateForeignsKeys extends Migration
         });
 
         Schema::table('products', function ($table) {
+          $table->foreign('city_id')->references('id')->on('cities')
+            ->onDelete('cascade')->onUpdate('cascade');
           $table->foreign('category_id')->references('id')->on('categories')
             ->onDelete('cascade')->onUpdate('cascade');
           $table->foreign('store_id')->references('id')->on('stores')
