@@ -16,9 +16,9 @@ class Owner extends Model
         return $this->hasMany(Maintenance::class);
     }
 
-    public function headquarter()
+    public function store()
     {
-        return $this->belongsTo(Headquarter::class);
+        return $this->belongsTo(store::class);
     }
 
     public function sale()

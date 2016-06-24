@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'dni', 'email', 'password', 'city_id', 'state_id',
+        'username', 'dni', 'email', 'password',
     ];
 
     /**
@@ -45,14 +45,19 @@ class User extends Authenticatable
         return $this->program_id->id;
     }
 
-    public function headquarter()
+    public function store()
     {
-        return $this->belongsTo(Headquarter::class);
+        return $this->belongsTo(store::class);
     }
 
-    public function headquarter_id()
+    public function store_id()
     {
-        return $this->headquarter->id;
+        return $this->store->id;
+    }
+
+    public function state_id()
+    {
+        return $this->state->id;
     }
 
     public function state()

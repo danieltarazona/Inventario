@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\City;
-use App\Headquarter;
+use App\Store;
 use App\Program;
-use Illuminate\Http\Request;
+use App\State;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
@@ -33,6 +34,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+
         return view('users.show', compact('user'));
     }
 
@@ -46,10 +48,11 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $cities = City::lists('name', 'id');
-        $headquarters = Headquarter::lists('name', 'id');
+        $stores = Store::lists('name', 'id');
         $programs = Program::lists('name', 'id');
-        return view('users.edit', compact('user', 'cities', 'programs', 'headquarters'));
+        $states = State::lists('name', 'id');
 
+        return view('users.edit', compact('user', 'cities', 'programs', 'stores', 'states'));
 
     }
 
@@ -76,7 +79,8 @@ class UsersController extends Controller
         $user->cellphone = $request->input('cellphone');
         $user->city_id = $request->input('city_id');
         $user->program_id = $request->input('program_id');
-        $user->headquarter_id = $request->input('headquarter_id');
+        $user->store_id = $request->input('store_id');
+        $user->state_id = $request->input('state_id');
         $user->save();
 
         return redirect('users');
@@ -91,8 +95,6 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-
-        // Session Flash Message
 
         return redirect('users');
 

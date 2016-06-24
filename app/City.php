@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public function headquarter()
+    public function store()
     {
-        return $this->hasMany(Headquarter::class);
+        return $this->hasMany(store::class);
     }
 
     public function user()

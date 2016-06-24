@@ -49,6 +49,22 @@ class DatabaseSeeder extends Seeder
       $state->name = "Excellent";
       $state->save();
 
+      $state = new App\State;
+      $state->name = "Good";
+      $state->save();
+
+      $state = new App\State;
+      $state->name = "Acceptable";
+      $state->save();
+
+      $state = new App\State;
+      $state->name = "Repair";
+      $state->save();
+
+      $state = new App\State;
+      $state->name = "Damage";
+      $state->save();
+
       $comment = new App\Comment;
       $comment->name = "Best Costumer Service";
       $comment->save();
@@ -65,17 +81,17 @@ class DatabaseSeeder extends Seeder
       $program->name = "Robotics";
       $program->save();
 
-      $headquarter = new App\Headquarter;
-      $headquarter->name = "Apple Loop";
-      $headquarter->save();
+      $store = new App\Store;
+      $store->name = "Apple Loop";
+      $store->save();
 
-      $headquarter = new App\Headquarter;
-      $headquarter->name = "Shibuya";
-      $headquarter->save();
+      $store = new App\Store;
+      $store->name = "Shibuya";
+      $store->save();
 
-      $headquarter = new App\Headquarter;
-      $headquarter->name = "Sacre Coeur";
-      $headquarter->save();
+      $store = new App\Store;
+      $store->name = "Sacre Coeur";
+      $store->save();
 
       $issue = new App\Issue;
       $issue->name = "Intel Graphic Card";
@@ -113,24 +129,24 @@ class DatabaseSeeder extends Seeder
       $product->sale()->save($sale);
 
       $category->product()->save($product);
-      $headquarter->product()->save($product);
+      $store->product()->save($product);
       $manufacturer->product()->save($product);
       $state->product()->save($product);
       $owner->product()->save($product);
       $maintenance->product()->save($product);
 
       $owner->maintenance()->save($maintenance);
-      $city->headquarter()->save($headquarter);
+      $city->store()->save($store);
       $city->user()->save($user);
       $state->user()->save($user);
       $program->user()->save($user);
-      $headquarter->program()->save($program);
-      $headquarter->user()->save($user);
+      $store->program()->save($program);
+      $store->user()->save($user);
 
       // $user->city;
       // $user->state;
       // $user->program;
-      // $user->headquarter;
+      // $user->store;
       $user->comment()->save($comment);
       $user->issue()->save($issue);
       //$user->sale()->save($sale);
@@ -145,7 +161,7 @@ class DatabaseSeeder extends Seeder
       $product = App\Product::find(1);
       $program = App\Program::find(1);
       $category = App\Category::find(1);
-      $headquarter = App\Headquarter::find(1);
+      $store = App\Store::find(1);
       $maintenance = App\Maintenance::find(1);
       $manufacturer = App\Manufacturer::find(1);
       $owner = App\Owner::find(1);

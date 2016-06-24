@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHeadquarterProgram extends Migration
+class CreateStoreProgram extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateHeadquarterProgram extends Migration
      */
     public function up()
     {
-        Schema::create('headquarter_program', function (Blueprint $table) {
+        Schema::create('store_program', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('headquarter_id')->unsigned()->index();
+            $table->integer('store_id')->unsigned()->index();
             $table->integer('program_id')->unsigned()->index();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateHeadquarterProgram extends Migration
      */
     public function down()
     {
-        Schema::drop('headquarter_program');
+        Schema::drop('store_program');
     }
 }

@@ -11,14 +11,29 @@ class Product extends Model
         return $this->belongsTo(Manufacturer::class);
     }
 
+    public function manufacturer_id()
+    {
+        return $this->manufacturer->id;
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function headquarter()
+    public function category_id()
     {
-        return $this->belongsTo(Headquarter::class);
+        return $this->category->id;
+    }
+
+    public function store()
+    {
+        return $this->belongsTo(store::class);
+    }
+
+    public function store_id()
+    {
+        return $this->store->id;
     }
 
     public function owner()
@@ -29,6 +44,11 @@ class Product extends Model
     public function state()
     {
         return $this->hasOne(State::class);
+    }
+
+    public function state_id()
+    {
+        return $this->state->id;
     }
 
     public function sale()

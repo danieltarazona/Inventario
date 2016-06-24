@@ -20,11 +20,9 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 // UserController
-Route::resource('users', 'UsersController');
-Route::resource('cities', 'CitiesController');
+Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
 
-// ProductController
-// Route::resource('products', 'ProductController');
+Route::resource('products', 'ProductsController');
 
 // SaleController
 // Route::resource('sales', 'SalesController');
