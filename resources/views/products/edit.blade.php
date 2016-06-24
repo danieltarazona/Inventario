@@ -24,14 +24,11 @@
   {!! Form::label('Warranty') !!}
   <input type="textbox" name="warranty"  value="{{ $product->warranty }}" placeholder="Months">
 
-  {!! Form::label('Buy Date') !!}
-  <input type="date" name="buy" value="{{ $product->buy }}">
-
   {!! Form::label('State') !!}
   {!! Form::select('state_id', $states, $product->state_id) !!}
 
   {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $states, $product->region_id) !!}
+  {!! Form::select('region_id', $regions, $product->region_id) !!}
 
   {!! Form::label('City') !!}
   {!! Form::select('city_id', $cities, $product->city_id) !!}

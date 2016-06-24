@@ -63,17 +63,17 @@ class Product extends Model
 
     public function sale()
     {
-        return $this->belongsToMany(Sale::class);
+        return $this->belongsToMany(Sale::class)->withTimestamps();
     }
 
     public function order()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class)->withTimestamps();
     }
 
     public function maintenance()
     {
-        return $this->belongsToMany(Maintenance::class);
+        return $this->belongsToMany(Maintenance::class)->withTimestamps();
         ## Products have to Many Maintenances
         ## Table device_maintenance -> device_id and maintenance_id
     }

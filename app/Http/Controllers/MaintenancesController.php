@@ -52,7 +52,6 @@ class MaintenancesController extends Controller
         } else {
             $maintenance = new Maintenance;
             $maintenance->product()->sync($request->product_id);
-            $maintenance->owner_id = $request->owner_id;
             $maintenance->name = $request->name;
             $maintenance->price = $request->price;
             $maintenance->description = $request->description;
@@ -127,6 +126,7 @@ class MaintenancesController extends Controller
           'name'    => 'required|max:255',
           'price'   => 'required|numeric',
           'description'=> 'required',
+          'quantity'=> 'required|numeric',
         ];
     }
 }

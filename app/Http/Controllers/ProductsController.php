@@ -71,7 +71,6 @@ class ProductsController extends Controller
             $product->year = $request->year;
             $product->price = $request->price;
             $product->warranty = $request->warranty;
-            $product->buy = $request->buy;
             $product->region_id = $request->region_id;
             $product->city_id = $request->city_id;
             $product->store_id = $request->store_id;
@@ -112,10 +111,11 @@ class ProductsController extends Controller
         $stores = Store::lists('name', 'id');
         $cities = City::lists('name', 'id');
         $states = State::lists('name', 'id');
+        $regions = Region::lists('name', 'id');
 
         return view('products.edit', compact(
             'product', 'categories', 'manufacturers',
-            'states', 'stores', 'cities'
+            'states', 'stores', 'cities', 'regions'
         ));
     }
 
@@ -135,7 +135,6 @@ class ProductsController extends Controller
         $product->year = $request->year;
         $product->price = $request->price;
         $product->warranty = $request->warranty;
-        $product->buy = $request->buy;
         $product->city_id = $request->city_id;
         $product->store_id = $request->store_id;
         $product->state_id = $request->state_id;
@@ -168,7 +167,6 @@ class ProductsController extends Controller
           'year'    => 'required|numeric',
           'price'   => 'required|numeric',
           'warranty'=> 'required|numeric',
-          'buy'     => 'required|date',
         ];
     }
 

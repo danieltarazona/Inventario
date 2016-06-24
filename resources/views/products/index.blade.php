@@ -37,7 +37,7 @@
        <td>{{ $product->stock or 'Blank' }}</td>
        <td>{{ $product->serial or 'Blank' }}</td>
        <td>{{ $product->year or 'Blank' }}</td>
-       <td>{{ $product->date or 'Blank' }}</td>
+       <td>{{ $product->created_at or 'Blank' }}</td>
        <td>{{ $product->price or 'Blank' }}</td>
        <td>{{ $product->warranty or 'Blank' }}</td>
        <td>

@@ -21,8 +21,8 @@ class CreateProductsTable extends Migration
             $table->integer('manufacturer_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
             $table->integer('maintenance_id')->unsigned()->nullable();
+            $table->integer('stock')->unsigned();
             $table->string('name');
-            $table->integer('stock');
             $table->string('serial');
             $table->string('year');
             $table->date('date');

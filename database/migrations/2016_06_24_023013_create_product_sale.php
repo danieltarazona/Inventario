@@ -16,7 +16,7 @@ class CreateProductSale extends Migration
             $table->increments('id');
             $table->integer('sale_id')->unsigned()->index();
             $table->integer('product_id')->unsigned()->index();
-            $table->integer('quantity')->unsigned()->nullable();
+            $table->integer('stock_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
