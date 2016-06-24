@@ -15,6 +15,9 @@
   {!! Form::label('Quantity') !!}
   <input type="textbox" name="quantity" placeholder="Quantity">
 
+  {!! Form::label('Owner') !!}
+  {!! Form::select('owner_id', $owners) !!}
+
   <br>
   <br>
   {!! Form::label('Products') !!}

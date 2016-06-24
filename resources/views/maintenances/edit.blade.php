@@ -14,15 +14,18 @@
 
   {!! Form::label('Quantity') !!}
   <input type="textbox" name="quantity" placeholder="Quantity">
+
+  {!! Form::label('Owner') !!}
+  {!! Form::select('owner_id', $owners, $maintenance->owner_id) !!}
   <br>
   <br>
 
   {!! Form::label('Products') !!}
-  {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control')) !!}
+  {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control card')) !!}
   <br>
 
   {!! Form::label('Description') !!}
-  <textarea class="form-control" name="description" cols="40" rows="5" placeholder="Maintenance Description" value="{{ $maintenance->description }}"></textarea>
+  <textarea class="form-control" name="description" cols="40" rows="5">{{ $maintenance->description or 'Blank' }}</textarea>
   <br>
 
   <input type="submit" class="btn btn-success" name="submit" value="Save">

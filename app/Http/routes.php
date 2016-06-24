@@ -31,8 +31,26 @@ Route::resource('maintenances', 'MaintenancesController');
 // OwnersController
 Route::resource('owners', 'OwnersController');
 
-// SaleController
-// Route::resource('sales', 'SalesController');
+// AdminsController
+Route::resource('admins', 'AdminsController');
 
-// OrderController
-// Route::resource('orders', 'OrdersController');
+// SalesController
+Route::resource('sales', 'SalesController');
+
+// OrdersController
+Route::resource('orders', 'OrdersController');
+
+// CategoriesController
+Route::resource('categories', 'CategoriesController');
+
+// CitiesController
+Route::resource('cities', 'CitiesController');
+
+// RegionsController
+Route::resource('regions', 'RegionsController');
+
+// StoresController
+Route::resource('stores', 'StoresController');
+
+// ManufacturersController
+Route::resource('manufacturers', 'ManufacturersController');

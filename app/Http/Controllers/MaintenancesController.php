@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Maintenance;
 use App\Product;
+use App\Owner;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,7 +33,9 @@ class MaintenancesController extends Controller
     public function create()
     {
         $products = Product::lists('name', 'id');
-        return view('maintenances.create', compact('products'));
+        $owners = Owner::lists('user_id', 'id');
+
+        return view('maintenances.create', compact('products', 'owners'));
     }
 
     /**
@@ -82,10 +85,13 @@ class MaintenancesController extends Controller
      */
     public function edit($id)
     {
-        $products = Product::lists('name', 'id');
         $maintenance = Maintenance::findOrFail($id);
 
-        return view('maintenances.edit', compact('maintenance', 'products'));
+        $products = Product::lists('name', 'id');
+        $owners = Owner::lists('user_id', 'id');
+
+
+        return view('maintenances.edit', compact('maintenance', 'products', 'owners'));
     }
 
     /**
@@ -126,7 +132,6 @@ class MaintenancesController extends Controller
           'name'    => 'required|max:255',
           'price'   => 'required|numeric',
           'description'=> 'required',
-          'quantity'=> 'required|numeric',
         ];
     }
 }
