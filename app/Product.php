@@ -38,7 +38,7 @@ class Product extends Model
 
     public function store()
     {
-        return $this->belongsTo(store::class);
+        return $this->belongsTo(Store::class);
     }
 
     public function store_id()
@@ -74,8 +74,6 @@ class Product extends Model
     public function maintenance()
     {
         return $this->belongsToMany(Maintenance::class)->withTimestamps();
-        ## Products have to Many Maintenances
-        ## Table device_maintenance -> device_id and maintenance_id
     }
 
     public function maintenance_id()

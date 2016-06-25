@@ -54,11 +54,13 @@ class MaintenancesController extends Controller
                ->withInput();
         } else {
             $maintenance = new Maintenance;
-            $maintenance->product()->sync($request->product_id);
             $maintenance->name = $request->name;
             $maintenance->price = $request->price;
+            $maintenance->owner_id = $request->owner_id;
             $maintenance->description = $request->description;
             $maintenance->save();
+
+            $maintenance->product()->sync($request->product_id);
 
             return redirect('maintenances');
         }
@@ -86,10 +88,8 @@ class MaintenancesController extends Controller
     public function edit($id)
     {
         $maintenance = Maintenance::findOrFail($id);
-
         $products = Product::lists('name', 'id');
         $owners = Owner::lists('user_id', 'id');
-
 
         return view('maintenances.edit', compact('maintenance', 'products', 'owners'));
     }
@@ -104,11 +104,13 @@ class MaintenancesController extends Controller
     public function update(Request $request, $id)
     {
         $maintenance = Maintenance::findOrFail($id);
-        $maintenance->product()->sync($request->product_id);
         $maintenance->name = $request->name;
         $maintenance->price = $request->price;
+        $maintenance->owner_id = $request->owner_id;
         $maintenance->description = $request->description;
         $maintenance->save();
+
+        $maintenance->product()->sync($request->product_id);
 
         return redirect('maintenances');
     }
@@ -132,6 +134,7 @@ class MaintenancesController extends Controller
           'name'    => 'required|max:255',
           'price'   => 'required|numeric',
           'description'=> 'required',
+          'product_id' => 'required',
         ];
     }
 }

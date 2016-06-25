@@ -18,7 +18,7 @@ class Owner extends Model
 
     public function store()
     {
-        return $this->belongsTo(store::class);
+        return $this->belongsTo(Store::class);
     }
 
     public function sale()
