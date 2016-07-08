@@ -7,8 +7,8 @@
 <h3>ID {{ $maintenance->id }}</h3>
 <h3>Date {{ $maintenance->created_at }}</h3>
 <h3>Name {{ $maintenance->name }}</h3>
-<h3>Owner {{ $maintenance->owner_id }}</h3>
-<h3>Owner Name {{ $maintenance->owner->name }}</h3>
+<h3>seller {{ $maintenance->seller_id }}</h3>
+<h3>seller Name {{ $maintenance->seller->name }}</h3>
 <h3>Price {{ $maintenance->price }}</h3>
 <h3>Description {{ $maintenance->description }}</h3>
 

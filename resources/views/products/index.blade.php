@@ -19,6 +19,7 @@
        <th>Model</th>
        <th colspan="1">Buy Date</th>
        <th>Price</th>
+       <th>Last Maintenance</th>
        <th>Warranty</th>
        <th>Maintenance</th>
        <th colspan="3">Actions</th>
@@ -39,10 +40,11 @@
        <td>{{ $product->year or 'Blank' }}</td>
        <td>{{ $product->created_at or 'Blank' }}</td>
        <td>{{ $product->price or 'Blank' }}</td>
+       <td>{{ $product->maintenance_id or 'Blank' }}</td>
        <td>{{ $product->warranty or 'Blank' }}</td>
        <td>
          @foreach($product->maintenance as $maintenance)
-            {{ $maintenance->id }}
+            {{ $maintenance->id or 'None' }}
          @endforeach
        </td>
 

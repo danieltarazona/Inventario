@@ -10,7 +10,7 @@
      <tr>
        <th>ID</th>
        <th>Name</th>
-       <th>Owner</th>
+       <th>Seller</th>
        <th>Price</th>
        <th>Description</th>
        <th>Date</th>
@@ -25,7 +25,7 @@
      <tr>
        <td>{{ $maintenance->id }}</td>
        <td>{{ $maintenance->name }}</td>
-       <td>{{ $maintenance->owner_id or 'Blank' }}</td>
+       <td>{{ $maintenance->seller_id or 'Blank' }}</td>
        <td>{{ $maintenance->price or 'Blank' }}</td>
        <td>{{ $maintenance->description or 'Blank' }}</td>
        <td>{{ $maintenance->created_at or 'Blank' }}</td>

@@ -4,31 +4,27 @@
 
 <h1>Edit</h1>
 
-{!! Form::open(array('route' => array('maintenances.update', $maintenance->id), 'method' => 'patch')) !!}
+{!! Form::model(array('route' => array('maintenances.update', $maintenance->id), 'method' => 'PATCH')) !!}
 
-  {!! Form::label('Name') !!}
-  <input type="textbox" name="name" value="{{ $maintenance->name }}" placeholder="Name">
+  {!! Form::label('name', 'Name') !!}
+  {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Price') !!}
-  <input type="textbox" name="price" value="{{ $maintenance->price }}" placeholder="Numeric">
+  {!! Form::label('price', 'Price') !!}
+  {!! Form::text('price', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Quantity') !!}
-  <input type="textbox" name="quantity" placeholder="Quantity">
+  {!! Form::label('quantity', 'Quantity') !!}
+  {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Owner') !!}
-  {!! Form::select('owner_id', $owners, $maintenance->owner_id) !!}
-  <br>
-  <br>
+  {!! Form::label('Seller') !!}
+  {!! Form::select('seller_id', $sellers, null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Products') !!}
-  {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control card')) !!}
-  <br>
+  {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control')) !!}
 
   {!! Form::label('Description') !!}
-  <textarea class="form-control" name="description" cols="40" rows="5">{{ $maintenance->description or 'Blank' }}</textarea>
-  <br>
+  {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
-  <input type="submit" class="btn btn-success" name="submit" value="Save">
+  {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 

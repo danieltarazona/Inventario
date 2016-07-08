@@ -4,31 +4,27 @@
 
 <h1>Create</h1>
 
-{!! Form::open(array('route' => array('maintenances.store'), 'method' => 'post')) !!}
+{!! Form::open(['url' => 'maintenances']) !!}
 
-  {!! Form::label('Name') !!}
-  <input type="textbox" name="name" placeholder="Name">
+  {!! Form::label('name', 'Name') !!}
+  {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Price') !!}
-  <input type="textbox" name="price" placeholder="Price">
+  {!! Form::label('price', 'Price') !!}
+  {!! Form::text('price', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Quantity') !!}
-  <input type="textbox" name="quantity" placeholder="Quantity">
+  {!! Form::label('quantity', 'Quantity') !!}
+  {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Owner') !!}
-  {!! Form::select('owner_id', $owners) !!}
+  {!! Form::label('Seller') !!}
+  {!! Form::select('seller_id', $sellers, null, ['class' => 'form-control']) !!}
 
-  <br>
-  <br>
   {!! Form::label('Products') !!}
   {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control')) !!}
 
-  <br>
-  {!! Form::label('Description') !!}
-  <textarea class="form-control" name="description" cols="40" rows="5" placeholder="Description"></textarea>
-  <br>
+  {!! Form::label('description', 'Description') !!}
+  {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
-  <input type="submit" class="btn btn-success" name="submit" value="Create">
+  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 
