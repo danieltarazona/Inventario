@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaintenanceProduct extends Migration
+class CreateSellersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateMaintenanceProduct extends Migration
      */
     public function up()
     {
-        Schema::create('maintenance_product', function (Blueprint $table) {
+        Schema::create('sellers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('maintenance_id')->unsigned()->index();
-            $table->integer('product_id')->unsigned()->index();
-            $table->integer('stock_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateMaintenanceProduct extends Migration
      */
     public function down()
     {
-        Schema::drop('maintenance_product');
+        Schema::drop('sellers');
     }
 }

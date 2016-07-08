@@ -42,11 +42,11 @@ class DatabaseSeeder extends Seeder
       $maintenance->description = "Upgrade form Leopard";
       $maintenance ->save();
 
-      $userowner = new App\User;
-      $userowner->username = "Owner";
-      $userowner->dni = 88888888;
-      $userowner->email = "userowner@aol.com";
-      $userowner->save();
+      $userseller = new App\User;
+      $userseller->username = "Seller";
+      $userseller->dni = 88888888;
+      $userseller->email = "userseller@aol.com";
+      $userseller->save();
 
       $manufacturer = new App\Manufacturer;
       $manufacturer->name = "Apple";
@@ -124,9 +124,9 @@ class DatabaseSeeder extends Seeder
       $city->name = "Paris";
       $city->save();
 
-      $owner = new App\Owner;
-      $owner->save();
-      $user->owner()->save($owner);
+      $seller = new App\Seller;
+      $seller->save();
+      $user->seller()->save($seller);
 
       $order = new App\Order;
       $order->save();
@@ -139,13 +139,11 @@ class DatabaseSeeder extends Seeder
       $store->user()->save($user);
       $region->user()->save($user);
 
-      $owner->order()->save($order);
+      $seller->order()->save($order);
       $user->order()->save($order);
-      $product->order()->save($order);
 
-      $owner->sale()->save($sale);
+      $seller->sale()->save($sale);
       $user->sale()->save($sale);
-      $product->sale()->save($sale);
 
       $category->product()->save($product);
       $store->product()->save($product);
@@ -153,7 +151,7 @@ class DatabaseSeeder extends Seeder
       $state->product()->save($product);
       $maintenance->product()->save($product);
 
-      $owner->maintenance()->save($maintenance);
+      $seller->maintenance()->save($maintenance);
 
       $region->city()->save($city);
       $city->store()->save($store);
@@ -172,7 +170,7 @@ class DatabaseSeeder extends Seeder
       $store = App\Store::find(1);
       $maintenance = App\Maintenance::find(1);
       $manufacturer = App\Manufacturer::find(1);
-      $owner = App\Owner::find(1);
+      $seller = App\Seller::find(1);
 
       $issue = App\Issue::find(1);
       $product->maintenance()->save($maintenance);
