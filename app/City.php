@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public function store()
+    public function stores()
     {
         return $this->hasMany(store::class);
     }
 
-    public function user()
+    public function users()
     {
         return $this->hasMany(User::class);
     }

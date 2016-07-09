@@ -65,29 +65,34 @@ class User extends Authenticatable
         return $this->region->id;
     }
 
-    public function sale()
+    public function sales()
     {
         return $this->hasMany(Sale::class);
     }
 
-    public function order()
+    public function orders()
     {
         return $this->hasMany(Order::class);
     }
 
-    public function comment()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function issue()
+    public function issues()
     {
         return $this->hasMany(Issue::class);
     }
 
-    public function owner()
+    public function maintenances()
     {
-        return $this->hasOne(Owner::class);
+        return $this->hasMany(Maintenance::class);
+    }
+
+    public function seller()
+    {
+        return $this->hasOne(Seller::class);
     }
 
     public function admin()

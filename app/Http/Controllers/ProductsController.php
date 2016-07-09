@@ -61,24 +61,10 @@ class ProductsController extends Controller
 
         if ($validator->fails()) {
            return redirect('products/create')
-               ->withErrors($validator)
-               ->withInput();
+             ->withErrors($validator)
+             ->withInput();
         } else {
-            $product = new Product;
-            $product->name = $request->name;
-            $product->stock = $request->stock;
-            $product->serial = $request->serial;
-            $product->year = $request->year;
-            $product->price = $request->price;
-            $product->warranty = $request->warranty;
-            $product->region_id = $request->region_id;
-            $product->city_id = $request->city_id;
-            $product->store_id = $request->store_id;
-            $product->state_id = $request->state_id;
-            $product->category_id = $request->category_id;
-            $product->manufacturer_id = $request->manufacturer_id;
-            $product->save();
-
+            Product::create($request->all());
             return redirect('products');
         }
     }

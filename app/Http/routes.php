@@ -26,10 +26,10 @@ Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
 Route::resource('products', 'ProductsController');
 
 // MaintenancesController
-Route::resource('maintenances', 'MaintenancesController');
+Route::resource('maintenances', 'MaintenancesController', ['except' => ['destroy']]);
 
-// OwnersController
-Route::resource('owners', 'OwnersController');
+// SellersController
+Route::resource('sellers', 'SellersController');
 
 // AdminsController
 Route::resource('admins', 'AdminsController');
@@ -43,14 +43,5 @@ Route::resource('orders', 'OrdersController');
 // CategoriesController
 Route::resource('categories', 'CategoriesController');
 
-// CitiesController
-Route::resource('cities', 'CitiesController');
-
-// RegionsController
-Route::resource('regions', 'RegionsController');
-
 // StoresController
 Route::resource('stores', 'StoresController');
-
-// ManufacturersController
-Route::resource('manufacturers', 'ManufacturersController');

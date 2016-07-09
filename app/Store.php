@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
 
-    public function owner()
+    public function sellers()
     {
-        return $this->hasMany(Owner::class);
+        return $this->hasMany(Seller::class);
     }
 
     public function city()
@@ -21,7 +21,7 @@ class Store extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function user()
+    public function users()
     {
         return $this->hasMany(User::class);
     }

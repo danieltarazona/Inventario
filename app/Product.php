@@ -6,78 +6,84 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
+  protected $fillable = [
+      'name', 'stock', 'serial', 'year', 'price', 'warranty',
+      'region_id', 'city_id', 'store_id', 'state_id',
+      'category_id', 'manufacturer',
+  ];
 
-    public function city_id()
-    {
-        return $this->city->id;
-    }
+  public function city()
+  {
+      return $this->belongsTo(City::class);
+  }
 
-    public function manufacturer()
-    {
-        return $this->belongsTo(Manufacturer::class);
-    }
+  public function city_id()
+  {
+      return $this->city->id;
+  }
 
-    public function manufacturer_id()
-    {
-        return $this->manufacturer->id;
-    }
+  public function manufacturer()
+  {
+      return $this->belongsTo(Manufacturer::class);
+  }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+  public function manufacturer_id()
+  {
+      return $this->manufacturer->id;
+  }
 
-    public function category_id()
-    {
-        return $this->category->id;
-    }
+  public function category()
+  {
+      return $this->belongsTo(Category::class);
+  }
 
-    public function store()
-    {
-        return $this->belongsTo(Store::class);
-    }
+  public function category_id()
+  {
+      return $this->category->id;
+  }
 
-    public function store_id()
-    {
-        return $this->store->id;
-    }
+  public function store()
+  {
+      return $this->belongsTo(Store::class);
+  }
 
-    public function owner()
-    {
-        return $this->belongsTo(Owner::class);
-    }
+  public function store_id()
+  {
+      return $this->store->id;
+  }
 
-    public function state()
-    {
-        return $this->belongsTo(State::class);
-    }
+  public function seller()
+  {
+      return $this->belongsTo(Seller::class);
+  }
 
-    public function state_id()
-    {
-        return $this->state->id;
-    }
+  public function state()
+  {
+      return $this->belongsTo(State::class);
+  }
 
-    public function sale()
-    {
-        return $this->belongsToMany(Sale::class)->withTimestamps();
-    }
+  public function state_id()
+  {
+      return $this->state->id;
+  }
 
-    public function order()
-    {
-        return $this->belongsToMany(Order::class)->withTimestamps();
-    }
+  public function sales()
+  {
+      return $this->belongsToMany(Sale::class)->withTimestamps();
+  }
 
-    public function maintenance()
-    {
-        return $this->belongsToMany(Maintenance::class)->withTimestamps();
-    }
+  public function orders()
+  {
+      return $this->belongsToMany(Order::class)->withTimestamps();
+  }
 
-    public function maintenance_id()
-    {
-        return $this->maintenance->lists('id');
-    }
+  public function maintenances()
+  {
+      return $this->belongsToMany(Maintenance::class);
+  }
+
+  public function maintenance_id()
+  {
+      return $this->maintenance->lists('id');
+  }
 }

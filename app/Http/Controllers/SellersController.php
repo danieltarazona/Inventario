@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class OwnersController extends Controller
+class SellersController extends Controller
 {
     /**
      * Display a listing of the resource.

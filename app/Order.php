@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function product()
+    public function products()
     {
-        return $this->belongsToMany(Product::class)->withTimestamps();
+        return $this->hasMany(Product::class);
     }
 
     public function user()
@@ -16,8 +16,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function owner()
+    public function seller()
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(Seller::class);
     }
 }

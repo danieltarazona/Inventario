@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Region extends Model
 {
-    public function city()
+    public function cities()
     {
         return $this->hasMany(City::class);
     }
 
-    public function store()
+    public function stores()
     {
         return $this->hasMany(Store::class);
     }
 
-    public function user()
+    public function users()
     {
         return $this->hasMany(User::class);
     }

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-    public function user()
+    public function users()
     {
         return $this->hasMany(User::class);
     }
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
