@@ -1,0 +1,42 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+<h1>Detail Product</h1>
+
+<h3>ID: {{ $product->id }}</h3>
+<h3>Name: {{ $product->name }}</h3>
+<h3>Category: {{ $product->category->name or 'Blank' }}</h3>
+<h3>Manufacturer: {{ $product->manufacturer->name or 'Blank' }}</h3>
+<h3>State: {{ $product->state->name or 'Blank' }}</h3>
+<h3>Store: {{ $product->store->name or 'Blank' }}</h3>
+<h3>Stock: {{ $product->stock or 'Blank' }}</h3>
+<h3>Serial: {{ $product->serial or 'Blank' }}</h3>
+<h3>Model: {{ $product->year or 'Blank' }}</h3>
+<h3>Buy Date: {{ $product->buy or 'Blank' }}</h3>
+<h3>Price: {{ $product->price or 'Blank' }}</h3>
+<h3>Warranty: {{ $product->warranty or 'Blank' }} Months</h3>
+
+<br>
+<h1>Product Maintenances</h1>
+
+<table class="table">
+
+<thead>
+   <tr>
+     <th>ID</th>
+     <th>Product Name</th>
+   </tr>
+</thead>
+
+@foreach($product->maintenances as $maintenance)
+   <tr>
+    <td>{{ $maintenance->id }}</td>
+    <td>{{ $maintenance->name }}</td>
+  </tr>
+@endforeach
+
+</table>
+
+@stop

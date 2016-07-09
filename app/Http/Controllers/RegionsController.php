@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Region;
+
 class RegionsController extends Controller
 {
     /**
@@ -15,7 +17,9 @@ class RegionsController extends Controller
      */
     public function index()
     {
-        //
+      $regions = Region::all();
+
+      return view('regions.index', compact('regions'));
     }
 
     /**
@@ -25,7 +29,7 @@ class RegionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('regions.create');
     }
 
     /**

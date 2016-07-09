@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Order;
+
 use App\Http\Requests;
 
 class OrdersController extends Controller
@@ -15,7 +17,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+      $orders = Order::all();
+
+      return view('orders.index', compact('orders'));
     }
 
     /**
@@ -25,7 +29,9 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+      $products = Product::all();
+
+      return view('orders.create', compact('products'));
     }
 
     /**

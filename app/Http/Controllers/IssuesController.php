@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Issue;
 use App\Http\Requests;
 
-use App\Sale;
-
-class SalesController extends Controller
+class IssuesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class SalesController extends Controller
      */
     public function index()
     {
-      $sales = Sale::all();
+      $issues = Issue::all();
 
-      return view('sales.index', compact('sales'));
+      return view('issues.index', compact('issues'));
     }
 
     /**
@@ -29,9 +28,7 @@ class SalesController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        
-        return view('sales.create', compact('products'));
+      return view('logs.create');
     }
 
     /**

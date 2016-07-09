@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Manufacturer;
+
 use App\Http\Requests;
 
 class ManufacturersController extends Controller
@@ -15,7 +17,9 @@ class ManufacturersController extends Controller
      */
     public function index()
     {
-        //
+      $manufacturer = Manufacturer::all();
+
+      return view('manufacturers.index', compact('manufacturers'));
     }
 
     /**
@@ -25,7 +29,7 @@ class ManufacturersController extends Controller
      */
     public function create()
     {
-        //
+        return view('manufacturers.create');
     }
 
     /**

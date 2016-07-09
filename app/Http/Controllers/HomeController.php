@@ -27,7 +27,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function welcome() {
+    public function welcome()
+    {
         return view('welcome');
     }
 
@@ -40,5 +41,5 @@ class HomeController extends Controller
     {
       return view('contact');
     }
-    
+
 }

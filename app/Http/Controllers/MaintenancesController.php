@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Maintenance;
 use App\Product;
-use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Input;
 
 class MaintenancesController extends Controller
 {
+
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   /**
   * Display a listing of the resource.
   *

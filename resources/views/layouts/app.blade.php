@@ -17,7 +17,8 @@
 
   <style>
   body {
-    font-family: 'Lato';
+    font-family: 'Helvetica Neue';
+    font-weight: 100;
   }
 
   .fa-btn {
@@ -49,65 +50,84 @@
 
         <ul class="nav navbar-nav">
 
-          <li><a href="{{ url('/products') }}">Products</a></li>
+          @if(Auth::guest())
+            <li><a href="{{ url('/products') }}">Products</a></li>
+            <li><a href="{{ url('/issues') }}">Support</a></li>
+          @endif
 
-          @if (Auth::check())
+          @if(Auth::check())
+
+            <li><a href="{{ url('/products') }}">Products</a></li>
             <li><a href="{{ url('/orders') }}">Orders</a></li>
             <li><a href="{{ url('/sales') }}">Sales</a></li>
 
-            @if (Auth::user()->isSeller())
-              <li><a href="{{ url('/categories') }}">Categories</a></li>
-              <li><a href="{{ url('/manufacturers') }}">Manufacturers</a></li>
+            @if(Auth::user()->rol > 1)
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  Team<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="{{ url('/sellers') }}">Sellers</a></li>
+                  <li><a href="{{ url('/resellers') }}">Resellers</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  Products<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="{{ url('/maintenances') }}">Maintenances</a></li>
+                  <li><a href="{{ url('/manufacturers') }}">Manufacturers</a></li>
+                  <li><a href="{{ url('/categories') }}">Categories</a></li>
+                  <li><a href="{{ url('/states') }}">States</a></li>
+                </ul>
+              </li>
             @endif
 
-            @if (Auth::user()->isSeller() || Auth::user()->isAdmin())
-              <li><a href="{{ url('/maintenances') }}">Maintenances</a></li>
-              <li><a href="{{ url('/resellers') }}">Resellers</a></li>
-            @endif
-
-            @if (Auth::user()->isAdmin())
-              <li><a href="{{ url('/dashboards') }}">Dashboard</a></li>
+            @if(Auth::user()->isAdmin())
               <li><a href="{{ url('/users') }}">Users</a></li>
               <li><a href="{{ url('/stores') }}">Stores</a></li>
-              <li><a href="{{ url('/states') }}">States</a></li>
+              <li><a href="{{ url('/cities') }}">Cities</a></li>
               <li><a href="{{ url('/logs') }}">Log</a></li>
             @endif
 
-          <li><a href="{{ route('users.edit', Auth::user()->id) }}">Profile</a></li>
+            <li><a href="{{ url('/issues') }}">Support</a></li>
           @endif
 
-          <li><a href="{{ url('/issues') }}">Issues</a></li>
+
         </ul>
 
-      <!-- Right Side Of Navbar -->
-      <ul class="nav navbar-nav navbar-right">
-        <!-- Authentication Links -->
-        @if (Auth::guest())
-          <li><a href="{{ url('/login') }}">Login</a></li>
-          <li><a href="{{ url('/register') }}">Register</a></li>
-        @else
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              {{ Auth::user()->username }} <span class="caret"></span>
-            </a>
+        <!-- Right Side Of Navbar -->
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Authentication Links -->
+          @if (Auth::guest())
+            <li><a href="{{ url('/login') }}">Login</a></li>
+            <li><a href="{{ url('/register') }}">Register</a></li>
+          @else
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->username }} <span class="caret"></span>
+              </a>
 
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-            </ul>
-          </li>
-        @endif
-      </ul>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ route('users.edit', Auth::user()->id) }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+              </ul>
+            </li>
+          @endif
+        </ul>
+      </div>
     </div>
+  </nav>
+
+  <div class="container">
+    @yield('content')
   </div>
-</nav>
 
-<div class="container">
-  @yield('content')
-</div>
-
-<!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+  <!-- JavaScripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

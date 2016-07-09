@@ -38,13 +38,19 @@ Route::resource('resellers', 'ResellersController');
 Route::resource('manufacturers', 'ManufacturersController');
 
 // IssuesController
-Route::resource('issues', 'AdminsController');
+Route::resource('issues', 'IssuesController');
 
-// DashboardsController
+// DashboardController
 Route::resource('dashboard', 'DashboardController');
+
+// DashboardController
+Route::resource('logs', 'LogsController');
 
 // SalesController
 Route::resource('sales', 'SalesController');
+
+// SalesController
+Route::resource('cities', 'CitiesController');
 
 // OrdersController
 Route::resource('orders', 'OrdersController');

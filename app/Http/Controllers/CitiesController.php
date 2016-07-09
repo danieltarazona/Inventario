@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+
+use App\City;
+use App\Region;
 
 class CitiesController extends Controller
 {
@@ -15,7 +19,9 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        //
+      $cities = City::all();
+
+      return view('cities.index', compact('cities'));
     }
 
     /**
@@ -25,7 +31,9 @@ class CitiesController extends Controller
      */
     public function create()
     {
-        //
+      $regions = Region::lists('name', 'id');
+
+      return view('cities.create', compact('regions'));
     }
 
     /**

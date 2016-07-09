@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Log;
 use App\Http\Requests;
 
-class SellersController extends Controller
+class LogsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class SellersController extends Controller
      */
     public function index()
     {
-        //
+      $logs = Log::all();
+
+      return view('logs.index', compact('logs'));
     }
 
     /**
@@ -25,7 +28,7 @@ class SellersController extends Controller
      */
     public function create()
     {
-        //
+        return view('logs.create');
     }
 
     /**

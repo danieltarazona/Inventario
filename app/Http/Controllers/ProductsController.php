@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Product;
 use App\City;
 use App\Store;
@@ -9,7 +10,6 @@ use App\Category;
 use App\Manufacturer;
 use App\State;
 use App\Region;
-use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
