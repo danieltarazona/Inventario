@@ -19,10 +19,11 @@ class MaintenancesController extends Controller
    *
    * @return void
    */
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
+
+  #public function __construct()
+  #{
+  #    $this->middleware('auth');
+  #}
 
   /**
   * Display a listing of the resource.
@@ -113,13 +114,22 @@ class MaintenancesController extends Controller
   public function update(Request $request, $id)
   {
     $maintenance = Maintenance::findOrFail($id);
-    $maintenance->name = $request->name;
-    $maintenance->description = $request->description;
-    $maintenance->save();
 
-    $maintenance->products()->sync($request->products_id);
+    $validator = Validator::make($request->all(), $this->rules());
 
-    return redirect('maintenances');
+    if ($validator->fails()) {
+      return redirect('maintenances.edit', compact('maintenance'))
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      $maintenance->name = $request->name;
+      $maintenance->description = $request->description;
+      $maintenance->save();
+
+      $maintenance->products()->sync($request->products_id);
+
+      return redirect('maintenances');
+    }
   }
 
   public function destroy($id)
@@ -131,7 +141,7 @@ class MaintenancesController extends Controller
   public function rules()
   {
     return [
-      'name'    => 'required|max:255',
+      'name'    => 'required|string|max:255',
       'description'=> 'required',
       'product_id' => 'required',
     ];

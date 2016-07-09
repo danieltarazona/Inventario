@@ -100,10 +100,17 @@ class User extends Authenticatable
       return $this->belongsTo(Rol::class);
     }
 
+    public function rol_id()
+    {
+      return $this->rol->id;
+    }
+
     public function isSeller()
     {
       if ($this->rol->id == 2) {
         return true;
+      } else {
+        return false;
       }
     }
 
@@ -111,6 +118,8 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 3) {
         return true;
+      } else {
+        return false;
       }
     }
 

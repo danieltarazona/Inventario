@@ -58,10 +58,11 @@
           @if(Auth::check())
 
             <li><a href="{{ url('/products') }}">Products</a></li>
+            <li><a href="{{ url('/maintenances') }}">Maintenances</a></li>
             <li><a href="{{ url('/orders') }}">Orders</a></li>
             <li><a href="{{ url('/sales') }}">Sales</a></li>
 
-            @if(Auth::user()->rol > 1)
+            @if(Auth::user()->rol_id > 1)
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   Team<span class="caret"></span>
@@ -72,24 +73,24 @@
                 </ul>
               </li>
 
+              @if(Auth::user()->rol_id == 3)
+                <li><a href="{{ url('/users') }}">Users</a></li>
+                <li><a href="{{ url('/logs') }}">Log</a></li>
+              @endif
+
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  Products<span class="caret"></span>
+                  Database<span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ url('/maintenances') }}">Maintenances</a></li>
+
                   <li><a href="{{ url('/manufacturers') }}">Manufacturers</a></li>
                   <li><a href="{{ url('/categories') }}">Categories</a></li>
                   <li><a href="{{ url('/states') }}">States</a></li>
+                  <li><a href="{{ url('/stores') }}">Stores</a></li>
+                  <li><a href="{{ url('/cities') }}">Cities</a></li>
                 </ul>
               </li>
-            @endif
-
-            @if(Auth::user()->isAdmin())
-              <li><a href="{{ url('/users') }}">Users</a></li>
-              <li><a href="{{ url('/stores') }}">Stores</a></li>
-              <li><a href="{{ url('/cities') }}">Cities</a></li>
-              <li><a href="{{ url('/logs') }}">Log</a></li>
             @endif
 
             <li><a href="{{ url('/issues') }}">Support</a></li>

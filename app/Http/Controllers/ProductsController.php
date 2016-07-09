@@ -119,7 +119,7 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->serial = $request->serial;
 
-        if (Auth::user()->isAdmin()) {
+        if (Auth::user()->rol_id == 3) {
           $product->warranty = $request->warranty;
           $product->stock = $request->stock;
           $product->year = $request->year;

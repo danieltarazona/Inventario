@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Edit User</h1>
+<h1>Users</h1>
 <a href="{{ url('register') }}" class="btn btn-success">Create</a>
 
 <table class="table">

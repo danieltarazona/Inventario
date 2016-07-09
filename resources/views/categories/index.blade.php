@@ -4,8 +4,17 @@
 
   <h1>Categories</h1>
 
-  @if (Auth::user()->isAdmin())
-    <a href="{{ route('categories.create') }}" class="btn btn-success">Add</a>
+  @if (Auth::user()->rol_id == 3)
+
+  {!! Form::open(['url' => 'categories']) !!}
+
+    {!! Form::label('Name') !!}
+    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+
+    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+
+  {!! Form::close() !!}
+
   @endif
 
   <table class="table">
@@ -23,22 +32,19 @@
         <td>{{ $category->id }}</td>
         <td>{{ $category->name or 'Blank' }}</td>
 
-        <td>
-          <a href="{{ route('categories.show', $category->id) }}" class="btn btn-primary">Read</a>
-        </td>
-
-        @if (Auth::user()->isSeller())
+        @if (Auth::user()->rol_id > 1)
           <td>
             <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Update</a>
           </td>
-        @endif
 
-        @if (Auth::user()->isAdmin())
-          <td>
-            {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
-            <button class="btn btn-danger" type="submit" >Delete</button>
-            {!! Form::close() !!}
-          </td>
+          @if (Auth::user()->rol_id > 2)
+            <td>
+              {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
+              <button class="btn btn-danger" type="submit" >Delete</button>
+              {!! Form::close() !!}
+            </td>
+          @endif
+
         @endif
 
       </tr>

@@ -56,7 +56,7 @@ Route::resource('cities', 'CitiesController');
 Route::resource('orders', 'OrdersController');
 
 // CategoriesController
-Route::resource('categories', 'CategoriesController');
+Route::resource('categories', 'CategoriesController', ['except' => ['create', 'show']]);
 
 // StoresController
 Route::resource('stores', 'StoresController');

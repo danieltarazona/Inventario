@@ -37,22 +37,24 @@
           <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary">Read</a>
         </td>
 
-        @if (Auth::user()->isAdmin())
-        <td>
-          <a href="{{ route('maintenances.edit', $maintenance->id) }}" class="btn btn-warning">Update</a>
-        </td>
+        @if (Auth::user()->rol_id > 1)
+          <td>
+            <a href="{{ route('maintenances.edit', $maintenance->id) }}" class="btn btn-warning">Update</a>
+          </td>
 
-        <td>
-          {!! Form::open(['route' => ['maintenances.destroy', $maintenance->id], 'method' => 'delete']) !!}
-            <button class="btn btn-danger" type="submit" >Delete</button>
-          {!! Form::close() !!}
-        </td>
+          @if (Auth::user()->rol_id > 2)
+            <td>
+              {!! Form::open(['route' => ['maintenances.destroy', $maintenance->id], 'method' => 'delete']) !!}
+              <button class="btn btn-danger" type="submit" >Delete</button>
+              {!! Form::close() !!}
+            </td>
+          @endif
         @endif
 
-    </tr>
+      </tr>
 
-  @endforeach
+    @endforeach
 
-</table>
+  </table>
 
 @stop

@@ -4,7 +4,7 @@
 
   <h1>Products</h1>
 
-  @if (Auth::user()->isAdmin())
+  @if (Auth::user()->rol_id == 3)
     <a href="{{ route('products.create') }}" class="btn btn-success">Add</a>
   @endif
 
@@ -60,7 +60,7 @@
         </td>
         @endif
 
-        @if (Auth::user()->isAdmin())
+        @if (Auth::user()->rol_id == 3)
         <td>
           {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
