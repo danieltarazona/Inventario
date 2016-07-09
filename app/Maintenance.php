@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maintenance extends Model
 {
     protected $fillable = [
-        'name', 'description', 'seller_id',
+        'name', 'description',
     ];
 
     public function products()
@@ -15,9 +15,9 @@ class Maintenance extends Model
         return $this->belongsToMany(Product::class);
     }
 
-    public function product_id()
+    public function products_id()
     {
-        return $this->product->lists('id');
+        return $this->products->lists('id');
     }
 
     public function seller()

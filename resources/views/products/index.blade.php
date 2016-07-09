@@ -3,7 +3,10 @@
 @section('content')
 
   <h1>Products</h1>
-  <a href="{{ route('products.create') }}" class="btn btn-success">Add</a>
+
+  @if (Auth::user()->isAdmin())
+    <a href="{{ route('products.create') }}" class="btn btn-success">Add</a>
+  @endif
 
   <table class="table">
     <thead>
@@ -50,15 +53,21 @@
           <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Read</a>
         </td>
 
+
+        @if (Auth::user()->isSeller())
         <td>
           <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Update</a>
         </td>
+        @endif
 
+        @if (Auth::user()->isAdmin())
         <td>
           {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>
+        @endif
+
       </tr>
 
     @endforeach

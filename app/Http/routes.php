@@ -31,8 +31,17 @@ Route::resource('maintenances', 'MaintenancesController');
 // SellersController
 Route::resource('sellers', 'SellersController');
 
-// AdminsController
-Route::resource('admins', 'AdminsController');
+// ResellersController
+Route::resource('resellers', 'ResellersController');
+
+// ResellersController
+Route::resource('manufacturers', 'ManufacturersController');
+
+// IssuesController
+Route::resource('issues', 'AdminsController');
+
+// DashboardsController
+Route::resource('dashboard', 'DashboardController');
 
 // SalesController
 Route::resource('sales', 'SalesController');

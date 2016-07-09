@@ -100,9 +100,9 @@ class User extends Authenticatable
       return $this->belongsTo(Rol::class);
     }
 
-    public function isAdmin()
+    public function isUser()
     {
-      if ($this->rol->id == 3) {
+      if ($this->rol->id == 1) {
         return true;
       }
     }
@@ -111,7 +111,14 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 2) {
         return true;
-      } 
+      }
+    }
+
+    public function isAdmin()
+    {
+      if ($this->rol->id == 3) {
+        return true;
+      }
     }
 
 }

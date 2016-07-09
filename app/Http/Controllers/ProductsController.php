@@ -9,6 +9,7 @@ use App\Category;
 use App\Manufacturer;
 use App\State;
 use App\Region;
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -116,14 +117,18 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->name = $request->name;
-        $product->stock = $request->stock;
         $product->serial = $request->serial;
-        $product->year = $request->year;
-        $product->price = $request->price;
-        $product->warranty = $request->warranty;
-        $product->city_id = $request->city_id;
-        $product->store_id = $request->store_id;
-        $product->state_id = $request->state_id;
+
+        if (Auth::user()->isAdmin()) {
+          $product->warranty = $request->warranty;
+          $product->stock = $request->stock;
+          $product->year = $request->year;
+          $product->price = $request->price;
+          $product->city_id = $request->city_id;
+          $product->store_id = $request->store_id;
+          $product->state_id = $request->state_id;
+        }
+
         $product->category_id = $request->category_id;
         $product->manufacturer_id = $request->manufacturer_id;
         $product->save();

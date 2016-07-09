@@ -6,13 +6,13 @@
 
 {!! Form::open(['url' => 'maintenances']) !!}
 
-  {!! Form::label('name', 'Name') !!}
+  {!! Form::label('Name') !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Products') !!}
   {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control')) !!}
 
-  {!! Form::label('description', 'Description') !!}
+  {!! Form::label('Description') !!}
   {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}

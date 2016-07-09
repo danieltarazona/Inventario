@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Maintenance;
 use App\Product;
-use App\Seller;
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,7 +57,9 @@ class MaintenancesController extends Controller
       $maintenance->description = $request->description;
       $maintenance->seller_id = Auth::user()->id;
       $maintenance->save();
-      $maintenance->product()->sync($request->product_id);
+
+      $maintenance->products()->sync($request->products_id);
+
 
       return redirect('maintenances');
     }
@@ -102,16 +104,23 @@ class MaintenancesController extends Controller
     $maintenance = Maintenance::findOrFail($id);
     $maintenance->name = $request->name;
     $maintenance->description = $request->description;
-    $maintenance->product()->sync($request->product_id);
+    $maintenance->save();
+
+    $maintenance->products()->sync($request->products_id);
 
     return redirect('maintenances');
+  }
+
+  public function destroy($id)
+  {
+      Maintenance::findOrFail($id)->delete();
+      return redirect('maintenances');
   }
 
   public function rules()
   {
     return [
       'name'    => 'required|max:255',
-      'price'   => 'required|numeric',
       'description'=> 'required',
       'product_id' => 'required',
     ];
