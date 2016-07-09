@@ -134,30 +134,30 @@ class DatabaseSeeder extends Seeder
       $sale = new App\Sale;
       $sale->save();
 
-      $city->user()->save($user);
-      $state->user()->save($user);
-      $store->user()->save($user);
-      $region->user()->save($user);
+      $city->users()->save($user);
+      $state->users()->save($user);
+      $store->users()->save($user);
+      $region->users()->save($user);
 
-      $seller->order()->save($order);
-      $user->order()->save($order);
+      $seller->orders()->save($order);
+      $user->orders()->save($order);
 
-      $seller->sale()->save($sale);
-      $user->sale()->save($sale);
+      $seller->sales()->save($sale);
+      $user->sales()->save($sale);
 
-      $category->product()->save($product);
-      $store->product()->save($product);
-      $manufacturer->product()->save($product);
-      $state->product()->save($product);
-      $maintenance->product()->save($product);
+      $category->products()->save($product);
+      $store->products()->save($product);
+      $manufacturer->products()->save($product);
+      $state->products()->save($product);
+      $maintenance->products()->save($product);
 
-      $seller->maintenance()->save($maintenance);
+      $seller->maintenances()->save($maintenance);
 
-      $region->city()->save($city);
-      $city->store()->save($store);
+      $region->cities()->save($city);
+      $city->stores()->save($store);
 
-      $user->comment()->save($comment);
-      $user->issue()->save($issue);
+      $user->comments()->save($comment);
+      $user->issues()->save($issue);
 
       /*
       $user = App\User::find(1);
