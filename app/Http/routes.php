@@ -26,7 +26,7 @@ Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
 Route::resource('products', 'ProductsController');
 
 // MaintenancesController
-Route::resource('maintenances', 'MaintenancesController', ['except' => ['destroy']]);
+Route::resource('maintenances', 'MaintenancesController');
 
 // SellersController
 Route::resource('sellers', 'SellersController');

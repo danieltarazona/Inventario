@@ -9,7 +9,6 @@
 <h3>Name {{ $maintenance->name }}</h3>
 <h3>seller {{ $maintenance->seller_id }}</h3>
 <h3>seller Name {{ $maintenance->seller->name }}</h3>
-<h3>Price {{ $maintenance->price }}</h3>
 <h3>Description {{ $maintenance->description }}</h3>
 
 
@@ -25,7 +24,7 @@
    </tr>
 </thead>
 
-@foreach($maintenance->product as $product)
+@foreach($maintenance->products as $product)
    <tr>
     <td>{{ $product->id }}</td>
     <td>{{ $product->name }}</td>

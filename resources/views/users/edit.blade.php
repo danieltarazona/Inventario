@@ -8,41 +8,41 @@
 {!! Form::open(array('route' => array('users.update', $user->id), 'method' => 'patch')) !!}
 
   {!! Form::label('Name') !!}
-  <input type="textbox" name="first_name" value="{{ $user->first_name }}" placeholder="Name">
+  {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
 
   {!! Form::label('Middle Name') !!}
-  <input type="textbox" name="last_name" value="{{ $user->last_name }}" placeholder="Second Name">
+  {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
 
   {!! Form::label('Lastname') !!}
-  <input type="textbox" name="first_lastname" value="{{ $user->first_lastname }}" placeholder="Lastname">
+  {!! Form::text('first_firstname', $user->first_firstname, ['class' => 'form-control']) !!}
 
   {!! Form::label('Last Lastname') !!}
-  <input type="textbox" name="last_lastname" value="{{ $user->last_lastname }}" placeholder="Second Lastname">
+  {!! Form::text('last_lastname', $user->last_lastname, ['class' => 'form-control']) !!}
 
   {!! Form::label('Email') !!}
-  <input type="textbox" name="email" value="{{ $user->email }}" placeholder="Email">
+  {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
 
   {!! Form::label('Adress') !!}
-  <input type="textbox" name="adress" value="{{ $user->adress }}" placeholder="Adress">
+  {!! Form::text('adress', $user->adress, ['class' => 'form-control']) !!}
 
   {!! Form::label('Telephone') !!}
-  <input type="textbox" name="telephone" value="{{ $user->telephone }}" placeholder="Telephone">
+  {!! Form::text('telephone', $user->telephone, ['class' => 'form-control']) !!}
 
   {!! Form::label('Cellphone') !!}
-  <input type="textbox" name="cellphone" value="{{ $user->cellphone }}" placeholder="Cellphone">
+  {!! Form::text('cellphone', $user->cellphone, ['class' => 'form-control']) !!}
 
 
   {!! Form::label('City') !!}
-  {!! Form::select('city_id', $cities, $user->city_id) !!}
+  {!! Form::select('city_id', $cities, $user->city_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Store') !!}
-  {!! Form::select('store_id', $stores, $user->store_id) !!}
+  {!! Form::select('store_id', $stores, $user->store_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $regions, $user->region_id) !!}
+  {!! Form::select('region_id', $regions, $user->region_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('State') !!}
-  {!! Form::select('state_id', $states, $user->state_id) !!}
+  {!! Form::select('state_id', $states, $user->state_id, ['class' => 'form-control']) !!}
 
   <input type="submit" class="btn btn-primary" name="submit" value="Save">
 

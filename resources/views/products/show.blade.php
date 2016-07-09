@@ -30,7 +30,7 @@
    </tr>
 </thead>
 
-@foreach($product->maintenance as $maintenance)
+@foreach($product->maintenances as $maintenance)
    <tr>
     <td>{{ $maintenance->id }}</td>
     <td>{{ $maintenance->name }}</td>

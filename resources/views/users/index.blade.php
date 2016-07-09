@@ -9,6 +9,7 @@
   <thead>
    <tr>
        <th>ID</th>
+       <th>Tipo</th>
        <th>Username</th>
        <th>DNI</th>
        <th>Email</th>
@@ -20,6 +21,7 @@
 
   <tr>
     <td>{{ $user->id }}</td>
+    <td>{{ $user->rol->name or 'Blank' }}</td>
     <td>{{ $user->username }}</td>
     <td>{{ $user->dni }}</td>
     <td>{{ $user->email }}</td>

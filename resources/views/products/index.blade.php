@@ -40,7 +40,7 @@
         <td>{{ $product->created_at->year or 'Blank' }}</td>
         <td>{{ $product->price or 'Blank' }}</td>
         <td>
-          @foreach($product->maintenance as $maintenance)
+          @foreach($product->maintenances as $maintenance)
             {{ $maintenance->id or 'None' }}
           @endforeach
         </td>

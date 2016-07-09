@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maintenance extends Model
 {
     protected $fillable = [
-        'name', 'price', 'description', 'seller_id',
+        'name', 'description', 'seller_id',
     ];
 
     public function products()
@@ -22,7 +22,12 @@ class Maintenance extends Model
 
     public function seller()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function seller_id()
+    {
+        return $this->seller->id;
     }
 
 }

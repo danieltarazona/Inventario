@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       $user = new App\User;
-      $user->username = "codeapps";
-      $user->dni = 7777777;
-      $user->email = "codeapps@aol.com";
+      $user->username = "User";
+      $user->dni = 777777;
+      $user->email = "user@user.com";
       $user->first_name = "Daniel";
       $user->last_name = "Felipe";
       $user->first_lastname = "Tarazona";
@@ -25,6 +25,51 @@ class DatabaseSeeder extends Seeder
       $user->password = bcrypt("123456");
       $user->url = "/Profile/Image.png";
       $user->save();
+
+      $rol = new App\Rol;
+      $rol->name = "User";
+      $rol->save();
+      $rol->users()->save($user);
+
+      $user = new App\User;
+      $user->username = "Seller";
+      $user->dni = 888888;
+      $user->email = "seller@seller.com";
+      $user->first_name = "Daniel";
+      $user->last_name = "Felipe";
+      $user->first_lastname = "Tarazona";
+      $user->last_lastname = "Vasquez";
+      $user->adress = "CR 2 Oeste 9 65";
+      $user->telephone = "888888";
+      $user->cellphone = "3158375156";
+      $user->password = bcrypt("123456");
+      $user->url = "/Profile/Image.png";
+      $user->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Seller";
+      $rol->save();
+      $rol->users()->save($user);
+
+      $user = new App\User;
+      $user->username = "Administrator";
+      $user->dni = 999999;
+      $user->email = "admin@admin.com";
+      $user->first_name = "Daniel";
+      $user->last_name = "Felipe";
+      $user->first_lastname = "Tarazona";
+      $user->last_lastname = "Vasquez";
+      $user->adress = "CR 2 Oeste 9 65";
+      $user->telephone = "888888";
+      $user->cellphone = "3158375156";
+      $user->password = bcrypt("123456");
+      $user->url = "/Profile/Image.png";
+      $user->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Admin";
+      $rol->save();
+      $rol->users()->save($user);
 
       $product = new App\Product;
       $product->name = "Macbook";
@@ -38,19 +83,8 @@ class DatabaseSeeder extends Seeder
 
       $maintenance = new App\Maintenance;
       $maintenance->name = "OSX El Capitan";
-      $maintenance->price = 100000;
       $maintenance->description = "Upgrade form Leopard";
       $maintenance ->save();
-
-      $userseller = new App\User;
-      $userseller->username = "Seller";
-      $userseller->dni = 88888888;
-      $userseller->email = "userseller@aol.com";
-      $userseller->save();
-
-      $manufacturer = new App\Manufacturer;
-      $manufacturer->name = "Apple";
-      $manufacturer->save();
 
       $manufacturer = new App\Manufacturer;
       $manufacturer->name = "Samsung";
@@ -58,6 +92,10 @@ class DatabaseSeeder extends Seeder
 
       $manufacturer = new App\Manufacturer;
       $manufacturer->name = "Sony";
+      $manufacturer->save();
+
+      $manufacturer = new App\Manufacturer;
+      $manufacturer->name = "Apple";
       $manufacturer->save();
 
       $category = new App\Category;
@@ -73,10 +111,6 @@ class DatabaseSeeder extends Seeder
       $category ->save();
 
       $state = new App\State;
-      $state->name = "Excellent";
-      $state->save();
-
-      $state = new App\State;
       $state->name = "Good";
       $state->save();
 
@@ -84,13 +118,13 @@ class DatabaseSeeder extends Seeder
       $state->name = "Acceptable";
       $state->save();
 
+      $state = new App\State;
+      $state->name = "Excellent";
+      $state->save();
+
       $comment = new App\Comment;
       $comment->name = "Best Costumer Service";
       $comment->save();
-
-      $region = new App\Region;
-      $region->name = "Valle del Cauca";
-      $region->save();
 
       $region = new App\Region;
       $region->name = "Cundinamarca";
@@ -100,12 +134,16 @@ class DatabaseSeeder extends Seeder
       $region->name = "Antioquia";
       $region->save();
 
-      $store = new App\Store;
-      $store->name = "Apple Loop";
-      $store->save();
+      $region = new App\Region;
+      $region->name = "Valle del Cauca";
+      $region->save();
 
       $store = new App\Store;
       $store->name = "Shibuya";
+      $store->save();
+
+      $store = new App\Store;
+      $store->name = "Apple Loop";
       $store->save();
 
       $issue = new App\Issue;
@@ -124,25 +162,19 @@ class DatabaseSeeder extends Seeder
       $city->name = "Paris";
       $city->save();
 
-      $seller = new App\Seller;
-      $seller->save();
-      $user->seller()->save($seller);
-
       $order = new App\Order;
       $order->save();
 
       $sale = new App\Sale;
       $sale->save();
 
+
       $city->users()->save($user);
       $state->users()->save($user);
       $store->users()->save($user);
       $region->users()->save($user);
 
-      $seller->orders()->save($order);
       $user->orders()->save($order);
-
-      $seller->sales()->save($sale);
       $user->sales()->save($sale);
 
       $category->products()->save($product);
@@ -150,8 +182,6 @@ class DatabaseSeeder extends Seeder
       $manufacturer->products()->save($product);
       $state->products()->save($product);
       $maintenance->products()->save($product);
-
-      $seller->maintenances()->save($maintenance);
 
       $region->cities()->save($city);
       $city->stores()->save($store);

@@ -15,6 +15,11 @@ class User extends Authenticatable
         'username', 'dni', 'email', 'password',
     ];
 
+    protected $casts = [
+       'is_admin' => 'boolean',
+       'is_seller' => 'boolean',
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -90,14 +95,23 @@ class User extends Authenticatable
         return $this->hasMany(Maintenance::class);
     }
 
-    public function seller()
+    public function rol()
     {
-        return $this->hasOne(Seller::class);
+      return $this->belongsTo(Rol::class);
     }
 
-    public function admin()
+    public function isAdmin()
     {
-        return $this->hasOne(Admin::class);
+      if ($this->rol->id == 3) {
+        return true;
+      }
+    }
+
+    public function isSeller()
+    {
+      if ($this->rol->id == 2) {
+        return true;
+      } 
     }
 
 }
