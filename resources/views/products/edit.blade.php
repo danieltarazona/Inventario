@@ -7,42 +7,42 @@
 {!! Form::open(array('route' => array('products.update', $product->id), 'method' => 'patch')) !!}
 
   {!! Form::label('Name') !!}
-  <input type="textbox" name="name"      value="{{ $product->name }}"     placeholder="Name">
+  {!! Form::text('name', $product->name, ['class' => 'form-control']) !!}
 
   {!! Form::label('Stock') !!}
-  <input type="textbox" name="stock"     value="{{ $product->stock }}"    placeholder="Numeric">
+  {!! Form::text('stock', $product->stock, ['class' => 'form-control']) !!}
 
   {!! Form::label('Serial') !!}
-  <input type="textbox" name="serial"    value="{{ $product->serial }}"   placeholder="ABCD">
+  {!! Form::text('serial', $product->serial, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Model') !!}
-  <input type="textbox" name="year"      value="{{ $product->year }}"     placeholder="Year">
+  {!! Form::label('Year') !!}
+  {!! Form::text('year', $product->year, ['class' => 'form-control']) !!}
 
   {!! Form::label('Price') !!}
-  <input type="textbox" name="price"     value="{{ $product->price }}"    placeholder="Numeric">
+  {!! Form::text('price', $product->price, ['class' => 'form-control']) !!}
 
   {!! Form::label('Warranty') !!}
-  <input type="textbox" name="warranty"  value="{{ $product->warranty }}" placeholder="Months">
+  {!! Form::text('warranty', $product->warranty, ['class' => 'form-control']) !!}
 
   {!! Form::label('State') !!}
-  {!! Form::select('state_id', $states, $product->state_id) !!}
+  {!! Form::select('state_id', $states, $product->state_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $regions, $product->region_id) !!}
+  {!! Form::select('region_id', $regions, $product->region_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('City') !!}
-  {!! Form::select('city_id', $cities, $product->city_id) !!}
+  {!! Form::select('city_id', $cities, $product->city_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Store') !!}
-  {!! Form::select('store_id', $stores, $product->store_id) !!}
+  {!! Form::select('store_id', $stores, $product->store_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Category') !!}
-  {!! Form::select('category_id', $categories, $product->category_id) !!}
+  {!! Form::select('category_id', $categories, $product->category_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Manufacturer') !!}
-  {!! Form::select('manufacturer_id', $manufacturers, $product->manufacturer_id) !!}
+  {!! Form::select('manufacturer_id', $manufacturers, $product->manufacturer_id, ['class' => 'form-control']) !!}
 
-  <input type="submit" class="btn btn-success" name="submit" value="Save">
+  {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 

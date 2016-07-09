@@ -4,48 +4,48 @@
 
 <h1>Create</h1>
 
-{!! Form::open(array('route' => array('products.store'), 'method' => 'post')) !!}
+{!! Form::open(['url' => 'products']) !!}
 
   {!! Form::label('Name') !!}
-  <input type="textbox" name="name" placeholder="Name">
+  {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Stock') !!}
-  <input type="textbox" name="stock" placeholder="Stock">
+  {!! Form::text('stock', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Serial') !!}
-  <input type="textbox" name="serial" placeholder="Serial">
+  {!! Form::text('serial', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Model') !!}
-  <input type="textbox" name="year" placeholder="Year">
+  {!! Form::label('Year') !!}
+  {!! Form::text('year', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Price') !!}
-  <input type="textbox" name="price" placeholder="Price">
+  {!! Form::text('price', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Warranty') !!}
-  <input type="textbox" name="warranty" placeholder="Months">
+  {!! Form::text('warranty', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Date Buy') !!}
-  <input type="date" name="date">
+  {!! Form::date('date', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('State') !!}
-  {!! Form::select('state_id', $states) !!}
+  {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $regions) !!}
+  {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 
   {!! Form::label('City') !!}
-  {!! Form::select('city_id', $cities) !!}
+  {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Store') !!}
-  {!! Form::select('store_id', $stores) !!}
+  {!! Form::select('store_id', $stores, null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Category') !!}
-  {!! Form::select('category_id', $categories) !!}
+  {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Manufacturer') !!}
-  {!! Form::select('manufacturer_id', $manufacturers) !!}
+  {!! Form::select('manufacturer_id', $manufacturers, null, ['class' => 'form-control']) !!}
 
-  <input type="submit" class="btn btn-success" name="submit" value="Create">
+  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 
