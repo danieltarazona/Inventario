@@ -4,4 +4,10 @@ $color: white;
 
 body {
   color: $color;
+  font-family: 'Helvetica Neue';
+  font-weight: 100;
+}
+
+.fa-btn {
+  margin-right: 6px;
 }
