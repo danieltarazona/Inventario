@@ -15,8 +15,8 @@ class MaintenancesTest extends TestCase
 
   public function testMaintenancesIndex()
   {
-    $admin = App\user::find(3);
-    $this->be($admin);
+    $seller = App\User::find(2);
+    $this->be($seller);
 
     $response = $this->action('GET', 'MaintenancesController@index');
 

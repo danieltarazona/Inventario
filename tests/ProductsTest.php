@@ -13,8 +13,8 @@ class ProductsTest extends TestCase
   */
   public function testProductsIndex()
   {
-    $admin = App\user::find(3);
-    $this->be($admin);
+    $user = App\User::find(1);
+    $this->be($user);
 
     $response = $this->action('GET', 'ProductsController@index');
 
@@ -37,6 +37,9 @@ class ProductsTest extends TestCase
 
   public function testProductsEdit()
   {
+    $admin = App\User::find(3);
+    $this->be($admin);
+
     $response = $this->action('GET', 'ProductsController@edit', ['product' => 1]);
 
     $this->assertEquals(200, $response->status());
