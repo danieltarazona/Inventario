@@ -105,21 +105,58 @@ class User extends Authenticatable
       return $this->rol->id;
     }
 
+    public function isUser()
+    {
+      if ($this->rol->id == 1)
+      {
+
+      }
+    }
+
+    public function isBuyer()
+    {
+      if ($this->rol->id == 2)
+      {
+
+      }
+    }
+
+    public function isClient()
+    {
+      if ($this->rol->id == 3)
+      {
+
+      }
+    }
+
+    public function isReseller()
+    {
+      if ($this->rol->id == 4)
+      {
+
+      }
+    }
+
     public function isSeller()
     {
-      if ($this->rol->id == 2) {
-        return true;
-      } else {
-        return false;
+      if ($this->rol->id == 5)
+      {
+
       }
     }
 
     public function isAdmin()
     {
-      if ($this->rol->id == 3) {
-        return true;
-      } else {
-        return false;
+      if ($this->rol->id == 6)
+      {
+
+      }
+    }
+
+    public function isDev()
+    {
+      if ($this->rol->id == 7)
+      {
       }
     }
 
