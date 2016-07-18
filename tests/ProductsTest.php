@@ -23,15 +23,17 @@ class ProductsTest extends TestCase
 
   public function testProductsUpdate()
   {
-    $response = $this->action('PATCH', 'ProductsController@update', ['product' => 1]);
+    $product = App\Product::find(1);
+    $product->name = "iMac";
 
+    $response = $this->action('PUT', 'ProductsController@update', $product->id);
+    $this->seeInDatabase('products', ['name' => $product->name]);
     $this->assertEquals(200, $response->status());
   }
 
   public function testProductsShow()
   {
     $response = $this->action('GET', 'ProductsController@show', ['product' => 1]);
-
     $this->assertEquals(200, $response->status());
   }
 

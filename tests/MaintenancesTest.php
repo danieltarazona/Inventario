@@ -25,7 +25,7 @@ class MaintenancesTest extends TestCase
 
   public function testMaintenancesUpdate()
   {
-    $response = $this->action('PATCH', 'MaintenancesController@update', ['maintenance' => 1]);
+    $response = $this->action('PUT', 'MaintenancesController@update', ['maintenance' => 1]);
 
     $this->assertEquals(302, $response->status());
   }

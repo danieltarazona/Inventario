@@ -14,7 +14,6 @@ class UsersTest extends TestCase
 
   public function testUsersIndex()
   {
-
     $response = $this->action('GET', 'UsersController@index');
 
     $this->assertEquals(200, $response->status());
@@ -22,8 +21,8 @@ class UsersTest extends TestCase
 
   public function testUsersUpdate()
   {
-    $response = $this->action('PATCH', 'UsersController@update', ['user' => 1]);
-
+    $response = $this->action('PUT', 'UsersController@update', ['user' => 1]);
+    
     $this->assertEquals(200, $response->status());
   }
 
