@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Store;
+use App\City;
+use App\Region;
 
 class StoresController extends Controller
 {

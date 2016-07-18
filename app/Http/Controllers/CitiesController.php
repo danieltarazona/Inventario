@@ -20,20 +20,9 @@ class CitiesController extends Controller
     public function index()
     {
       $cities = City::all();
-
-      return view('cities.index', compact('cities'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
       $regions = Region::lists('name', 'id');
 
-      return view('cities.create', compact('regions'));
+      return view('cities.index', compact('cities', 'regions'));
     }
 
     /**

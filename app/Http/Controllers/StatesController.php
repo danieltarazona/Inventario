@@ -9,9 +9,9 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
-use App\Category;
+use App\State;
 
-class CategoriesController extends Controller
+class StatesController extends Controller
 {
   /**
   * Display a listing of the resource.
@@ -20,9 +20,9 @@ class CategoriesController extends Controller
   */
   public function index()
   {
-    $categories = Category::all();
+    $states = State::all();
 
-    return view('categories.index', compact('categories'));
+    return view('states.index', compact('states'));
   }
 
   /**
@@ -36,15 +36,15 @@ class CategoriesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      return redirect('categories')
+      return redirect('states')
       ->withErrors($validator)
       ->withInput();
     } else {
-      $category = new Category;
-      $category->name = $request->name;
-      $category->save();
+      $state = new State;
+      $state->name = $request->name;
+      $state->save();
 
-      return redirect('categories');
+      return redirect('states');
     }
   }
 
@@ -56,9 +56,9 @@ class CategoriesController extends Controller
   */
   public function edit($id)
   {
-    $category = Category::findOrFail($id);
+    $state = State::findOrFail($id);
 
-    return view('categories.edit', compact('category'));
+    return view('states.edit', compact('state'));
   }
 
   /**
@@ -70,19 +70,19 @@ class CategoriesController extends Controller
   */
   public function update(Request $request, $id)
   {
-    $category = Category::findOrFail($id);
+    $state = State::findOrFail($id);
 
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      return redirect('categories.edit', compact('category'))
+      return redirect('states.edit', compact('state'))
       ->withErrors($validator)
       ->withInput();
     } else {
-      $category->name = $request->name;
-      $category->save();
+      $state->name = $request->name;
+      $state->save();
 
-      return redirect('categories');
+      return redirect('states');
     }
   }
 
@@ -94,14 +94,14 @@ class CategoriesController extends Controller
   */
   public function destroy($id)
   {
-    Category::findOrFail($id)->delete();
-    return redirect('categories');
+    State::findOrFail($id)->delete();
+    return redirect('states');
   }
 
   public function rules()
   {
     return [
-      'name' => 'string|required|max:255|unique:categories',
+      'name' => 'string|required|max:255|unique:states',
     ];
   }
 }
