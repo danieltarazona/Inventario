@@ -49,8 +49,11 @@ Route::resource('logs', 'LogsController');
 // SalesController
 Route::resource('sales', 'SalesController');
 
+// StatesController
+Route::resource('states', 'StatesController', ['except' => ['create', 'show']]);
+
 // SalesController
-Route::resource('cities', 'CitiesController');
+Route::resource('cities', 'CitiesController', ['except' => ['create']]);
 
 // OrdersController
 Route::resource('orders', 'OrdersController');
