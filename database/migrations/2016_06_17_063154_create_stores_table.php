@@ -17,6 +17,7 @@ class CreateStoresTable extends Migration
             $table->integer('region_id')->unsigned()->nullable();
             $table->integer('city_id')->unsigned()->nullable();
             $table->string('name');
+            $table->text('description');
             $table->string('telephone');
             $table->string('adress');
             $table->timestamps();

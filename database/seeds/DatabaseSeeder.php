@@ -11,6 +11,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+      $rol = new App\Rol;
+      $rol->name = "User";
+      $rol->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Buyer";
+      $rol->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Client";
+      $rol->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Reseller";
+      $rol->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Seller";
+      $rol->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Admin";
+      $rol->save();
+
+      $rol = new App\Rol;
+      $rol->name = "Dev";
+      $rol->save();
+
       $user = new App\User;
       $user->username = "User";
       $user->dni = 777777;
@@ -26,9 +55,7 @@ class DatabaseSeeder extends Seeder
       $user->url = "/Profile/Image.png";
       $user->save();
 
-      $rol = new App\Rol;
-      $rol->name = "User";
-      $rol->save();
+      $rol = App\Rol::find(1);
       $rol->users()->save($user);
 
       $user = new App\User;
@@ -46,9 +73,7 @@ class DatabaseSeeder extends Seeder
       $user->url = "/Profile/Image.png";
       $user->save();
 
-      $rol = new App\Rol;
-      $rol->name = "Seller";
-      $rol->save();
+      $rol = App\Rol::find(5);
       $rol->users()->save($user);
 
       $user = new App\User;
@@ -66,9 +91,7 @@ class DatabaseSeeder extends Seeder
       $user->url = "/Profile/Image.png";
       $user->save();
 
-      $rol = new App\Rol;
-      $rol->name = "Admin";
-      $rol->save();
+      $rol = App\Rol::find(6);
       $rol->users()->save($user);
 
       $product = new App\Product;
