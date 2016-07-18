@@ -12,7 +12,7 @@
   {!! Form::label('Serial') !!}
   {!! Form::text('serial', $product->serial, ['class' => 'form-control']) !!}
 
-  @if (Auth::user()->rol_id > 5)
+  @if (Auth::user()->rol_id == 3)
     {!! Form::label('Warranty') !!}
     {!! Form::text('warranty', $product->warranty, ['class' => 'form-control']) !!}
 

@@ -4,8 +4,8 @@
 
   <h1>Products</h1>
 
-  @if (Auth::user()->rol_id == 3)
-    <a href="{{ route('products.create') }}" class="btn btn-success">Add</a>
+  @if (Auth::user()->rol_id > 5)
+    <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
   @endif
 
   <table class="table">

@@ -4,7 +4,7 @@
 
   <h1>Categories</h1>
 
-  @if (Auth::user()->rol_id == 3)
+  @if (Auth::user()->rol_id > 5)
 
   {!! Form::open(['url' => 'categories']) !!}
 

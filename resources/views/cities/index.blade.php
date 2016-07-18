@@ -2,10 +2,22 @@
 
 @section('content')
 
-  <h1>Products</h1>
+  <h1>Cities</h1>
 
-  @if (Auth::user()->rol_id == 3)
-    <a href="{{ route('cities.create') }}" class="btn btn-success">Add</a>
+  @if (Auth::user()->rol_id > 5)
+
+  {!! Form::open(['url' => 'cities']) !!}
+
+  {!! Form::label('Name') !!}
+  {!! Form::text('name', null, ['class' => 'form-control']) !!}
+
+  {!! Form::label('Region') !!}
+  {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
+
+  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+
+  {!! Form::close() !!}
+
   @endif
 
   <table class="table">
