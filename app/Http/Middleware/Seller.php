@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Seller
 {
@@ -15,7 +16,7 @@ class Seller
      */
     public function handle($request, Closure $next)
     {
-      if ((Auth::check()) && (Auth::user()->rol_id == 3))
+      if ((Auth::check()) && (Auth::user()->isSeller()))
       {
         return $next($request);
       }
