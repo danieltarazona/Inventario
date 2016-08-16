@@ -15,9 +15,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-      if ( Auth::check() && (Auth::user()->rol_id == 3))
+      if ((Auth::check()) && (Auth::user()->isAdmin()))
       {
-          return $next($request);
+        return $next($request);
       }
 
       return redirect('/');

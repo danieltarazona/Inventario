@@ -12,72 +12,83 @@ use App\Region;
 
 class CitiesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-      $cities = City::all();
-      $regions = Region::lists('name', 'id');
+  /**
+  * Create a new controller instance.
+  *
+  * @return void
+  */
 
-      return view('cities.index', compact('cities', 'regions'));
-    }
+  public function __construct()
+  {
+    $this->middleware('admin');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  /**
+  * Display a listing of the resource.
+  *
+  * @return \Illuminate\Http\Response
+  */
+  public function index()
+  {
+    $cities = City::all();
+    $regions = Region::lists('name', 'id');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    return view('cities.index', compact('cities', 'regions'));
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+  /**
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  public function store(Request $request)
+  {
+    //
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function show($id)
+  {
+    //
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  /**
+  * Show the form for editing the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function edit($id)
+  {
+    //
+  }
+
+  /**
+  * Update the specified resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function update(Request $request, $id)
+  {
+    //
+  }
+
+  /**
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function destroy($id)
+  {
+    //
+  }
 }

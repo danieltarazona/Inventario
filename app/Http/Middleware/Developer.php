@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Seller
+class Developer
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class Seller
      */
     public function handle($request, Closure $next)
     {
-      if ((Auth::check()) && (Auth::user()->rol_id == 3))
+      if ((Auth::check()) && (Auth::user()->isDev()))
       {
         return $next($request);
       }

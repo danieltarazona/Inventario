@@ -13,6 +13,21 @@ use App\Category;
 
 class CategoriesController extends Controller
 {
+
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+
+  public function __construct()
+  {
+    # $this->middleware('seller', ['except' => ['destroy']]);
+    # $this->middleware('admin');
+    $this->middleware(['seller', 'admin']);
+
+  }
+
   /**
   * Display a listing of the resource.
   *

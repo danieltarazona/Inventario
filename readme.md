@@ -13,3 +13,13 @@ Thank you for considering contributing to the Laravel framework! The contributio
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Inventar.io, please send an e-mail at security@codeapps.io All security vulnerabilities will be promptly addressed.
+
+## Security Levels
+
+1. User (Instructor)
+2. Buyer (Proveedor)
+3. Client
+4. Reseller
+5. Seller (Almacenista)
+6. Admin (Administrador)
+7. Dev

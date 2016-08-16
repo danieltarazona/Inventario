@@ -109,7 +109,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 1)
       {
-
+        return True;
+      } else {
+        return False;
       }
     }
 
@@ -117,7 +119,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 2)
       {
-
+        return True;
+      } else {
+        return False;
       }
     }
 
@@ -125,7 +129,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 3)
       {
-
+        return True;
+      } else {
+        return False;
       }
     }
 
@@ -133,7 +139,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 4)
       {
-
+        return True;
+      } else {
+        return False;
       }
     }
 
@@ -141,7 +149,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 5)
       {
-
+        return True;
+      } else {
+        return False;
       }
     }
 
@@ -149,7 +159,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 6)
       {
-
+        return True;
+      } else {
+        return False;
       }
     }
 
@@ -157,6 +169,9 @@ class User extends Authenticatable
     {
       if ($this->rol->id == 7)
       {
+        return True;
+      } else {
+        return False;
       }
     }
 
