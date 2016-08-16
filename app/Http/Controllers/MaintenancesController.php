@@ -22,8 +22,8 @@ class MaintenancesController extends Controller
 
   public function __construct()
   {
-    $this->middleware('seller', ['except' => ['edit', 'destroy', 'update']]);
     $this->middleware('admin');
+    $this->middleware('seller', ['except' => ['edit', 'destroy', 'update']]);
   }
 
   /**

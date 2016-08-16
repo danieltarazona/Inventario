@@ -15,10 +15,12 @@ class User extends Authenticatable
         'username', 'dni', 'email', 'password',
     ];
 
+    /*
     protected $casts = [
        'is_admin' => 'boolean',
        'is_seller' => 'boolean',
     ];
+    */
 
     /**
      * The attributes that should be hidden for arrays.
@@ -107,7 +109,7 @@ class User extends Authenticatable
 
     public function isUser()
     {
-      if ($this->rol->id == 1)
+      if ($this->rol_id() == 1)
       {
         return True;
       } else {
@@ -117,7 +119,7 @@ class User extends Authenticatable
 
     public function isBuyer()
     {
-      if ($this->rol->id == 2)
+      if ($this->rol_id() == 2)
       {
         return True;
       } else {
@@ -127,7 +129,7 @@ class User extends Authenticatable
 
     public function isClient()
     {
-      if ($this->rol->id == 3)
+      if ($this->rol_id() == 3)
       {
         return True;
       } else {
@@ -137,7 +139,7 @@ class User extends Authenticatable
 
     public function isReseller()
     {
-      if ($this->rol->id == 4)
+      if ($this->rol_id() == 4)
       {
         return True;
       } else {
@@ -147,7 +149,7 @@ class User extends Authenticatable
 
     public function isSeller()
     {
-      if ($this->rol->id == 5)
+      if ($this->rol_id() == 5)
       {
         return True;
       } else {
@@ -157,7 +159,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-      if ($this->rol->id == 6)
+      if ($this->rol_id() == 6)
       {
         return True;
       } else {
@@ -167,7 +169,7 @@ class User extends Authenticatable
 
     public function isDev()
     {
-      if ($this->rol->id == 7)
+      if ($this->rol_id() == 7)
       {
         return True;
       } else {

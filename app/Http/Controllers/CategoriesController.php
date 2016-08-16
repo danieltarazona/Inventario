@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-
 use App\Category;
 
 class CategoriesController extends Controller
@@ -18,14 +15,11 @@ class CategoriesController extends Controller
    * Create a new controller instance.
    *
    * @return void
-   */
+  */
 
   public function __construct()
   {
-    # $this->middleware('seller', ['except' => ['destroy']]);
-    # $this->middleware('admin');
-    $this->middleware(['seller', 'admin']);
-
+    $this->middleware('admin');
   }
 
   /**

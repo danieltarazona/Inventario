@@ -49,12 +49,11 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-
-        'dev' => \App\Http\Middleware\Developer::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'seller' => \App\Http\Middleware\Seller::class,
         'reseller' => \App\Http\Middleware\Reseller::class,
         'client' => \App\Http\Middleware\Client::class,
         'buyer' => \App\Http\Middleware\Buyer::class,
+        'dev' => \App\Http\Middleware\Developer::class,
     ];
 }

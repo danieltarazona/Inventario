@@ -4,7 +4,7 @@
 
   <h1>Categories</h1>
 
-  @if (Auth::user()->rol_id > 5)
+  @if (Auth::user()->isAdmin())
 
   {!! Form::open(['url' => 'categories']) !!}
 
