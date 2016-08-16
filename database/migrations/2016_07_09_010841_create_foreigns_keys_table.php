@@ -68,7 +68,7 @@ class CreateForeignsKeysTable extends Migration
           ->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('store_id')->references('id')->on('stores')
           ->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('manufacturer_id')->references('id')->on('manufacturers')
+        $table->foreign('provider_id')->references('id')->on('providers')
           ->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('state_id')->references('id')->on('states')
           ->onDelete('cascade')->onUpdate('cascade');

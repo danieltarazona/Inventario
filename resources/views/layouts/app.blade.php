@@ -65,7 +65,7 @@
                 </ul>
               </li>
 
-              @if(Auth::user()->rol_id == 3)
+              @if(Auth::user()->rol_id > 5)
                 <li><a href="{{ url('/users') }}">Users</a></li>
                 <li><a href="{{ url('/logs') }}">Log</a></li>
               @endif
@@ -76,11 +76,13 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
 
-                  <li><a href="{{ url('/manufacturers') }}">Manufacturers</a></li>
                   <li><a href="{{ url('/categories') }}">Categories</a></li>
-                  <li><a href="{{ url('/states') }}">States</a></li>
-                  <li><a href="{{ url('/stores') }}">Stores</a></li>
+                  <li><a href="{{ url('/providers') }}">Providers</a></li>
+                  <li><a href="{{ url('/regions') }}">Regions</a></li>
                   <li><a href="{{ url('/cities') }}">Cities</a></li>
+                  <li><a href="{{ url('/stores') }}">Stores</a></li>
+                  <li><a href="{{ url('/states') }}">States</a></li>
+
                 </ul>
               </li>
             @endif

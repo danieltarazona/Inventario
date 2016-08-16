@@ -35,7 +35,7 @@ Route::resource('sellers', 'SellersController');
 Route::resource('resellers', 'ResellersController');
 
 // ResellersController
-Route::resource('manufacturers', 'ManufacturersController');
+Route::resource('providers', 'ProvidersController', ['except' => ['show']]);
 
 // IssuesController
 Route::resource('issues', 'IssuesController');
@@ -48,6 +48,9 @@ Route::resource('logs', 'LogsController');
 
 // SalesController
 Route::resource('sales', 'SalesController');
+
+// SalesController
+Route::resource('regions', 'RegionsController', ['except' => ['create', 'show']]);
 
 // StatesController
 Route::resource('states', 'StatesController', ['except' => ['create', 'show']]);

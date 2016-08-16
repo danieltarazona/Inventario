@@ -14,7 +14,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Category</th>
-        <th>Manufacturer</th>
+        <th>Provider</th>
         <th>State</th>
         <th>Store</th>
         <th>Stock</th>
@@ -34,7 +34,7 @@
         <td>{{ $product->id }}</td>
         <td>{{ $product->name }}</td>
         <td>{{ $product->category->name or 'Blank' }}</td>
-        <td>{{ $product->manufacturer->name or 'Blank' }}</td>
+        <td>{{ $product->provider->name or 'Blank' }}</td>
         <td>{{ $product->state->name or 'Blank' }}</td>
         <td>{{ $product->store->name or 'Blank' }}</td>
         <td>{{ $product->stock or 'Blank' }}</td>

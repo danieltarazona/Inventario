@@ -41,8 +41,8 @@
   {!! Form::label('Category') !!}
   {!! Form::select('category_id', $categories, $product->category_id, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Manufacturer') !!}
-  {!! Form::select('manufacturer_id', $manufacturers, $product->manufacturer_id, ['class' => 'form-control']) !!}
+  {!! Form::label('Provider') !!}
+  {!! Form::select('provider_id', $providers, $product->provider_id, ['class' => 'form-control']) !!}
 
   {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
 

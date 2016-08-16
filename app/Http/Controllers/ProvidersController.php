@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Provider;
 
-use App\Region;
+use App\Http\Requests;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
-class RegionsController extends Controller
+class ProvidersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class RegionsController extends Controller
      */
     public function index()
     {
-      $regions = Region::all();
+      $providers = Provider::all();
 
-      return view('regions.index', compact('regions'));
+      return view('providers.index', compact('providers'));
     }
 
     /**
@@ -32,7 +32,7 @@ class RegionsController extends Controller
      */
     public function create()
     {
-        return view('regions.create');
+        return view('providers.create');
     }
 
     /**
@@ -46,12 +46,12 @@ class RegionsController extends Controller
       $validator = Validator::make($request->all(), $this->rules());
 
       if ($validator->fails()) {
-         return redirect('regions')
+         return redirect('providers')
            ->withErrors($validator)
            ->withInput();
       } else {
-          Region::create($request->all());
-          return redirect('regions');
+          Provider::create($request->all());
+          return redirect('providers');
       }
     }
 
@@ -63,9 +63,9 @@ class RegionsController extends Controller
      */
     public function edit($id)
     {
-      $region = Region::findOrFail($id);
+        $provider = Provider::findOrFail($id);
 
-      return view('regions.edit', compact('region'));
+        return view('providers.edit', compact('provider'));
     }
 
     /**
@@ -77,12 +77,14 @@ class RegionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $region = Region::findOrFail($id);
+        $provider = Provider::findOrFail($id);
 
-      $region->name = $request->name;
-      $region->save();
+        $provider->name = $request->name;
+        $provider->telephone = $request->telephone;
+        $provider->adress = $request->adress;
+        $provider->save();
 
-      return redirect('regions');
+        return redirect('providers');
     }
 
     /**
@@ -93,15 +95,17 @@ class RegionsController extends Controller
      */
     public function destroy($id)
     {
-      Region::findOrFail($id)->delete();
+      Provider::findOrFail($id)->delete();
 
-      return redirect('regions');
+      return redirect('providers');
     }
 
     public function rules()
     {
         return [
-          'name' => 'required|max:255|unique:regions',
+          'name'    => 'required|max:255|unique:providers',
+          'telephone'    => 'numeric|min:7',
+          'adress'    => 'string|max:255',
         ];
     }
 }

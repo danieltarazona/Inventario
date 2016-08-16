@@ -4,7 +4,7 @@
 
 <h1>Create</h1>
 
-{!! Form::open(['url' => 'manufacturers']) !!}
+{!! Form::open(['url' => 'providers']) !!}
 
   {!! Form::label('Name') !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -14,12 +14,6 @@
 
   {!! Form::label('Adress') !!}
   {!! Form::text('adress', null, ['class' => 'form-control']) !!}
-
-  {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
-
-  {!! Form::label('City') !!}
-  {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
 
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 

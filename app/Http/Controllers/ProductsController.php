@@ -7,7 +7,7 @@ use App\Product;
 use App\City;
 use App\Store;
 use App\Category;
-use App\Manufacturer;
+use App\Provider;
 use App\State;
 use App\Region;
 use App\Http\Requests;
@@ -38,14 +38,14 @@ class ProductsController extends Controller
     public function create()
     {
         $categories = Category::lists('name', 'id');
-        $manufacturers = Manufacturer::lists('name', 'id');
+        $providers = Provider::lists('name', 'id');
         $stores = Store::lists('name', 'id');
         $cities = City::lists('name', 'id');
         $states = State::lists('name', 'id');
         $regions = Region::lists('name', 'id');
 
         return view('products.create', compact(
-            'categories', 'manufacturers',
+            'categories', 'providers',
             'states', 'stores', 'cities', 'regions'
         ));
     }
@@ -94,14 +94,14 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
 
         $categories = Category::lists('name', 'id');
-        $manufacturers = Manufacturer::lists('name', 'id');
+        $providers = Provider::lists('name', 'id');
         $stores = Store::lists('name', 'id');
         $cities = City::lists('name', 'id');
         $states = State::lists('name', 'id');
         $regions = Region::lists('name', 'id');
 
         return view('products.edit', compact(
-            'product', 'categories', 'manufacturers',
+            'product', 'categories', 'providers',
             'states', 'stores', 'cities', 'regions'
         ));
     }
@@ -119,7 +119,7 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->serial = $request->serial;
 
-        if (Auth::user()->rol_id == 3) {
+        if (Auth::user()->rol_id > 5) {
           $product->warranty = $request->warranty;
           $product->stock = $request->stock;
           $product->year = $request->year;
@@ -130,7 +130,7 @@ class ProductsController extends Controller
         }
 
         $product->category_id = $request->category_id;
-        $product->manufacturer_id = $request->manufacturer_id;
+        $product->provider_id = $request->provider_id;
         $product->save();
 
         return redirect('products');

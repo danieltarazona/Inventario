@@ -8,7 +8,7 @@
 <h3>ID: {{ $product->id }}</h3>
 <h3>Name: {{ $product->name }}</h3>
 <h3>Category: {{ $product->category->name or 'Blank' }}</h3>
-<h3>Manufacturer: {{ $product->manufacturer->name or 'Blank' }}</h3>
+<h3>provider: {{ $product->provider->name or 'Blank' }}</h3>
 <h3>State: {{ $product->state->name or 'Blank' }}</h3>
 <h3>Store: {{ $product->store->name or 'Blank' }}</h3>
 <h3>Stock: {{ $product->stock or 'Blank' }}</h3>

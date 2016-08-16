@@ -42,8 +42,8 @@
   {!! Form::label('Category') !!}
   {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Manufacturer') !!}
-  {!! Form::select('manufacturer_id', $manufacturers, null, ['class' => 'form-control']) !!}
+  {!! Form::label('provider') !!}
+  {!! Form::select('provider_id', $providers, null, ['class' => 'form-control']) !!}
 
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 

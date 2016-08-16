@@ -9,7 +9,7 @@ class Product extends Model
   protected $fillable = [
       'name', 'stock', 'serial', 'year', 'price', 'warranty',
       'region_id', 'city_id', 'store_id', 'state_id',
-      'category_id', 'manufacturer',
+      'category_id', 'provider',
   ];
 
   public function city()
@@ -22,14 +22,14 @@ class Product extends Model
       return $this->city->id;
   }
 
-  public function manufacturer()
+  public function provider()
   {
-      return $this->belongsTo(Manufacturer::class);
+      return $this->belongsTo(Provider::class);
   }
 
-  public function manufacturer_id()
+  public function provider_id()
   {
-      return $this->manufacturer->id;
+      return $this->provider->id;
   }
 
   public function category()

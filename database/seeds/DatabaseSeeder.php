@@ -109,17 +109,17 @@ class DatabaseSeeder extends Seeder
       $maintenance->description = "Upgrade form Leopard";
       $maintenance ->save();
 
-      $manufacturer = new App\Manufacturer;
-      $manufacturer->name = "Samsung";
-      $manufacturer->save();
+      $provider = new App\Provider;
+      $provider->name = "Samsung";
+      $provider->save();
 
-      $manufacturer = new App\Manufacturer;
-      $manufacturer->name = "Sony";
-      $manufacturer->save();
+      $provider = new App\Provider;
+      $provider->name = "Sony";
+      $provider->save();
 
-      $manufacturer = new App\Manufacturer;
-      $manufacturer->name = "Apple";
-      $manufacturer->save();
+      $provider = new App\Provider;
+      $provider->name = "Apple";
+      $provider->save();
 
       $category = new App\Category;
       $category->name = "Ultrabook";
@@ -202,7 +202,7 @@ class DatabaseSeeder extends Seeder
 
       $category->products()->save($product);
       $store->products()->save($product);
-      $manufacturer->products()->save($product);
+      $provider->products()->save($product);
       $state->products()->save($product);
       $maintenance->products()->save($product);
 
@@ -222,7 +222,7 @@ class DatabaseSeeder extends Seeder
       $category = App\Category::find(1);
       $store = App\Store::find(1);
       $maintenance = App\Maintenance::find(1);
-      $manufacturer = App\Manufacturer::find(1);
+      $provider = App\Provider::find(1);
       $seller = App\Seller::find(1);
 
       $issue = App\Issue::find(1);
@@ -231,7 +231,7 @@ class DatabaseSeeder extends Seeder
       $maintenance = App\Maintenance::find(2);
       $category->product()->save($product);
       $product->maintenance()->save($maintenance);
-      $product->manufacturer()->save($manufacturer);
+      $product->provider()->save($provider);
 
       */
 

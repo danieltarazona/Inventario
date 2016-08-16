@@ -4,10 +4,10 @@
 
 <h1>Edit</h1>
 
-{!! Form::open(array('route' => array('states.update', $state->id), 'method' => 'patch')) !!}
+{!! Form::open(array('route' => array('regions.update', $region->id), 'method' => 'patch')) !!}
 
   {!! Form::label('Name') !!}
-  {!! Form::text('name', $state->name, ['class' => 'form-control']) !!}
+  {!! Form::text('name', $region->name, ['class' => 'form-control']) !!}
 
   {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
 
