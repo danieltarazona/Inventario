@@ -22,7 +22,6 @@ class SalesController extends Controller
     $this->middleware('auth');
     $this->middleware('seller', ['except' => ['destroy', 'edit']]);
     $this->middleware('admin');
-
   }
 
     /**

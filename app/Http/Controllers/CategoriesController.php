@@ -53,6 +53,8 @@ class CategoriesController extends Controller
       $category->name = $request->name;
       $category->save();
 
+      flash('Create Sucessful!', 'sucess');
+
       return redirect('categories');
     }
   }
@@ -77,10 +79,8 @@ class CategoriesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id)
+  public function update(Request $request, Category $category)
   {
-    $category = Category::findOrFail($id);
-
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
