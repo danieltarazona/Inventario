@@ -117,6 +117,11 @@
   </nav>
 
   <div class="container">
+    @if (session()->has('message'))
+      <div class="alert alert--{{ session('message_level') }}">
+        {{ session('message') }}
+      </div>
+    @endif
     @yield('content')
   </div>
 
