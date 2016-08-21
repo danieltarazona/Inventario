@@ -16,7 +16,7 @@ class CreateMaintenancesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->integer('seller_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

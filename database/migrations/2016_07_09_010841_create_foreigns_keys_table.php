@@ -50,12 +50,16 @@ class CreateForeignsKeysTable extends Migration
       Schema::table('sales', function ($table) {
         $table->foreign('user_id')->references('id')->on('users')
           ->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('seller_id')->references('id')->on('users')
+        $table->foreign('sales_id')->references('id')->on('sales')
+          ->onDelete('cascade')->onUpdate('cascade');
+        $table->foreign('order_id')->references('id')->on('orders')
           ->onDelete('cascade')->onUpdate('cascade');
       });
 
       Schema::table('orders', function ($table) {
         $table->foreign('user_id')->references('id')->on('users')
+          ->onDelete('cascade')->onUpdate('cascade');
+        $table->foreign('state_id')->references('id')->on('states')
           ->onDelete('cascade')->onUpdate('cascade');
       });
 
@@ -70,14 +74,16 @@ class CreateForeignsKeysTable extends Migration
           ->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('provider_id')->references('id')->on('providers')
           ->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('state_id')->references('id')->on('states')
-          ->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('maintenance_id')->references('id')->on('maintenances')
+          ->onDelete('cascade')->onUpdate('cascade');
+        $table->foreign('state_id')->references('id')->on('states')
           ->onDelete('cascade')->onUpdate('cascade');
       });
 
       Schema::table('maintenances', function ($table) {
-        $table->foreign('seller_id')->references('id')->on('users')
+        $table->foreign('user_id')->references('id')->on('users')
+          ->onDelete('cascade')->onUpdate('cascade');
+        $table->foreign('state_id')->references('id')->on('states')
           ->onDelete('cascade')->onUpdate('cascade');
       });
 
