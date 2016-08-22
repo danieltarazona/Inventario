@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UsersTest extends TestCase
 {
+  use DatabaseTransactions;
   /**
   * A basic test example.
   *
@@ -22,7 +23,7 @@ class UsersTest extends TestCase
   public function testUsersUpdate()
   {
     $response = $this->action('PUT', 'UsersController@update', ['user' => 1]);
-    
+
     $this->assertEquals(200, $response->status());
   }
 

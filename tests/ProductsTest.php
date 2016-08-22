@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ProductsTest extends TestCase
 {
+  use DatabaseTransactions;
   /**
   * A basic test example.
   *
@@ -49,8 +50,8 @@ class ProductsTest extends TestCase
 
   public function testProductsDestroy()
   {
-    $response = $this->action('GET', 'ProductsController@destroy', ['product' => 1]);
+    $response = $this->action('DELETE', 'ProductsController@destroy', ['product' => 1]);
 
-    $this->assertEquals(200, $response->status());
+    $this->assertEquals(302, $response->status());
   }
 }
