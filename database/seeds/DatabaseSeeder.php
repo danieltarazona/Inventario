@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
       $rol = new App\Rol;
       $rol->name = "User";
       $rol->save();
@@ -33,12 +32,13 @@ class DatabaseSeeder extends Seeder
       $rol->save();
 
       $rol = new App\Rol;
-      $rol->name = "Admin";
+      $rol->name = "Storer";
       $rol->save();
 
       $rol = new App\Rol;
-      $rol->name = "Dev";
+      $rol->name = "Admin";
       $rol->save();
+
 
       $user = new App\User;
       $user->username = "User";
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
       $rol->users()->save($user);
 
       $user = new App\User;
-      $user->username = "Seller";
+      $user->username = "Storer";
       $user->dni = 888888;
       $user->email = "seller@seller.com";
       $user->first_name = "Daniel";
@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
       $user->url = "/Profile/Image.png";
       $user->save();
 
-      $rol = App\Rol::find(5);
+      $rol = App\Rol::find(6);
       $rol->users()->save($user);
 
       $user = new App\User;
@@ -91,149 +91,64 @@ class DatabaseSeeder extends Seeder
       $user->url = "/Profile/Image.png";
       $user->save();
 
-      $rol = App\Rol::find(6);
+      $rol = App\Rol::find(7);
       $rol->users()->save($user);
 
-      $product = new App\Product;
-      $product->name = "Macbook";
-      $product->stock = 10;
-      $product->serial = "QWERTY";
-      $product->year = "2015";
-      $product->date = "06-05-2015";
-      $product->price = 5000000;
-      $product->warranty = "12";
-      $product->save();
+      factory(App\Provider::class, 10)->create();
+      $provider = App\Provider::find(1);
 
-      $maintenance = new App\Maintenance;
-      $maintenance->name = "OSX El Capitan";
-      $maintenance->description = "Upgrade form Leopard";
-      $maintenance ->save();
+      factory(App\Category::class, 10)->create();
+      $category = App\Category::find(1);
 
-      $provider = new App\Provider;
-      $provider->name = "Samsung";
-      $provider->save();
+      factory(App\Region::class, 10)->create();
+      $region = App\Region::find(1);
 
-      $provider = new App\Provider;
-      $provider->name = "Sony";
-      $provider->save();
-
-      $provider = new App\Provider;
-      $provider->name = "Apple";
-      $provider->save();
-
-      $category = new App\Category;
-      $category->name = "Ultrabook";
-      $category ->save();
-
-      $category = new App\Category;
-      $category->name = "Netbooks";
-      $category ->save();
-
-      $category = new App\Category;
-      $category->name = "Smartphone";
-      $category ->save();
-
-      $state = new App\State;
-      $state->name = "Good";
-      $state->save();
-
-      $state = new App\State;
-      $state->name = "Acceptable";
-      $state->save();
-
-      $state = new App\State;
-      $state->name = "Excellent";
-      $state->save();
-
-      $comment = new App\Comment;
-      $comment->name = "Best Costumer Service";
-      $comment->save();
-
-      $region = new App\Region;
-      $region->name = "Cundinamarca";
-      $region->save();
-
-      $region = new App\Region;
-      $region->name = "Antioquia";
-      $region->save();
-
-      $region = new App\Region;
-      $region->name = "Valle del Cauca";
-      $region->save();
-
-      $store = new App\Store;
-      $store->name = "Shibuya";
-      $store->save();
-
-      $store = new App\Store;
-      $store->name = "Apple Loop";
-      $store->save();
-
-      $issue = new App\Issue;
-      $issue->name = "Intel Graphic Card";
-      $issue->save();
-
-      $city = new App\City;
-      $city->name = "Cupertino";
-      $city->save();
-
-      $city = new App\City;
-      $city->name = "Tokio";
-      $city->save();
-
-      $city = new App\City;
-      $city->name = "Paris";
-      $city->save();
-
-      $order = new App\Order;
-      $order->save();
-
-      $sale = new App\Sale;
-      $sale->save();
-
+      factory(App\City::class, 100)->create();
+      $city = App\City::find(1);
 
       $city->users()->save($user);
+      $region->city()->save($city);
+
+      factory(App\State::class, 10)->create();
+      $state = App\State::find(1);
       $state->users()->save($user);
-      $store->users()->save($user);
-      $region->users()->save($user);
 
-      $user->orders()->save($order);
-      $user->sales()->save($sale);
+      factory(App\Store::class, 20)->create();
+      $store = App\Store::find(1);
+      $city->stores()->save($store);
 
-      $category->products()->save($product);
-      $store->products()->save($product);
+      factory(App\Maintenance::class, 10)->create();
+      $maintenance = App\Maintenance::find(1);
+
+
+      factory(App\Product::class, 30)->create();
+      $product = App\Product::find(3);
       $provider->products()->save($product);
+      $store->products()->save($product);
+      $category->products()->save($product);
       $state->products()->save($product);
       $maintenance->products()->save($product);
 
-      $region->cities()->save($city);
-      $city->stores()->save($store);
+      factory(App\User::class, 20)->create();
+      $store->users()->save($user);
 
-      $user->comments()->save($comment);
+      factory(App\Issue::class, 20)->create();
+      $issue = App\Issue::find(1);
       $user->issues()->save($issue);
 
-      /*
-      $user = App\User::find(1);
-      $city = App\City::find(1);
-      $state = App\State::find(1);
-      $region = App\Region::find(1);
+      factory(App\Comment::class, 100)->create();
       $comment = App\Comment::find(1);
-      $product = App\Product::find(1);
-      $category = App\Category::find(1);
-      $store = App\Store::find(1);
-      $maintenance = App\Maintenance::find(1);
-      $provider = App\Provider::find(1);
-      $seller = App\Seller::find(1);
+      $user->comments()->save($comment);
 
-      $issue = App\Issue::find(1);
-      $product->maintenance()->save($maintenance);
-      $user = App\User::find(2);
-      $maintenance = App\Maintenance::find(2);
-      $category->product()->save($product);
-      $product->maintenance()->save($maintenance);
-      $product->provider()->save($provider);
+      factory(App\Log::class, 100)->create();
+      factory(App\Order::class, 50)->create();
+      factory(App\Sale::class, 50)->create();
 
-      */
+      $order = App\Order::find(3);
+      $sale = App\Sale::find(3);
+
+      $user->orders()->save($order);
+      $user->sales()->save($sale);
 
     }
 }
