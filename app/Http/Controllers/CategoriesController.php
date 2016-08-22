@@ -3,24 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+
+use App\Http\Requests;
+
 use App\Category;
 
 class CategoriesController extends Controller
 {
-
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('admin');
-  }
 
   /**
   * Display a listing of the resource.
@@ -30,7 +21,6 @@ class CategoriesController extends Controller
   public function index()
   {
     $categories = Category::all();
-
     return view('categories.index', compact('categories'));
   }
 
@@ -45,17 +35,15 @@ class CategoriesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
+      flash('Validation Fail!', 'error');
       return redirect('categories')
       ->withErrors($validator)
       ->withInput();
     } else {
-      $category = new Category;
-      $category->name = $request->name;
-      $category->save();
-
+      Category::create($request->all());
       flash('Create Sucessful!', 'sucess');
-
       return redirect('categories');
+
     }
   }
 
@@ -68,7 +56,6 @@ class CategoriesController extends Controller
   public function edit($id)
   {
     $category = Category::findOrFail($id);
-
     return view('categories.edit', compact('category'));
   }
 
@@ -84,14 +71,15 @@ class CategoriesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
+      flash('Validation Fail!', 'error');
       return redirect('categories.edit', compact('category'))
       ->withErrors($validator)
       ->withInput();
     } else {
-      $category->name = $request->name;
-      $category->save();
-
+      Category::create($request->all());
+      flash('Update Complete!', 'sucess');
       return redirect('categories');
+
     }
   }
 
@@ -104,6 +92,7 @@ class CategoriesController extends Controller
   public function destroy($id)
   {
     Category::findOrFail($id)->delete();
+    flash('Delete Complete!', 'sucess');
     return redirect('categories');
   }
 
