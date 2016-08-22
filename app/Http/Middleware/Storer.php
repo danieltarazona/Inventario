@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class Developer
+class Storer
 {
     /**
      * Handle an incoming request.
@@ -16,7 +15,7 @@ class Developer
      */
     public function handle($request, Closure $next)
     {
-      if ((Auth::check()) && (Auth::user()->isDev()))
+      if ((Auth::check()) && (Auth::user()->isStorer()))
       {
         return $next($request);
       }
