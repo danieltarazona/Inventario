@@ -4,9 +4,7 @@
 
   <h1>Products</h1>
 
-  @if (Auth::user()->rol_id > 5)
-    <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
-  @endif
+  <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
 
   <table class="table">
     <thead>
@@ -48,27 +46,17 @@
           @endforeach
         </td>
         <td>{{ $product->warranty or 'Blank' }} Months</td>
-
         <td>
-          <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Read</a>
+          <a href="{{ route('products.show', $product->id) }}" id="Create" class="btn btn-primary">Read</a>
         </td>
-
-
-        @if (Auth::user()->rol_id > 1)
-          <td>
-            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Update</a>
-          </td>
-
-          @if (Auth::user()->rol_id > 2)
-            <td>
-              {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
-              <button class="btn btn-danger" type="submit" >Delete</button>
-              {!! Form::close() !!}
-            </td>
-          @endif
-
-        @endif
-
+        <td>
+          <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Update</a>
+        </td>
+        <td>
+          {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
+          <button class="btn btn-danger" type="submit" >Delete</button>
+          {!! Form::close() !!}
+        </td>
       </tr>
 
     @endforeach

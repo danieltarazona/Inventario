@@ -29,15 +29,15 @@
         <td>{{ $user->email }}</td>
 
         <td>
-          <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">Read</a>
+          <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-primary">Read</a>
         </td>
 
         <td>
-          <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">Update</a>
         </td>
 
         <td>
-          {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['admin.users.destroy', $user->id], 'method' => 'delete']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>

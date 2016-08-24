@@ -49,10 +49,10 @@
 
           @if(Auth::check())
 
-            <li><a href="{{ url('/products') }}">Products</a></li>
-            <li><a href="{{ url('/maintenances') }}">Maintenances</a></li>
-            <li><a href="{{ url('/orders') }}">Orders</a></li>
-            <li><a href="{{ url('/sales') }}">Sales</a></li>
+            <li><a href="{{ url('products') }}">Products</a></li>
+            <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
+            <li><a href="{{ url('orders') }}">Orders</a></li>
+            <li><a href="{{ url('sales') }}">Sales</a></li>
 
             @if(Auth::user()->rol_id > 1)
               <li class="dropdown">
@@ -60,14 +60,14 @@
                   Team<span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ url('/sellers') }}">Sellers</a></li>
-                  <li><a href="{{ url('/resellers') }}">Resellers</a></li>
+                  <li><a href="{{ url('sellers') }}">Sellers</a></li>
+                  <li><a href="{{ url('resellers') }}">Resellers</a></li>
                 </ul>
               </li>
 
               @if(Auth::user()->rol_id > 5)
-                <li><a href="{{ url('/users') }}">Users</a></li>
-                <li><a href="{{ url('/logs') }}">Log</a></li>
+                <li><a href="{{ url('users') }}">Users</a></li>
+                <li><a href="{{ url('logs') }}">Log</a></li>
               @endif
 
               <li class="dropdown">
@@ -75,14 +75,12 @@
                   Database<span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-
-                  <li><a href="{{ url('/categories') }}">Categories</a></li>
-                  <li><a href="{{ url('/providers') }}">Providers</a></li>
-                  <li><a href="{{ url('/regions') }}">Regions</a></li>
-                  <li><a href="{{ url('/cities') }}">Cities</a></li>
-                  <li><a href="{{ url('/stores') }}">Stores</a></li>
-                  <li><a href="{{ url('/states') }}">States</a></li>
-
+                  <li><a href="{{ url('categories') }}">Categories</a></li>
+                  <li><a href="{{ url('providers') }}">Providers</a></li>
+                  <li><a href="{{ url('regions') }}">Regions</a></li>
+                  <li><a href="{{ url('cities') }}">Cities</a></li>
+                  <li><a href="{{ url('stores') }}">Stores</a></li>
+                  <li><a href="{{ url('states') }}">States</a></li>
                 </ul>
               </li>
             @endif

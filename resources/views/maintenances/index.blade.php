@@ -3,6 +3,7 @@
 @section('content')
 
   <h1>Maintenances</h1>
+
   <a href="{{ route('maintenances.create') }}" class="btn btn-success">Create</a>
 
   <table class="table">
@@ -37,20 +38,15 @@
           <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary">Read</a>
         </td>
 
-        @if (Auth::user()->rol_id > 1)
-          <td>
-            <a href="{{ route('maintenances.edit', $maintenance->id) }}" class="btn btn-warning">Update</a>
-          </td>
+        <td>
+          <a href="{{ route('maintenances.edit', $maintenance->id) }}" class="btn btn-warning">Update</a>
+        </td>
 
-          @if (Auth::user()->rol_id > 2)
-            <td>
-              {!! Form::open(['route' => ['maintenances.destroy', $maintenance->id], 'method' => 'delete']) !!}
-              <button class="btn btn-danger" type="submit" >Delete</button>
-              {!! Form::close() !!}
-            </td>
-          @endif
-        @endif
-
+        <td>
+          {!! Form::open(['route' => ['maintenances.destroy', $maintenance->id], 'method' => 'delete']) !!}
+          <button class="btn btn-danger" type="submit" >Delete</button>
+          {!! Form::close() !!}
+        </td>
       </tr>
 
     @endforeach
