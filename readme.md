@@ -20,6 +20,6 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 2. Buyer (Proveedor)
 3. Client
 4. Reseller
-5. Seller (Almacenista)
-6. Admin (Administrador)
-7. Dev
+5. Seller
+6. Storer (Almacenista)
+7. Admin (Administrador)
