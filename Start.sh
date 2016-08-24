@@ -3,4 +3,5 @@ php artisan migrate:install
 composer dump-autoload
 php artisan migrate
 php artisan db:seed
+vendor/bin/phpunit
 php artisan tinker
