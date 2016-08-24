@@ -3,42 +3,34 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Auth;
 
+/*
 class ProductsTest extends TestCase
 {
   use DatabaseTransactions;
-  /**
-  * A basic test example.
-  *
-  * @return void
-  */
-  public function testProductsIndex()
-  {
-    $user = App\User::find(1);
-    $this->be($user);
 
+  public function testProductsIndexController()
+  {
+    $auth = Auth::user();
+    $this->be($auth);
     $response = $this->action('GET', 'ProductsController@index');
-
     $this->assertEquals(200, $response->status());
   }
 
-  public function testProductsUpdate()
+  public function testProductsUpdateController()
   {
-    $product = App\Product::find(1);
-    $product->name = "iMac";
-
-    $response = $this->action('PUT', 'ProductsController@update', $product->id);
-    $this->seeInDatabase('products', ['name' => $product->name]);
+    $response = $this->action('PUT', 'ProductsController@update', ['product' => 1, 'name' => 'iMac']);
     $this->assertEquals(200, $response->status());
   }
 
-  public function testProductsShow()
+  public function testProductsShowController()
   {
     $response = $this->action('GET', 'ProductsController@show', ['product' => 1]);
     $this->assertEquals(200, $response->status());
   }
 
-  public function testProductsEdit()
+  public function testProductsEditController()
   {
     $admin = App\User::find(3);
     $this->be($admin);
@@ -48,10 +40,10 @@ class ProductsTest extends TestCase
     $this->assertEquals(200, $response->status());
   }
 
-  public function testProductsDestroy()
+  public function testProductsDestroyController()
   {
-    $response = $this->action('DELETE', 'ProductsController@destroy', ['product' => 1]);
-
+    $product = App\Product::find(1);
+    $response = $this->action('DELETE', 'ProductsController@destroy', $product->id);
     $this->assertEquals(302, $response->status());
   }
 }

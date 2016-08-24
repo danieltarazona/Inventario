@@ -4,48 +4,41 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/*
 class UsersTest extends TestCase
 {
   use DatabaseTransactions;
-  /**
-  * A basic test example.
-  *
-  * @return void
-  */
 
-  public function testUsersIndex()
+  public function testUsersIndexController()
   {
     $response = $this->action('GET', 'UsersController@index');
-
     $this->assertEquals(200, $response->status());
   }
 
-  public function testUsersUpdate()
+  public function testUsersUpdateController()
   {
-    $response = $this->action('PUT', 'UsersController@update', ['user' => 1]);
-
-    $this->assertEquals(200, $response->status());
+    $user = App\User::find(1);
+    $user->name = "XYZ";
+    $response = $this->action('PUT', 'UsersController@update', $user);
+    $this->assertEquals(302, $response->status());
   }
 
-  public function testUsersShow()
+  public function testUsersShowController()
   {
     $response = $this->action('GET', 'UsersController@show', ['user' => 1]);
-
     $this->assertEquals(200, $response->status());
   }
 
-  public function testUsersEdit()
+  public function testUsersEditController()
   {
     $response = $this->action('GET', 'UsersController@edit', ['user' => 1]);
-
     $this->assertEquals(200, $response->status());
   }
 
-  public function testUsersDestroy()
+  public function testUsersDestroyController()
   {
-    $response = $this->action('GET', 'UsersController@destroy', ['user' => 1]);
-
-    $this->assertEquals(200, $response->status());
+    $response = $this->action('DELETE', 'UsersController@destroy', ['user' => 1]);
+    $this->assertEquals(302, $response->status());
   }
 
 

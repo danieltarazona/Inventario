@@ -3,22 +3,14 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\User;
 
+/*
 class MaintenancesTest extends TestCase
 {
-
   use DatabaseTransactions;
-  /**
-  * A basic test example.
-  *
-  * @return void
-  */
 
-  public function testMaintenancesIndex()
+  public function testMaintenancesIndexController()
   {
-    $admin = App\User::find(7);
-    $this->be($admin);
     $response = $this->action('GET', 'MaintenancesController@index');
     $this->assertEquals(200, $response->status());
   }
