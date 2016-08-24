@@ -120,7 +120,7 @@ class DatabaseSeeder extends Seeder
       factory(App\Maintenance::class, 10)->create();
       $maintenance = App\Maintenance::find(1);
 
-
+      factory(App\Product::class, ['name' => 'iMac'])->create();
       factory(App\Product::class, 30)->create();
       $product = App\Product::find(3);
       $provider->products()->save($product);
