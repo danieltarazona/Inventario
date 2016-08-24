@@ -10,6 +10,30 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
+## To Do
+
+- Products Filter by Most Visit
+- Products Filter by Most Recently
+- Products Filter by Category
+- Products Filter by Order By Desc
+- Category Card View
+- Products Card View
+- Products to Cart
+- Cart Checkout
+  - Cancel and Accept
+- Confirm Box
+- Orders
+- Dashboard
+  - Logged Users
+  - Products Sales
+  - Products Order
+- Middleware
+- Carbon
+- Intervention
+- Laravel Cashier
+  - Braintree
+  - Stripe
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Inventar.io, please send an e-mail at security@codeapps.io All security vulnerabilities will be promptly addressed.
