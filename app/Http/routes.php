@@ -14,55 +14,52 @@
 Route::auth();
 
 // HomeController
+
 Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
-// UserController
-Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
-
-// ProductsController
-Route::resource('products', 'ProductsController');
-
-// MaintenancesController
-Route::resource('maintenances', 'MaintenancesController');
-
-// SellersController
-Route::resource('sellers', 'SellersController');
-
-// ResellersController
-Route::resource('resellers', 'ResellersController');
-
-// ResellersController
-Route::resource('providers', 'ProvidersController', ['except' => ['show']]);
-
-// IssuesController
+Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
-
-// DashboardController
+Route::resource('logs', 'LogsController');
+Route::resource('orders', 'OrdersController');
+Route::resource('sales', 'SalesController');
+Route::resource('products', 'ProductsController');
+Route::resource('maintenances', 'MaintenancesController');
+Route::resource('providers', 'ProvidersController');
+Route::resource('regions', 'RegionsController');
+Route::resource('states', 'StatesController');
+Route::resource('cities', 'CitiesController');
+Route::resource('categories', 'CategoriesController');
+Route::resource('stores', 'StoresController');
 Route::resource('dashboard', 'DashboardController');
 
-// DashboardController
-Route::resource('logs', 'LogsController');
-
-// SalesController
-Route::resource('sales', 'SalesController');
-
-// SalesController
-Route::resource('regions', 'RegionsController', ['except' => ['create', 'show']]);
-
-// StatesController
-Route::resource('states', 'StatesController', ['except' => ['create', 'show']]);
-
-// SalesController
-Route::resource('cities', 'CitiesController', ['except' => ['create']]);
-
-// OrdersController
+/*
+Route::resource('issues', 'IssuesController', ['except' => ['destroy']]);
+Route::resource('logs', 'LogsController', ['only' => ['store']]);
 Route::resource('orders', 'OrdersController');
+Route::resource('sales', 'SalesController', ['only' => ['index', 'show']]);
+Route::resource('products', 'ProductsController', ['only' => ['index', 'show', 'update']]);
 
-// CategoriesController
+Route::resource('maintenances', 'MaintenancesController', ['except' => ['destroy']]);
+Route::resource('sales', 'SalesController', ['only' => ['index', 'edit', 'update', 'show']]);
+Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'update']]);
+Route::resource('products', 'ProductsController', ['only' => ['index', 'show', 'update']]);
+
+Route::resource('products', 'ProductsController');
+Route::resource('maintenances', 'MaintenancesController', ['except' => ['create', 'store']]);
+Route::resource('sales', 'SalesController', ['except' => ['create', 'store', 'destroy']]);
+Route::resource('orders', 'OrdersController', ['except' => ['store', 'create']]);
+Route::resource('products', 'ProductsController');
+Route::resource('providers', 'ProvidersController', ['except' => ['show']]);
+Route::resource('logs', 'LogsController', ['only' => ['store']]);
+Route::resource('issues', 'IssuesController', ['except' => ['create', 'store', 'destroy']]);
+Route::resource('regions', 'RegionsController', ['except' => ['create', 'show']]);
+Route::resource('states', 'StatesController', ['except' => ['create', 'show']]);
+Route::resource('cities', 'CitiesController', ['except' => ['create']]);
 Route::resource('categories', 'CategoriesController', ['except' => ['create', 'show']]);
-
-// StoresController
 Route::resource('stores', 'StoresController');
+Route::resource('dashboard', 'DashboardController', ['only' => ['index', 'edit', 'update']]);
+
+*/

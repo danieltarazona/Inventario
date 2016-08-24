@@ -50,10 +50,10 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\Admin::class,
+        'storer' => \App\Http\Middleware\Storer::class,
         'seller' => \App\Http\Middleware\Seller::class,
         'reseller' => \App\Http\Middleware\Reseller::class,
         'client' => \App\Http\Middleware\Client::class,
         'buyer' => \App\Http\Middleware\Buyer::class,
-        'dev' => \App\Http\Middleware\Developer::class,
     ];
 }

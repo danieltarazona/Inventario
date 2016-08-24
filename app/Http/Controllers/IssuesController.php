@@ -3,23 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
+use App\Http\Requests;
 
 use App\Issue;
-use App\Http\Requests;
+
 
 class IssuesController extends Controller
 {
-
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('admin');
-  }
 
   /**
   * Display a listing of the resource.
@@ -96,6 +89,9 @@ class IssuesController extends Controller
   */
   public function destroy($id)
   {
-    //
+
+    Issue::findOrFail($id)->delete();
+
+    return redirect('issues');
   }
 }

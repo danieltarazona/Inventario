@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
 use App\Http\Requests;
+
 use App\City;
 use App\Region;
 
+
 class CitiesController extends Controller
 {
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('admin');
-  }
 
   /**
   * Display a listing of the resource.
@@ -29,7 +24,6 @@ class CitiesController extends Controller
   {
     $cities = City::all();
     $regions = Region::lists('name', 'id');
-
     return view('cities.index', compact('cities', 'regions'));
   }
 
@@ -41,18 +35,21 @@ class CitiesController extends Controller
   */
   public function store(Request $request)
   {
-    //
-  }
+    $validator = Validator::make($request->all(), $this->rules());
 
-  /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function show($id)
-  {
-    //
+    if ($validator->fails()) {
+      flash('Validation Fail!', 'error');
+      return redirect('cities/' . $city->id . '/edit')
+        ->withErrors($validator)
+        ->withInput();
+    } else {
+      $city = new City;
+      $city->name = $request->name;
+      $city->region_id = $request->region_id;
+      $city->save();
+      flash('Create Sucessful!', 'sucess');
+      return redirect('cities');
+    }
   }
 
   /**
@@ -63,7 +60,10 @@ class CitiesController extends Controller
   */
   public function edit($id)
   {
-    //
+    $city = City::findOrFail($id);
+    $regions = Region::lists('name', 'id');
+
+    return view('cities.edit', compact('city', 'regions'));
   }
 
   /**
@@ -75,7 +75,21 @@ class CitiesController extends Controller
   */
   public function update(Request $request, $id)
   {
-    //
+    $city = City::findOrFail($id);
+
+    $validator = Validator::make($request->all(), $this->rules());
+    if ($validator->fails()) {
+      flash('Validation Fail!', 'error');
+      return redirect('cities/' . $city->id . '/edit')
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      $city->name = $request->name;
+      $city->region_id = $request->region_id;
+      $city->save();
+      flash('Update Sucessful!', 'sucess');
+      return redirect('cities');
+    }
   }
 
   /**
@@ -86,6 +100,15 @@ class CitiesController extends Controller
   */
   public function destroy($id)
   {
-    //
+    City::findOrFail($id)->delete();
+    return redirect('cities');
+  }
+
+  public function rules()
+  {
+    return [
+      'name' => 'string|required|max:255',
+      'region_id' => 'required|numeric',
+    ];
   }
 }

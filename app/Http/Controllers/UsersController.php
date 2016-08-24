@@ -2,28 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
 use App\User;
 use App\City;
 use App\Store;
 use App\State;
 use App\Region;
-use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
+
 
 class UsersController extends Controller
 {
-
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('admin');
-  }
 
     /**
      * Display a listing of the resource.

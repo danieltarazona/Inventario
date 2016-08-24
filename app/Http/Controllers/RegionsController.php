@@ -2,28 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 use App\Region;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
-
 class RegionsController extends Controller
 {
-
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('admin');
-  }
 
     /**
      * Display a listing of the resource.

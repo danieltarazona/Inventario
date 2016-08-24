@@ -2,25 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
 use App\Http\Requests;
+
+use App\Order;
 
 class OrdersController extends Controller
 {
-
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('auth');
-    $this->middleware('seller', ['only' => ['index', 'show', 'update']]);
-    $this->middleware('admin', ['except' => ['store', 'create']]);
-  }
 
   /**
   * Display a listing of the resource.

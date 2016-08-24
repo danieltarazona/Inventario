@@ -33,17 +33,17 @@ class CategoriesController extends Controller
   public function store(Request $request)
   {
     $validator = Validator::make($request->all(), $this->rules());
-
     if ($validator->fails()) {
       flash('Validation Fail!', 'error');
       return redirect('categories')
       ->withErrors($validator)
       ->withInput();
     } else {
-      Category::create($request->all());
+      $category = new Category;
+      $category->name = $request->name;
+      $category->save();
       flash('Create Sucessful!', 'sucess');
       return redirect('categories');
-
     }
   }
 
@@ -66,20 +66,21 @@ class CategoriesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, Category $category)
+  public function update(Request $request, $id)
   {
-    $validator = Validator::make($request->all(), $this->rules());
+    $category = Category::find($id);
 
+    $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
       flash('Validation Fail!', 'error');
-      return redirect('categories.edit', compact('category'))
-      ->withErrors($validator)
-      ->withInput();
+      return redirect('categories/' . $category->id . '/edit')
+        ->withErrors($validator)
+        ->withInput();
     } else {
-      Category::create($request->all());
+      $category->name = $request->name;
+      $category->save();
       flash('Update Complete!', 'sucess');
       return redirect('categories');
-
     }
   }
 

@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
+use App\Http\Requests;
+
 use App\Product;
 use App\City;
 use App\Store;
@@ -10,27 +15,12 @@ use App\Category;
 use App\Provider;
 use App\State;
 use App\Region;
-use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
+
+use Auth;
+
 
 class ProductsController extends Controller
 {
-
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('auth', ['only' => ['index', 'show']]);
-    $this->middleware('seller', ['only' => ['index', 'show', 'update']]);
-    $this->middleware('admin');
-  }
 
   /**
   * Display a listing of the resource.
@@ -75,12 +65,14 @@ public function store(Request $request)
   $validator = Validator::make($request->all(), $this->rules());
 
   if ($validator->fails()) {
-    return redirect('products/create')
+    flash('Create Sucessful!', 'sucess');
+    return redirect('products.create')
     ->withErrors($validator)
     ->withInput();
   } else {
     Product::create($request->all());
     return redirect('products');
+    flash('Create Sucessful!', 'sucess');
   }
 }
 
@@ -106,7 +98,6 @@ public function show($id)
 public function edit($id)
 {
   $product = Product::findOrFail($id);
-
   $categories = Category::lists('name', 'id');
   $providers = Provider::lists('name', 'id');
   $stores = Store::lists('name', 'id');
@@ -132,19 +123,18 @@ public function update(Request $request, $id)
   $product = Product::findOrFail($id);
   $product->name = $request->name;
   $product->serial = $request->serial;
+  $product->category_id = $request->category_id;
+  $product->provider_id = $request->provider_id;
 
   if (Auth::user()->rol_id > 5) {
     $product->warranty = $request->warranty;
     $product->stock = $request->stock;
     $product->year = $request->year;
     $product->price = $request->price;
-    $product->city_id = $request->city_id;
     $product->store_id = $request->store_id;
     $product->state_id = $request->state_id;
   }
 
-  $product->category_id = $request->category_id;
-  $product->provider_id = $request->provider_id;
   $product->save();
 
   return redirect('products');
@@ -159,8 +149,8 @@ public function update(Request $request, $id)
 public function destroy($id)
 {
   Product::findOrFail($id)->delete();
-
   return redirect('products');
+  flash('Create Sucessful!', 'sucess');
 }
 
 public function rules()

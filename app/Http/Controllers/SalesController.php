@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 
@@ -10,19 +12,6 @@ use App\Sale;
 
 class SalesController extends Controller
 {
-
-  /**
-  * Create a new controller instance.
-  *
-  * @return void
-  */
-
-  public function __construct()
-  {
-    $this->middleware('auth');
-    $this->middleware('seller', ['except' => ['destroy', 'edit']]);
-    $this->middleware('admin');
-  }
 
     /**
      * Display a listing of the resource.

@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Maintenance;
-use App\Product;
-use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
+use App\Http\Requests;
+
+use App\Maintenance;
+use App\Product;
+use Auth;
+
+
 class MaintenancesController extends Controller
 {
-
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-
-  public function __construct()
-  {
-    $this->middleware('admin');
-    $this->middleware('seller', ['except' => ['edit', 'destroy', 'update']]);
-  }
 
   /**
   * Display a listing of the resource.
@@ -61,6 +51,7 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
+      flash('Create Sucessful!', 'sucess');
       return redirect('maintenances/create')
       ->withErrors($validator)
       ->withInput();
@@ -73,8 +64,9 @@ class MaintenancesController extends Controller
 
       $maintenance->products()->sync($request->products_id);
 
-
       return redirect('maintenances');
+
+      flash('Create Sucessful!', 'sucess');
     }
   }
 
@@ -119,17 +111,18 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      return redirect('maintenances.edit', compact('maintenance'))
+      flash('Create Sucessful!', 'sucess');
+      return redirect('maintenances/' . $maintenance->id . '/edit')
       ->withErrors($validator)
       ->withInput();
     } else {
       $maintenance->name = $request->name;
       $maintenance->description = $request->description;
       $maintenance->save();
-
       $maintenance->products()->sync($request->products_id);
 
       return redirect('maintenances');
+      flash('Create Sucessful!', 'sucess');
     }
   }
 
@@ -137,6 +130,7 @@ class MaintenancesController extends Controller
   {
       Maintenance::findOrFail($id)->delete();
       return redirect('maintenances');
+      flash('Create Sucessful!', 'sucess');
   }
 
   public function rules()
