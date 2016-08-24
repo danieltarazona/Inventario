@@ -11,16 +11,6 @@ class Store extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function region()
-    {
-        return $this->belongsTo(Region::class);
-    }
-
-    public function region_id()
-    {
-        return $this->region->id;
-    }
-
     public function city()
     {
         return $this->belongsTo(City::class);

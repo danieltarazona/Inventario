@@ -8,10 +8,10 @@ class Region extends Model
 {
 
   protected $fillable = [
-    'name', 
+    'name',
   ];
 
-  public function cities()
+  public function city()
   {
     return $this->hasMany(City::class);
   }
@@ -21,9 +21,8 @@ class Region extends Model
     return $this->hasMany(Store::class);
   }
 
-  public function users()
+  public function name_id()
   {
-    return $this->hasMany(User::class);
+    return Region::lists('name', 'id');
   }
-
 }

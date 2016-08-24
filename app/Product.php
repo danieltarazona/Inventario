@@ -12,16 +12,6 @@ class Product extends Model
       'category_id', 'provider',
   ];
 
-  public function city()
-  {
-      return $this->belongsTo(City::class);
-  }
-
-  public function city_id()
-  {
-      return $this->city->id;
-  }
-
   public function provider()
   {
       return $this->belongsTo(Provider::class);
@@ -50,11 +40,6 @@ class Product extends Model
   public function store_id()
   {
       return $this->store->id;
-  }
-
-  public function seller()
-  {
-      return $this->belongsTo(Seller::class);
   }
 
   public function state()

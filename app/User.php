@@ -157,7 +157,7 @@ class User extends Authenticatable
       }
     }
 
-    public function isAdmin()
+    public function isStorer()
     {
       if ($this->rol_id() == 6)
       {
@@ -167,7 +167,7 @@ class User extends Authenticatable
       }
     }
 
-    public function isDev()
+    public function isAdmin()
     {
       if ($this->rol_id() == 7)
       {

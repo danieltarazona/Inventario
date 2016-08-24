@@ -14,4 +14,9 @@ class Provider extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function name_id()
+    {
+      return Provider::lists('name', 'id');
+    }
 }

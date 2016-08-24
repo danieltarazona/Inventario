@@ -25,4 +25,5 @@ class City extends Model
     {
         return $this->region->id;
     }
+
 }
