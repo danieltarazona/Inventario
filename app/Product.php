@@ -8,8 +8,7 @@ class Product extends Model
 {
   protected $fillable = [
       'name', 'stock', 'serial', 'year', 'price', 'warranty',
-      'region_id', 'city_id', 'store_id', 'state_id',
-      'category_id', 'provider',
+      'store_id', 'state_id', 'category_id', 'provider_id',
   ];
 
   public function provider()
@@ -44,12 +43,7 @@ class Product extends Model
 
   public function state()
   {
-      return $this->belongsTo(State::class);
-  }
-
-  public function state_id()
-  {
-      return $this->state->id;
+      return $this->belongsToMany(State::class)->withTimestamps();
   }
 
   public function sales()

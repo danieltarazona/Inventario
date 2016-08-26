@@ -11,12 +11,17 @@ class Region extends Model
     'name',
   ];
 
+  public function user()
+  {
+    return $this->hasMany(City::class);
+  }
+
   public function city()
   {
     return $this->hasMany(City::class);
   }
 
-  public function stores()
+  public function store()
   {
     return $this->hasMany(Store::class);
   }

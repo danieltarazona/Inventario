@@ -10,7 +10,7 @@ class Provider extends Model
       'name', 'telephone', 'adress',
   ];
 
-    public function products()
+    public function product()
     {
         return $this->hasMany(Product::class);
     }

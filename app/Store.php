@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    public function products()
+    public function product()
     {
         return $this->hasMany(Product::class);
     }
@@ -21,7 +21,7 @@ class Store extends Model
         return $this->city->id;
     }
 
-    public function users()
+    public function user()
     {
         return $this->hasMany(User::class);
     }

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
-  public function users()
+  public function user()
   {
       return $this->hasMany(User::class);
   }
 
-  public function users_id()
+  public function user_id()
   {
       return $this->users->list('id');
   }

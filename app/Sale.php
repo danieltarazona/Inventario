@@ -6,14 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function order_id()
+    {
+        return $this->order->id;
+    }
+
+    public function state()
+    {
+        return $this->hasOne(State::class);
+    }
+
+    public function state_id()
+    {
+        return $this->state->id;
     }
 
 }

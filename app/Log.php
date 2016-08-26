@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Log extends Model
 {
-    public function dashboard()
+    public function user()
     {
-        return $this->belongsTo(Dashboard::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function user_id()
+    {
+        return $this->user->id;
     }
 }

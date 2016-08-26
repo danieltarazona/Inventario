@@ -72,22 +72,27 @@ class User extends Authenticatable
         return $this->region->id;
     }
 
-    public function sales()
+    public function sale()
     {
         return $this->hasMany(Sale::class);
     }
 
-    public function orders()
+    public function order()
     {
         return $this->hasMany(Order::class);
     }
 
-    public function comments()
+    public function comment()
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function issues()
+    public function comment_id()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
+    public function issue()
     {
         return $this->hasMany(Issue::class);
     }
@@ -95,6 +100,11 @@ class User extends Authenticatable
     public function maintenances()
     {
         return $this->hasMany(Maintenance::class);
+    }
+
+    public function log()
+    {
+        return $this->belongsTo(Log::class);
     }
 
     public function rol()

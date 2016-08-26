@@ -20,12 +20,12 @@ class Maintenance extends Model
         return $this->products->lists('id');
     }
 
-    public function seller()
+    public function storer()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function seller_id()
+    public function storer_id()
     {
         return $this->seller->id;
     }
