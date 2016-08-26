@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /*
-class CitiesControllerTest extends TestCase
+class ControllerCitiesTest extends TestCase
 {
   use DatabaseTransactions;
 
