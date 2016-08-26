@@ -13,6 +13,14 @@ use Faker\Generator;
 |
 */
 
+$faker = Faker\Factory::create('es_ES');
+
+$factory->define(App\Rol::class, function (Generator $faker) {
+  return [
+    'name' => $faker->name,
+  ];
+});
+
 $factory->define(App\Log::class, function (Generator $faker) {
   return [
     'name' => $faker->bs,
@@ -41,6 +49,12 @@ $factory->define(App\State::class, function (Generator $faker) {
   ];
 });
 
+$factory->define(App\Country::class, function (Generator $faker) {
+  return [
+    'name' => $faker->country,
+  ];
+});
+
 $factory->define(App\Region::class, function (Generator $faker) {
   return [
     'name' => $faker->state,
@@ -50,13 +64,11 @@ $factory->define(App\Region::class, function (Generator $faker) {
 $factory->define(App\City::class, function (Generator $faker) {
   return [
     'name' => $faker->city,
-    'region_id' => $faker->numberBetween($min = 1, $max = 3),
   ];
 });
 
 $factory->define(App\Store::class, function (Generator $faker) {
   return [
-    'city_id' => $faker->numberBetween($min = 1, $max = 3),
     'name' => $faker->name,
     'description' => $faker->text,
     'telephone' => $faker->phoneNumber,
@@ -71,14 +83,10 @@ $factory->define(App\Product::class, function (Generator $faker) {
     'warranty' => $faker->numberBetween($min = 1, $max = 60),
     'price' => $faker->numberBetween($min = 100000, $max = 5000000),
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-    'stock' => $faker->numberBetween($min = 1, $max = 50),
+    'stock' => 10,
+    'amount' => 10,
     'year' => $faker->numberBetween($min = 2010, $max = 2016),
     'serial' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]'),
-    'category_id' => $faker->numberBetween($min = 1, $max = 3),
-    'store_id' => $faker->numberBetween($min = 1, $max = 3),
-    'provider_id' => $faker->numberBetween($min = 1, $max = 3),
-    'state_id' => $faker->numberBetween($min = 1, $max = 3),
-    'maintenance_id' => $faker->numberBetween($min = 1, $max = 3),
   ];
 });
 
@@ -86,18 +94,12 @@ $factory->define(App\Maintenance::class, function (Generator $faker) {
   return [
     'name' => $faker->catchPhrase,
     'description' => $faker->text,
-    'user_id' => $faker->numberBetween($min = 1, $max = 3),
   ];
 });
 
 $factory->define(App\User::class, function (Generator $faker) {
   return [
-    'state_id' => $faker->numberBetween($min = 1, $max = 3),
-    'region_id' => $faker->numberBetween($min = 1, $max = 3),
-    'city_id' => $faker->numberBetween($min = 1, $max = 3),
-    'store_id' => $faker->numberBetween($min = 1, $max = 3),
-    'rol_id' => $faker->numberBetween($min = 1, $max = 1),
-    'dni' => $faker->numberBetween($min = 10, $max = 100000000),
+    'dni' => $faker->randomDigit,
     'username' => $faker->unique()->userName,
     'email' => $faker->safeEmail,
     'first_name' => $faker->name,
@@ -116,28 +118,21 @@ $factory->define(App\User::class, function (Generator $faker) {
 $factory->define(App\Comment::class, function (Generator $faker) {
   return [
     'name' => $faker->text,
-    'user_id' => $faker->numberBetween($min = 1, $max = 3),
   ];
 });
 
 $factory->define(App\Issue::class, function (Generator $faker) {
   return [
     'name' => $faker->bs,
-    'user_id' => $faker->numberBetween($min = 1, $max = 3),
-  ];
-});
-
-$factory->define(App\Sale::class, function (Generator $faker) {
-  return [
-    'user_id' => $faker->numberBetween($min = 1, $max = 3),
-    'order_id' => $faker->numberBetween($min = 1, $max = 3),
-    'state_id' => $faker->numberBetween($min = 1, $max = 3),
   ];
 });
 
 $factory->define(App\Order::class, function (Generator $faker) {
   return [
-    'state_id' => $faker->numberBetween($min = 1, $max = 3),
-    'user_id' => $faker->numberBetween($min = 1, $max = 3),
+  ];
+});
+
+$factory->define(App\Sale::class, function (Generator $faker) {
+  return [
   ];
 });
