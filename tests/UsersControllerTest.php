@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /*
-class UsersTest extends TestCase
+class UsersControllerTest extends TestCase
 {
   use DatabaseTransactions;
 
@@ -40,6 +40,5 @@ class UsersTest extends TestCase
     $response = $this->action('DELETE', 'UsersController@destroy', ['user' => 1]);
     $this->assertEquals(302, $response->status());
   }
-
 
 }

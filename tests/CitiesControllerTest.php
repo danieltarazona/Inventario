@@ -4,7 +4,8 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class CitiesTest extends TestCase
+/*
+class CitiesControllerTest extends TestCase
 {
   use DatabaseTransactions;
 
@@ -33,13 +34,13 @@ class CitiesTest extends TestCase
 
   public function testCitiesEditController()
   {
-    $response = $this->action('GET', 'CitiesController@edit', ['city' => 5]);
+    $response = $this->action('GET', 'CitiesController@edit', ['city' => 1]);
     $this->assertResponseOk();
   }
 
   public function testCitiesDestroyController()
   {
-    $response = $this->action('DELETE', 'CitiesController@destroy', ['city' => 5]);
+    $response = $this->action('DELETE', 'CitiesController@destroy', ['city' => 1]);
     $this->assertEquals(302, $response->status());
   }
 

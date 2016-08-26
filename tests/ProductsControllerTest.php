@@ -6,22 +6,20 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Auth;
 
 /*
-class ProductsTest extends TestCase
+class ProductsControllerTest extends TestCase
 {
   use DatabaseTransactions;
 
   public function testProductsIndexController()
   {
-    $auth = Auth::user();
-    $this->be($auth);
     $response = $this->action('GET', 'ProductsController@index');
     $this->assertEquals(200, $response->status());
   }
 
   public function testProductsUpdateController()
   {
-    $response = $this->action('PUT', 'ProductsController@update', ['product' => 1, 'name' => 'iMac']);
-    $this->assertEquals(200, $response->status());
+    $response = $this->action('PATCH', 'ProductsController@update', ['product' => 1, 'name' => 'iMac']);
+    $this->assertEquals(302, $response->status());
   }
 
   public function testProductsShowController()
@@ -32,18 +30,13 @@ class ProductsTest extends TestCase
 
   public function testProductsEditController()
   {
-    $admin = App\User::find(3);
-    $this->be($admin);
-
     $response = $this->action('GET', 'ProductsController@edit', ['product' => 1]);
-
     $this->assertEquals(200, $response->status());
   }
 
   public function testProductsDestroyController()
   {
-    $product = App\Product::find(1);
-    $response = $this->action('DELETE', 'ProductsController@destroy', $product->id);
+    $response = $this->action('DELETE', 'ProductsController@destroy', ['product' => 1]);
     $this->assertEquals(302, $response->status());
   }
 }
