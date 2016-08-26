@@ -10,14 +10,14 @@ class Maintenance extends Model
         'name', 'description',
     ];
 
-    public function products()
+    public function product()
     {
         return $this->belongsToMany(Product::class);
     }
 
-    public function products_id()
+    public function product_id()
     {
-        return $this->products->lists('id');
+        return $this->product->lists('id');
     }
 
     public function storer()
@@ -27,7 +27,7 @@ class Maintenance extends Model
 
     public function storer_id()
     {
-        return $this->seller->id;
+        return $this->storer->id;
     }
 
 }

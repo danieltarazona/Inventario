@@ -46,12 +46,7 @@ class Product extends Model
       return $this->belongsToMany(State::class)->withTimestamps();
   }
 
-  public function sales()
-  {
-      return $this->belongsToMany(Sale::class)->withTimestamps();
-  }
-
-  public function orders()
+  public function order()
   {
       return $this->belongsToMany(Order::class)->withTimestamps();
   }

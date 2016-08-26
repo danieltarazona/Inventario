@@ -44,13 +44,34 @@ class ModelProductTest extends TestCase
 
   public function testProductState()
   {
-    $product = App\Product::find(1);
+    $products = factory(App\Product::class, 10)->create();
     $state = App\State::find(1);
-    $state->product()->save($product);
+    $state->product()->sync($products);
     $this->seeInDatabase('product_state',
     [
-      'product_id' => $product->id,
       'state_id' => $state->id
+    ]);
+  }
+
+  public function testProductOrder()
+  {
+    $products = factory(App\Product::class, 10)->create();
+    $order = App\Order::find(1);
+    $order->product()->sync($products);
+    $this->seeInDatabase('order_product',
+    [
+      'order_id' => $order->id,
+    ]);
+  }
+
+  public function testProductMaintenance()
+  {
+    $products = factory(App\Product::class, 10)->create();
+    $maintenance = App\Maintenance::find(1);
+    $maintenance->product()->sync($products);
+    $this->seeInDatabase('maintenance_product',
+    [
+      'maintenance_id' => $maintenance->id,
     ]);
   }
 }
