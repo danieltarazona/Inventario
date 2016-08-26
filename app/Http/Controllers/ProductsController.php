@@ -30,7 +30,6 @@ class ProductsController extends Controller
   public function index()
   {
     $products = Product::all();
-
     return view('products.index', compact('products'));
   }
 
@@ -65,14 +64,27 @@ public function store(Request $request)
   $validator = Validator::make($request->all(), $this->rules());
 
   if ($validator->fails()) {
-    flash('Create Sucessful!', 'sucess');
+    flash('Create Successful!', 'success');
     return redirect('products.create')
     ->withErrors($validator)
     ->withInput();
   } else {
-    Product::create($request->all());
+    $product = new App\Product;
+    $product->name = $request->name;
+    $product->serial = $request->serial;
+    $product->warranty = $request->warranty;
+    $product->stock = $request->stock;
+    $product->amount = $product->stock;
+    $product->year = $request->year;
+    $product->price = $request->price;
+    $product->category_id = $request->category_id;
+    $product->maintenance_id = $request->maintenance_id;
+    $product->provider_id = $request->provider_id;
+    $product->store_id = $request->store_id;
+    $product->state_id = $request->state_id;
+    $product->save();
+    flash('Update Complete!', 'success');
     return redirect('products');
-    flash('Create Sucessful!', 'sucess');
   }
 }
 
@@ -85,7 +97,6 @@ public function store(Request $request)
 public function show($id)
 {
   $product = Product::findOrFail($id);
-
   return view('products.show', compact('product'));
 }
 
@@ -120,24 +131,30 @@ public function edit($id)
 */
 public function update(Request $request, $id)
 {
-  $product = Product::findOrFail($id);
-  $product->name = $request->name;
-  $product->serial = $request->serial;
-  $product->category_id = $request->category_id;
-  $product->provider_id = $request->provider_id;
+  $product = Product::find($id);
 
-  if (Auth::user()->rol_id > 5) {
+  $validator = Validator::make($request->all(), $this->rules());
+  if ($validator->fails()) {
+    flash('Validation Fail!', 'error');
+    return redirect('products/' . $product->id . '/edit')
+      ->withErrors($validator)
+      ->withInput();
+  } else {
+    $product->name = $request->name;
+    $product->serial = $request->serial;
     $product->warranty = $request->warranty;
     $product->stock = $request->stock;
     $product->year = $request->year;
     $product->price = $request->price;
+    $product->category_id = $request->category_id;
+    $product->maintenance_id = $request->maintenance_id;
+    $product->provider_id = $request->provider_id;
     $product->store_id = $request->store_id;
     $product->state_id = $request->state_id;
+    $product->save();
+    flash('Update Complete!', 'success');
+    return redirect('products');
   }
-
-  $product->save();
-
-  return redirect('products');
 }
 
 /**
@@ -150,7 +167,7 @@ public function destroy($id)
 {
   Product::findOrFail($id)->delete();
   return redirect('products');
-  flash('Create Sucessful!', 'sucess');
+  flash('Delete Successful!', 'success');
 }
 
 public function rules()
@@ -159,9 +176,14 @@ public function rules()
     'name'    => 'required|max:255|unique:products',
     'stock'   => 'required|numeric',
     'serial'  => 'required|max:255|unique:products',
-    'year'    => 'required|numeric',
-    'price'   => 'required|numeric',
-    'warranty'=> 'required|numeric',
+    'year'    => 'numeric',
+    'price'   => 'numeric',
+    'warranty'=> 'numeric',
+    'category_id' => 'required|numeric',
+    'provider_id' => 'required|numeric',
+    'maintenance_id' => 'required|numeric',
+    'store_id' => 'required|numeric',
+    'state_id' => 'required|numeric',
   ];
 }
 

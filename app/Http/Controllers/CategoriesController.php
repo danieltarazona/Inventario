@@ -42,7 +42,7 @@ class CategoriesController extends Controller
       $category = new Category;
       $category->name = $request->name;
       $category->save();
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
       return redirect('categories');
     }
   }
@@ -68,7 +68,7 @@ class CategoriesController extends Controller
   */
   public function update(Request $request, $id)
   {
-    $category = Category::find($id);
+    $category = Category::findOrFail($id);
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
@@ -79,7 +79,7 @@ class CategoriesController extends Controller
     } else {
       $category->name = $request->name;
       $category->save();
-      flash('Update Complete!', 'sucess');
+      flash('Update Complete!', 'success');
       return redirect('categories');
     }
   }
@@ -93,7 +93,7 @@ class CategoriesController extends Controller
   public function destroy($id)
   {
     Category::findOrFail($id)->delete();
-    flash('Delete Complete!', 'sucess');
+    flash('Delete Complete!', 'success');
     return redirect('categories');
   }
 

@@ -24,7 +24,6 @@ class MaintenancesController extends Controller
   public function index()
   {
     $maintenances = Maintenance::all();
-
     return view('maintenances.index', compact('maintenances'));
   }
 
@@ -51,7 +50,7 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
       return redirect('maintenances/create')
       ->withErrors($validator)
       ->withInput();
@@ -59,14 +58,14 @@ class MaintenancesController extends Controller
       $maintenance = new Maintenance;
       $maintenance->name = $request->name;
       $maintenance->description = $request->description;
-      $maintenance->seller_id = Auth::user()->id;
+      $maintenance->user_id = Auth::user()->id;
       $maintenance->save();
 
       $maintenance->products()->sync($request->products_id);
 
       return redirect('maintenances');
 
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
     }
   }
 
@@ -111,7 +110,7 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
       return redirect('maintenances/' . $maintenance->id . '/edit')
       ->withErrors($validator)
       ->withInput();
@@ -122,7 +121,7 @@ class MaintenancesController extends Controller
       $maintenance->products()->sync($request->products_id);
 
       return redirect('maintenances');
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
     }
   }
 
@@ -130,7 +129,7 @@ class MaintenancesController extends Controller
   {
       Maintenance::findOrFail($id)->delete();
       return redirect('maintenances');
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
   }
 
   public function rules()

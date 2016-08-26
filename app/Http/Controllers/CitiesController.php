@@ -47,7 +47,7 @@ class CitiesController extends Controller
       $city->name = $request->name;
       $city->region_id = $request->region_id;
       $city->save();
-      flash('Create Sucessful!', 'sucess');
+      flash('Create Successful!', 'success');
       return redirect('cities');
     }
   }
@@ -87,7 +87,7 @@ class CitiesController extends Controller
       $city->name = $request->name;
       $city->region_id = $request->region_id;
       $city->save();
-      flash('Update Sucessful!', 'sucess');
+      flash('Update Successful!', 'success');
       return redirect('cities');
     }
   }
