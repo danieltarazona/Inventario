@@ -17,9 +17,7 @@ class UsersControllerTest extends TestCase
 
   public function testUsersUpdateController()
   {
-    $user = App\User::find(1);
-    $user->name = "XYZ";
-    $response = $this->action('PUT', 'UsersController@update', $user);
+    $response = $this->action('PATCH', 'UsersController@update', ['user' => 1, 'name' => 'Admin']);
     $this->assertEquals(302, $response->status());
   }
 

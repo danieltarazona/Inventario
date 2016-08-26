@@ -17,17 +17,16 @@ class CitiesControllerTest extends TestCase
 
   public function testCitiesStoreController()
   {
-    $city = factory(\App\City::class)->create(['name' => 'Paris']);
-    $response = $this->action('POST', 'CitiesController@store', $city->jsonSerialize());
-    $this->seeInDatabase('cities', ['name' => $city->name]);
-    $this->assertEquals(302, $response->status());
   }
 
   public function testCitiesUpdateController()
   {
     $city = App\City::find(1);
-    $city->name = "New York";
-    $response = $this->action('PATCH', 'CitiesController@update', ['cities' => $city->id], $city->jsonSerialize());
+    $city->name = "Paris";
+    $response = $this->action('PATCH', 'CitiesController@update',
+      ['cities' => $city->id],
+      $city->jsonSerialize()
+    );
     $this->seeInDatabase('cities', ['name' => $city->name]);
     $this->assertEquals(302, $response->status());
   }
@@ -57,7 +56,7 @@ class CitiesControllerTest extends TestCase
   {
     $this->visit('/cities')
       ->type('Boston', 'name')
-      ->select('3', 'region_id')
+      ->select('1', 'region_id')
       ->press('')
       ->seePageIs('/cities');
   }
@@ -66,7 +65,7 @@ class CitiesControllerTest extends TestCase
   {
     $this->visit('/cities/1/edit')
       ->type('Seatle', 'name')
-      ->select('2', 'region_id')
+      ->select('1', 'region_id')
       ->press('')
       ->seePageIs('/cities');
   }

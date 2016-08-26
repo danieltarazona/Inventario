@@ -47,9 +47,9 @@ class ModelProductTest extends TestCase
     $product = App\Product::find(1);
     $state = App\State::find(1);
     $state->product()->save($product);
-    $this->seeInDatabase('products',
+    $this->seeInDatabase('product_state',
     [
-      'id' => $product->id,
+      'product_id' => $product->id,
       'state_id' => $state->id
     ]);
   }

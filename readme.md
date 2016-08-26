@@ -22,11 +22,6 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Testing Controllers
-- Testing BDD Views
-- Testing Models
-- Istanbul Coverage
-- Jenkins
 - Products Filter by Most Visit
 - Products Filter by Most Recently
 - Products Filter by Category
@@ -56,9 +51,11 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Profile
   - Log Cart
   - Type (Supplier, User)
+- Istanbul Coverage
+- Jenkins
 - Middleware
-- Carbon
 - Intervention
+- Carbon
 - Laravel Cashier
   - Braintree
   - Stripe

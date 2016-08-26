@@ -32,8 +32,11 @@ class MaintenancesControllerTest extends TestCase
   public function testMaintenancesUpdateController()
   {
     $maintenance = App\Maintenance::find(1);
-    $maintenance->name = "Install Windows";
-    $response = $this->action('PATCH', 'MaintenancesController@update', ['maintenances' => $maintenance->id], $maintenance->jsonSerialize());
+    $maintenance->name = "Install OSX";
+    $response = $this->action('PATCH', 'MaintenancesController@update',
+      ['maintenances' => $maintenance->id],
+      $maintenance->jsonSerialize()
+    );
     $this->seeInDatabase('maintenances', ['name' => $maintenance->name]);
     $this->assertEquals(302, $response->status());
   }
