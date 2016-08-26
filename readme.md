@@ -6,12 +6,27 @@ Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Invento
 
 Documentation for the framework can be found on the [Inventar.io Website](http://inventar.io/docs).
 
+## Palette of Colors
+
+#27c97b
+#fc7323
+#238276
+#59b548
+
+- Success Color
+#5cc512
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
 ## To Do
 
+- Testing Controllers
+- Testing BDD Views
+- Testing Models
+- Istanbul Coverage
+- Jenkins
 - Products Filter by Most Visit
 - Products Filter by Most Recently
 - Products Filter by Category
@@ -23,16 +38,45 @@ Thank you for considering contributing to the Laravel framework! The contributio
   - Cancel and Accept
 - Confirm Box
 - Orders
+  - Search
+  - Orders to Invoice
+  - Orders to Ship
+  - Export Import CSV
+  - Ship Type
+  - Print
+- Sales
+  - Point of Sales
 - Dashboard
+  - Most Cart
+  - Less Cart
+  - Charts
   - Logged Users
   - Products Sales
   - Products Order
+- Profile
+  - Log Cart
+  - Type (Supplier, User)
 - Middleware
 - Carbon
 - Intervention
 - Laravel Cashier
   - Braintree
   - Stripe
+- Tracking Shipping
+  - 4/72 Account
+- Social
+  - Intagram & EBay & Amazon
+- iPhone App
+  - Scan Code
+  - Request AR Load
+    - InBox
+    - OutBox
+  - Augment Reality
+  - View Type
+  - Modify
+  - Cart
+  - CSV Load
+  - Shipping Labels
 
 ## Security Vulnerabilities
 

@@ -11,7 +11,8 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Seller</th>
+        <th>Storer</th>
+        <th>State</th>
         <th>Description</th>
         <th>Date</th>
         <th>Products</th>
@@ -25,7 +26,8 @@
       <tr>
         <td>{{ $maintenance->id }}</td>
         <td>{{ $maintenance->name }}</td>
-        <td>{{ $maintenance->seller_id or 'Blank' }}</td>
+        <td>{{ $maintenance->user_id or 'Blank' }}</td>
+        <td>{{ $maintenance->state_id or 'Blank' }}</td>
         <td>{{ $maintenance->description or 'Blank' }}</td>
         <td>{{ $maintenance->created_at or 'Blank' }}</td>
         <td>
