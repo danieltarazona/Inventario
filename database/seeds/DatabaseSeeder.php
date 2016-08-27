@@ -7,7 +7,7 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
     factory(App\User::class)->create([
-      'username' => 'Administrador',
+      'username' => 'Administrator',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
     ]);
@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
     factory(App\Store::class)->create(['name' => 'Shibuya']);
     factory(App\Product::class)->create(['name' => 'MacBook']);
     factory(App\Maintenance::class)->create(['name' => 'OSX']);
-    factory(App\Rol::class)->create(['id' => 1, 'name' => 'User']);
-    factory(App\Rol::class)->create(['id' => 2, 'name' => 'Storer']);
-    factory(App\Rol::class)->create(['id' => 3, 'name' => 'Admin']);
+    factory(App\Rol::class)->create(['name' => 'User']);
+    factory(App\Rol::class)->create(['name' => 'Storer']);
+    factory(App\Rol::class)->create(['name' => 'Admin']);
     factory(App\Order::class)->create();
     factory(App\Sale::class)->create();
   }
