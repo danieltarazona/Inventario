@@ -39,3 +39,5 @@ class ControllerProductsTest extends TestCase
     $this->assertEquals(302, $response->status());
   }
 }
+
+*/

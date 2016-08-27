@@ -43,37 +43,5 @@ class ControllerCitiesTest extends TestCase
     $this->assertEquals(302, $response->status());
   }
 
-  public function testCitiesIndexBehavior()
-  {
-    $this->visit('/cities')
-      ->see('Cities')
-      ->see('Name')
-      ->see('ID')
-      ->see('Actions');
-  }
 
-  public function testCitiesCreateBehavior()
-  {
-    $this->visit('/cities')
-      ->type('Boston', 'name')
-      ->select('1', 'region_id')
-      ->press('')
-      ->seePageIs('/cities');
-  }
-
-  public function testCitiesEditBehavior()
-  {
-    $this->visit('/cities/1/edit')
-      ->type('Seatle', 'name')
-      ->select('1', 'region_id')
-      ->press('')
-      ->seePageIs('/cities');
-  }
-
-  public function testCitiesDestroyBehavior()
-  {
-    $this->visit('/cities')
-      ->press('Delete')
-      ->seePageIs('/cities');
-  }
 }

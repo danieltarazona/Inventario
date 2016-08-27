@@ -10,10 +10,9 @@ class ModelCategoryTest extends TestCase
 
   public function testModelCategoryHasManyProduct()
   {
-    $Collection = 'Illuminate\Database\Eloquent\Collection';
-    $category = factory(App\Category::class)->create();
     factory(App\Product::class, 10)->create()->each(function($product)
     {
+      $category = App\Category::find(1);
       $category->product()->save($product);
       $this->seeInDatabase('products',
       [
@@ -21,6 +20,9 @@ class ModelCategoryTest extends TestCase
         'category_id' => $category->id
       ]);
     });
+
+    $Collection = 'Illuminate\Database\Eloquent\Collection';
+    $category = App\Category::find(1);
     $this->assertInstanceOf($Collection, $category->product);
     foreach($category->product as $product) {
       $this->assertEquals($category->id, $product->category_id);

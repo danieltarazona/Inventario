@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ControllerIssuesTest extends TestCase
 {
     use DatabaseTransactions;
-    
+
     public function testExample()
     {
         $this->assertTrue(true);

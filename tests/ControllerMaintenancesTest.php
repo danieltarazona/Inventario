@@ -59,3 +59,4 @@ class ControllerMaintenancesTest extends TestCase
     $this->assertEquals(302, $response->status());
   }
 }
+*/

@@ -14,7 +14,6 @@ class SeederTest extends TestCase
     $this->seeInDatabase('rols', ['name' => 'User']);
     $this->seeInDatabase('rols', ['name' => 'Storer']);
     $this->seeInDatabase('rols', ['name' => 'Admin']);
-    $this->seeInDatabase('users', ['username' => 'Administrador']);
     $this->seeInDatabase('comments', ['name' => 'Awesome']);
     $this->seeInDatabase('categories', ['name' => 'Notebook']);
     $this->seeInDatabase('states', ['name' => 'Active']);
@@ -26,7 +25,7 @@ class SeederTest extends TestCase
     $this->seeInDatabase('maintenances', ['name' => 'OSX']);
     $this->seeInDatabase('products', ['name' => 'MacBook']);
     $this->seeInDatabase('providers', ['name' => 'Apple']);
-    $this->seeInDatabase('order', ['id' => 1]);
-    $this->seeInDatabase('sale', ['id' => 1]);
+    $this->seeInDatabase('orders', ['id' => 1]);
+    $this->seeInDatabase('sales', ['id' => 1]);
   }
 }

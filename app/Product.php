@@ -53,7 +53,7 @@ class Product extends Model
 
   public function maintenances()
   {
-      return $this->belongsToMany(Maintenance::class);
+      return $this->belongsToMany(Maintenance::class)->withTimestamps();
   }
 
   public function maintenance_id()

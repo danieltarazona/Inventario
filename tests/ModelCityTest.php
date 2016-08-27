@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ModelCityTest extends TestCase
 {
   use DatabaseTransactions;
-  
+
     public function testModelCityHasManyStore()
     {
       $Collection = 'Illuminate\Database\Eloquent\Collection';
@@ -31,19 +31,6 @@ class ModelCityTest extends TestCase
     public function testModelCityBelongsToRegion()
     {
       $city = App\City::find(1);
-      $region = App\Region::find(1);
-      $region->city()->save($city);
-      $this->seeInDatabase('cities',
-      [
-        'name' => $city->name,
-        'region_id' => $region->id
-      ]);
-    }
-
-    public function testModelCityGetRegionId()
-    {
-      $city = App\City::find(1);
-      $region = App\Region::find(1);
-      $this->assertEquals($city->region_id, $city->region->id);
+      $this->assertInstanceOf(App\Region::class, $city->region);
     }
 }

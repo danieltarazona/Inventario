@@ -7,13 +7,16 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ModelRolTest extends TestCase
 {
   use DatabaseTransactions;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
+
+  public function testModelRolBelongsToUser()
+  {
+    $user = App\User::find(1);
+    $rol = App\Rol::find(1);
+    $rol->user()->save($user);
+    $this->seeInDatabase('users',
+    [
+      'username' => $user->username,
+      'rol_id' => $rol->id
+    ]);
+  }
 }
