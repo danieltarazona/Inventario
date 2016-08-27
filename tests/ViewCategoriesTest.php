@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ViewCategoriesTest extends TestCase
 {
+  use DatabaseTransactions;
+
   public function testViewCategoriesIndexBehavior()
   {
     $this->visit('/categories')

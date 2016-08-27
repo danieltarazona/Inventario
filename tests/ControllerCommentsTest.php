@@ -6,11 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ControllerCommentsTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+    use DatabaseTransactions;
+    
     public function testExample()
     {
         $this->assertTrue(true);
