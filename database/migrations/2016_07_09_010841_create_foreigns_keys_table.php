@@ -13,10 +13,6 @@ class CreateForeignsKeysTable extends Migration
     Schema::table('users', function ($table) {
       $table->foreign('state_id')->references('id')->on('states')
         ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('region_id')->references('id')->on('regions')
-        ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('city_id')->references('id')->on('cities')
-        ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('store_id')->references('id')->on('stores')
         ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('rol_id')->references('id')->on('rols')
