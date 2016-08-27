@@ -39,7 +39,7 @@ $factory->define(App\Provider::class, function (Generator $faker) {
 $factory->define(App\Category::class, function (Generator $faker) {
   return [
     'name' => $faker->word,
-    'url' => "http://fakeimg.pl/600/",
+    'url' => $faker->imageUrl($width = 400, $height = 400),
   ];
 });
 
@@ -79,7 +79,7 @@ $factory->define(App\Store::class, function (Generator $faker) {
 $factory->define(App\Product::class, function (Generator $faker) {
   return [
     'name' => $faker->name,
-    'url' => "http://fakeimg.pl/600/",
+    'url' => $faker->imageUrl($width = 400, $height = 400),
     'warranty' => $faker->numberBetween($min = 1, $max = 60),
     'price' => $faker->numberBetween($min = 100000, $max = 5000000),
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -110,7 +110,7 @@ $factory->define(App\User::class, function (Generator $faker) {
     'telephone' => $faker->phoneNumber,
     'cellphone' => $faker->phoneNumber,
     'password' => bcrypt(str_random(10)),
-    'url' => "http://fakeimg.pl/600/",
+    'url' => $faker->imageUrl($width = 400, $height = 400),
     'remember_token' => str_random(10),
   ];
 });

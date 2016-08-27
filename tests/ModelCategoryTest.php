@@ -11,8 +11,8 @@ class ModelCategoryTest extends TestCase
   public function testModelCategoryHasManyProduct()
   {
     $Collection = 'Illuminate\Database\Eloquent\Collection';
-    $category = factory(App\Category::class)->create();
-    $product = factory(App\Product::class)->create();
+    $category = App\Category::find(1);
+    $product = factory(App\Product::class, 10)->create();
     $category->product()->save($product);
     $this->seeInDatabase('products',
     [
