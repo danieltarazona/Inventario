@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ModelDashboardTest extends TestCase
 {
+  use DatabaseTransactions;
+  
     /**
      * A basic test example.
      *

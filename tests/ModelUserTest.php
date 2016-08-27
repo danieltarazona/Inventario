@@ -6,7 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ModelUserTest extends TestCase
 {
-  public function testUserRol()
+  use DatabaseTransactions;
+
+  public function testModelUserRol()
   {
     $user = App\User::find(1);
     $rol = App\Rol::find(1);
@@ -18,7 +20,7 @@ class ModelUserTest extends TestCase
     ]);
   }
 
-  public function testUserCity()
+  public function testModelUserCity()
   {
     $user = App\User::find(1);
     $city = App\City::find(1);
@@ -30,7 +32,7 @@ class ModelUserTest extends TestCase
     ]);
   }
 
-  public function testUserState()
+  public function testModelUserState()
   {
     $user = App\User::find(1);
     $state = App\State::find(1);
@@ -42,7 +44,7 @@ class ModelUserTest extends TestCase
     ]);
   }
 
-  public function testUserRegion()
+  public function testModelUserRegion()
   {
     $user = App\User::find(1);
     $region = App\Region::find(1);
@@ -54,7 +56,7 @@ class ModelUserTest extends TestCase
     ]);
   }
 
-  public function testUserStore()
+  public function testModelUserStore()
   {
     $user = App\User::find(1);
     $store = App\Store::find(1);

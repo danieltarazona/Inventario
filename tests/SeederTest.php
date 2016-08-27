@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SeederTest extends TestCase
 {
-
   use DatabaseTransactions;
 
   public function testSeederRols()

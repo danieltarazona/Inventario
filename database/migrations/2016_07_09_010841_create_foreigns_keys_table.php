@@ -33,6 +33,8 @@ class CreateForeignsKeysTable extends Migration
     Schema::table('comments', function ($table) {
       $table->foreign('user_id')->references('id')->on('users')
         ->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('issue_id')->references('id')->on('issues')
+        ->onDelete('cascade')->onUpdate('cascade');
     });
     Schema::table('issues', function ($table) {
       $table->foreign('user_id')->references('id')->on('users')

@@ -20,6 +20,7 @@ class ControllerCategoriesTest extends TestCase
     $category = factory(\App\Category::class)->create(['name' => 'Tablets']);
     $response = $this->action('POST', 'CategoriesController@store', $category->jsonSerialize());
     $this->seeInDatabase('categories', ['name' => $category->name]);
+    $this->assertSessionHas('flash', 'success');
     $this->assertEquals(302, $response->status());
   }
 
@@ -42,37 +43,5 @@ class ControllerCategoriesTest extends TestCase
   {
     $response = $this->action('DELETE', 'CategoriesController@destroy', ['category' => 1]);
     $this->assertEquals(302, $response->status());
-  }
-
-  public function testCategoriesIndexBehavior()
-  {
-    $this->visit('/categories')
-      ->see('Categories')
-      ->see('Name')
-      ->see('ID')
-      ->see('Actions');
-  }
-
-  public function testCategoriesCreateBehavior()
-  {
-    $this->visit('/categories')
-      ->type('Hello', 'name')
-      ->press('')
-      ->seePageIs('/categories');
-  }
-
-  public function testCategoriesEditBehavior()
-  {
-    $this->visit('/categories/1/edit')
-      ->type('Desktop', 'name')
-      ->press('')
-      ->seePageIs('/categories');
-  }
-
-  public function testCategoriesDestroyBehavior()
-  {
-    $this->visit('/categories')
-      ->press('Delete')
-      ->seePageIs('/categories');
   }
 }

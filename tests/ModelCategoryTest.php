@@ -6,14 +6,22 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ModelCategoryTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testCategoryProduct()
-    {
-      $category = App\Category::find(1);
-      dd($category->product);
+  use DatabaseTransactions;
+
+  public function testModelCategoryHasManyProduct()
+  {
+    $Collection = 'Illuminate\Database\Eloquent\Collection';
+    $category = factory(App\Category::class)->create();
+    $product = factory(App\Product::class)->create();
+    $category->product()->save($product);
+    $this->seeInDatabase('products',
+    [
+      'id' => $product->id,
+      'category_id' => $category->id
+    ]);
+    $this->assertInstanceOf($Collection, $category->product);
+    foreach($category->product as $product) {
+      $this->assertEquals($category->id, $product->category_id);
     }
+  }
 }

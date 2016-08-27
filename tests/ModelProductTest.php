@@ -6,7 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ModelProductTest extends TestCase
 {
-  public function testProductProvider()
+  use DatabaseTransactions;
+
+  public function testModelProductProvider()
   {
     $product = App\Product::find(1);
     $provider = App\Provider::find(1);
@@ -18,19 +20,13 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testProductCategory()
+  public function testModelProductCategory()
   {
     $product = App\Product::find(1);
-    $category = App\Category::find(1);
-    $category->product()->save($product);
-    $this->seeInDatabase('products',
-    [
-      'id' => $product->id,
-      'category_id' => $category->id
-    ]);
+    $this->assertInstanceOf(App\Category::class, $product->category);
   }
 
-  public function testProductStore()
+  public function testModelProductStore()
   {
     $product = App\Product::find(1);
     $store = App\Store::find(1);
@@ -42,7 +38,7 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testProductState()
+  public function testModelProductState()
   {
     $products = factory(App\Product::class, 10)->create();
     $state = App\State::find(1);
@@ -53,7 +49,7 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testProductOrder()
+  public function testModelProductOrder()
   {
     $products = factory(App\Product::class, 10)->create();
     $order = App\Order::find(1);
@@ -64,7 +60,7 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testProductMaintenance()
+  public function testModelProductMaintenance()
   {
     $products = factory(App\Product::class, 10)->create();
     $maintenance = App\Maintenance::find(1);

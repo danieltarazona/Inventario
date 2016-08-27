@@ -6,13 +6,16 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ModelCommentTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+  use DatabaseTransactions;
+  
+    public function testModelCommentBelongsToUser()
     {
-        $this->assertTrue(true);
+      $comment = App\Comment::find(1);
+      $user = App\User::find(1);
+      $user->comment()->save($user);
+      $this->seeInDatabase('comments', [
+        'name' => $comment->name,
+        'user_id' => $user->id,
+      ]);
     }
 }
