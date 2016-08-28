@@ -97,19 +97,19 @@ class User extends Authenticatable
         return $this->hasMany(Issue::class);
     }
 
-    public function maintenances()
+    public function maintenance()
     {
         return $this->hasMany(Maintenance::class);
     }
 
     public function log()
     {
-        return $this->belongsTo(Log::class);
+        return $this->hasMany(Log::class);
     }
 
     public function rol()
     {
-      return $this->belongsTo(Rol::class);
+      return $this->hasOne(Rol::class);
     }
 
     public function rol_id()

@@ -31,6 +31,16 @@ class State extends Model
         return $this->order->id;
     }
 
+    public function maintenance()
+    {
+        return $this->hasMany(Maintenance::class);
+    }
+
+    public function maintenance_id()
+    {
+        return $this->maintenance->id;
+    }
+
     public function sale()
     {
         return $this->hasOne(Sale::class);

@@ -20,14 +20,24 @@ class Maintenance extends Model
         return $this->product->lists('id');
     }
 
-    public function storer()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function storer_id()
+    public function user_id()
     {
-        return $this->storer->id;
+        return $this->user->id;
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function state_id()
+    {
+        return $this->state->id;
     }
 
 }

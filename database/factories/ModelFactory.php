@@ -99,7 +99,7 @@ $factory->define(App\Maintenance::class, function (Generator $faker) {
 
 $factory->define(App\User::class, function (Generator $faker) {
   return [
-    'dni' => $faker->unique()->randomDigit,
+    'dni' => $faker->unique()->ean8,
     'username' => $faker->unique()->userName,
     'email' => $faker->safeEmail,
     'first_name' => $faker->name,
