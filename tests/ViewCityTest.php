@@ -4,7 +4,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/*
 class ViewCityTest extends TestCase
 {
   public function testCitiesIndexBehavior()
@@ -41,5 +40,3 @@ class ViewCityTest extends TestCase
       ->seePageIs('/cities');
   }
 }
-
-*/

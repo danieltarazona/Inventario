@@ -4,7 +4,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/*
 class ControllerProductsTest extends TestCase
 {
   use DatabaseTransactions;
@@ -39,5 +38,3 @@ class ControllerProductsTest extends TestCase
     $this->assertEquals(302, $response->status());
   }
 }
-
-*/

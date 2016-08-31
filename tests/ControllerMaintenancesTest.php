@@ -4,7 +4,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/*
 class ControllerMaintenancesTest extends TestCase
 {
   use DatabaseTransactions;
@@ -59,4 +58,3 @@ class ControllerMaintenancesTest extends TestCase
     $this->assertEquals(302, $response->status());
   }
 }
-*/
