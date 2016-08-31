@@ -56,7 +56,6 @@ class DatabaseSeeder extends Seeder
       $state->sale()->save($sale);
     });
 
-
     $cities = factory(App\City::class, 10)->create()->each(function($city)
     {
       $region = App\Region::find(1);

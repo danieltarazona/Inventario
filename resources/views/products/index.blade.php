@@ -2,8 +2,17 @@
 
 @section('content')
 
-  <a href="{{ route('categories.index') }}"><i class="fa fa-th fa-2x"></i> Grid</a>
-  <a href="{{ route('categories.index') }}"><i class="fa fa-th-list fa-2x"></i> List</a>
+  <a href="{{ route('categories.index') }}">
+    <button type="button" class="btn btn-default">
+      <span class="fa fa-th" aria-hidden="true"></span>
+    </button>
+  </a>
+
+  <a href="{{ route('categories.index') }}">
+    <button type="button" class="btn btn-default">
+      <span class="fa fa-th-list" aria-hidden="true"></span>
+    </button>
+  </a>
 
   <h1>Products</h1>
 
@@ -13,6 +22,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Image</th>
         <th>Name</th>
         <th>Category</th>
         <th>Provider</th>
@@ -32,6 +42,7 @@
     @foreach ($products as $product)
       <tr>
         <td>{{ $product->id }}</td>
+        <td><img src="{{ $product->url }}" alt="" style="weight:50px; height:50px;"/></td>
         <td>{{ $product->name }}</td>
         <td>{{ $product->category->name or 'Blank' }}</td>
         <td>{{ $product->provider->name or 'Blank' }}</td>

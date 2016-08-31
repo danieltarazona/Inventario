@@ -6,6 +6,7 @@
 <h1>Detail Product</h1>
 
 <h3>ID: {{ $product->id }}</h3>
+<h3><img src="{{ $product->url }}" alt="" style="weight:250px; height:250px;"/></td></h3>
 <h3>Name: {{ $product->name }}</h3>
 <h3>Category: {{ $product->category->name or 'Blank' }}</h3>
 <h3>provider: {{ $product->provider->name or 'Blank' }}</h3>

@@ -22,13 +22,12 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Test
+- Category Card View
+- Products Card View
 - Products Filter by Most Visit
 - Products Filter by Most Recently
 - Products Filter by Category
 - Products Filter by Order By Desc
-- Category Card View
-- Products Card View
 - Products to Cart
 - Cart Checkout
   - Cancel and Accept
@@ -52,9 +51,11 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Profile
   - Log Cart
   - Type (Supplier, User)
+- Middleware
+- Event Mailer
+
 - Istanbul Coverage
 - Jenkins
-- Middleware
 - Intervention
 - Carbon
 - Laravel Cashier

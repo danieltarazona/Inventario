@@ -11,7 +11,7 @@ body {
 .alert--info {
   background: gray; }
 
-.alert--sucess {
+.alert--success {
   background: lime; }
 
 .alert--error {

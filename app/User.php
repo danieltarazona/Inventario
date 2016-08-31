@@ -109,12 +109,17 @@ class User extends Authenticatable
 
     public function rol()
     {
-      return $this->hasOne(Rol::class);
+      return $this->belongsTo(Rol::class);
     }
 
     public function rol_id()
     {
       return $this->rol->id;
+    }
+
+    public function rol_name()
+    {
+      return $this->rol->name;
     }
 
     public function isUser()
