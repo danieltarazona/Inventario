@@ -42,73 +42,53 @@
 
         <ul class="nav navbar-nav">
 
-          @if(Auth::guest())
-            <li><a href="{{ url('/products') }}">Products</a></li>
-            <li><a href="{{ url('/issues') }}">Support</a></li>
-          @endif
-
-          @if(Auth::check())
-
-            <li><a href="{{ url('products') }}">Products</a></li>
-            <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
-            <li><a href="{{ url('orders') }}">Orders</a></li>
-            <li><a href="{{ url('sales') }}">Sales</a></li>
-
-            @if(Auth::user()->rol_id > 1)
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  Team<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ url('sellers') }}">Sellers</a></li>
-                  <li><a href="{{ url('resellers') }}">Resellers</a></li>
-                </ul>
-              </li>
-
-              @if(Auth::user()->rol_id > 5)
-                <li><a href="{{ url('users') }}">Users</a></li>
-                <li><a href="{{ url('logs') }}">Log</a></li>
-              @endif
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  Database<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ url('categories') }}">Categories</a></li>
-                  <li><a href="{{ url('providers') }}">Providers</a></li>
-                  <li><a href="{{ url('regions') }}">Regions</a></li>
-                  <li><a href="{{ url('cities') }}">Cities</a></li>
-                  <li><a href="{{ url('stores') }}">Stores</a></li>
-                  <li><a href="{{ url('states') }}">States</a></li>
-                </ul>
-              </li>
-            @endif
-
-            <li><a href="{{ url('/issues') }}">Support</a></li>
-          @endif
-
-
+          <li><a href="{{ url('products') }}">Products</a></li>
+          <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
+          <li><a href="{{ url('orders') }}">Orders</a></li>
+          <li><a href="{{ url('sales') }}">Sales</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              Team<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ url('sellers') }}">Sellers</a></li>
+              <li><a href="{{ url('resellers') }}">Resellers</a></li>
+            </ul>
+          </li>
+          <li><a href="{{ url('users') }}">Users</a></li>
+          <li><a href="{{ url('logs') }}">Log</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              Database<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ url('categories') }}">Categories</a></li>
+              <li><a href="{{ url('providers') }}">Providers</a></li>
+              <li><a href="{{ url('regions') }}">Regions</a></li>
+              <li><a href="{{ url('cities') }}">Cities</a></li>
+              <li><a href="{{ url('stores') }}">Stores</a></li>
+              <li><a href="{{ url('states') }}">States</a></li>
+              <li><a href="{{ url('rols') }}">Roles</a></li>
+            </ul>
+          </li>
+          <li><a href="{{ url('/issues') }}">Support</a></li>
         </ul>
 
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
-          @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">Login</a></li>
-            <li><a href="{{ url('/register') }}">Register</a></li>
-          @else
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{ Auth::user()->username }} / {{ Auth::user()->rol->name }} <span class="caret"></span>
-              </a>
+          <li><a href="{{ url('/login') }}">Login</a></li>
+          <li><a href="{{ url('/register') }}">Register</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              {{ Auth::user()->username }}<span class="caret"></span>
+            </a>
 
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ route('users.edit', Auth::user()->id) }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-              </ul>
-            </li>
-          @endif
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ route('users.edit', Auth::user()->id) }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
+              <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>

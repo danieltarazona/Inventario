@@ -31,7 +31,7 @@
         <td>{{ $maintenance->description or 'Blank' }}</td>
         <td>{{ $maintenance->created_at or 'Blank' }}</td>
         <td>
-          @foreach($maintenance->products as $product)
+          @foreach($maintenance->product as $product)
             {{ $product->id }}
           @endforeach
         </td>

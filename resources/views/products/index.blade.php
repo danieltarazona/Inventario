@@ -2,6 +2,9 @@
 
 @section('content')
 
+  <a href="{{ route('categories.index') }}"><i class="fa fa-th fa-2x"></i> Grid</a>
+  <a href="{{ route('categories.index') }}"><i class="fa fa-th-list fa-2x"></i> List</a>
+
   <h1>Products</h1>
 
   <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
