@@ -24,10 +24,13 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 - Category Card View
 - Products Card View
-- Products Filter by Most Visit
-- Products Filter by Most Recently
-- Products Filter by Category
-- Products Filter by Order By Desc
+- Search Bar
+- Query String Filter
+
+- Filter by Most Visit
+- Filter by Most Recently
+- Filter by Category
+- Filter by Order By Desc
 - Products to Cart
 - Cart Checkout
   - Cancel and Accept
