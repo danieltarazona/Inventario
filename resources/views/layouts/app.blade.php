@@ -64,7 +64,7 @@
                         <li class="dropdown">
 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="{{ Auth::user()->url }}" alt="" />
+                                <img src="{{ Auth::user()->url }}" alt="" style="border-radius: 250px; height: 50px;"/>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 

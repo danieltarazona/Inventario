@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ViewStoresTest extends TestCase
 {
+  use DatabaseTransactions;
     /**
      * A basic test example.
      *

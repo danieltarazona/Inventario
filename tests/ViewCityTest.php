@@ -6,7 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ViewCityTest extends TestCase
 {
-  public function testCitiesIndexBehavior()
+  use DatabaseTransactions;
+
+  public function testViewCitiesIndexBehavior()
   {
     $this->visit('/cities')
       ->see('Cities')
@@ -15,7 +17,7 @@ class ViewCityTest extends TestCase
       ->see('Actions');
   }
 
-  public function testCitiesCreateBehavior()
+  public function testViewCitiesCreateBehavior()
   {
     $this->visit('/cities')
       ->type('Boston', 'name')
@@ -24,7 +26,7 @@ class ViewCityTest extends TestCase
       ->seePageIs('/cities');
   }
 
-  public function testCitiesEditBehavior()
+  public function testViewCitiesEditBehavior()
   {
     $this->visit('/cities/1/edit')
       ->type('Seatle', 'name')
@@ -33,7 +35,7 @@ class ViewCityTest extends TestCase
       ->seePageIs('/cities');
   }
 
-  public function testCitiesDestroyBehavior()
+  public function testViewCitiesDestroyBehavior()
   {
     $this->visit('/cities')
       ->press('Delete')

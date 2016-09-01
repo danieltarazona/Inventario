@@ -16,7 +16,7 @@ class ControllerCategoriesTest extends TestCase
 
   public function testCategoriesStoreController()
   {
-    $category = factory(\App\Category::class)->create(['name' => 'Tablets']);
+    $category = factory(\App\Category::class)->create(['name' => 'Smartphones']);
     $response = $this->action('POST', 'CategoriesController@store', $category->jsonSerialize());
     $this->seeInDatabase('categories', ['name' => $category->name]);
     $this->assertSessionHas('flash', 'success');
