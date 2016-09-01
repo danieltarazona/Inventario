@@ -30,7 +30,7 @@
     @foreach ($categories as $category)
     <tr>
       <td>{{ $category->id }}</td>
-      <td><img src="{{ $category->url }}" alt="" style="weight:50px; height:50px;"/></td>
+      <td><img src="{{ $category->photo }}" alt="{{ $category->name }}" style="weight:50px; height:50px;"/></td>
       <td>{{ $category->name or 'Blank' }}</td>
       <td>
         <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Update</a>

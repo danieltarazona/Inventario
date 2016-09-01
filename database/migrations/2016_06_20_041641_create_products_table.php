@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->date('date');
             $table->string('price');
             $table->string('warranty');
-            $table->string('url');
+            $table->string('photo');
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('store_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();

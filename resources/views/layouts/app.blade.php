@@ -80,7 +80,7 @@
 
     <div class="container">
       @if (session()->has('message'))
-        <div class="alert alert--{{ session('message_level') }}">
+        <div class="alert alert--{{ session('level') }}">
           {{ session('message') }}
         </div>
       @endif

@@ -1,7 +1,7 @@
 <?php
 
-function flash($message, $message_level = "info")
+function flash($message, $level = "info")
 {
   session()->flash("message", $message);
-  session()->flash("message_level", $message_level);
+  session()->flash("level", $level);
 }

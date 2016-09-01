@@ -11,18 +11,18 @@ body {
 
 .alert {
   text-align: center;
-}
 
-.alert--info {
-  background: gray;
-}
+  .alert--info {
+    background: gray;
+  }
 
-.alert--success {
-  background: lime;
-}
+  .alert--success {
+    background: lime;
+  }
 
-.alert--error {
-  background: red;
+  .alert--error {
+    background: red;
+  }
 }
 
 .nav>li>a>img {

@@ -60,7 +60,7 @@ class CategoriesController extends Controller
       $image->save($filePath . $fileName);
 
       $category = new Category;
-      $category->photo = $image;
+      $category->photo = '/img/categories/' . $fileName;
       $category->description = $request->description;
       $category->name = $request->name;
       $category->save();
@@ -99,7 +99,7 @@ class CategoriesController extends Controller
         ->withErrors($validator)
         ->withInput();
     } else {
-
+      $category->photo = $request->photo;
       $category->name = $request->name;
       $category->save();
       flash('Update Complete!', 'success');
