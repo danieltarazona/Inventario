@@ -16,20 +16,29 @@ class ControllerCategoriesTest extends TestCase
 
   public function testCategoriesStoreController()
   {
-    $category = factory(\App\Category::class)->create(['name' => 'Smartphones']);
-    $response = $this->action('POST', 'CategoriesController@store', $category->jsonSerialize());
-    $this->seeInDatabase('categories', ['name' => $category->name]);
+    Session::start();
+    $response = $this->call('POST', 'CategoriesController@store', array(
+        '_token' => csrf_token(),
+        ['name' => 'Tablets']
+    ));
+    $this->assertEquals(302, $response->getStatusCode());
     $this->assertSessionHas('flash', 'success');
-    $this->assertEquals(302, $response->status());
+    $this->assertRedirectedTo('categories');
   }
 
   public function testCategoriesUpdateController()
   {
-    $category = App\Category::find(1);
+    $category = App\Category::first();
     $category->name = "Tablets";
-    $response = $this->action('PATCH', 'CategoriesController@update', ['categories' => $category->id], $category->jsonSerialize());
+    $response = $this->action(
+      'PUT', 'CategoriesController@update',
+      ['categories' => $category->id],
+      $category->jsonSerialize()
+    );
     $this->seeInDatabase('categories', ['name' => $category->name]);
+    $this->assertSessionHas('flash', 'success');
     $this->assertEquals(302, $response->status());
+    $this->assertRedirectedTo('categories');
   }
 
   public function testCategoriesEditController()
@@ -42,5 +51,6 @@ class ControllerCategoriesTest extends TestCase
   {
     $response = $this->action('DELETE', 'CategoriesController@destroy', ['category' => 1]);
     $this->assertEquals(302, $response->status());
+    $this->assertRedirectedTo('categories');
   }
 }

@@ -39,7 +39,8 @@ $factory->define(App\Provider::class, function (Generator $faker) {
 $factory->define(App\Category::class, function (Generator $faker) {
   return [
     'name' => $faker->word,
-    'url' => $faker->imageUrl($width = 400, $height = 400),
+    'description' => $faker->text,
+    'photo' => $faker->imageUrl($width = 400, $height = 400),
   ];
 });
 

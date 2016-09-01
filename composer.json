@@ -7,7 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "nesbot/carbon": "^1.21"
+        "nesbot/carbon": "^1.21",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "laravelcollective/html": "5.2.*",

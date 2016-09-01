@@ -14,12 +14,7 @@
     </a>
   </button>
 
-  {!! Form::open(['url' => 'categories']) !!}
-    {!! Form::label('Name') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    <br>
-    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
-  {!! Form::close() !!}
+  <a href="{{ route('categories.create') }}" class="btn btn-success">Create</a>
 
   <br>
 

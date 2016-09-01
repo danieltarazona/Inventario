@@ -16,17 +16,27 @@ class ControllerCitiesTest extends TestCase
 
   public function testCitiesStoreController()
   {
+    $city = factory(\App\City::class)->create(['name' => 'Tokyo']);
+    $response = $this->action('POST',
+      'CitiesController@store',
+      $city->jsonSerialize()->name
+    );
+    $this->seeInDatabase('cities', ['name' => $city->name]);
+    $this->assertSessionHas('flash', 'success');
+    $this->assertEquals(302, $response->status());
   }
 
   public function testCitiesUpdateController()
   {
-    $city = App\City::find(1);
+    $city = App\City::first();
     $city->name = "Paris";
-    $response = $this->action('PATCH', 'CitiesController@update',
+    $response = $this->action(
+      'PATCH', 'CitiesController@update',
       ['cities' => $city->id],
       $city->jsonSerialize()
     );
     $this->seeInDatabase('cities', ['name' => $city->name]);
+    $this->assertSessionHas('flash', 'success');
     $this->assertEquals(302, $response->status());
   }
 

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Http\Requests;
-
 use App\Category;
+
+use File;
 
 class CategoriesController extends Controller
 {
@@ -22,6 +24,16 @@ class CategoriesController extends Controller
   {
     $categories = Category::all();
     return view('categories.index', compact('categories'));
+  }
+
+  /**
+  * Show the form for creating a new resource.
+  *
+  * @return \Illuminate\Http\Response
+  */
+  public function create()
+  {
+    return view('categories.create');
   }
 
   /**
@@ -39,7 +51,17 @@ class CategoriesController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
+      $file = Input::file('photo');
+      $filePath = public_path() . '/img/categories/';
+      $fileName = $file->getClientOriginalName();
+
+      File::exists($filePath) or File::makeDirectory($filePath);
+      $image = Image::make($file->getRealPath());
+      $image->save($filePath . $fileName);
+
       $category = new Category;
+      $category->photo = $image;
+      $category->description = $request->description;
       $category->name = $request->name;
       $category->save();
       flash('Create Successful!', 'success');
@@ -77,6 +99,7 @@ class CategoriesController extends Controller
         ->withErrors($validator)
         ->withInput();
     } else {
+
       $category->name = $request->name;
       $category->save();
       flash('Update Complete!', 'success');
@@ -101,6 +124,7 @@ class CategoriesController extends Controller
   {
     return [
       'name' => 'string|required|max:255|unique:categories',
+      'description' => 'string|required',
     ];
   }
 }

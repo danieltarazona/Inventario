@@ -22,4 +22,10 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    public function setupDatabase()
+    {
+        Artisan::call('migrate:refresh');
+        Artisan::call('db:seed');
+    }
 }
