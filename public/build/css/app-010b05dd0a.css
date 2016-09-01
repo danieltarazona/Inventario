@@ -17,4 +17,9 @@ body {
 .alert--error {
   background: red; }
 
+.nav > li > a > img {
+  border-radius: 50px;
+  background-color: white;
+  height: 50px; }
+
 /*# sourceMappingURL=app.css.map */

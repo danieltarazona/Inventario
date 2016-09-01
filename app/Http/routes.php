@@ -61,5 +61,4 @@ Route::resource('cities', 'CitiesController', ['except' => ['create']]);
 Route::resource('categories', 'CategoriesController', ['except' => ['create', 'show']]);
 Route::resource('stores', 'StoresController');
 Route::resource('dashboard', 'DashboardController', ['only' => ['index', 'edit', 'update']]);
-
 */
