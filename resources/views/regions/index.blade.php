@@ -4,18 +4,18 @@
 
   <h1>Regions</h1>
 
-  @if (Auth::user()->rol_id > 5)
-
   {!! Form::open(['url' => 'regions']) !!}
 
     {!! Form::label('Name') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
+    <br>
+    
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
   {!! Form::close() !!}
 
-  @endif
+  <br>
 
   <table class="table">
     <thead>
@@ -32,7 +32,7 @@
         <td>{{ $region->id }}</td>
         <td>{{ $region->name }}</td>
 
-        @if (Auth::user()->rol_id > 5)
+        @if (Auth::id() == 1)
         <td>
           <a href="{{ route('regions.edit', $region->id) }}" class="btn btn-warning">Update</a>
         </td>

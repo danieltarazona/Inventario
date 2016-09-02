@@ -4,9 +4,7 @@
 
   <h1>Providers</h1>
 
-  @if (Auth::user()->rol_id > 5)
-    <a href="{{ route('providers.create') }}" class="btn btn-success">Create</a>
-  @endif
+  <a href="{{ route('providers.create') }}" class="btn btn-success">Create</a>
 
   <table class="table">
     <thead>
@@ -27,7 +25,7 @@
         <td>{{ $provider->telephone or 'Blank' }}</td>
         <td>{{ $provider->adress or 'Blank' }}</td>
 
-        @if (Auth::user()->rol_id > 5)
+        @if (Auth::id() == 1)
         <td>
           <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning">Update</a>
         </td>

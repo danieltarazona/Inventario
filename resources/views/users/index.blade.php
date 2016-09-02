@@ -46,6 +46,4 @@
     @endforeach
   </table>
 
-  {{ $users->links() }}
-
 @stop

@@ -3,7 +3,7 @@
 @section('content')
 
   <h1>States</h1>
-  @if (Auth::user()->rol_id > 5)
+  @if (Auth::id() == 1)
 
   {!! Form::open(['url' => 'states']) !!}
 
@@ -31,13 +31,11 @@
         <td>{{ $state->id }}</td>
         <td>{{ $state->name }}</td>
 
-        @if (Auth::user()->rol_id > 5)
+        @if (Auth::id() == 1)
         <td>
           <a href="{{ route('states.edit', $state->id) }}" class="btn btn-warning">Update</a>
         </td>
-        @endif
 
-        @if (Auth::user()->rol_id > 5)
         <td>
           {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'delete']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
