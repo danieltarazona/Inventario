@@ -7,19 +7,20 @@ body {
 
 .alert {
   text-align: center; }
+  .alert .alert--info {
+    background: gray; }
+  .alert .alert--success {
+    background: lime; }
+  .alert .alert--error {
+    background: red; }
 
-.alert--info {
-  background: gray; }
-
-.alert--success {
-  background: lime; }
-
-.alert--error {
-  background: red; }
+.card {
+  box-shadow: 1px solid black;
+  height: 150px;
+  width: 150px; }
 
 .nav > li > a > img {
   border-radius: 50px;
-  background-color: white;
   height: 50px; }
 
 /*# sourceMappingURL=app.css.map */

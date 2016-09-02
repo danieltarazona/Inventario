@@ -51,6 +51,19 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('categories') }}">Categories</a></li>
                     <li><a href="{{ url('cities') }}">Cities</a></li>
+                    <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url('issues') }}">Issues</a></li>
+                    <li><a href="{{ url('logs') }}">Logs</a></li>
+                    <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
+                    <li><a href="{{ url('orders') }}">Orders</a></li>
+                    <li><a href="{{ url('products') }}">Products</a></li>
+                    <li><a href="{{ url('providers') }}">Providers</a></li>
+                    <li><a href="{{ url('regions') }}">Regions</a></li>
+                    <li><a href="{{ url('rols') }}">Rols</a></li>
+                    <li><a href="{{ url('sales') }}">Sales</a></li>
+                    <li><a href="{{ url('states') }}">States</a></li>
+                    <li><a href="{{ url('stores') }}">Stores</a></li>
+                    <li><a href="{{ url('users') }}">Users</a></li>
                 </ul>
               @endif
 
@@ -64,7 +77,7 @@
                         <li class="dropdown">
 
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <img src="{{ Auth::user()->url }}" alt="" style="border-radius: 250px; height: 50px;"/>
+                                <img src="{{ Auth::user()->photo }}" alt="" style="border-radius: 100px; height: 40px;"/>
                                 {{ Auth::user()->username }} <span class="caret"></span>
                             </a>
 

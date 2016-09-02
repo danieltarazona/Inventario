@@ -18,6 +18,8 @@
 
   <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
 
+  <input type="search" name="search" placeholder="Search" value="">
+
   <table class="table">
     <thead>
       <tr>

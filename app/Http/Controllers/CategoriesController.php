@@ -11,6 +11,7 @@ use App\Http\Requests;
 use App\Category;
 
 use File;
+use Auth;
 
 class CategoriesController extends Controller
 {
@@ -23,7 +24,12 @@ class CategoriesController extends Controller
   public function index()
   {
     $categories = Category::all();
-    return view('categories.index', compact('categories'));
+
+    if (Auth::user()->id == 1) {
+      return view('categories.indexList', compact('categories'));
+    } else {
+      return view('categories.indexCard', compact('categories'));
+    }
   }
 
   /**

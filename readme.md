@@ -12,8 +12,6 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 #fc7323
 #238276
 #59b548
-
-- Success Color
 #5cc512
 
 ## Contributing
@@ -22,15 +20,8 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Category Card View
-- Products Card View
-- Search Bar
 - Query String Filter
-
-- Filter by Most Visit
-- Filter by Most Recently
-- Filter by Category
-- Filter by Order By Desc
+- Filter Helper
 - Products to Cart
 - Cart Checkout
   - Cancel and Accept

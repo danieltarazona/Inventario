@@ -40,7 +40,7 @@ $factory->define(App\Category::class, function (Generator $faker) {
   return [
     'name' => $faker->word,
     'description' => $faker->text,
-    'photo' => $faker->imageUrl($width = 400, $height = 400),
+    'photo' => "/img/categories/ipad.jpeg",
   ];
 });
 
@@ -74,13 +74,14 @@ $factory->define(App\Store::class, function (Generator $faker) {
     'description' => $faker->text,
     'telephone' => $faker->phoneNumber,
     'adress' => $faker->address,
+    'photo' => "/img/stores/store.jpeg",
   ];
 });
 
 $factory->define(App\Product::class, function (Generator $faker) {
   return [
     'name' => $faker->name,
-    'photo' => $faker->imageUrl($width = 400, $height = 400),
+    'photo' => "/img/users/iPad.jpeg",
     'warranty' => $faker->numberBetween($min = 1, $max = 60),
     'price' => $faker->numberBetween($min = 100000, $max = 5000000),
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -111,7 +112,7 @@ $factory->define(App\User::class, function (Generator $faker) {
     'telephone' => $faker->phoneNumber,
     'cellphone' => $faker->phoneNumber,
     'password' => bcrypt(str_random(10)),
-    'photo' => $faker->imageUrl($width = 400, $height = 400),
+    'photo' => "/img/users/profile.png",
     'remember_token' => str_random(10),
   ];
 });
