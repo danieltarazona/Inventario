@@ -20,6 +20,13 @@ Route::get('/home', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
+Route::resource('cart', 'CartController');
+Route::delete('emptyCart', 'CartController@emptyCart');
+Route::post('switchToWishlist/{id}', 'CartController@switchToWishlist');
+Route::resource('wishlist', 'WishlistController');
+Route::delete('emptyWishlist', 'WishlistController@emptyWishlist');
+Route::post('switchToCart/{id}', 'WishlistController@switchToCart');
+
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 Route::resource('logs', 'LogsController');

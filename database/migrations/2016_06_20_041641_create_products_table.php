@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('serial');
             $table->string('year');
             $table->date('date');
-            $table->string('price');
+            $table->decimal('price', 10, 2);
             $table->string('warranty');
             $table->string('photo');
             $table->integer('category_id')->unsigned()->nullable();

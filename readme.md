@@ -20,8 +20,7 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Query String Filter
-- Filter Helper
+- Search
 - Products to Cart
 - Cart Checkout
   - Cancel and Accept
@@ -48,10 +47,11 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Middleware
 - Event Mailer
 
+
 - Istanbul Coverage
 - Jenkins
-- Intervention
 - Carbon
+- Slack Notifications
 - Laravel Cashier
   - Braintree
   - Stripe

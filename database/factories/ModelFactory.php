@@ -81,7 +81,7 @@ $factory->define(App\Store::class, function (Generator $faker) {
 $factory->define(App\Product::class, function (Generator $faker) {
   return [
     'name' => $faker->name,
-    'photo' => "/img/users/iPad.jpeg",
+    'photo' => "/img/products/ipad.jpeg",
     'warranty' => $faker->numberBetween($min = 1, $max = 60),
     'price' => $faker->numberBetween($min = 100000, $max = 5000000),
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
