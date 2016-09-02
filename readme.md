@@ -21,17 +21,17 @@ Thank you for considering contributing to the Laravel framework! The contributio
 ## To Do
 
 - Search
-- Products to Cart
 - Cart Checkout
   - Cancel and Accept
 - Confirm Box
+- State Change
 - Orders
   - Search
   - Orders to Invoice
   - Orders to Ship
   - Export Import CSV
-  - Ship Type
   - Print
+  - Ship Type
 - Sales
   - Point of Sales
 - Dashboard

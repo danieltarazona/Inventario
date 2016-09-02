@@ -15,6 +15,7 @@ use App\Category;
 use App\Provider;
 use App\State;
 use App\Region;
+use App\Order;
 
 use Auth;
 
