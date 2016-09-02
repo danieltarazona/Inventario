@@ -17,7 +17,7 @@
         <th>Store Name</th>
       </tr>
     </thead>
-    @foreach($city->stores as $store)
+    @foreach($city->store as $store)
       <tr>
         <td>{{ $store->id }}</td>
         <td>{{ $store->name }}</td>

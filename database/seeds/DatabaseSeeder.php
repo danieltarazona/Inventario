@@ -39,6 +39,8 @@ class DatabaseSeeder extends Seeder
     $provider->product()->save($product);
     $store->product()->save($product);
     $maintenance->product()->save($product);
+    $user->maintenance()->save($maintenance);
+    $state->maintenance()->save($maintenance);
     $state->product()->save($product);
 
 

@@ -16,7 +16,7 @@ class CreateLogsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('name');
-            $table->text('log');
+            $table->text('description');
             $table->timestamps();
         });
     }

@@ -62,8 +62,19 @@ class CitiesController extends Controller
   {
     $city = City::findOrFail($id);
     $regions = Region::lists('name', 'id');
-
     return view('cities.edit', compact('city', 'regions'));
+  }
+
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function show($id)
+  {
+    $city = City::findOrFail($id);
+    return view('cities.show', compact('city'));
   }
 
   /**

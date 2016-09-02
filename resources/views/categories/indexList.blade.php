@@ -37,7 +37,7 @@
       </td>
       <td>
         {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
-        <button class="btn btn-danger" type="submit" >Delete</button>
+          <button class="btn btn-danger" type="submit" >Delete</button>
         {!! Form::close() !!}
       </td>
     </tr>

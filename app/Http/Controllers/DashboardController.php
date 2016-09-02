@@ -11,15 +11,15 @@ use App\Http\Requests;
 
 use App\Dashboard;
 use App\Log;
-use App\Sales;
-use App\Stores;
-use App\Orders;
-use App\Users;
-use App\Cities;
-use App\Issues;
-use App\Maintenances;
-use App\Products;
-use App\Regions;
+use App\Sale;
+use App\Store;
+use App\Order;
+use App\User;
+use App\City;
+use App\Issue;
+use App\Maintenance;
+use App\Product;
+use App\Region;
 
 class DashboardController extends Controller
 {
@@ -27,10 +27,7 @@ class DashboardController extends Controller
   public function index()
   {
     $logs = Log::lists('name', 'id');
-    $sales = Sale::lists('name', 'id');
     $stores = Store::lists('name', 'id');
-    $orders = Order::lists('name', 'id');
-    $users = User::lists('name', 'id');
     $cities = City::lists('name', 'id');
     $issues = Issue::lists('name', 'id');
     $maintenances = Maintenance::lists('name', 'id');
