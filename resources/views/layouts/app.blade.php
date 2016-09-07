@@ -40,7 +40,7 @@
 
         <!-- Branding Image -->
         <a class="navbar-brand" href="{{ url('/') }}">
-          Laravel
+          SAPEIM
         </a>
       </div>
 
@@ -49,8 +49,6 @@
 
         @if (Auth::check())
           <ul class="nav navbar-nav">
-            <li><a href="{{ url('categories') }}">Categories</a></li>
-            <li><a href="{{ url('cities') }}">Cities</a></li>
             <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
             <li><a href="{{ url('issues') }}">Issues</a></li>
             <li><a href="{{ url('logs') }}">Logs</a></li>
@@ -58,7 +56,6 @@
             <li><a href="{{ url('orders') }}">Orders</a></li>
             <li><a href="{{ url('products') }}">Products</a></li>
             <li><a href="{{ url('providers') }}">Providers</a></li>
-            <li><a href="{{ url('regions') }}">Regions</a></li>
             <li><a href="{{ url('rols') }}">Rols</a></li>
             <li><a href="{{ url('sales') }}">Sales</a></li>
             <li><a href="{{ url('states') }}">States</a></li>

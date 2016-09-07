@@ -24,7 +24,7 @@
         <th>ID</th>
         <th>Image</th>
         <th>Name</th>
-        <th colspan="3">Actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
     @foreach ($categories as $category)

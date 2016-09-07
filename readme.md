@@ -27,13 +27,8 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - State Change
 - Orders
   - Search
-  - Orders to Invoice
-  - Orders to Ship
-  - Export Import CSV
-  - Print
-  - Ship Type
+  
 - Sales
-  - Point of Sales
 - Dashboard
   - Most Cart
   - Less Cart
@@ -47,7 +42,12 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Middleware
 - Event Mailer
 
-
+- Point of Sales
+- Orders to Invoice
+- Orders to Ship
+- Export Import CSV
+- Print
+- Ship Type
 - Istanbul Coverage
 - Jenkins
 - Carbon

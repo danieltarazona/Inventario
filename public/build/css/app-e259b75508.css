@@ -35,4 +35,10 @@ body {
 .side-by-side {
   display: inline-block; }
 
+.navbar-nav > li > a {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
 /*# sourceMappingURL=app.css.map */

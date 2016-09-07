@@ -2,8 +2,6 @@
 
 @section('content')
 
-<h1>Create</h1>
-
 {!! Form::open(['route' => 'categories.store', 'files' => true, 'method' => 'post']) !!}
 
   {!! Form::label('Name') !!}
