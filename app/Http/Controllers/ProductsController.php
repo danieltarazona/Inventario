@@ -31,7 +31,12 @@ class ProductsController extends Controller
   public function index()
   {
     $products = Product::all();
-    return view('products.indexCard', compact('products'));
+    if (Auth::id() == 1)
+    {
+      return view('products.indexList', compact('products'));
+    } else {
+      return view('products.indexCard', compact('products'));
+    }
   }
 
   /**
@@ -156,6 +161,11 @@ public function update(Request $request, $id)
     flash('Update Complete!', 'success');
     return redirect('products');
   }
+}
+
+public function search(Request $request)
+{
+  return redirect('products');
 }
 
 /**

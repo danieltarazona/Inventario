@@ -18,7 +18,14 @@
 
   <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
 
-  <input type="search" name="search" placeholder="Search" value="">
+  <td>
+    {!! Form::open(['route' => ['products.search'], 'method' => 'GET']) !!}
+    <input class="form-control" type="search" name="search" placeholder="Search" value="">
+    <button class="btn" type="submit" >Search</button>
+    {!! Form::close() !!}
+  </td>
+
+
 
   <table class="table">
     <thead>
@@ -44,7 +51,7 @@
     @foreach ($products as $product)
       <tr>
         <td>{{ $product->id }}</td>
-        <td><img src="{{ $product->url }}" alt="" style="weight:50px; height:50px;"/></td>
+        <td><img src="{{ $product->photo }}" alt="" style="weight:50px; height:50px;"/></td>
         <td>{{ $product->name }}</td>
         <td>{{ $product->category->name or 'Blank' }}</td>
         <td>{{ $product->provider->name or 'Blank' }}</td>
