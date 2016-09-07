@@ -14,8 +14,8 @@ class CreateMaintenanceProductTable extends Migration
     {
         Schema::create('maintenance_product', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('maintenance_id')->unsigned()->index();
-            $table->integer('product_id')->unsigned()->index();
+            $table->integer('maintenance_id')->unsigned()->index()->nullable();
+            $table->integer('product_id')->unsigned()->index()->nullable();
             $table->timestamps();
         });
     }

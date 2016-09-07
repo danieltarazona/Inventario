@@ -14,8 +14,8 @@ class CreateProductStateTable extends Migration
     {
         Schema::create('product_state', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('state_id')->unsigned()->index();
-            $table->integer('product_id')->unsigned()->index();
+            $table->integer('state_id')->unsigned()->nullable();
+            $table->integer('product_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
       'username' => 'Storer',
       'email' => 'storer@storer.com',
       'password' => bcrypt("123456"),
+      'rol_id' => 2,
     ]);
 
     $rol->user()->save($user);
@@ -30,17 +31,19 @@ class DatabaseSeeder extends Seeder
       'username' => 'Administrator',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
+      'rol_id' => 3,
     ]);
+
 
     $region = factory(App\Region::class)->create(['name' => 'Detroit']);
     $city = factory(App\City::class)->create(['name' => 'Kyoto']);
-    $store = factory(App\Store::class)->create(['name' => 'Shibuya']);
-    $state = factory(App\State::class)->create(['name' => 'Active']);
-
     $region->city()->save($city);
-    $city->store()->save($store);
+
+    $store = factory(App\Store::class)->create(['name' => 'Shibuya']);
     $store->user()->save($user);
-    $rol->user()->save($user);
+    $city->store()->save($store);
+
+    $state = factory(App\State::class)->create(['name' => 'Active']);
     $state->user()->save($user);
 
     $log = factory(App\Log::class)->create(['name' => 'Login']);
@@ -79,29 +82,31 @@ class DatabaseSeeder extends Seeder
       $state->product()->save($product);
 
       $cart = factory(App\Cart::class)->create();
-      $product->cart()->save($cart);
       $user->cart()->save($cart);
+      $cart->product()->save($product);
 
       $order = factory(App\Order::class)->create();
       $cart->order()->save($order);
       $state->order()->save($order);
-      $user->order()->save($order);
 
       $sale = factory(App\Sale::class)->create();
       $order->sale()->save($sale);
       $user->sale()->save($sale);
       $state->sale()->save($sale);
     });
+
     $cities = factory(App\City::class, 10)->create()->each(function($city)
     {
       $region = App\Region::find(1);
       $region->city()->save($city);
     });
+
     $stores = factory(App\Store::class, 10)->create()->each(function($store)
     {
       $city = App\City::find(1);
       $city->store()->save($store);
     });
+
     $users = factory(App\User::class, 10)->create()->each(function($user)
     {
       $store = App\Store::find(1);
@@ -116,6 +121,7 @@ class DatabaseSeeder extends Seeder
       $user = App\User::find(1);
       $user->log()->save($log);
     });
+
     $maintenances = factory(App\Maintenance::class, 10)->create()->each(function($maintenance)
     {
       $user = App\User::find(1);
@@ -123,6 +129,7 @@ class DatabaseSeeder extends Seeder
       $state->maintenance()->save($maintenance);
       $user->maintenance()->save($maintenance);
     });
+
     $comments = factory(App\Comment::class, 10)->create()->each(function($comment)
     {
       $user = App\User::find(1);
@@ -130,6 +137,7 @@ class DatabaseSeeder extends Seeder
       $user->comment()->save($comment);
       $issue->comment()->save($comment);
     });
+
     $issues = factory(App\Issue::class, 10)->create()->each(function($issue)
     {
       $user = App\User::find(1);

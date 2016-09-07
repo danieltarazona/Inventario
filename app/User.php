@@ -31,6 +31,15 @@ protected $hidden = [
   'password', 'remember_token',
 ];
 
+public function cart()
+{
+  return $this->hasMany(Cart::class);
+}
+
+public function cart_id()
+{
+  return $this->cart->id;
+}
 
 public function city()
 {

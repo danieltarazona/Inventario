@@ -52,11 +52,11 @@ class ModelProductTest extends TestCase
   public function testModelProductOrder()
   {
     $products = factory(App\Product::class, 10)->create();
-    $order = App\Order::find(1);
-    $order->product()->sync($products);
-    $this->seeInDatabase('order_product',
+    $cart = factory(App\Cart::class)->create();
+    $cart->product()->sync($products);
+    $this->seeInDatabase('cart_product',
     [
-      'order_id' => $order->id,
+      'cart_id' => $cart->id,
     ]);
   }
 

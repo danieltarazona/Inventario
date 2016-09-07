@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderProductTable extends Migration
+class CreateCartProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateOrderProductTable extends Migration
     {
         Schema::create('cart_product', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cart_id')->unsigned()->index();
-            $table->integer('product_id')->unsigned()->index();
-            $table->integer('state_id')->unsigned()->index();
+            $table->integer('cart_id')->unsigned()->nullable();
+            $table->integer('product_id')->unsigned()->nullable();
+            $table->integer('state_id')->unsigned()->nullable();
             $table->integer('quantity')->unsigned()->index();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateOrderProductTable extends Migration
      */
     public function down()
     {
-        Schema::drop('order_product');
+        Schema::drop('cart_product');
     }
 }
