@@ -5,10 +5,12 @@
   <h1>Categories</h1>
 
   <button type="button" class="btn btn-default">
-    <a href="{{ route('categories.index') }}">
+    <a href="{{ route('products.index') }}">
       <span class="fa fa-th"></span>
     </a>
-    &nbsp | &nbsp
+  </button>
+  <button type="button" class="btn btn-default">
+
     <a href="{{ route('products.index') }}">
       <span class="fa fa-th-list"></span>
     </a>

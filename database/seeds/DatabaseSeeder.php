@@ -4,27 +4,33 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
-    factory(App\User::class)->create([
+    $rol = factory(App\Rol::class)->create(['name' => 'User']);
+
+    $user = factory(App\User::class)->create([
       'username' => 'User',
       'email' => 'user@user.com',
       'password' => bcrypt("123456"),
     ]);
 
-    factory(App\User::class)->create([
+    $rol->user()->save($user);
+
+    $rol = factory(App\Rol::class)->create(['name' => 'Storer']);
+
+    $user = factory(App\User::class)->create([
       'username' => 'Storer',
       'email' => 'storer@storer.com',
       'password' => bcrypt("123456"),
     ]);
+
+    $rol->user()->save($user);
+
+    $rol = factory(App\Rol::class)->create(['name' => 'Admin']);
 
     $user = factory(App\User::class)->create([
       'username' => 'Administrator',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
     ]);
-
-    factory(App\Rol::class)->create(['name' => 'User']);
-    factory(App\Rol::class)->create(['name' => 'Storer']);
-    $rol = factory(App\Rol::class)->create(['name' => 'Admin']);
 
     $region = factory(App\Region::class)->create(['name' => 'Detroit']);
     $city = factory(App\City::class)->create(['name' => 'Kyoto']);

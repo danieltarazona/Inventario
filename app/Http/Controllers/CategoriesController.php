@@ -25,7 +25,8 @@ class CategoriesController extends Controller
   {
     $categories = Category::all();
 
-    if (Auth::id() == 1) {
+    if (Auth::user()->rol_id == 1)
+    {
       return view('categories.indexCard', compact('categories'));
     } else {
       return view('categories.indexList', compact('categories'));

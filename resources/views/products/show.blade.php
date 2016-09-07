@@ -12,7 +12,7 @@
 
     <div class="row">
       <div class="col-md-4">
-        <img src="{{ asset('img/' . $product->photo) }}" alt="product" class="img-responsive">
+        <img src="{{ asset($product->photo) }}" alt="product" class="img-responsive">
       </div>
 
       <div class="col-md-8">
@@ -22,14 +22,14 @@
           <input type="hidden" name="id" value="{{ $product->id }}">
           <input type="hidden" name="name" value="{{ $product->name }}">
           <input type="hidden" name="price" value="{{ $product->price }}">
-          <h3>Provider: {{ $product->provider->name or 'Blank' }}</h3>
-          <h3>Stock: {{ $product->stock }}</h3>
-          <h3>State: {{ $product->state->name or 'Blank' }}</h3>
-          <h3>Serial: {{ $product->serial or 'Blank' }}</h3>
-          <h3>Model: {{ $product->year or 'Blank' }}</h3>
-          <h3>Buy Date: {{ $product->buy or 'Blank' }}</h3>
-          <h3>Price: {{ $product->price or 'Blank' }}</h3>
-          <h3>Warranty: {{ $product->warranty or 'Blank' }} Months</h3>
+          <h5>Provider: {{ $product->provider->name or 'Blank' }}</h5>
+          <h5>Stock: {{ $product->stock }}</h5>
+          <h5>State: {{ $product->state->name or 'Blank' }}</h5>
+          <h5>Serial: {{ $product->serial or 'Blank' }}</h5>
+          <h5>Model: {{ $product->year or 'Blank' }}</h5>
+          <h5>Buy Date: {{ $product->buy or 'Blank' }}</h5>
+          <h5>Price: {{ $product->price or 'Blank' }}</h5>
+          <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
           <input type="submit" class="btn btn-success btn-lg" value="Add to Cart">
         </form>
 
@@ -53,7 +53,7 @@
     <div class="row">
       <h3>You may also like...</h3>
 
-      @foreach ($interested as $product)
+      @foreach ($products as $product)
         <div class="col-md-3">
           <div class="thumbnail">
             <div class="caption text-center">

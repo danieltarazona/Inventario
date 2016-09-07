@@ -14,7 +14,7 @@
   {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
 
   {!! Form::label('Lastname') !!}
-  {!! Form::text('first_firstname', $user->first_firstname, ['class' => 'form-control']) !!}
+  {!! Form::text('first_lastname', $user->first_lastname, ['class' => 'form-control']) !!}
 
   {!! Form::label('Last Lastname') !!}
   {!! Form::text('last_lastname', $user->last_lastname, ['class' => 'form-control']) !!}
@@ -31,15 +31,8 @@
   {!! Form::label('Cellphone') !!}
   {!! Form::text('cellphone', $user->cellphone, ['class' => 'form-control']) !!}
 
-
-  {!! Form::label('City') !!}
-  {!! Form::select('city_id', $cities, $user->city_id, ['class' => 'form-control']) !!}
-
   {!! Form::label('Store') !!}
   {!! Form::select('store_id', $stores, $user->store_id, ['class' => 'form-control']) !!}
-
-  {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $regions, $user->region_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('State') !!}
   {!! Form::select('state_id', $states, $user->state_id, ['class' => 'form-control']) !!}

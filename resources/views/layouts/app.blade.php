@@ -51,6 +51,7 @@
             <li><a href="{{ url('orders') }}">Orders</a></li>
             <li><a href="{{ url('products') }}">Products</a></li>
             <li><a href="{{ url('sales') }}">Sales</a></li>
+            <li><a href="{{ url('categories') }}">Categories</a></li>
             @if (Auth::check() && Auth::user()->rol_id > 1)
               <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
               <li><a href="{{ url('issues') }}">Issues</a></li>
