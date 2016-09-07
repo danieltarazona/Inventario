@@ -22,11 +22,15 @@ class DatabaseSeeder extends Seeder
       'password' => bcrypt("123456"),
     ]);
 
+    factory(App\Rol::class)->create(['name' => 'User']);
+    factory(App\Rol::class)->create(['name' => 'Storer']);
+    $rol = factory(App\Rol::class)->create(['name' => 'Admin']);
+
     $region = factory(App\Region::class)->create(['name' => 'Detroit']);
     $city = factory(App\City::class)->create(['name' => 'Kyoto']);
     $store = factory(App\Store::class)->create(['name' => 'Shibuya']);
     $state = factory(App\State::class)->create(['name' => 'Active']);
-    $rol = factory(App\Rol::class)->create(['name' => 'Admin']);
+
     $region->city()->save($city);
     $city->store()->save($store);
     $store->user()->save($user);

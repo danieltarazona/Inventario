@@ -21,12 +21,8 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 
-
-/*
 Route::resource('cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
-Route::post('switchToWishlist/{id}', 'CartController@switchToWishlist');
-*/
 
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');

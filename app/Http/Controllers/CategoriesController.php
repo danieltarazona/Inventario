@@ -25,10 +25,10 @@ class CategoriesController extends Controller
   {
     $categories = Category::all();
 
-    if (Auth::user()->id == 1) {
-      return view('categories.indexList', compact('categories'));
-    } else {
+    if (Auth::id() == 1) {
       return view('categories.indexCard', compact('categories'));
+    } else {
+      return view('categories.indexList', compact('categories'));
     }
   }
 

@@ -19,17 +19,21 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
 ## To Do
-
-- Search Product
+- Search Product, Order, Sales
 - Product Order by JQuery
 - Cart Checkout
+  - Calendar
   - Cancel and Accept
 - Confirm Box
+- Sales Index
+- Order Index
 - State Change
-- Orders
-  - Search
+- Event Mailer
 
-- Sales
+- Profile
+  - Log Cart
+  - Type (Supplier, User)
+- Middleware
 - Dashboard
   - Most Cart
   - Less Cart
@@ -37,12 +41,7 @@ Thank you for considering contributing to the Laravel framework! The contributio
   - Logged Users
   - Products Sales
   - Products Order
-- Profile
-  - Log Cart
-  - Type (Supplier, User)
-- Middleware
-- Event Mailer
-
+- Eager Load
 - Point of Sales
 - Orders to Invoice
 - Orders to Ship

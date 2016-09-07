@@ -47,22 +47,22 @@
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
 
-        @if (Auth::check())
           <ul class="nav navbar-nav">
-            <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('issues') }}">Issues</a></li>
-            <li><a href="{{ url('logs') }}">Logs</a></li>
-            <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
             <li><a href="{{ url('orders') }}">Orders</a></li>
             <li><a href="{{ url('products') }}">Products</a></li>
-            <li><a href="{{ url('providers') }}">Providers</a></li>
-            <li><a href="{{ url('rols') }}">Rols</a></li>
             <li><a href="{{ url('sales') }}">Sales</a></li>
-            <li><a href="{{ url('states') }}">States</a></li>
-            <li><a href="{{ url('stores') }}">Stores</a></li>
-            <li><a href="{{ url('users') }}">Users</a></li>
+            @if (Auth::check() && Auth::user()->rol_id > 1)
+              <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
+              <li><a href="{{ url('issues') }}">Issues</a></li>
+              <li><a href="{{ url('logs') }}">Logs</a></li>
+              <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
+              <li><a href="{{ url('providers') }}">Providers</a></li>
+              <li><a href="{{ url('rols') }}">Rols</a></li>
+              <li><a href="{{ url('states') }}">States</a></li>
+              <li><a href="{{ url('stores') }}">Stores</a></li>
+              <li><a href="{{ url('users') }}">Users</a></li>
+            @endif
           </ul>
-        @endif
 
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
@@ -80,7 +80,9 @@
               </a>
 
               <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ url('/users/' . Auth::id() . '/edit') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+              </ul>
               </ul>
             </li>
           @endif

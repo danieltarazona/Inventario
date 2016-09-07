@@ -33,9 +33,9 @@ class ProductsController extends Controller
     $products = Product::all();
     if (Auth::id() == 1)
     {
-      return view('products.indexList', compact('products'));
-    } else {
       return view('products.indexCard', compact('products'));
+    } else {
+      return view('products.indexList', compact('products'));
     }
   }
 

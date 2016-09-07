@@ -28,12 +28,8 @@
                                 <p>
                                   <input type="number" name="quantity" value="1">
 
-                                  {!! Form::open(['route' => ['products.update', $product->id], 'method' => 'patch']) !!}
+                                  {!! Form::open(['route' => ['cart.store', $product->id], 'method' => 'patch']) !!}
                                     <button class="btn btn-warning" type="submit" >Add to Order</button>
-                                  {!! Form::close() !!}
-
-                                  {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
-                                    <button class="btn btn-danger" type="submit" >Delete</button>
                                   {!! Form::close() !!}
                                 </p>
 
