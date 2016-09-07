@@ -107,7 +107,7 @@ class CategoriesController extends Controller
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      flash('Validation Fail!', 'error');
+      flash('Validation Fails!', 'error');
       return redirect('categories/' . $category->id . '/edit')
         ->withErrors($validator)
         ->withInput();

@@ -14,7 +14,8 @@ class CartController extends Controller
   */
   public function index()
   {
-    return view('cart.index');
+    $cart = App\Cart::all();
+    return view('cart.index', compact('cart'));
   }
 
   /**
@@ -25,11 +26,16 @@ class CartController extends Controller
   */
   public function store(Request $request)
   {
-    if (Cart::search(['id' => $request->id])) {
+    if (App\Cart::search(['id' => $request->id])) {
       flash('Item is already in your cart!', 'success');
       return redirect('cart');
     }
-    Cart::associate('product', 'cart')->add($request->id, $request->name, 1, $request->price);
+    App\Cart::associate('product', 'cart')->add(
+      $request->id,
+      $request->name,
+      $request->quantity,
+      $request->price
+    );
     flash('Item was added to your cart!', 'success');
     return redirect('cart');
   }
@@ -44,16 +50,15 @@ class CartController extends Controller
   public function update(Request $request, $id)
   {
     // Validation on max quantity
-    $validator = Validator::make($request->all(), [
-      'quantity' => 'required|numeric|between:1,5'
-    ]);
+    $validator = Validator::make($request->all(),$this->rules());
     if ($validator->fails()) {
-      flash('Quantity must be between 1 and 5.', 'error');
+      flash('Validation Fails!', 'error');
       return response()->json(['success' => false]);
+    } else {
+      App\Cart::update($id, $request->quantity);
+      flash('Quantity was updated successfully!', 'success');
+      return response()->json(['success' => true]);
     }
-    Cart::update($id, $request->quantity);
-    flash('Quantity was updated successfully!', 'success');
-    return response()->json(['success' => true]);
   }
 
   /**
@@ -64,7 +69,7 @@ class CartController extends Controller
   */
   public function destroy($id)
   {
-    Cart::remove($id);
+    App\Cart::remove($id);
     flash('Item has been removed!', 'success');
     return redirect('cart');
   }
@@ -76,9 +81,16 @@ class CartController extends Controller
   */
   public function emptyCart()
   {
-    Cart::destroy();
+    App\Cart::destroy();
     flash('Your cart his been cleared!', 'success');
     return redirect('cart');
+  }
+
+  public function rules()
+  {
+    return [
+      'quantity' => 'required|numeric',
+    ];
   }
 
 }

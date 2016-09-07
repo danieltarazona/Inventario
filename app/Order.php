@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-  public function product()
+  public function cart()
   {
-    return $this->belongsToMany(Product::class);
+    return $this->belongsTo(Cart::class);
+  }
+
+  public function cart_id()
+  {
+    return $this->cart->id;
   }
 
   public function user()

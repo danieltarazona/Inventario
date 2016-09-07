@@ -71,15 +71,22 @@ class DatabaseSeeder extends Seeder
       $maintenance = App\Maintenance::find(1);
       $state = App\State::find(1);
       $user = App\User::find(1);
-      $order = factory(App\Order::class)->create();
+
       $category->product()->save($product);
       $provider->product()->save($product);
       $store->product()->save($product);
       $maintenance->product()->save($product);
       $state->product()->save($product);
-      $order->product()->save($product);
-      $user->order()->save($order);
+
+      $cart = factory(App\Cart::class)->create();
+      $product->cart()->save($cart);
+      $user->cart()->save($cart);
+
+      $order = factory(App\Order::class)->create();
+      $cart->order()->save($order);
       $state->order()->save($order);
+      $user->order()->save($order);
+
       $sale = factory(App\Sale::class)->create();
       $order->sale()->save($sale);
       $user->sale()->save($sale);

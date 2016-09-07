@@ -46,9 +46,9 @@ class Product extends Model
       return $this->belongsToMany(State::class)->withTimestamps();
   }
 
-  public function order()
+  public function cart()
   {
-      return $this->belongsToMany(Order::class)->withTimestamps();
+      return $this->belongsToMany(Cart::class)->withTimestamps();
   }
 
   public function maintenances()

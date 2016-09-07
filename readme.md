@@ -19,6 +19,8 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
 ## To Do
+- Use Carbon
+- Create Relationship Cart Products
 - Search Product, Order, Sales
 - Product Order by JQuery
 
@@ -79,9 +81,5 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Security Levels
 
 1. User (Instructor)
-2. Buyer (Proveedor)
-3. Client
-4. Reseller
-5. Seller
-6. Storer (Almacenista)
-7. Admin (Administrador)
+2. Storer (Almacenista)
+3. Admin (Administrador)

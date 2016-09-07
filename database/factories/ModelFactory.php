@@ -69,6 +69,8 @@ $factory->define(App\City::class, function (Generator $faker) {
   ];
 });
 
+
+
 $factory->define(App\Store::class, function (Generator $faker) {
   return [
     'name' => $faker->name,
@@ -128,6 +130,11 @@ $factory->define(App\Comment::class, function (Generator $faker) {
 $factory->define(App\Issue::class, function (Generator $faker) {
   return [
     'name' => $faker->bs,
+  ];
+});
+
+$factory->define(App\Cart::class, function (Generator $faker) {
+  return [
   ];
 });
 
