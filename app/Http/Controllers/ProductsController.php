@@ -80,14 +80,14 @@ public function store(Request $request)
     $product->serial = $request->serial;
     $product->warranty = $request->warranty;
     $product->stock = $request->stock;
-    $product->amount = $product->stock;
     $product->year = $request->year;
+    $product->amount = $product->stock;
     $product->price = $request->price;
+    $product->state_id = $request->state_id;
     $product->category_id = $request->category_id;
     $product->maintenance_id = $request->maintenance_id;
     $product->provider_id = $request->provider_id;
     $product->store_id = $request->store_id;
-    $product->state_id = $request->state_id;
     $product->save();
     flash('Update Complete!', 'success');
     return redirect('products');
@@ -142,7 +142,7 @@ public function update(Request $request, $id)
 
   $validator = Validator::make($request->all(), $this->rules());
   if ($validator->fails()) {
-    flash('Validation Fail!', 'error');
+    flash('Validation Fail!', 'danger');
     return redirect('products/' . $product->id . '/edit')
       ->withErrors($validator)
       ->withInput();
@@ -158,6 +158,8 @@ public function update(Request $request, $id)
     $product->provider_id = $request->provider_id;
     $product->store_id = $request->store_id;
     $product->state_id = $request->state_id;
+    $product->city_id = $request->city_id;
+    $product->region_id = $request->region_id;
     $product->save();
     flash('Update Complete!', 'success');
     return redirect('products');
@@ -193,7 +195,6 @@ public function rules()
     'warranty'=> 'numeric',
     'category_id' => 'required|numeric',
     'provider_id' => 'required|numeric',
-    'maintenance_id' => 'required|numeric',
     'store_id' => 'required|numeric',
     'state_id' => 'required|numeric',
   ];

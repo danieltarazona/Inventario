@@ -9,21 +9,12 @@ body {
   margin-right: 6px;
 }
 
-.alert {
-  text-align: center;
-
-  .alert--info {
-    background: gray;
-  }
-
-  .alert--success {
-    background: lime;
-  }
-
-  .alert--error {
-    background: red;
-  }
+.alert-info {
+  background: gray;
 }
+
+.alert-success {
+  background: lime;
 
 .card {
   box-shadow: 1px solid black;

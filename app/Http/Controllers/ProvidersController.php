@@ -44,7 +44,7 @@ class ProvidersController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fail!', 'error');
+      flash('Validation Fail!', 'danger');
       return redirect('providers')
       ->withErrors($validator)
       ->withInput();

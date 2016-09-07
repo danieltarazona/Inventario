@@ -33,7 +33,7 @@ class IssuesController extends Controller
   */
   public function create()
   {
-    return view('logs.create');
+    return view('issues.create');
   }
 
   /**

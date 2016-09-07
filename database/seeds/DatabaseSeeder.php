@@ -65,36 +65,6 @@ class DatabaseSeeder extends Seeder
     $state->maintenance()->save($maintenance);
     $state->product()->save($product);
 
-
-    factory(App\Product::class, 10)->create()->each(function($product)
-    {
-      $category = App\Category::find(1);
-      $provider = App\Provider::find(1);
-      $store = App\Store::find(1);
-      $maintenance = App\Maintenance::find(1);
-      $state = App\State::find(1);
-      $user = App\User::find(1);
-
-      $category->product()->save($product);
-      $provider->product()->save($product);
-      $store->product()->save($product);
-      $maintenance->product()->save($product);
-      $state->product()->save($product);
-
-      $cart = factory(App\Cart::class)->create();
-      $user->cart()->save($cart);
-      $cart->product()->save($product);
-
-      $order = factory(App\Order::class)->create();
-      $cart->order()->save($order);
-      $state->order()->save($order);
-
-      $sale = factory(App\Sale::class)->create();
-      $order->sale()->save($sale);
-      $user->sale()->save($sale);
-      $state->sale()->save($sale);
-    });
-
     $cities = factory(App\City::class, 10)->create()->each(function($city)
     {
       $region = App\Region::find(1);
@@ -115,7 +85,38 @@ class DatabaseSeeder extends Seeder
       $store->user()->save($user);
       $state->user()->save($user);
       $rol->user()->save($user);
+      $cart = factory(App\Cart::class)->create();
     });
+
+    factory(App\Product::class, 10)->create()->each(function($product)
+    {
+      $category = App\Category::find(1);
+      $provider = App\Provider::find(1);
+      $store = App\Store::find(1);
+      $maintenance = App\Maintenance::find(1);
+      $state = App\State::find(1);
+      $user = App\User::find(1);
+      $cart = App\Cart::find(1);
+
+      $category->product()->save($product);
+      $provider->product()->save($product);
+      $store->product()->save($product);
+      $maintenance->product()->save($product);
+      $state->product()->save($product);
+
+      $user->cart()->save($cart);
+      $cart->product()->save($product);
+
+      $order = factory(App\Order::class)->create();
+      $cart->order()->save($order);
+      $state->order()->save($order);
+
+      $sale = factory(App\Sale::class)->create();
+      $order->sale()->save($sale);
+      $user->sale()->save($sale);
+      $state->sale()->save($sale);
+    });
+
     $logs = factory(App\Log::class, 10)->create()->each(function($log)
     {
       $user = App\User::find(1);

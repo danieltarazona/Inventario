@@ -6,6 +6,14 @@
 
   <h1>Your Cart</h1>
 
+  <table>
+    <tr>
+      @foreach($cart->product as $product)
+        @include('products.card')
+      @endforeach
+    </tr>
+  </table>
+
 @endsection
 
 @section('extra-js')

@@ -19,12 +19,10 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
 ## To Do
-- Use Carbon
-- Create Relationship Cart Products
 - Search Product, Order, Sales
 - Product Order by JQuery
-
 - Cart Checkout
+  - Carbon  
   - Calendar
   - Cancel and Accept
 - Confirm Box
@@ -33,6 +31,7 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - State Change
 - Event Mailer
 
+- Errors & Logging Facade
 - Profile
   - Log Cart
   - Type (Supplier, User)

@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use Http\Requests;
 use Validator;
-use Cart;
+use App\Cart;
 
 class CartController extends Controller
 {
@@ -12,10 +14,10 @@ class CartController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  public function index()
+  public function show($id)
   {
-    $cart = App\Cart::all();
-    return view('cart.index', compact('cart'));
+    $cart = Cart::findOrFail($id);
+    return view('cart.show', compact('cart'));
   }
 
   /**
@@ -26,11 +28,11 @@ class CartController extends Controller
   */
   public function store(Request $request)
   {
-    if (App\Cart::search(['id' => $request->id])) {
+    if (Cart::search(['id' => $request->id])) {
       flash('Item is already in your cart!', 'success');
       return redirect('cart');
     }
-    App\Cart::associate('product', 'cart')->add(
+    Cart::associate('product', 'cart')->add(
       $request->id,
       $request->name,
       $request->quantity,
@@ -52,10 +54,10 @@ class CartController extends Controller
     // Validation on max quantity
     $validator = Validator::make($request->all(),$this->rules());
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      flash('Validation Fails!', 'danger');
       return response()->json(['success' => false]);
     } else {
-      App\Cart::update($id, $request->quantity);
+      Cart::update($id, $request->quantity);
       flash('Quantity was updated successfully!', 'success');
       return response()->json(['success' => true]);
     }
@@ -69,7 +71,7 @@ class CartController extends Controller
   */
   public function destroy($id)
   {
-    App\Cart::remove($id);
+    Cart::remove($id);
     flash('Item has been removed!', 'success');
     return redirect('cart');
   }
@@ -79,9 +81,9 @@ class CartController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  public function emptyCart()
+  public function clean()
   {
-    App\Cart::destroy();
+    Cart::destroy();
     flash('Your cart his been cleared!', 'success');
     return redirect('cart');
   }

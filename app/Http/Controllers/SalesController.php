@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Sale;
+use Carbon\Carbon;
 
 class SalesController extends Controller
 {

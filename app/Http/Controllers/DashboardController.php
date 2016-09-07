@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Dashboard;
-use App\Log;
 use App\Sale;
 use App\Store;
 use App\Order;
@@ -26,7 +25,6 @@ class DashboardController extends Controller
 
   public function index()
   {
-    $logs = Log::lists('name', 'id');
     $stores = Store::lists('name', 'id');
     $cities = City::lists('name', 'id');
     $issues = Issue::lists('name', 'id');

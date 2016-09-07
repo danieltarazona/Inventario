@@ -73,6 +73,10 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('state_id')->references('id')->on('states')
       ->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('city_id')->references('id')->on('cities')
+      ->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('region_id')->references('id')->on('regions')
+      ->onDelete('cascade')->onUpdate('cascade');
     });
 
     Schema::table('maintenances', function ($table) {

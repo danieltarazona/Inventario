@@ -39,9 +39,9 @@ $factory->define(App\Provider::class, function (Generator $faker) {
 $factory->define(App\Category::class, function (Generator $faker) {
   return [
     'name' => $faker->word,
-    'description' => $faker->text,
-    'views' => 1000,
     'photo' => "/img/categories/ipad.jpeg",
+    'views' => 1000,
+    'description' => $faker->text,
   ];
 });
 

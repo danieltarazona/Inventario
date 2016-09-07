@@ -21,9 +21,7 @@
 
   @foreach ($categories as $category)
 
-    <a href="{{ route('categories.show', $category->id) }}"><img class="card" style="height:150px; width:150px;" src="{{ $category->photo }}" alt=""/>
-    </a>
-    <h5>{{ $category->name }}</h5>
+    @include('categories.card')
 
   @endforeach
 @stop

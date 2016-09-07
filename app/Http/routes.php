@@ -21,12 +21,11 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 
-Route::resource('cart', 'CartController');
-Route::delete('emptyCart', 'CartController@emptyCart');
+Route::resource('cart', 'CartController', ['except' => 'index'] );
+Route::delete('clean', 'CartController@empty');
 
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
-Route::resource('logs', 'LogsController');
 Route::resource('orders', 'OrdersController');
 Route::resource('sales', 'SalesController');
 

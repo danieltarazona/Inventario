@@ -47,15 +47,15 @@
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
 
-          <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
+          <li><a href="{{ url('categories') }}">Categories</a></li>
+          <li><a href="{{ url('products') }}">Products</a></li>
+          @if (Auth::check())
             <li><a href="{{ url('orders') }}">Orders</a></li>
-            <li><a href="{{ url('products') }}">Products</a></li>
             <li><a href="{{ url('sales') }}">Sales</a></li>
-            <li><a href="{{ url('categories') }}">Categories</a></li>
-            @if (Auth::check() && Auth::user()->rol_id > 1)
+            <li><a href="{{ url('issues') }}">Issues</a></li>
+            @if (Auth::user()->rol_id > 1)
               <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
-              <li><a href="{{ url('issues') }}">Issues</a></li>
-              <li><a href="{{ url('logs') }}">Logs</a></li>
               <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
               <li><a href="{{ url('providers') }}">Providers</a></li>
               <li><a href="{{ url('rols') }}">Rols</a></li>
@@ -63,7 +63,8 @@
               <li><a href="{{ url('stores') }}">Stores</a></li>
               <li><a href="{{ url('users') }}">Users</a></li>
             @endif
-          </ul>
+          @endif
+        </ul>
 
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
@@ -73,7 +74,7 @@
             <li><a href="{{ url('/register') }}">Register</a></li>
 
           @else
-            <li><a href="{{ url('/cart') }}"><i class="fa fa-shopping-basket fa-3x" aria-hidden="true"></i></a></li>
+            <li><a href="{{ url('/cart/' . Auth::id()) }}"><i class="fa fa-shopping-basket fa-3x" aria-hidden="true"></i></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 <img src="{{ Auth::user()->photo }}" alt="" style="border-radius: 100px; height: 40px;"/>
@@ -84,26 +85,38 @@
                 <li><a href="{{ url('/users/' . Auth::id() . '/edit') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
               </ul>
-              </ul>
-            </li>
-          @endif
-        </ul>
-      </div>
+            </ul>
+          </li>
+        @endif
+      </ul>
     </div>
-  </nav>
-
-  <div class="container">
-    @if (session()->has('message'))
-      <div class="alert alert--{{ session('level') }}">
-        {{ session('message') }}
-      </div>
-    @endif
-    @yield('content')
   </div>
+</nav>
 
-  <!-- JavaScripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+<div class="container">
+
+  @if (session()->has('message'))
+    <div class="alert alert-{{ session('level') }}">
+      {{ session('message') }}
+    </div>
+  @endif
+
+  @if (count($errors) > 0)
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
+  @yield('content')
+</div>
+
+<!-- JavaScripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

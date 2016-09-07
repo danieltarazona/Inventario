@@ -43,6 +43,12 @@ class CategoriesController extends Controller
     return view('categories.create');
   }
 
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
   public function show($id)
   {
     $category = Category::findOrFail($id);
@@ -58,28 +64,33 @@ class CategoriesController extends Controller
   public function store(Request $request)
   {
     $validator = Validator::make($request->all(), $this->rules());
+
     if ($validator->fails()) {
-      flash('Validation Fail!', 'error');
-      return redirect('categories')
+      flash('Validation Fail!', 'danger');
+      return redirect('categories/create')
       ->withErrors($validator)
       ->withInput();
     } else {
       $file = Input::file('photo');
-      $filePath = public_path() . '/img/categories/';
-      $fileName = $file->getClientOriginalName();
-
-      File::exists($filePath) or File::makeDirectory($filePath);
-      $image = Image::make($file->getRealPath());
-      $image->save($filePath . $fileName);
-
       $category = new Category;
-      $category->photo = '/img/categories/' . $fileName;
+      if ($file)
+      {
+        $filePath = public_path() . '/img/categories/';
+        $fileName = $file->getClientOriginalName();
+        File::exists($filePath) or File::makeDirectory($filePath);
+        $image = Image::make($file->getRealPath());
+        $image->save($filePath . $fileName);
+        $category->photo = '/img/categories/' . $fileName;
+      } else {
+        $category->photo = '/img/categories/ipad.jpeg';
+      }
       $category->description = $request->description;
       $category->name = $request->name;
+      $category->views = 0;
       $category->save();
       flash('Create Successful!', 'success');
-      return redirect('categories');
     }
+    return redirect('categories');
   }
 
   /**
@@ -107,7 +118,7 @@ class CategoriesController extends Controller
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      flash('Validation Fails!', 'danger');
       return redirect('categories/' . $category->id . '/edit')
         ->withErrors($validator)
         ->withInput();
@@ -137,6 +148,7 @@ class CategoriesController extends Controller
   {
     return [
       'name' => 'string|required|max:255|unique:categories',
+      'photo' => 'image|required',
       'description' => 'string|required',
     ];
   }

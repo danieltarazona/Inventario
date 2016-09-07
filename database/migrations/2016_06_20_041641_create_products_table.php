@@ -25,6 +25,8 @@ class CreateProductsTable extends Migration
             $table->string('photo');
             $table->integer('views');
             $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('region_id')->unsigned()->nullable();
+            $table->integer('city_id')->unsigned()->nullable();
             $table->integer('store_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();

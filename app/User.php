@@ -111,11 +111,6 @@ public function maintenance()
   return $this->hasMany(Maintenance::class);
 }
 
-public function log()
-{
-  return $this->hasMany(Log::class);
-}
-
 public function rol()
 {
   return $this->belongsTo(Rol::class);
