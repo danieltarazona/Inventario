@@ -20,14 +20,15 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Search
+- Search Product
+- Product Order by JQuery
 - Cart Checkout
   - Cancel and Accept
 - Confirm Box
 - State Change
 - Orders
   - Search
-  
+
 - Sales
 - Dashboard
   - Most Cart

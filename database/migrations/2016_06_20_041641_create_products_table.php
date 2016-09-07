@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 10, 2);
             $table->string('warranty');
             $table->string('photo');
+            $table->integer('views');
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('store_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();

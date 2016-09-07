@@ -4,8 +4,17 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
-    factory(App\Rol::class)->create(['name' => 'User']);
-    factory(App\Rol::class)->create(['name' => 'Storer']);
+    factory(App\User::class)->create([
+      'username' => 'User',
+      'email' => 'user@user.com',
+      'password' => bcrypt("123456"),
+    ]);
+
+    factory(App\User::class)->create([
+      'username' => 'Storer',
+      'email' => 'storer@storer.com',
+      'password' => bcrypt("123456"),
+    ]);
 
     $user = factory(App\User::class)->create([
       'username' => 'Administrator',

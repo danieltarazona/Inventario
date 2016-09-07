@@ -24,7 +24,7 @@ $factory->define(App\Rol::class, function (Generator $faker) {
 $factory->define(App\Log::class, function (Generator $faker) {
   return [
     'name' => $faker->bs,
-    'log' => $faker->text,
+    'description' => $faker->text,
   ];
 });
 
@@ -40,6 +40,7 @@ $factory->define(App\Category::class, function (Generator $faker) {
   return [
     'name' => $faker->word,
     'description' => $faker->text,
+    'views' => 1000,
     'photo' => "/img/categories/ipad.jpeg",
   ];
 });
@@ -87,6 +88,7 @@ $factory->define(App\Product::class, function (Generator $faker) {
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
     'stock' => 10,
     'amount' => 10,
+    'views' => 1000,
     'year' => $faker->numberBetween($min = 2010, $max = 2016),
     'serial' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]'),
   ];
