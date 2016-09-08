@@ -69,7 +69,7 @@
         </td>
         <td>{{ $product->warranty or 'Blank' }} Months</td>
         <td>
-          <a href="{{ route('products.show', $product->id) }}" id="Create" class="btn btn-primary">Read</a>
+          <a href="{{ route('products.show', $product->id) }}" id="Create" class="btn btn-primary">Show</a>
         </td>
         <td>
           <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Update</a>

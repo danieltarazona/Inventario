@@ -28,6 +28,7 @@ Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 Route::resource('orders', 'OrdersController');
 Route::resource('sales', 'SalesController');
+Route::resource('roles', 'RolesController');
 
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));

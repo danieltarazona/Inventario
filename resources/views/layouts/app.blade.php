@@ -58,7 +58,7 @@
               <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
               <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
               <li><a href="{{ url('providers') }}">Providers</a></li>
-              <li><a href="{{ url('rols') }}">Rols</a></li>
+              <li><a href="{{ url('roles') }}">Roles</a></li>
               <li><a href="{{ url('states') }}">States</a></li>
               <li><a href="{{ url('stores') }}">Stores</a></li>
               <li><a href="{{ url('users') }}">Users</a></li>

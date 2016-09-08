@@ -11,9 +11,9 @@ class SeederTest extends TestCase
   public function testSeeder()
   {
     $this->seeInDatabase('users', ['username' => 'Administrator']);
-    $this->seeInDatabase('rols', ['name' => 'User']);
-    $this->seeInDatabase('rols', ['name' => 'Storer']);
-    $this->seeInDatabase('rols', ['name' => 'Admin']);
+    $this->seeInDatabase('roles', ['name' => 'User']);
+    $this->seeInDatabase('roles', ['name' => 'Storer']);
+    $this->seeInDatabase('roles', ['name' => 'Admin']);
     $this->seeInDatabase('comments', ['name' => 'Awesome']);
     $this->seeInDatabase('categories', ['name' => 'Notebook']);
     $this->seeInDatabase('states', ['name' => 'Active']);

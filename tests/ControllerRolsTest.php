@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ControllerRolsTest extends TestCase
+class ControllerRolesTest extends TestCase
 {
     use DatabaseTransactions;
 

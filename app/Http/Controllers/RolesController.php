@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use App\Rol;
 
-class RolsController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class RolsController extends Controller
      */
     public function index()
     {
-      $rols = App\Rol::all();
-      return view('rols.index', compact('rols'));
+      $roles = App\Rol::all();
+      return view('roles.index', compact('roles'));
     }
 
     /**

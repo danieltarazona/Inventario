@@ -37,6 +37,18 @@
         </td>
         @endif
 
+        <td>
+          <a href="{{ route('providers.show', $provider->id) }}" id="Create" class="btn btn-primary">Show</a>
+        </td>
+        <td>
+          <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning">Update</a>
+        </td>
+        <td>
+          {!! Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete']) !!}
+          <button class="btn btn-danger" type="submit" >Delete</button>
+          {!! Form::close() !!}
+        </td>
+
       </tr>
 
     @endforeach
