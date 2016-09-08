@@ -54,10 +54,8 @@ class CitiesController extends Controller
         ->withErrors($validator)
         ->withInput();
     } else {
-      $city = new City;
-      $city->name = $request->name;
-      $city->region_id = $request->region_id;
-      $city->save();
+      $input = $request->all();
+      City::create($input);
       flash('Create Successful!', 'success');
       return redirect('cities');
     }
@@ -106,9 +104,8 @@ class CitiesController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $city->name = $request->name;
-      $city->region_id = $request->region_id;
-      $city->save();
+      $input = $request->all();
+      $city->fill($input)->save();
       flash('Update Successful!', 'success');
       return redirect('cities');
     }

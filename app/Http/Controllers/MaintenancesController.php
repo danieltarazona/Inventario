@@ -116,10 +116,10 @@ class MaintenancesController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $maintenance->name = $request->name;
-      $maintenance->description = $request->description;
+      $input = $request->all();
+      $maintenance->fill($input)->save();
       $maintenance->save();
-      $maintenance->products()->sync($request->products_id);
+      $maintenance->product()->sync($request->product_id);
 
       return redirect('maintenances');
       flash('Create Successful!', 'success');

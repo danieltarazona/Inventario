@@ -72,24 +72,9 @@ class UsersController extends Controller
 */
 public function update(Request $request, $id)
 {
-  //dd($request->input('city'));
-
   $user = User::FindOrFail($id);
-
-  $user->first_name = $request->input('first_name');
-  $user->last_name = $request->input('last_name');
-  $user->first_lastname = $request->input('first_lastname');
-  $user->last_lastname = $request->input('last_lastname');
-  $user->email = $request->input('email');
-  $user->adress = $request->input('adress');
-  $user->telephone = $request->input('telephone');
-  $user->cellphone = $request->input('cellphone');
-  $user->city_id = $request->input('city_id');
-  $user->store_id = $request->input('store_id');
-  $user->state_id = $request->input('state_id');
-  $user->region_id = $request->input('region_id');
-  $user->save();
-
+  $input = $request->all();
+  $user->fill($input)->save();
   return redirect('users');
 }
 
@@ -102,9 +87,7 @@ public function update(Request $request, $id)
 public function destroy($id)
 {
   User::findOrFail($id)->delete();
-
   return redirect('users');
-
   // return redirect()->route('users.index');
 }
 }

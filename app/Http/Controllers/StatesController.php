@@ -40,9 +40,8 @@ class StatesController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $state = new State;
-      $state->name = $request->name;
-      $state->save();
+      $input = $request->all();
+      State::create($input);
 
       return redirect('states');
     }
@@ -71,7 +70,6 @@ class StatesController extends Controller
   public function update(Request $request, $id)
   {
     $state = State::findOrFail($id);
-
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
@@ -79,9 +77,8 @@ class StatesController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $state->name = $request->name;
-      $state->save();
-
+      $input = $request->all();
+      $state->fill($input)->save();
       return redirect('states');
     }
   }

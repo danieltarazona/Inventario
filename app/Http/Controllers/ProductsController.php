@@ -77,9 +77,8 @@ public function store(Request $request)
     ->withErrors($validator)
     ->withInput();
   } else {
-    $product = new App\Product;
     $input = $request->all();
-    $product->fill($input)->save();
+    Product::create($input);
     flash('Update Complete!', 'success');
     return redirect('products');
   }

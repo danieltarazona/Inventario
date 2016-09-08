@@ -63,7 +63,6 @@ class RegionsController extends Controller
   public function edit($id)
   {
     $region = Region::findOrFail($id);
-
     return view('regions.edit', compact('region'));
   }
 
@@ -76,11 +75,9 @@ class RegionsController extends Controller
   */
   public function update(Request $request, $id)
   {
+    $input = $request->all();
     $region = Region::findOrFail($id);
-
-    $region->name = $request->name;
-    $region->save();
-
+    $region->fill($input)->save();
     return redirect('regions');
   }
 
