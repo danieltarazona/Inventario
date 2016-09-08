@@ -103,6 +103,7 @@ public function store(Request $request)
 public function show($id)
 {
   $product = Product::findOrFail($id);
+
   $products = Product::all()->take(4);
   return view('products.show', compact('product', 'products'));
 }
@@ -116,6 +117,7 @@ public function show($id)
 public function edit($id)
 {
   $product = Product::findOrFail($id);
+
   $categories = Category::lists('name', 'id');
   $providers = Provider::lists('name', 'id');
   $stores = Store::lists('name', 'id');
@@ -141,26 +143,15 @@ public function update(Request $request, $id)
   $product = Product::find($id);
 
   $validator = Validator::make($request->all(), $this->rules());
+
   if ($validator->fails()) {
     flash('Validation Fail!', 'danger');
     return redirect('products/' . $product->id . '/edit')
       ->withErrors($validator)
       ->withInput();
   } else {
-    $product->name = $request->name;
-    $product->serial = $request->serial;
-    $product->warranty = $request->warranty;
-    $product->stock = $request->stock;
-    $product->year = $request->year;
-    $product->price = $request->price;
-    $product->category_id = $request->category_id;
-    $product->maintenance_id = $request->maintenance_id;
-    $product->provider_id = $request->provider_id;
-    $product->store_id = $request->store_id;
-    $product->state_id = $request->state_id;
-    $product->city_id = $request->city_id;
-    $product->region_id = $request->region_id;
-    $product->save();
+    $input = $request->all();
+    $product->fill($input)->save();
     flash('Update Complete!', 'success');
     return redirect('products');
   }
@@ -187,14 +178,16 @@ public function destroy($id)
 public function rules()
 {
   return [
-    'name'    => 'required|max:255|unique:products',
+    'name'    => 'required|max:255',
     'stock'   => 'required|numeric',
-    'serial'  => 'required|max:255|unique:products',
+    'serial'  => 'required|max:255',
     'year'    => 'numeric',
     'price'   => 'numeric',
     'warranty'=> 'numeric',
     'category_id' => 'required|numeric',
     'provider_id' => 'required|numeric',
+    'city_id' => 'required|numeric',
+    'region_id' => 'required|numeric',
     'store_id' => 'required|numeric',
     'state_id' => 'required|numeric',
   ];
