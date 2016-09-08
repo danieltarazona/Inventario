@@ -13,15 +13,6 @@ use Faker\Generator;
 |
 */
 
-
-
-$factory->define(App\Log::class, function (Generator $faker) {
-  return [
-    'name' => $faker->bs,
-    'description' => $faker->text,
-  ];
-});
-
 $factory->define(App\Provider::class, function (Generator $faker) {
   return [
     'name' => $faker->name,
@@ -62,8 +53,6 @@ $factory->define(App\City::class, function (Generator $faker) {
     'name' => $faker->city,
   ];
 });
-
-
 
 $factory->define(App\Store::class, function (Generator $faker) {
   return [

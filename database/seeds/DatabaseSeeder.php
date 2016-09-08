@@ -46,10 +46,8 @@ class DatabaseSeeder extends Seeder
     $state = factory(App\State::class)->create(['name' => 'Active']);
     $state->user()->save($user);
 
-    $log = factory(App\Log::class)->create(['name' => 'Login']);
     $comment = factory(App\Comment::class)->create(['name' => 'Awesome']);
     $issue = factory(App\Issue::class)->create(['name' => 'Error']);
-    $user->log()->save($log);
     $user->comment()->save($comment);
     $issue->comment()->save($comment);
 
@@ -115,12 +113,6 @@ class DatabaseSeeder extends Seeder
       $order->sale()->save($sale);
       $user->sale()->save($sale);
       $state->sale()->save($sale);
-    });
-
-    $logs = factory(App\Log::class, 10)->create()->each(function($log)
-    {
-      $user = App\User::find(1);
-      $user->log()->save($log);
     });
 
     $maintenances = factory(App\Maintenance::class, 10)->create()->each(function($maintenance)
