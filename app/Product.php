@@ -46,12 +46,22 @@ class Product extends Model
       return $this->belongsToMany(State::class)->withTimestamps();
   }
 
+  public function state_id()
+  {
+      return $this->state->lists('id');
+  }
+
   public function cart()
   {
       return $this->belongsToMany(Cart::class)->withTimestamps();
   }
 
-  public function maintenances()
+  public function cart_id()
+  {
+      return $this->cart->lists('id');
+  }
+
+  public function maintenance()
   {
       return $this->belongsToMany(Maintenance::class)->withTimestamps();
   }

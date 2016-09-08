@@ -21,6 +21,11 @@ class State extends Model
         return $this->belongsToMany(Product::class)->withTimestamps();
     }
 
+    public function product_id()
+    {
+        return $this->product->list('id');
+    }
+
     public function order()
     {
         return $this->hasOne(Order::class);
@@ -43,11 +48,11 @@ class State extends Model
 
     public function sale()
     {
-        return $this->hasOne(Sale::class);
+        return $this->hasMany(Sale::class);
     }
 
     public function sale_id()
     {
-        return $this->sale->id;
+        return $this->sale->list('id');
     }
 }

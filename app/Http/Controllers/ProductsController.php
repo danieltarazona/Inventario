@@ -17,6 +17,8 @@ use App\State;
 use App\Region;
 use App\Order;
 
+use Carbon\Carbon;
+
 use Auth;
 
 
@@ -76,19 +78,8 @@ public function store(Request $request)
     ->withInput();
   } else {
     $product = new App\Product;
-    $product->name = $request->name;
-    $product->serial = $request->serial;
-    $product->warranty = $request->warranty;
-    $product->stock = $request->stock;
-    $product->year = $request->year;
-    $product->amount = $product->stock;
-    $product->price = $request->price;
-    $product->state_id = $request->state_id;
-    $product->category_id = $request->category_id;
-    $product->maintenance_id = $request->maintenance_id;
-    $product->provider_id = $request->provider_id;
-    $product->store_id = $request->store_id;
-    $product->save();
+    $input = $request->all();
+    $product->fill($input)->save();
     flash('Update Complete!', 'success');
     return redirect('products');
   }

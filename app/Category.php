@@ -10,4 +10,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function product_id()
+    {
+        return $this->product->list('id');
+    }
 }

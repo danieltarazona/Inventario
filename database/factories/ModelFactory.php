@@ -13,13 +13,7 @@ use Faker\Generator;
 |
 */
 
-$faker = Faker\Factory::create('es_ES');
 
-$factory->define(App\Rol::class, function (Generator $faker) {
-  return [
-    'name' => $faker->name,
-  ];
-});
 
 $factory->define(App\Log::class, function (Generator $faker) {
   return [
@@ -145,5 +139,11 @@ $factory->define(App\Order::class, function (Generator $faker) {
 
 $factory->define(App\Sale::class, function (Generator $faker) {
   return [
+  ];
+});
+
+$factory->define(App\Rol::class, function (Generator $faker) {
+  return [
+    'name' => $faker->name,
   ];
 });

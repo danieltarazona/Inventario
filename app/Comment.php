@@ -11,8 +11,18 @@ class Comment extends Model
         return $this->belongsTo(Issue::class);
     }
 
+    public function issue_id()
+    {
+        return $this->issue->id;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function user_id()
+    {
+        return $this->user->id;
     }
 }

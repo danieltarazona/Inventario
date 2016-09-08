@@ -38,7 +38,7 @@ public function cart()
 
 public function cart_id()
 {
-  return $this->cart->id;
+  return $this->cart->list('id');
 }
 
 public function city()
@@ -86,9 +86,19 @@ public function sale()
   return $this->hasMany(Sale::class);
 }
 
+public function sale_id()
+{
+  return $this->sale->list('id');
+}
+
 public function order()
 {
   return $this->hasMany(Order::class);
+}
+
+public function order_id()
+{
+  return $this->order->list('id');
 }
 
 public function comment()
@@ -98,7 +108,7 @@ public function comment()
 
 public function comment_id()
 {
-  return $this->belongsTo(Comment::class);
+  return $this->comment->list('id');
 }
 
 public function issue()
@@ -106,9 +116,19 @@ public function issue()
   return $this->hasMany(Issue::class);
 }
 
+public function issue_id()
+{
+  return $this->issue->list('id');
+}
+
 public function maintenance()
 {
   return $this->hasMany(Maintenance::class);
+}
+
+public function maintenance_id()
+{
+  return $this->maintenance->list('id');
 }
 
 public function rol()

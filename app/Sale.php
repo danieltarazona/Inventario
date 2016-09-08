@@ -11,6 +11,11 @@ class Sale extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function user_id()
+    {
+        return $this->user->id;
+    }
+
     public function order()
     {
         return $this->belongsTo(Order::class);
@@ -23,7 +28,7 @@ class Sale extends Model
 
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo(State::class);
     }
 
     public function state_id()

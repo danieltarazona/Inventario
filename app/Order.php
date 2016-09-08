@@ -41,4 +41,9 @@ class Order extends Model
     return $this->hasMany(Sale::class);
   }
 
+  public function sale_id()
+  {
+    return $this->sale->list('id');
+  }
+
 }
