@@ -131,7 +131,7 @@ $factory->define(App\Sale::class, function (Generator $faker) {
   ];
 });
 
-$factory->define(App\Rol::class, function (Generator $faker) {
+$factory->define(App\Role::class, function (Generator $faker) {
   return [
     'name' => $faker->name,
   ];

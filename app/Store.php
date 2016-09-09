@@ -38,7 +38,7 @@ class Store extends Model
 
     public function name_id()
     {
-      return Store::all()->lists('name', 'id');
+      return Store::lists('name', 'id');
     }
 
 }

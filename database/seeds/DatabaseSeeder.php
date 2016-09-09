@@ -4,7 +4,7 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
-    $rol = factory(App\Rol::class)->create(['name' => 'User']);
+    $role = factory(App\Role::class)->create(['name' => 'User']);
 
     $user = factory(App\User::class)->create([
       'username' => 'User',
@@ -12,26 +12,26 @@ class DatabaseSeeder extends Seeder
       'password' => bcrypt("123456"),
     ]);
 
-    $rol->user()->save($user);
+    $role->user()->save($user);
 
-    $rol = factory(App\Rol::class)->create(['name' => 'Storer']);
+    $role = factory(App\Role::class)->create(['name' => 'Storer']);
 
     $user = factory(App\User::class)->create([
       'username' => 'Storer',
       'email' => 'storer@storer.com',
       'password' => bcrypt("123456"),
-      'rol_id' => 2,
+      'role_id' => 2,
     ]);
 
-    $rol->user()->save($user);
+    $role->user()->save($user);
 
-    $rol = factory(App\Rol::class)->create(['name' => 'Admin']);
+    $role = factory(App\Role::class)->create(['name' => 'Admin']);
 
     $user = factory(App\User::class)->create([
       'username' => 'Administrator',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
-      'rol_id' => 3,
+      'role_id' => 3,
     ]);
 
 
@@ -79,10 +79,10 @@ class DatabaseSeeder extends Seeder
     {
       $store = App\Store::find(1);
       $state = App\State::find(1);
-      $rol = App\Rol::find(1);
+      $role = App\Role::find(1);
       $store->user()->save($user);
       $state->user()->save($user);
-      $rol->user()->save($user);
+      $role->user()->save($user);
       $cart = factory(App\Cart::class)->create();
     });
 

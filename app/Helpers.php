@@ -7,6 +7,6 @@ function flash($message, $level = "info")
 }
 
 function set_active($path, $active='active')
- {
-    return Request::is($path) || Request::is($path . '/*') ? $active: '';
- }
+{
+  return Request::is($path) || Request::is($path . '/*') ? $active: '';
+}

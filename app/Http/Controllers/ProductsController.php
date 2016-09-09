@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Http\Requests;
 
@@ -18,8 +19,8 @@ use App\Region;
 use App\Order;
 
 use Carbon\Carbon;
-
 use Auth;
+use File;
 
 
 class ProductsController extends Controller
@@ -77,6 +78,18 @@ public function store(Request $request)
     ->withErrors($validator)
     ->withInput();
   } else {
+    $file = Input::file('photo');
+    if ($file)
+    {
+      $filePath = public_path() . '/img/products/';
+      $fileName = $file->getClientOriginalName();
+      File::exists($filePath) or File::makeDirectory($filePath);
+      $image = Image::make($file->getRealPath());
+      $image->save($filePath . $fileName);
+      $request->photo = '/img/products/' . $fileName;
+    } else {
+      $request->photo = '/img/products/ipad.jpeg';
+    }
     $input = $request->all();
     Product::create($input);
     flash('Update Complete!', 'success');

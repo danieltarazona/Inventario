@@ -4,10 +4,13 @@
 
 <h1>Create</h1>
 
-{!! Form::open(['url' => 'products']) !!}
+{!! Form::open(['route' => 'products.store', 'files' => true, 'method' => 'post']) !!}
 
   {!! Form::label('Name') !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
+
+  {!! Form::label('Photo') !!}
+  {!! Form::file('photo', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Stock') !!}
   {!! Form::text('stock', null, ['class' => 'form-control']) !!}

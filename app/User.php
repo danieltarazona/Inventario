@@ -131,24 +131,24 @@ public function maintenance_id()
   return $this->maintenance->list('id');
 }
 
-public function rol()
+public function role()
 {
-  return $this->belongsTo(Rol::class);
+  return $this->belongsTo(Role::class);
 }
 
-public function rol_id()
+public function role_id()
 {
-  return $this->rol->id;
+  return $this->role->id;
 }
 
-public function rol_name()
+public function role_name()
 {
-  return $this->rol->name;
+  return $this->role->name;
 }
 
 public function isUser()
 {
-  if ($this->rol_id() == 2)
+  if ($this->role_id() == 2)
   {
     return True;
   } else {
@@ -158,7 +158,7 @@ public function isUser()
 
 public function isStorer()
 {
-  if ($this->rol_id() == 3)
+  if ($this->role_id() == 3)
   {
     return True;
   } else {
@@ -168,7 +168,7 @@ public function isStorer()
 
 public function isAdmin()
 {
-  if ($this->rol_id() == 1)
+  if ($this->role_id() == 1)
   {
     return True;
   } else {

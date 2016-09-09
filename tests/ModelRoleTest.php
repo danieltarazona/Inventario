@@ -8,15 +8,15 @@ class ModelRolTest extends TestCase
 {
   use DatabaseTransactions;
 
-  public function testModelRolBelongsToUser()
+  public function testModelRoleBelongsToUser()
   {
     $user = App\User::find(1);
-    $rol = App\Rol::find(1);
-    $rol->user()->save($user);
+    $role = App\Role::find(1);
+    $role->user()->save($user);
     $this->seeInDatabase('users',
     [
       'username' => $user->username,
-      'rol_id' => $rol->id
+      'role_id' => $role->id
     ]);
   }
 }

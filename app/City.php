@@ -38,7 +38,7 @@ class City extends Model
 
     public function name_id()
     {
-      return City::all()->lists('name', 'id');
+      return City::lists('name', 'id');
     }
 
 }

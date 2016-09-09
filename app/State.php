@@ -55,4 +55,9 @@ class State extends Model
     {
         return $this->sale->list('id');
     }
+
+    public function name_id()
+    {
+      return State::lists('name', 'id');
+    }
 }

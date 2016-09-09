@@ -70,8 +70,8 @@ class FactoriesTest extends TestCase
 
     public function testFactoryRol()
     {
-      $rol = factory(App\Rol::class)->create(['name' => 'TestRol']);
-      $this->seeInDatabase('roles', ['name' => $rol->name]);
+      $role = factory(App\Role::class)->create(['name' => 'TestRole']);
+      $this->seeInDatabase('roles', ['name' => $role->name]);
     }
 
     public function testFactoryLog()

@@ -43,6 +43,6 @@ class Region extends Model
 
   public function name_id()
   {
-    return Region::all()->lists('name', 'id');
+    return Region::lists('name', 'id');
   }
 }

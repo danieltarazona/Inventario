@@ -54,12 +54,14 @@
             <li><a href="{{ url('orders') }}">Orders</a></li>
             <li><a href="{{ url('sales') }}">Sales</a></li>
             <li><a href="{{ url('issues') }}">Issues</a></li>
-            @if (Auth::user()->rol_id > 1)
+            @if (Auth::user()->role_id > 1)
               <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
               <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
               <li><a href="{{ url('providers') }}">Providers</a></li>
               <li><a href="{{ url('roles') }}">Roles</a></li>
               <li><a href="{{ url('states') }}">States</a></li>
+              <li><a href="{{ url('regions') }}">Regions</a></li>
+              <li><a href="{{ url('cities') }}">Cities</a></li>
               <li><a href="{{ url('stores') }}">Stores</a></li>
               <li><a href="{{ url('users') }}">Users</a></li>
             @endif

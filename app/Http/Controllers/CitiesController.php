@@ -50,7 +50,7 @@ class CitiesController extends Controller
 
     if ($validator->fails()) {
       flash('Validation Fail!', 'danger');
-      return redirect('cities/' . $city->id . '/edit')
+      return redirect('cities')
         ->withErrors($validator)
         ->withInput();
     } else {

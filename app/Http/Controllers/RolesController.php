@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Rol;
+use App\Role;
 
 class RolesController extends Controller
 {
@@ -17,7 +17,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-      $roles = App\Rol::all();
+      $roles = App\Role::all();
       return view('roles.index', compact('roles'));
     }
 

@@ -9,7 +9,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Rol ID</th>
+        <th>Role ID</th>
         <th>Tipo</th>
         <th>Username</th>
         <th>DNI</th>
@@ -22,8 +22,8 @@
 
       <tr>
         <td>{{ $user->id }}</td>
-        <td>{{ $user->rol->id or 'Blank' }}</td>
-        <td>{{ $user->rol->name or 'Blank' }}</td>
+        <td>{{ $user->role->id or 'Blank' }}</td>
+        <td>{{ $user->role->name or 'Blank' }}</td>
         <td>{{ $user->username }}</td>
         <td>{{ $user->dni }}</td>
         <td>{{ $user->email }}</td>
