@@ -22,7 +22,7 @@ Route::get('/contact', 'HomeController@contact');
 
 
 Route::resource('cart', 'CartController', ['except' => 'index'] );
-Route::delete('clean', 'CartController@empty');
+Route::delete('/cart/remove', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
 
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');

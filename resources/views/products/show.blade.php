@@ -48,8 +48,8 @@
         <div class="col-md-3">
           <div class="thumbnail">
             <div class="caption text-center">
-              <a href="{{ url('shop', [$product->slug]) }}"><img src="{{ asset($product->photo) }}" alt="" class="img-responsive"></a>
-              <a href="{{ url('shop', [$product->slug]) }}"><h3>{{ $product->name }}</h3>
+              <a href=""><img src="{{ asset($product->photo) }}" alt="" class="img-responsive"></a>
+              <a href=""><h3>{{ $product->name }}</h3>
                 <p>{{ $product->price }}</p>
               </a>
             </div> <!-- end caption -->
@@ -71,7 +71,7 @@
           </tr>
         </thead>
 
-        @foreach($product->maintenances as $maintenance)
+        @foreach($product->maintenance as $maintenance)
           <tr>
             <td>{{ $maintenance->id }}</td>
             <td>{{ $maintenance->name }}</td>

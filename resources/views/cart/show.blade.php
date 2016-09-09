@@ -21,7 +21,7 @@
 
     @foreach($cart->product as $product)
       <tr>
-        @include('carts.list')
+        @include('cart.list')
       @endforeach
     </tr>
   </table>

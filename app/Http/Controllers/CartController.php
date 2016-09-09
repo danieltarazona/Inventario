@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Http\Requests;
 use Validator;
 use App\Cart;
+use Auth;
 
 class CartController extends Controller
 {
@@ -74,7 +75,7 @@ class CartController extends Controller
     $cart = App\Cart::findOrFail(Auth::id());
     $cart->forget($id);
     flash('Item has been removed!', 'success');
-    return redirect('cart');
+    return redirect('cart/' . Auth::id());
   }
 
   /**
@@ -85,13 +86,12 @@ class CartController extends Controller
   */
   public function destroy($id)
   {
-    $cart = App\Cart::findOrFail(Auth::id())->delete();
-    $user = App\User::findOrFail(Auth::id());
-    $cart = new App\Cart;
-    $user->cart()->save($cart);
-    $cart->save();
-    flash('Cart has been clear!', 'success');
-    return redirect('cart');
+    $cart = Cart::findOrFail($id);
+    foreach ($cart->product as $product) {
+                $product->remove();
+    }
+    flash('Cart has been Clear!', 'success');
+    return redirect('cart/' . Auth::id());
   }
 
   public function rules()
