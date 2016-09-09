@@ -4,7 +4,7 @@
 
   <h1>Cities</h1>
 
-  {!! Form::open(['route' => 'cities.store', 'files' => true, 'method' => 'post']) !!}
+  {!! Form::open(['route' => 'cities.store', 'files' => true, 'method' => 'POST']) !!}
 
     {!! Form::label('Name') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -46,7 +46,7 @@
         </td>
 
         <td>
-          {!! Form::open(['route' => ['cities.destroy', $city->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['cities.destroy', $city->id], 'method' => 'DELETE']) !!}
             <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>

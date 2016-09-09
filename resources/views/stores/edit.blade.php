@@ -4,7 +4,7 @@
 
 <h1>Edit</h1>
 
-{!! Form::open(array('route' => array('products.update', $product->id), 'method' => 'patch')) !!}
+{!! Form::open(array('route' => array('products.update', $product->id), 'method' => 'PATCH')) !!}
 
   {!! Form::label('Name') !!}
   {!! Form::text('name', $store->name, ['class' => 'form-control']) !!}

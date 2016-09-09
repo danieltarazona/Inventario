@@ -37,7 +37,7 @@
         <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning">Update</a>
       </td>
       <td>
-        {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
+        {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
         {!! Form::close() !!}
       </td>

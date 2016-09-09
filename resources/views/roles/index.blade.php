@@ -30,7 +30,7 @@
           <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Update</a>
         </td>
         <td>
-          {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>

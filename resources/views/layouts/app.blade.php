@@ -76,10 +76,10 @@
             <li><a href="{{ url('/register') }}">Register</a></li>
 
           @else
-            <li><a href="{{ url('/cart/' . Auth::id()) }}"><i class="fa fa-shopping-basket fa-3x" aria-hidden="true"></i></a></li>
+            <li><a href="{{ url('/cart/' . Auth::id()) }}"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <img src="{{ Auth::user()->photo }}" alt="" style="border-radius: 100px; height: 40px;"/>
+                <i class="fa fa-btn fa-user fa-lg"></i>
                 {{ Auth::user()->username }} <span class="caret"></span>
               </a>
 

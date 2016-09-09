@@ -20,10 +20,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
-
-Route::resource('cart', 'CartController', ['except' => 'index'] );
-Route::delete('/cart/remove', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
-
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 Route::resource('orders', 'OrdersController');
@@ -42,30 +38,6 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('stores', 'StoresController');
 Route::resource('dashboard', 'DashboardController');
 
-/*
-Route::resource('issues', 'IssuesController', ['except' => ['destroy']]);
-Route::resource('logs', 'LogsController', ['only' => ['store']]);
-Route::resource('orders', 'OrdersController');
-Route::resource('sales', 'SalesController', ['only' => ['index', 'show']]);
-Route::resource('products', 'ProductsController', ['only' => ['index', 'show', 'update']]);
-
-Route::resource('maintenances', 'MaintenancesController', ['except' => ['destroy']]);
-Route::resource('sales', 'SalesController', ['only' => ['index', 'edit', 'update', 'show']]);
-Route::resource('orders', 'OrdersController', ['only' => ['index', 'show', 'update']]);
-Route::resource('products', 'ProductsController', ['only' => ['index', 'show', 'update']]);
-
-Route::resource('products', 'ProductsController');
-Route::resource('maintenances', 'MaintenancesController', ['except' => ['create', 'store']]);
-Route::resource('sales', 'SalesController', ['except' => ['create', 'store', 'destroy']]);
-Route::resource('orders', 'OrdersController', ['except' => ['store', 'create']]);
-Route::resource('products', 'ProductsController');
-Route::resource('providers', 'ProvidersController', ['except' => ['show']]);
-Route::resource('logs', 'LogsController', ['only' => ['store']]);
-Route::resource('issues', 'IssuesController', ['except' => ['create', 'store', 'destroy']]);
-Route::resource('regions', 'RegionsController', ['except' => ['create', 'show']]);
-Route::resource('states', 'StatesController', ['except' => ['create', 'show']]);
-Route::resource('cities', 'CitiesController', ['except' => ['create']]);
-Route::resource('categories', 'CategoriesController', ['except' => ['create', 'show']]);
-Route::resource('stores', 'StoresController');
-Route::resource('dashboard', 'DashboardController', ['only' => ['index', 'edit', 'update']]);
-*/
+Route::resource('cart', 'CartController', ['except' => 'index'] );
+Route::delete('/cart/remove/{id}', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
+Route::post('/cart/add/{id}', array('uses' => 'CartController@add', 'as' => 'cart.add'));

@@ -30,7 +30,9 @@
           <h5>Buy Date: {{ $product->buy or 'Blank' }}</h5>
           <h5>Price: {{ $product->price or 'Blank' }}</h5>
           <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
-          <input type="submit" class="btn btn-success btn-lg" value="Add to Cart">
+          {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+            <button class="btn btn-success" type="submit">Order</button>
+          {!! Form::close() !!}
         </form>
 
         <br><br>

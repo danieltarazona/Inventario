@@ -4,7 +4,7 @@
 
 <h1>Edit</h1>
 
-{!! Form::open(array('route' => array('providers.update', $provider->id), 'method' => 'patch')) !!}
+{!! Form::open(array('route' => array('providers.update', $provider->id), 'method' => 'PATCH')) !!}
 
   {!! Form::label('Name') !!}
   {!! Form::text('name', $provider->name, ['class' => 'form-control']) !!}

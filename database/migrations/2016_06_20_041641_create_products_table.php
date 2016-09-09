@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('serial');
             $table->string('warranty');
             $table->integer('stock')->unsigned();
-            $table->integer('amount')->unsigned();
             $table->string('year');
             $table->date('date');
             $table->decimal('price', 10, 2);

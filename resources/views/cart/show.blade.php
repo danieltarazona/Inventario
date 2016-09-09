@@ -9,50 +9,38 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Image</th>
-        <th>Name</th>
-        <th>State</th>
-        <th>Stock</th>
-        <th>Price</th>
-        <th colspan="3">Actions</th>
+        <th></th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
+    <tr>
+      {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
+      <button class="btn btn-danger" type="submit" >Delete</button>
+      {!! Form::close() !!}
+
+      {!! Form::open(['route' => ['orders.store', $cart->id], 'method' => 'POST']) !!}
+      <button class="btn btn-success" type="submit" >Order</button>
+      {!! Form::close() !!}
+    </tr>
+
     @foreach($cart->product as $product)
       <tr>
-        @include('cart.list')
-      @endforeach
-    </tr>
+        <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
+        <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
+        <!-- <td>{{ $product->state->name or 'Blank' }}</td> -->
+        <!-- <td>{{ $product->price or 'Blank' }}</td> -->
+        <td><input type="number" name="quantity" value="{{ $product->quantity or '1'}}"></td>
+        <td>
+          {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'DELETE']) !!}
+          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+          {!! Form::close() !!}
+        </td>
+      </tr>
+    @endforeach
+
   </table>
 
-  {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'delete']) !!}
-  <button class="btn btn-danger" type="submit" >Delete</button>
-  {!! Form::close() !!}
-
-@endsection
-
-@section('extra-js')
-  <script>
-  (function(){
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    $('.quantity').on('change', function() {
-      var id = $(this).attr('data-id')
-      $.ajax({
-        type: "PATCH",
-        url: '/cart/' + id,
-        data: {
-          'quantity': this.value,
-        },
-        success: function(data) {
-          window.location.href = '/cart';
-        }
-      });
-    });
-  })();
-  </script>
 @endsection

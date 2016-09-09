@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Http\Requests;
 use Validator;
+use App\Product;
 use App\Cart;
 use Auth;
 
@@ -29,18 +30,9 @@ class CartController extends Controller
   */
   public function store(Request $request)
   {
-    if (Cart::search(['id' => $request->id])) {
-      flash('Item is already in your cart!', 'success');
-      return redirect('cart');
-    }
-    Cart::associate('product', 'carts')->add(
-      $request->id,
-      $request->name,
-      $request->quantity,
-      $request->price
-    );
+
     flash('Item was added to your cart!', 'success');
-    return redirect('cart');
+    return redirect('cart/' . Auth::id());
   }
 
   /**
@@ -65,6 +57,21 @@ class CartController extends Controller
   }
 
   /**
+  * Add the specified product to Cart.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function add($id)
+  {
+    $product = Product::findOrFail($id);
+    $cart = Cart::findOrFail(Auth::id());
+    $cart->product()->save($product);
+    flash('Item has been Added!', 'success');
+    return redirect('cart/' . Auth::id());
+  }
+
+  /**
   * Remove the specified resource from storage.
   *
   * @param  int  $id
@@ -72,9 +79,9 @@ class CartController extends Controller
   */
   public function remove($id)
   {
-    $cart = App\Cart::findOrFail(Auth::id());
-    $cart->forget($id);
-    flash('Item has been removed!', 'success');
+    $cart = Cart::findOrFail(Auth::id());
+    $cart->product()->detach($id);
+    flash('Item has been Removed!', 'success');
     return redirect('cart/' . Auth::id());
   }
 

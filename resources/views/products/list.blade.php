@@ -23,7 +23,7 @@
   <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Update</a>
 </td>
 <td>
-  {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'delete']) !!}
+  {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'DELETE']) !!}
   <button class="btn btn-danger" type="submit" >Delete</button>
   {!! Form::close() !!}
 </td>

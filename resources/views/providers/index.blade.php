@@ -31,7 +31,7 @@
         </td>
 
         <td>
-          {!! Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>
@@ -44,7 +44,7 @@
           <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning">Update</a>
         </td>
         <td>
-          {!! Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['providers.destroy', $provider->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>

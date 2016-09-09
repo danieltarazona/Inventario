@@ -39,7 +39,7 @@
         </td>
 
         <td>
-          {!! Form::open(['route' => ['stores.destroy', $store->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['stores.destroy', $store->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>

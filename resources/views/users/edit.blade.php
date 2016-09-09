@@ -5,7 +5,7 @@
 <h1>{{ $user->username }}</h1>
 <h2>{{ $user->dni }}</h2>
 
-{!! Form::open(array('route' => array('users.update', $user->id), 'method' => 'patch')) !!}
+{!! Form::open(array('route' => array('users.update', $user->id), 'method' => 'PATCH')) !!}
 
   {!! Form::label('Name') !!}
   {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}

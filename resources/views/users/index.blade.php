@@ -37,7 +37,7 @@
         </td>
 
         <td>
-          {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>

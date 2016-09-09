@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Sale;
+use App\Cart;
 use Carbon\Carbon;
 
 class SalesController extends Controller
@@ -43,9 +44,11 @@ class SalesController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
-  public function store(Request $request)
+  public function store(Request $request, $id)
   {
-    //
+    $input = $request->all();
+    Sale::create($input);
+    return redirect('sales');
   }
 
   /**

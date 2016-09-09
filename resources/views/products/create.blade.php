@@ -4,7 +4,7 @@
 
 <h1>Create</h1>
 
-{!! Form::open(['route' => 'products.store', 'files' => true, 'method' => 'post']) !!}
+{!! Form::open(['route' => 'products.store', 'files' => true, 'method' => 'POST']) !!}
 
   {!! Form::label('Name') !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}

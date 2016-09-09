@@ -32,7 +32,7 @@
           <a href="{{ route('states.edit', $state->id) }}" class="btn btn-warning">Update</a>
         </td>
         <td>
-          {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'delete']) !!}
+          {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'DELETE']) !!}
             <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>
