@@ -22,6 +22,7 @@
           <input type="hidden" name="id" value="{{ $product->id }}">
           <input type="hidden" name="name" value="{{ $product->name }}">
           <input type="hidden" name="price" value="{{ $product->price }}">
+
           <h5>Provider: {{ $product->provider->name or 'Blank' }}</h5>
           <h5>Stock: {{ $product->stock }}</h5>
           <h5>State: {{ $product->state->name or 'Blank' }}</h5>
@@ -30,9 +31,21 @@
           <h5>Buy Date: {{ $product->buy or 'Blank' }}</h5>
           <h5>Price: {{ $product->price or 'Blank' }}</h5>
           <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
-          {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-            <button class="btn btn-success" type="submit">Order</button>
-          {!! Form::close() !!}
+
+          @if(Auth::user()->role_id > 1)
+            {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'POST']) !!}
+              <input type="number" name="quantity" value="1">
+              <button class="btn btn-success" type="submit">Maintenance</button>
+            {!! Form::close() !!}
+          @endif
+
+          @if(Auth::user()->role_id == 1)
+            {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+              <input type="number" name="quantity" value="1">
+              <button class="btn btn-success" type="submit">Order</button>
+            {!! Form::close() !!}
+          @endif
+
         </form>
 
         <br><br>

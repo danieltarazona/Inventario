@@ -32,7 +32,7 @@ Route::get('/products/search', array('uses' => 'ProductsController@search', 'as'
 Route::resource('maintenances', 'MaintenancesController');
 Route::resource('providers', 'ProvidersController');
 Route::resource('regions', 'RegionsController');
-Route::resource('states', 'StatesController');
+Route::resource('states', 'StatesController', ['except' => 'show'] );
 Route::resource('cities', 'CitiesController');
 Route::resource('categories', 'CategoriesController');
 Route::resource('stores', 'StoresController');

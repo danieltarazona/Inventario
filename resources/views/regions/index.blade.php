@@ -10,7 +10,7 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
     <br>
-    
+
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
   {!! Form::close() !!}
@@ -32,7 +32,7 @@
         <td>{{ $region->id }}</td>
         <td>{{ $region->name }}</td>
 
-        @if (Auth::id() == 1)
+        @if (Auth::user()->role_id > 1)
         <td>
           <a href="{{ route('regions.edit', $region->id) }}" class="btn btn-warning">Update</a>
         </td>

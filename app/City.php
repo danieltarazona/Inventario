@@ -26,6 +26,16 @@ class City extends Model
         return $this->user->list('id');
     }
 
+    public function product()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function product_id()
+    {
+        return $this->product->list('id');
+    }
+
     public function region()
     {
         return $this->belongsTo(Region::class);

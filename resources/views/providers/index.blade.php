@@ -38,9 +38,6 @@
         @endif
 
         <td>
-          <a href="{{ route('providers.show', $provider->id) }}" id="Create" class="btn btn-primary">Show</a>
-        </td>
-        <td>
           <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning">Update</a>
         </td>
         <td>

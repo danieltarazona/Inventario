@@ -73,7 +73,7 @@ class StatesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      return redirect('states.edit', compact('state'))
+      return redirect('states/' . $id . '/edit')
       ->withErrors($validator)
       ->withInput();
     } else {
@@ -98,7 +98,7 @@ class StatesController extends Controller
   public function rules()
   {
     return [
-      'name' => 'string|required|max:255|unique:states',
+      'name' => 'string|required|max:255',
     ];
   }
 }

@@ -43,7 +43,7 @@ class Product extends Model
 
   public function state()
   {
-      return $this->belongsToMany(State::class)->withTimestamps();
+      return $this->belongsToMany(State::class)->withPivot('quantity')->withTimestamps();
   }
 
   public function state_id()
@@ -53,7 +53,7 @@ class Product extends Model
 
   public function cart()
   {
-      return $this->belongsToMany(Cart::class)->withTimestamps();
+      return $this->belongsToMany(Cart::class)->withPivot('quantity')->withTimestamps();
   }
 
   public function cart_id()
@@ -63,7 +63,7 @@ class Product extends Model
 
   public function maintenance()
   {
-      return $this->belongsToMany(Maintenance::class)->withTimestamps();
+      return $this->belongsToMany(Maintenance::class)->withPivot('quantity')->withTimestamps();
   }
 
   public function maintenance_id()

@@ -28,8 +28,6 @@ class CreateProductsTable extends Migration
             $table->integer('city_id')->unsigned()->nullable();
             $table->integer('store_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();
-            $table->integer('state_id')->unsigned()->nullable();
-            $table->integer('maintenance_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -55,7 +55,6 @@
             <li><a href="{{ url('sales') }}">Sales</a></li>
             <li><a href="{{ url('issues') }}">Issues</a></li>
             @if (Auth::user()->role_id > 1)
-              <li><a href="{{ url('dashboard') }}">Dashboard</a></li>
               <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
               <li><a href="{{ url('providers') }}">Providers</a></li>
               <li><a href="{{ url('roles') }}">Roles</a></li>

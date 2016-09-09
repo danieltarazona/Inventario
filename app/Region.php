@@ -41,6 +41,16 @@ class Region extends Model
     return $this->store->list('id');
   }
 
+  public function product()
+  {
+      return $this->hasMany(User::class);
+  }
+
+  public function product_id()
+  {
+      return $this->product->list('id');
+  }
+
   public function name_id()
   {
     return Region::lists('name', 'id');

@@ -12,7 +12,7 @@
 {!! Form::label('Serial') !!}
 {!! Form::text('serial', $product->serial, ['class' => 'form-control']) !!}
 
-@if (Auth::id() > 1)
+@if (Auth::user()->role_id > 1)
   {!! Form::label('Warranty') !!}
   {!! Form::text('warranty', $product->warranty, ['class' => 'form-control']) !!}
 
@@ -24,9 +24,6 @@
 
   {!! Form::label('Price') !!}
   {!! Form::text('price', $product->price, ['class' => 'form-control']) !!}
-
-  {!! Form::label('State') !!}
-  {!! Form::select('state_id', $states, $product->state_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Region') !!}
   {!! Form::select('region_id', $regions, $product->region_id, ['class' => 'form-control']) !!}

@@ -22,19 +22,15 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Search Product, Order, Sales
 - Product Order by JQuery
 - Trigger to Create Cart
-
+- Product to Maintenance
+- Delete Product from Maintenance
 - Cart Checkout
   - Carbon  
   - Calendar
   - Cancel and Accept
 - Confirm Box
-
-- Sales Index
-- Order Index
-- State Change
 - Event Mailer
 
-- Delete to Button
 - Errors & Logging Facade
 - Profile
   - Log Cart

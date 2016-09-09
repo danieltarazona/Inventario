@@ -6,58 +6,63 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-    public function user()
-    {
-        return $this->hasMany(User::class);
-    }
 
-    public function users_id()
-    {
-        return $this->users->list('id');
-    }
+  protected $fillable = [
+    'name',
+  ];
 
-    public function product()
-    {
-        return $this->belongsToMany(Product::class)->withTimestamps();
-    }
+  public function user()
+  {
+    return $this->hasMany(User::class);
+  }
 
-    public function product_id()
-    {
-        return $this->product->list('id');
-    }
+  public function users_id()
+  {
+    return $this->users->list('id');
+  }
 
-    public function order()
-    {
-        return $this->hasOne(Order::class);
-    }
+  public function product()
+  {
+    return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
+  }
 
-    public function order_id()
-    {
-        return $this->order->id;
-    }
+  public function product_id()
+  {
+    return $this->product->list('id');
+  }
 
-    public function maintenance()
-    {
-        return $this->hasMany(Maintenance::class);
-    }
+  public function order()
+  {
+    return $this->hasOne(Order::class);
+  }
 
-    public function maintenance_id()
-    {
-        return $this->maintenance->id;
-    }
+  public function order_id()
+  {
+    return $this->order->id;
+  }
 
-    public function sale()
-    {
-        return $this->hasMany(Sale::class);
-    }
+  public function maintenance()
+  {
+    return $this->hasMany(Maintenance::class);
+  }
 
-    public function sale_id()
-    {
-        return $this->sale->list('id');
-    }
+  public function maintenance_id()
+  {
+    return $this->maintenance->id;
+  }
 
-    public function name_id()
-    {
-      return State::lists('name', 'id');
-    }
+  public function sale()
+  {
+    return $this->hasMany(Sale::class);
+  }
+
+  public function sale_id()
+  {
+    return $this->sale->list('id');
+  }
+
+  public function name_id()
+  {
+    return State::lists('name', 'id');
+  }
 }

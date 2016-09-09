@@ -3,7 +3,6 @@
 <td>{{ $product->name }}</td>
 <td>{{ $product->category->name or 'Blank' }}</td>
 <td>{{ $product->provider->name or 'Blank' }}</td>
-<td>{{ $product->state->name or 'Blank' }}</td>
 <td>{{ $product->store->name or 'Blank' }}</td>
 <td>{{ $product->stock or 'Blank' }}</td>
 <td>{{ $product->serial or 'Blank' }}</td>

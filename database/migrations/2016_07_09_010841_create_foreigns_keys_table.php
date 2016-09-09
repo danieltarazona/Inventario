@@ -69,10 +69,6 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('provider_id')->references('id')->on('providers')
       ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('maintenance_id')->references('id')->on('maintenances')
-      ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('state_id')->references('id')->on('states')
-      ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('city_id')->references('id')->on('cities')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('region_id')->references('id')->on('regions')
@@ -104,8 +100,6 @@ class CreateForeignsKeysTable extends Migration
       $table->foreign('product_id')->references('id')->on('products')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('cart_id')->references('id')->on('carts')
-      ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('state_id')->references('id')->on('states')
       ->onDelete('cascade')->onUpdate('cascade');
     });
 

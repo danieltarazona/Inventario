@@ -44,8 +44,8 @@ class CartController extends Controller
   */
   public function update(Request $request, $id)
   {
-    // Validation on max quantity
     $validator = Validator::make($request->all(),$this->rules());
+
     if ($validator->fails()) {
       flash('Validation Fails!', 'danger');
       return response()->json(['success' => false]);

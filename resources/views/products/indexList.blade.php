@@ -35,7 +35,6 @@
         <th>Name</th>
         <th>Category</th>
         <th>Provider</th>
-        <th>State</th>
         <th>Store</th>
         <th>Stock</th>
         <th>Serial</th>
