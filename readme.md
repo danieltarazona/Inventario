@@ -8,11 +8,11 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 
 ## Palette of Colors
 
-#27c97b
-#fc7323
-#238276
-#59b548
-#5cc512
+- #27c97b
+- #fc7323
+- #238276
+- #59b548
+- #5cc512
 
 ## Contributing
 
@@ -31,10 +31,8 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Confirm Box
 - Event Mailer
 
-- Errors & Logging Facade
 - Profile
-  - Log Cart
-  - Type (Supplier, User)
+- Errors & Logging Facade
 - Middleware
 - Dashboard
   - Most Cart
