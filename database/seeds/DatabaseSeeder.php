@@ -66,26 +66,16 @@ class DatabaseSeeder extends Seeder
 
     $provider = factory(App\Provider::class)->create(['name' => 'Apple']);
     $category = factory(App\Category::class)->create(['name' => 'Notebook']);
-    $product = factory(App\Product::class)->create(['name' => 'MacBook']);
-    $state = App\State::find(401);
-    $state->product()->attach($product, ['quantity' => $product->stock]);
-    $city->product()->save($product);
-    $region->product()->save($product);
-    $category->product()->save($product);
-    $provider->product()->save($product);
-    $store->product()->save($product);
 
     $maintenance = factory(App\Maintenance::class)->create(['name' => 'OSX']);
     $state = App\State::find(401);
     $state->maintenance()->save($maintenance);
+    $user->maintenance()->save($maintenance);
 
     $comment = factory(App\Comment::class)->create(['name' => 'Awesome']);
     $issue = factory(App\Issue::class)->create(['name' => 'Error']);
     $user->comment()->save($comment);
     $issue->comment()->save($comment);
-
-    $maintenance->product()->save($product);
-    $user->maintenance()->save($maintenance);
 
     $cities = factory(App\City::class, 10)->create()->each(function($city)
     {
