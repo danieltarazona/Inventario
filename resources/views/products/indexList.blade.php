@@ -41,9 +41,8 @@
         <th>Model</th>
         <th>Buy</th>
         <th>Price</th>
-        <th>Maintenance</th>
         <th>Warranty</th>
-        <th colspan="3">Actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
 

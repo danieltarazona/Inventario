@@ -47,7 +47,7 @@
 
         <td>
           {!! Form::open(['route' => ['cities.destroy', $city->id], 'method' => 'DELETE']) !!}
-            <button class="btn btn-danger" type="submit" >Delete</button>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
           {!! Form::close() !!}
         </td>
       </tr>

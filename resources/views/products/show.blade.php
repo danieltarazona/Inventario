@@ -75,6 +75,30 @@
 
       <br>
 
+      <h1>Product State Stats</h1>
+
+      <table class="table">
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+
+        @foreach($product->state as $state)
+          <tr>
+            <td>{{ $state->id }}</td>
+            <td>{{ $state->name }}</td>
+            <td>{{ $state->quantity }}</td>
+          </tr>
+        @endforeach
+
+      </table>
+
+      <br>
+
       <h1>Product Maintenances</h1>
 
       <table class="table">

@@ -5,6 +5,7 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
     factory(App\Role::class)->create(['name' => 'User']);
+    factory(App\Role::class)->create(['name' => 'Provider']);
     factory(App\Role::class)->create(['name' => 'Storer']);
     factory(App\Role::class)->create(['name' => 'Admin']);
 
@@ -23,33 +24,35 @@ class DatabaseSeeder extends Seeder
     factory(App\State::class)->create(['id' => 403, 'name' => 'Cancelled']);
     factory(App\State::class)->create(['id' => 404, 'name' => 'Product or Products Not Found']);
 
-    $role = App\Role::find(1);
     $user = factory(App\User::class)->create([
       'username' => 'User',
       'email' => 'user@user.com',
       'password' => bcrypt("123456"),
+      'role_id' => 1,
     ]);
 
-    $role->user()->save($user);
-
-    $role = App\Role::find(2);
     $user = factory(App\User::class)->create([
-      'username' => 'Storer',
-      'email' => 'storer@storer.com',
+      'username' => 'Provider',
+      'email' => 'provider@provider.com',
       'password' => bcrypt("123456"),
       'role_id' => 2,
     ]);
 
-    $role->user()->save($user);
-
-    $role = App\Role::find(3);
     $user = factory(App\User::class)->create([
-      'username' => 'Administrator',
-      'email' => 'admin@admin.com',
+      'username' => 'Storer',
+      'email' => 'storer@storer.com',
       'password' => bcrypt("123456"),
       'role_id' => 3,
     ]);
 
+    $user = factory(App\User::class)->create([
+      'username' => 'Administrator',
+      'email' => 'admin@admin.com',
+      'password' => bcrypt("123456"),
+      'role_id' => 4,
+    ]);
+
+    #$role->user()->save($user);
     $region = factory(App\Region::class)->create(['name' => 'Detroit']);
     $city = factory(App\City::class)->create(['name' => 'Kyoto']);
     $region->city()->save($city);

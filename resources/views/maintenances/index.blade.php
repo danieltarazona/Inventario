@@ -16,7 +16,7 @@
         @endif
         <th>State</th>
         <th>Date</th>
-        <th colspan="3">Actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -28,11 +28,11 @@
         @if(Auth::user()->role_id > 2)
           <td>{{ $maintenance->user_id or 'Blank' }}</td>
         @endif
-        <td>{{ $maintenance->state_id or 'Blank' }}</td>
+        <td>{{ $maintenance->state_id or 'Blank' }} : {{ $maintenance->state->name or 'Blank' }}</td>
         <td>{{ $maintenance->created_at or 'Blank' }}</td>
 
         <td>
-          <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary">Read</a>
+          <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary">Show</a>
         </td>
 
         <td>
@@ -42,7 +42,7 @@
         @if(Auth::user()->role_id > 2)
         <td>
           {!! Form::open(['route' => ['maintenances.destroy', $maintenance->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit" >Delete</button>
+          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
           {!! Form::close() !!}
         </td>
         @endif

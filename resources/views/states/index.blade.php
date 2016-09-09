@@ -18,7 +18,7 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th colspan="3">Actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -33,7 +33,7 @@
         </td>
         <td>
           {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'DELETE']) !!}
-            <button class="btn btn-danger" type="submit" >Delete</button>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
           {!! Form::close() !!}
         </td>
       </tr>
