@@ -21,11 +21,13 @@ Thank you for considering contributing to the Laravel framework! The contributio
 ## To Do
 - Search Product, Order, Sales
 - Product Order by JQuery
+
 - Cart Checkout
   - Carbon  
   - Calendar
   - Cancel and Accept
 - Confirm Box
+
 - Sales Index
 - Order Index
 - State Change
@@ -53,7 +55,6 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Ship Type
 - Istanbul Coverage
 - Jenkins
-- Carbon
 - Slack Notifications
 - Laravel Cashier
   - Braintree
