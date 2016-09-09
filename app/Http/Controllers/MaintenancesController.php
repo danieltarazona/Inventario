@@ -10,6 +10,7 @@ use App\Http\Requests;
 
 use App\Maintenance;
 use App\Product;
+use App\State;
 use Auth;
 use Carbon\Carbon;
 
@@ -58,8 +59,9 @@ class MaintenancesController extends Controller
     } else {
       $maintenance = new Maintenance;
       $maintenance->name = $request->name;
+      $maintenance->state_id = 7; # Waiting
       $maintenance->description = $request->description;
-      $maintenance->user_id = Auth::user()->id;
+      $maintenance->user()->save(Auth::user());
       $maintenance->save();
 
       $maintenance->products()->sync($request->products_id);
@@ -131,6 +133,40 @@ class MaintenancesController extends Controller
       Maintenance::findOrFail($id)->delete();
       return redirect('maintenances');
       flash('Create Successful!', 'success');
+  }
+
+  /**
+  * Add the specified product to maintenance.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function add($id, $product, $quantity)
+  {
+    $maintenance = Maintenance::where('state_id', '6')->get();
+    $product = Product::findOrFail($product);
+    $state = State::findOrFail(4);
+    $product->state()->save($state, ['quantity' => $quantity]);
+    $maintenace->product()->save($product);
+    flash('Item has been Added!', 'success');
+    return redirect('cart/' . Auth::id());
+  }
+
+  /**
+  * Remove the specified resource from maintenance.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function remove($id, $product)
+  {
+    $maintenance = Maintenance::findOrFail($id);
+    $product = Product::findOrFail($id);
+    $state = State::findOrFail(3);
+    $maintenance->product()->detach($product);
+    $product->state()->save($state);
+    flash('Item has been Removed!', 'success');
+    return redirect('maintenances/' . $maintenance->id);
   }
 
   public function rules()

@@ -91,7 +91,10 @@ public function store(Request $request)
       $request->photo = '/img/products/ipad.jpeg';
     }
     $input = $request->all();
-    Product::create($input);
+    $product = Product::create($input);
+
+    $state = App\State::find(3); # Available
+    $product->state()->save($state, ['quantity' => $request->stock]);
     flash('Update Complete!', 'success');
     return redirect('products');
   }

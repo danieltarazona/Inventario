@@ -13,8 +13,6 @@
 
 Route::auth();
 
-// HomeController
-
 Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
@@ -29,7 +27,6 @@ Route::resource('roles', 'RolesController');
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
 
-Route::resource('maintenances', 'MaintenancesController');
 Route::resource('providers', 'ProvidersController');
 Route::resource('regions', 'RegionsController');
 Route::resource('states', 'StatesController', ['except' => 'show'] );
@@ -39,5 +36,9 @@ Route::resource('stores', 'StoresController');
 Route::resource('dashboard', 'DashboardController');
 
 Route::resource('cart', 'CartController', ['except' => 'index'] );
-Route::delete('/cart/remove/{id}', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
-Route::post('/cart/add/{id}', array('uses' => 'CartController@add', 'as' => 'cart.add'));
+Route::delete('/cart/remove/{cart}', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
+Route::post('/cart/add/{cart}', array('uses' => 'CartController@add', 'as' => 'cart.add'));
+
+Route::resource('maintenances', 'MaintenancesController');
+Route::delete('/maintenances/{maintenances}/remove/{product}', array('uses' => 'MaintenancesController@remove', 'as' => 'maintenances.remove'));
+Route::post('/maintenances/{maintenances}/add', array('uses' => 'MaintenancesController@add', 'as' => 'maintenances.add'));

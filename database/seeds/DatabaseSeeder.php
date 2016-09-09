@@ -4,8 +4,26 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
-    $role = factory(App\Role::class)->create(['name' => 'User']);
+    factory(App\Role::class)->create(['name' => 'User']);
+    factory(App\Role::class)->create(['name' => 'Storer']);
+    factory(App\Role::class)->create(['name' => 'Admin']);
 
+    factory(App\State::class)->create(['id' => 200, 'name' => 'Active']);
+    factory(App\State::class)->create(['id' => 201, 'name' => 'Inactive']);
+
+    factory(App\State::class)->create(['id' => 300, 'name' => 'Available']);
+    factory(App\State::class)->create(['id' => 301, 'name' => 'On-Order']);
+    factory(App\State::class)->create(['id' => 302, 'name' => 'On-Loan']);
+    factory(App\State::class)->create(['id' => 303, 'name' => 'On-Maintenance']);
+    factory(App\State::class)->create(['id' => 304, 'name' => 'Damage']);
+
+    factory(App\State::class)->create(['id' => 400, 'name' => 'Done']);
+    factory(App\State::class)->create(['id' => 401, 'name' => 'Waiting']);
+    factory(App\State::class)->create(['id' => 402, 'name' => 'Returned']);
+    factory(App\State::class)->create(['id' => 403, 'name' => 'Cancelled']);
+    factory(App\State::class)->create(['id' => 404, 'name' => 'Product or Products Not Found']);
+
+    $role = App\Role::find(1);
     $user = factory(App\User::class)->create([
       'username' => 'User',
       'email' => 'user@user.com',
@@ -14,8 +32,7 @@ class DatabaseSeeder extends Seeder
 
     $role->user()->save($user);
 
-    $role = factory(App\Role::class)->create(['name' => 'Storer']);
-
+    $role = App\Role::find(2);
     $user = factory(App\User::class)->create([
       'username' => 'Storer',
       'email' => 'storer@storer.com',
@@ -25,8 +42,7 @@ class DatabaseSeeder extends Seeder
 
     $role->user()->save($user);
 
-    $role = factory(App\Role::class)->create(['name' => 'Admin']);
-
+    $role = App\Role::find(3);
     $user = factory(App\User::class)->create([
       'username' => 'Administrator',
       'email' => 'admin@admin.com',
@@ -42,27 +58,18 @@ class DatabaseSeeder extends Seeder
     $store->user()->save($user);
     $city->store()->save($store);
 
-    # User States
-    $state = factory(App\State::class)->create(['name' => 'Active']);
+    $state = App\State::find(200);
     $state->user()->save($user);
-    factory(App\State::class)->create(['name' => 'Inactive']);
 
-    # Product States
     $product = factory(App\Product::class)->create(['name' => 'MacBook']);
-    $state = factory(App\State::class)->create(['name' => 'Available']);
+    $state = App\State::find(300);
     $state->product()->save($product);
-    factory(App\State::class)->create(['name' => 'On-Maintenance']);
-    factory(App\State::class)->create(['name' => 'On-Loan']);
     $city->product()->save($product);
     $region->product()->save($product);
 
-    # Maintenance States
     $maintenance = factory(App\Maintenance::class)->create(['name' => 'OSX']);
-    factory(App\State::class)->create(['name' => 'Waiting']);
-    $state = factory(App\State::class)->create(['name' => 'Complete']);
+    $state = App\State::find(401);
     $state->maintenance()->save($maintenance);
-    factory(App\State::class)->create(['name' => 'Incomplete']);
-
 
     $comment = factory(App\Comment::class)->create(['name' => 'Awesome']);
     $issue = factory(App\Issue::class)->create(['name' => 'Error']);
@@ -91,7 +98,7 @@ class DatabaseSeeder extends Seeder
     $users = factory(App\User::class, 10)->create()->each(function($user)
     {
       $store = App\Store::find(1);
-      $state = App\State::find(1);
+      $state = App\State::find(200);
       $role = App\Role::find(1);
       $store->user()->save($user);
       $state->user()->save($user);
@@ -106,7 +113,7 @@ class DatabaseSeeder extends Seeder
       $provider = App\Provider::find(1);
       $store = App\Store::find(1);
       $maintenance = App\Maintenance::find(1);
-      $state = App\State::find(3);
+      $state = App\State::find(300);
       $user = App\User::find(1);
       $cart = App\Cart::find(1);
 
@@ -114,7 +121,6 @@ class DatabaseSeeder extends Seeder
       $provider->product()->save($product);
       $store->product()->save($product);
       $maintenance->product()->save($product);
-      $state = App\State::find(5);
       $state->product()->save($product);
 
       $user->cart()->save($cart);
@@ -122,7 +128,7 @@ class DatabaseSeeder extends Seeder
 
       $order = factory(App\Order::class)->create();
       $cart->order()->save($order);
-      $state = App\State::find(7);
+      $state = App\State::find(401);
       $state->order()->save($order);
 
       $sale = factory(App\Sale::class)->create();
@@ -134,7 +140,7 @@ class DatabaseSeeder extends Seeder
     $maintenances = factory(App\Maintenance::class, 10)->create()->each(function($maintenance)
     {
       $user = App\User::find(1);
-      $state = App\State::find(1);
+      $state = App\State::find(401);
       $state->maintenance()->save($maintenance);
       $user->maintenance()->save($maintenance);
     });

@@ -9,9 +9,6 @@
   {!! Form::label('Name') !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Products') !!}
-  {!! Form::select('product_id[]', $products, null, array('multiple'=>'multiple', 'class' => 'form-control')) !!}
-
   {!! Form::label('Description') !!}
   {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 

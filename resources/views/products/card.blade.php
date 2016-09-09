@@ -7,12 +7,11 @@
       <p>Available: {{ $product->stock }}</p>
 
       @if(Auth::user()->role_id > 1)
-        {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+        {!! Form::open(['route' => ['maintenances.add', $product->id], 'method' => 'POST']) !!}
           <input type="number" name="quantity" value="1">
           <button class="btn btn-success" type="submit">Maintenance</button>
         {!! Form::close() !!}
       @endif
-
 
       @if(Auth::user()->role_id == 1)
         {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
@@ -20,7 +19,6 @@
           <button class="btn btn-success" type="submit">Order</button>
         {!! Form::close() !!}
       @endif
-
 
     </div> <!-- end caption -->
   </div> <!-- end thumbnail -->

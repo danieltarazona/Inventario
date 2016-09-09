@@ -22,8 +22,6 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Search Product, Order, Sales
 - Product Order by JQuery
 - Trigger to Create Cart
-- Product to Maintenance
-- Delete Product from Maintenance
 - Cart Checkout
   - Carbon  
   - Calendar
@@ -79,3 +77,21 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 1. User (Instructor)
 2. Storer (Almacenista)
 3. Admin (Administrador)
+
+# Users States
+200. Active
+201. Inactive
+
+# Products States
+300. Available
+301. On-Order
+302. On-Loan
+303. On-Maintenance
+304. Damage
+
+## Orders Sales Maintenance States
+400. Done
+401. Waiting
+402. Returned
+403. Cancelled
+404. Product or Products Not Found

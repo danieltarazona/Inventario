@@ -57,7 +57,7 @@ class CartController extends Controller
   }
 
   /**
-  * Add the specified product to Cart.
+  * Add the specified product to cart.
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
@@ -72,7 +72,7 @@ class CartController extends Controller
   }
 
   /**
-  * Remove the specified resource from storage.
+  * Remove the specified resource from cart.
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
@@ -86,7 +86,7 @@ class CartController extends Controller
   }
 
   /**
-  * Destroy the specified cart.
+  * Clean all products of the cart.
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
