@@ -84,6 +84,7 @@ class DatabaseSeeder extends Seeder
       $state->user()->save($user);
       $role->user()->save($user);
       $cart = factory(App\Cart::class)->create();
+      $user->cart()->save($cart);
     });
 
     factory(App\Product::class, 10)->create()->each(function($product)

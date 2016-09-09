@@ -33,12 +33,12 @@ protected $hidden = [
 
 public function cart()
 {
-  return $this->hasMany(Cart::class);
+  return $this->hasOne(Cart::class);
 }
 
 public function cart_id()
 {
-  return $this->cart->list('id');
+  return $this->cart->id;
 }
 
 public function city()

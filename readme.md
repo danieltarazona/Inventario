@@ -31,6 +31,7 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - State Change
 - Event Mailer
 
+- Delete to Button
 - Errors & Logging Facade
 - Profile
   - Log Cart

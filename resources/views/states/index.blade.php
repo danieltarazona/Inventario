@@ -3,7 +3,6 @@
 @section('content')
 
   <h1>States</h1>
-  @if (Auth::id() == 1)
 
   {!! Form::open(['url' => 'states']) !!}
 
@@ -14,8 +13,6 @@
 
   {!! Form::close() !!}
 
-  @endif
-
   <table class="table">
     <thead>
       <tr>
@@ -25,26 +22,21 @@
       </tr>
     </thead>
 
-    @foreach ($states as $state)
 
+
+    @foreach ($states as $state)
       <tr>
         <td>{{ $state->id }}</td>
         <td>{{ $state->name }}</td>
-
-        @if (Auth::id() == 1)
         <td>
           <a href="{{ route('states.edit', $state->id) }}" class="btn btn-warning">Update</a>
         </td>
-
         <td>
           {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'delete']) !!}
-          <button class="btn btn-danger" type="submit" >Delete</button>
+            <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>
-        @endif
-
       </tr>
-
     @endforeach
 
   </table>

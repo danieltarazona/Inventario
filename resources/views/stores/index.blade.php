@@ -31,10 +31,9 @@
         <td>{{ $store->adress or 'Blank' }}</td>
 
         <td>
-          <a href="{{ route('stores.show', $store->id) }}" class="btn btn-primary">Read</a>
+          <a href="{{ route('stores.show', $store->id) }}" class="btn btn-primary">Show</a>
         </td>
 
-        @if (Auth::id() == 1)
         <td>
           <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-warning">Update</a>
         </td>
@@ -44,7 +43,6 @@
           <button class="btn btn-danger" type="submit" >Delete</button>
           {!! Form::close() !!}
         </td>
-        @endif
 
       </tr>
 

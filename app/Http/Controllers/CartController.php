@@ -32,7 +32,7 @@ class CartController extends Controller
       flash('Item is already in your cart!', 'success');
       return redirect('cart');
     }
-    Cart::associate('product', 'cart')->add(
+    Cart::associate('product', 'carts')->add(
       $request->id,
       $request->name,
       $request->quantity,
@@ -69,22 +69,28 @@ class CartController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function destroy($id)
+  public function remove($id)
   {
-    Cart::remove($id);
+    $cart = App\Cart::findOrFail(Auth::id());
+    $cart->forget($id);
     flash('Item has been removed!', 'success');
     return redirect('cart');
   }
 
   /**
-  * Remove the resource from storage.
+  * Destroy the specified cart.
   *
+  * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function clean()
+  public function destroy($id)
   {
-    Cart::destroy();
-    flash('Your cart his been cleared!', 'success');
+    $cart = App\Cart::findOrFail(Auth::id())->delete();
+    $user = App\User::findOrFail(Auth::id());
+    $cart = new App\Cart;
+    $user->cart()->save($cart);
+    $cart->save();
+    flash('Cart has been clear!', 'success');
     return redirect('cart');
   }
 

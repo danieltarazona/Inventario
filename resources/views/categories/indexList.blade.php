@@ -2,6 +2,9 @@
 
 @section('content')
 
+
+  <a href="{{ route('categories.create') }}" class="btn btn-success">Create</a>
+
   <h1>Categories</h1>
 
   <button type="button" class="btn btn-default">
@@ -13,8 +16,6 @@
       <span class="fa fa-th-list"></span>
     </a>
   </button>
-
-  <a href="{{ route('categories.create') }}" class="btn btn-success">Create</a>
 
   <br>
 
