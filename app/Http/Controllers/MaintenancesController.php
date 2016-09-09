@@ -158,15 +158,25 @@ class MaintenancesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
+
+  /*
+  $product = App\Product::find(1);
+  $state = App\State::find(401);
+
+  $state = App\State::find(300);
+
+  */
   public function remove($id, $product)
   {
     $maintenance = Maintenance::findOrFail($id);
-    $product = Product::findOrFail($id);
-    $state = State::findOrFail(3);
+    $product = Product::findOrFail($product);
+    $state = State::findOrFail(401);
+    $state->product()->detach($product);
+    $state = State::findOrFail(300);
+    $state->product()->attach($product);
     $maintenance->product()->detach($product);
-    $product->state()->save($state);
     flash('Item has been Removed!', 'success');
-    return redirect('maintenances/' . $maintenance->id);
+    return redirect('maintenances/' . $maintenance->id . '/edit');
   }
 
   public function rules()

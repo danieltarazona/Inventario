@@ -52,6 +52,9 @@ class DatabaseSeeder extends Seeder
       'role_id' => 4,
     ]);
 
+    $state = App\State::find(200);
+    $state->user()->save($user);
+
     #$role->user()->save($user);
     $region = factory(App\Region::class)->create(['name' => 'Detroit']);
     $city = factory(App\City::class)->create(['name' => 'Kyoto']);
@@ -61,14 +64,16 @@ class DatabaseSeeder extends Seeder
     $store->user()->save($user);
     $city->store()->save($store);
 
-    $state = App\State::find(200);
-    $state->user()->save($user);
-
+    $provider = factory(App\Provider::class)->create(['name' => 'Apple']);
+    $category = factory(App\Category::class)->create(['name' => 'Notebook']);
     $product = factory(App\Product::class)->create(['name' => 'MacBook']);
-    $state = App\State::find(300);
-    $state->product()->save($product);
+    $state = App\State::find(401);
+    $state->product()->attach($product, ['quantity' => $product->stock]);
     $city->product()->save($product);
     $region->product()->save($product);
+    $category->product()->save($product);
+    $provider->product()->save($product);
+    $store->product()->save($product);
 
     $maintenance = factory(App\Maintenance::class)->create(['name' => 'OSX']);
     $state = App\State::find(401);
@@ -78,11 +83,7 @@ class DatabaseSeeder extends Seeder
     $issue = factory(App\Issue::class)->create(['name' => 'Error']);
     $user->comment()->save($comment);
     $issue->comment()->save($comment);
-    $provider = factory(App\Provider::class)->create(['name' => 'Apple']);
-    $category = factory(App\Category::class)->create(['name' => 'Notebook']);
-    $category->product()->save($product);
-    $provider->product()->save($product);
-    $store->product()->save($product);
+
     $maintenance->product()->save($product);
     $user->maintenance()->save($maintenance);
 
@@ -116,7 +117,7 @@ class DatabaseSeeder extends Seeder
       $provider = App\Provider::find(1);
       $store = App\Store::find(1);
       $maintenance = App\Maintenance::find(1);
-      $state = App\State::find(300);
+      $state = App\State::find(401);
       $user = App\User::find(1);
       $cart = App\Cart::find(1);
 
@@ -124,7 +125,7 @@ class DatabaseSeeder extends Seeder
       $provider->product()->save($product);
       $store->product()->save($product);
       $maintenance->product()->save($product);
-      $state->product()->save($product);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
 
       $user->cart()->save($cart);
       $cart->product()->save($product);

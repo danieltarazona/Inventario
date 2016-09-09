@@ -57,23 +57,6 @@
     <div class="spacer"></div>
 
     <div class="row">
-      <h3>You may also like...</h3>
-
-      @foreach ($products as $product)
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="caption text-center">
-              <a href=""><img src="{{ asset($product->photo) }}" alt="" class="img-responsive"></a>
-              <a href=""><h3>{{ $product->name }}</h3>
-                <p>{{ $product->price }}</p>
-              </a>
-            </div> <!-- end caption -->
-
-          </div> <!-- end thumbnail -->
-        </div> <!-- end col-md-3 -->
-      @endforeach
-
-      <br>
 
       <h1>Product State Stats</h1>
 
@@ -99,7 +82,7 @@
 
       <br>
 
-      <h1>Product Maintenances</h1>
+      <h1>Product Maintenances Stats</h1>
 
       <table class="table">
 
@@ -107,17 +90,35 @@
           <tr>
             <th>ID</th>
             <th>Product Name</th>
+            <th>Description</th>
           </tr>
         </thead>
 
         @foreach($product->maintenance as $maintenance)
           <tr>
             <td>{{ $maintenance->id }}</td>
-            <td>{{ $maintenance->name }}</td>
+            <td><a href="/maintenances/{{ $maintenance->id }} " >{{ $maintenance->name }}</a></td>
+            <td>{{ $maintenance->description }}</td>
           </tr>
         @endforeach
 
       </table>
+
+      <h3>View Others</h3>
+
+      @foreach ($products as $product)
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption text-center">
+              <a href=""><img src="{{ asset($product->photo) }}" alt="" class="img-responsive"></a>
+              <a href=""><h3>{{ $product->name }}</h3>
+                <p>{{ $product->price }}</p>
+              </a>
+            </div> <!-- end caption -->
+
+          </div> <!-- end thumbnail -->
+        </div> <!-- end col-md-3 -->
+      @endforeach
     </div>
   </div>
 

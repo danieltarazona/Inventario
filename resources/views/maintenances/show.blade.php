@@ -8,7 +8,8 @@
   <h3>Create: {{ $maintenance->created_at }}</h3>
   <h3>Name: {{ $maintenance->name }}</h3>
   <h3>Storer: {{ $maintenance->user->username or 'Blank' }}</h3>
-  <h3>Description: {{ $maintenance->description }}</h3>
+  <h3>Description: </h3>
+  <h4>{{ $maintenance->description }}</h4>
 </h3>
 
 <br>
