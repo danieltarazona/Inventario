@@ -30,9 +30,6 @@
   {!! Form::label('Date Buy') !!}
   {!! Form::date('date', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('State') !!}
-  {!! Form::select('state_id', $states, null, ['class' => 'form-control']) !!}
-
   {!! Form::label('Region') !!}
   {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 

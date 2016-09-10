@@ -4,9 +4,9 @@
 
   <div class="container">
 
-    <p><a href="/categories">{{ $product->category->name or Blank }}</a> / {{ $product->name }}</p>
-    <h1>{{ $product->name }}</h1>
-    <h2>{{ $product->store->name or Blank }}</h2>
+    <p><a href="/categories">{{ $product->category->name or 'Blank' }}</a> / {{ $product->name }}</p>
+    <h1>{{ $product->name or 'Blank' }}</h1>
+    <h2>{{ $product->store->name or 'Blank' }}</h2>
 
     <hr>
 
@@ -18,25 +18,18 @@
       <div class="col-md-8">
         <h3>${{ $product->price }}</h3>
 
-          <input type="hidden" name="id" value="{{ $product->id }}">
-          <input type="hidden" name="name" value="{{ $product->name }}">
-          <input type="hidden" name="price" value="{{ $product->price }}">
+          <input type="hidden" name="id" value="{{ $product->id or 'Blank' }}">
+          <input type="hidden" name="name" value="{{ $product->name or 'Blank' }}">
+          <input type="hidden" name="price" value="{{ $product->price or 'Blank' }}">
 
           <h5>Provider: {{ $product->provider->name or 'Blank' }}</h5>
-          <h5>Stock: {{ $product->stock }}</h5>
+          <h5>Stock: {{ $product->stock or 'Blank' }}</h5>
           <h5>State: {{ $product->state->name or 'Blank' }}</h5>
           <h5>Serial: {{ $product->serial or 'Blank' }}</h5>
           <h5>Model: {{ $product->year or 'Blank' }}</h5>
           <h5>Buy Date: {{ $product->buy or 'Blank' }}</h5>
           <h5>Price: {{ $product->price or 'Blank' }}</h5>
           <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
-
-          @if(Auth::user()->role_id > 1)
-            {!! Form::open(['route' => ['maintenances.add', $product->id], 'method' => 'POST']) !!}
-              <input type="number" name="quantity" value="1">
-              <button class="btn btn-success" type="submit">Maintenance</button>
-            {!! Form::close() !!}
-          @endif
 
           @if(Auth::user()->role_id == 1)
             {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
@@ -114,6 +107,15 @@
             <td>{{ $maintenance->id }}</td>
             <td><a href="/maintenances/{{ $maintenance->id }} " >{{ $maintenance->name }}</a></td>
             <td>{{ $maintenance->description }}</td>
+
+            <td>
+              @if(Auth::user()->role_id > 1)
+                {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
+                  <input type="number" name="quantity" value="1">
+                  <button class="btn btn-success" type="submit">Send to Maintenance</button>
+                {!! Form::close() !!}
+              @endif
+            </td>
           </tr>
         @endforeach
 

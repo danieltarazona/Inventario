@@ -140,15 +140,21 @@ class MaintenancesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function add($id, $product, $quantity)
+
+  /*
+  $maintenance = App\Maintenance::where(['state_id' => 401, 'user_id' => 4])->get();
+  $product = App\Product::findOrFail(1);
+  $state = App\State::findOrFail(303);
+  */
+  public function add($id, $product, Request $request)
   {
-    $maintenance = Maintenance::where('state_id', '6')->get();
+    $maintenance = Maintenance::where(['state_id' => 401, 'user_id' => 4])->get();
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(4);
-    $product->state()->save($state, ['quantity' => $quantity]);
-    $maintenace->product()->save($product);
+    $state = State::findOrFail(303);
+    $product->state()->save($state, ['quantity' => $request->quantity]);
+    $maintenance->product()->save($product);
     flash('Item has been Added!', 'success');
-    return redirect('cart/' . Auth::id());
+    return redirect('maintenances/' . Auth::id());
   }
 
   /**

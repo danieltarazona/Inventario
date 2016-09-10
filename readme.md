@@ -34,6 +34,32 @@ localhost:8000
 - #59b548
 - #5cc512
 
+## Security Vulnerabilities
+If you discover a security vulnerability within Inventar.io, please send an e-mail at security@codeapps.io All security vulnerabilities will be promptly addressed.
+
+## Security Levels
+1. User (Instructor)
+2. Storer (Almacenista)
+3. Admin (Administrador)
+
+# Users States
+200. Active
+201. Inactive
+
+# Products States
+300. Available
+301. On-Order
+302. On-Loan
+303. On-Maintenance
+304. Damage
+
+## Orders Sales Maintenance States
+400. Done
+401. Waiting
+402. Returned
+403. Cancelled
+404. Product or Products Not Found
+
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
@@ -87,29 +113,3 @@ Thank you for considering contributing to the Laravel framework! The contributio
   - Cart
   - CSV Load
   - Shipping Labels
-
-## Security Vulnerabilities
-If you discover a security vulnerability within Inventar.io, please send an e-mail at security@codeapps.io All security vulnerabilities will be promptly addressed.
-
-## Security Levels
-1. User (Instructor)
-2. Storer (Almacenista)
-3. Admin (Administrador)
-
-# Users States
-200. Active
-201. Inactive
-
-# Products States
-300. Available
-301. On-Order
-302. On-Loan
-303. On-Maintenance
-304. Damage
-
-## Orders Sales Maintenance States
-400. Done
-401. Waiting
-402. Returned
-403. Cancelled
-404. Product or Products Not Found

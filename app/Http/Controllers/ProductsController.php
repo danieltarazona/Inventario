@@ -10,12 +10,12 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\Http\Requests;
 
 use App\Product;
+use App\Region;
 use App\City;
 use App\Store;
 use App\Category;
 use App\Provider;
 use App\State;
-use App\Region;
 use App\Order;
 
 use Carbon\Carbon;
@@ -53,12 +53,11 @@ class ProductsController extends Controller
     $providers = Provider::lists('name', 'id');
     $stores = Store::lists('name', 'id');
     $cities = City::lists('name', 'id');
-    $states = State::lists('name', 'id');
     $regions = Region::lists('name', 'id');
 
     return view('products.create', compact(
     'categories', 'providers',
-    'states', 'stores', 'cities', 'regions'
+    'stores', 'cities', 'regions'
   ));
 }
 
@@ -92,8 +91,7 @@ public function store(Request $request)
     }
     $input = $request->all();
     $product = Product::create($input);
-
-    $state = App\State::find(3); # Available
+    $state = State::find(300);
     $product->state()->save($state, ['quantity' => $request->stock]);
     flash('Update Complete!', 'success');
     return redirect('products');
@@ -128,12 +126,11 @@ public function edit($id)
   $providers = Provider::lists('name', 'id');
   $stores = Store::lists('name', 'id');
   $cities = City::lists('name', 'id');
-  $states = State::lists('name', 'id');
   $regions = Region::lists('name', 'id');
 
   return view('products.edit', compact(
   'product', 'categories', 'providers',
-  'states', 'stores', 'cities', 'regions'
+  'stores', 'cities', 'regions'
 ));
 }
 
