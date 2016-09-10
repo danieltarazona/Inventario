@@ -26,9 +26,9 @@
         <th>Category</th>
         <th>Provider</th>
         <th>Store</th>
-        <th>Quantity</th>
         <th>Serial</th>
         <th>Warrany</th>
+        <th>States</th>
       </tr>
     </thead>
 
@@ -40,9 +40,15 @@
         <td>{{ $product->category->name or 'Blank' }}</td>
         <td>{{ $product->provider->name or 'Blank' }}</td>
         <td>{{ $product->store->name or 'Blank' }}</td>
-        <td>{{ $product->quantity or 'Blank' }}</td>
         <td>{{ $product->serial or 'Blank' }}</td>
         <td>{{ $product->warranty or 'Blank' }} Months</td>
+        <td>{{ $product->warranty or 'Blank' }} Months</td>
+        <td>
+          @foreach($product->state as $state)
+            <h5>{{ $state->name }} : {{ $state->pivot->quantity }}</h5>
+          @endforeach
+        </td>
+
         <td>
           {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>

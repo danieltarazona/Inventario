@@ -24,9 +24,9 @@
       <th>Category</th>
       <th>Provider</th>
       <th>Store</th>
-      <th>Quantity</th>
       <th>Serial</th>
-      <th>Warrany</th>
+      <th>Warranty</th>
+      <th>States</th>
     </tr>
   </thead>
 
@@ -38,12 +38,20 @@
       <td>{{ $product->category->name or 'Blank' }}</td>
       <td>{{ $product->provider->name or 'Blank' }}</td>
       <td>{{ $product->store->name or 'Blank' }}</td>
-      <td>{{ $product->quantity or 'Blank' }}</td>
+      <td>{{ $product->stock or 'Blank' }}</td>
       <td>{{ $product->serial or 'Blank' }}</td>
+      <td>{{ $product->year or 'Blank' }}</td>
+      <td>{{ $product->created_at->year or 'Blank' }}</td>
+      <td>{{ $product->price or 'Blank' }}</td>
       <td>{{ $product->warranty or 'Blank' }} Months</td>
+      <td>
+        @foreach($product->state as $state)
+          <h5>{{ $state->name }} : {{ $state->pivot->quantity }}</h5>
+
+        @endforeach
+      </td>
     </tr>
   @endforeach
-
 </table>
 
 

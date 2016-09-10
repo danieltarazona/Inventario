@@ -12,7 +12,7 @@ class Maintenance extends Model
 
     public function product()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
     public function product_id()

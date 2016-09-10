@@ -107,7 +107,22 @@ class DatabaseSeeder extends Seeder
       $provider = App\Provider::find(1);
       $store = App\Store::find(1);
       $maintenance = App\Maintenance::find(1);
-      $state = App\State::find(401);
+
+      $state = App\State::find(300);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
+
+      $state = App\State::find(301);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
+
+      $state = App\State::find(302);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
+
+      $state = App\State::find(303);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
+
+      $state = App\State::find(304);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
+
       $user = App\User::find(1);
       $cart = App\Cart::find(1);
 
@@ -115,7 +130,7 @@ class DatabaseSeeder extends Seeder
       $provider->product()->save($product);
       $store->product()->save($product);
       $maintenance->product()->save($product);
-      $state->product()->attach($product, ['quantity' => $product->stock]);
+
 
       $user->cart()->save($cart);
       $cart->product()->save($product);

@@ -10,12 +10,7 @@
 <td>{{ $product->created_at->year or 'Blank' }}</td>
 <td>{{ $product->price or 'Blank' }}</td>
 <td>{{ $product->warranty or 'Blank' }} Months</td>
-<td>
-  @foreach($product->state as $state)
-    <h5>{{ $state->name }}</h5>
-    <h5>{{ $state->pivot->quantity }}</h5>
-  @endforeach
-</td>
+
 
 <td>
   <a href="{{ route('products.show', $product->id) }}" id="Create" class="btn btn-primary">Show</a>

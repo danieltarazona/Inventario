@@ -195,7 +195,6 @@ public function rules()
     'city_id' => 'required|numeric',
     'region_id' => 'required|numeric',
     'store_id' => 'required|numeric',
-    'state_id' => 'required|numeric',
   ];
 }
 

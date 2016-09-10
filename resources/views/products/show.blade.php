@@ -74,7 +74,7 @@
           <tr>
             <td>{{ $state->id }}</td>
             <td>{{ $state->name }}</td>
-            <td>{{ $state->quantity }}</td>
+            <td>{{ $state->pivot->quantity }}</td>
           </tr>
         @endforeach
 
