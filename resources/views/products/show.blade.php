@@ -99,43 +99,42 @@
             <th>ID</th>
             <th>Product Name</th>
             <th>Description</th>
+            <th colspan="4">Actions</th>
           </tr>
         </thead>
 
-        @foreach($product->maintenance as $maintenance)
-          <tr>
-            <td>{{ $maintenance->id }}</td>
-            <td><a href="/maintenances/{{ $maintenance->id }} " >{{ $maintenance->name }}</a></td>
-            <td>{{ $maintenance->description }}</td>
+        @foreach ($maintenances as $maintenance)
+          <div class="col-md-3">
+            <div class="thumbnail">
+              <div class="caption text-center">
+                <tr>
+                  <td>{{ $maintenance->id }}</td>
+                  <td><a href="/maintenances/{{ $maintenance->id }} " >{{ $maintenance->name }}</a></td>
+                  <td>{{ $maintenance->description }}</td>
 
-            <td>
-              @if(Auth::user()->role_id > 1)
-                {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
-                  <input type="number" name="quantity" value="1">
-                  <button class="btn btn-success" type="submit">Send to Maintenance</button>
-                {!! Form::close() !!}
-              @endif
-            </td>
-          </tr>
+                  <td>
+                    @if(Auth::user()->role_id > 1)
+                      {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
+                        <input type="number" name="quantity" value="1">
+                        <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> Repair</button>
+                      {!! Form::close() !!}
+                    @endif
+                  </td>
+
+                  <td>
+                    @if(Auth::user()->role_id > 1)
+                      {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
+                      <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                      {!! Form::close() !!}
+                    @endif
+                  </td>
+                </tr>
+              </div> <!-- end caption -->
+            </div> <!-- end thumbnail -->
+          </div> <!-- end col-md-3 -->
         @endforeach
 
       </table>
-
-      <h3>View Others</h3>
-
-      @foreach ($products as $product)
-        <div class="col-md-3">
-          <div class="thumbnail">
-            <div class="caption text-center">
-              <a href=""><img src="{{ asset($product->photo) }}" alt="" class="img-responsive"></a>
-              <a href=""><h3>{{ $product->name }}</h3>
-                <p>{{ $product->price }}</p>
-              </a>
-            </div> <!-- end caption -->
-
-          </div> <!-- end thumbnail -->
-        </div> <!-- end col-md-3 -->
-      @endforeach
     </div>
   </div>
 

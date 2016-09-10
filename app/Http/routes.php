@@ -40,5 +40,5 @@ Route::delete('/cart/remove/{product}', array('uses' => 'CartController@remove',
 Route::post('/cart/add/{product}', array('uses' => 'CartController@add', 'as' => 'cart.add'));
 
 Route::resource('maintenances', 'MaintenancesController');
-Route::delete('/maintenances/{maintenances}/edit/remove/{product}', array('uses' => 'MaintenancesController@remove', 'as' => 'maintenances.remove'));
+Route::delete('/maintenances/{maintenances}/remove/{product}', array('uses' => 'MaintenancesController@remove', 'as' => 'maintenances.remove'));
 Route::post('/maintenances/{maintenances}/add/{product}', array('uses' => 'MaintenancesController@add', 'as' => 'maintenances.add'));

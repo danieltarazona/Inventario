@@ -148,12 +148,18 @@ class MaintenancesController extends Controller
   */
   public function add($id, $product, Request $request)
   {
-    $maintenance = Maintenance::where(['state_id' => 401, 'user_id' => 4])->get();
+    $maintenance = Maintenance::findOrFail($id);
     $product = Product::findOrFail($product);
     $state = State::findOrFail(303);
-    $product->state()->save($state, ['quantity' => $request->quantity]);
-    $maintenance->product()->save($product);
-    flash('Item has been Added!', 'success');
+
+    if ($maintenance->product->contains($product)) {
+      $product->state()->sync($product->state);
+      flash('Item Quantity has been Update!', 'success');
+    } else {
+      $product->state()->save($state, ['quantity' => $request->quantity]);
+      $maintenance->product()->save($product);
+      flash('Item has been Added!', 'success');
+    }
     return redirect('maintenances/' . Auth::id());
   }
 

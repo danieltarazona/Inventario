@@ -13,6 +13,7 @@ use App\Product;
 use App\Region;
 use App\City;
 use App\Store;
+use App\Maintenance;
 use App\Category;
 use App\Provider;
 use App\State;
@@ -107,9 +108,10 @@ public function store(Request $request)
 public function show($id)
 {
   $product = Product::findOrFail($id);
+  $maintenances = Maintenance::all();
 
   $products = Product::all()->take(4);
-  return view('products.show', compact('product', 'products'));
+  return view('products.show', compact('product', 'maintenances'));
 }
 
 /**
