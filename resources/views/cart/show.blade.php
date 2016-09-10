@@ -21,9 +21,7 @@
       <button class="btn btn-danger" type="submit" >Delete</button>
       {!! Form::close() !!}
 
-      {!! Form::open(['route' => ['orders.create', $cart->id], 'method' => 'POST']) !!}
-      <button class="btn btn-success" type="submit" >Order</button>
-      {!! Form::close() !!}
+      <a href="{{ route('orders.create') }}" class="btn btn-success">Order</a>
     </tr>
 
     @foreach($cart->product as $product)

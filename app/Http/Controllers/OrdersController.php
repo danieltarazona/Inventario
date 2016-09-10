@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Order;
+use App\Cart;
+use Auth;
 use Carbon\Carbon;
 
 class OrdersController extends Controller
@@ -43,7 +45,9 @@ class OrdersController extends Controller
   */
   public function store(Request $request)
   {
-
+    $cart = Cart::findOrFail(Auth::id());
+    $cart->product()->detach();
+    return redirect('products');
   }
 
   /**
@@ -54,7 +58,8 @@ class OrdersController extends Controller
   */
   public function show($id)
   {
-    //
+    $order = Order::findOrFail($id);
+    return view('orders.show', compact('order'));
   }
 
   /**
@@ -65,7 +70,8 @@ class OrdersController extends Controller
   */
   public function edit($id)
   {
-    //
+    $order = Order::findOrFail($id);
+    return view('orders.edit', compact('order'));
   }
 
   /**
@@ -88,6 +94,8 @@ class OrdersController extends Controller
   */
   public function destroy($id)
   {
-    //
+    Order::findOrFail($id)->delete();
+    flash('Delete Complete!', 'success');
+    return redirect('orders');
   }
 }

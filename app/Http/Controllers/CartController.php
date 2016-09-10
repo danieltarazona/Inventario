@@ -93,7 +93,7 @@ class CartController extends Controller
   */
   public function destroy($id)
   {
-    $cart = Cart::findOrFail($id);
+    $cart = Cart::findOrFail(Auth::id());
     $cart->product()->detach();
     flash('Cart has been Clear!', 'success');
     return redirect('cart/' . Auth::id());
