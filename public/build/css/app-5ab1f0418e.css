@@ -5,14 +5,11 @@ body {
 .fa-btn {
   margin-right: 6px; }
 
-.alert {
-  text-align: center; }
-  .alert .alert--info {
-    background: gray; }
-  .alert .alert--success {
-    background: lime; }
-  .alert .alert--error {
-    background: red; }
+.alert-info {
+  background: gray; }
+
+.alert-success {
+  background: lime; }
 
 .card {
   box-shadow: 1px solid black;

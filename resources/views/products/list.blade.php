@@ -10,20 +10,16 @@
 <td>{{ $product->created_at->year or 'Blank' }}</td>
 <td>{{ $product->price or 'Blank' }}</td>
 <td>{{ $product->warranty or 'Blank' }} Months</td>
-
-
 <td>
-  {!! Form::open(['route' => ['products.show', $product->id], 'method' => 'POST']) !!}
-    <button class="btn btn-danger" type="submit"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
-  {!! Form::close() !!}
+  <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
 </td>
 <td>
   {!! Form::open(['route' => ['products.edit', $product->id], 'method' => 'POST']) !!}
-    <button class="btn btn-danger" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+  <button class="btn btn-warning" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
   {!! Form::close() !!}
 </td>
 <td>
   {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'DELETE']) !!}
-    <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+  <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
   {!! Form::close() !!}
 </td>
