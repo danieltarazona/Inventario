@@ -17,8 +17,7 @@
 
       <div class="col-md-8">
         <h3>${{ $product->price }}</h3>
-        <form action="/cart" method="POST" class="side-by-side">
-          {!! csrf_field() !!}
+
           <input type="hidden" name="id" value="{{ $product->id }}">
           <input type="hidden" name="name" value="{{ $product->name }}">
           <input type="hidden" name="price" value="{{ $product->price }}">
@@ -33,7 +32,7 @@
           <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
 
           @if(Auth::user()->role_id > 1)
-            {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'POST']) !!}
+            {!! Form::open(['route' => ['maintenances.add', $product->id], 'method' => 'POST']) !!}
               <input type="number" name="quantity" value="1">
               <button class="btn btn-success" type="submit">Maintenance</button>
             {!! Form::close() !!}
@@ -45,10 +44,6 @@
               <button class="btn btn-success" type="submit">Order</button>
             {!! Form::close() !!}
           @endif
-
-        </form>
-
-        <br><br>
 
         {{ $product->description }}
       </div> <!-- end col-md-8 -->
@@ -73,7 +68,27 @@
         @foreach($product->state as $state)
           <tr>
             <td>{{ $state->id }}</td>
-            <td><span class="label label-default">{{ $state->name }}</span></td>
+
+            @if($state->name == 'Damage')
+              <td><span class="label label-danger">{{ $state->name }}</span></td>
+            @endif
+
+            @if($state->name == 'On-Order')
+              <td><span class="label label-primary">{{ $state->name }}</span></td>
+            @endif
+
+            @if($state->name == 'On-Maintenance')
+              <td><span class="label label-warning">{{ $state->name }}</span></td>
+            @endif
+
+            @if($state->name == 'On-Loan')
+              <td><span class="label label-default">{{ $state->name }}</span></td>
+            @endif
+
+            @if($state->name == 'Available')
+              <td><span class="label label-success">{{ $state->name }}</span></td>
+            @endif
+
             <td>{{ $state->pivot->quantity }}</td>
           </tr>
         @endforeach

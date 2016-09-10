@@ -6,18 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public function product()
-    {
-        return $this->hasMany(Product::class);
-    }
+  public $views = 0;
 
-    public function product_id()
-    {
-        return $this->product->list('id');
-    }
+  public function product()
+  {
+    return $this->hasMany(Product::class);
+  }
 
-    public function name_id()
-    {
-      return Category::lists('name', 'id');
-    }
+  public function product_id()
+  {
+    return $this->product->list('id');
+  }
+
+  public function name_id()
+  {
+    return Category::lists('name', 'id');
+  }
 }

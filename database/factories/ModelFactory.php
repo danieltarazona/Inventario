@@ -71,8 +71,6 @@ $factory->define(App\Product::class, function (Generator $faker) {
     'warranty' => $faker->numberBetween($min = 1, $max = 60),
     'price' => $faker->numberBetween($min = 100000, $max = 5000000),
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-    'stock' => 100,
-    'views' => 1000,
     'year' => $faker->numberBetween($min = 2010, $max = 2016),
     'serial' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]'),
   ];

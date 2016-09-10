@@ -6,23 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function issue()
-    {
-        return $this->belongsTo(Issue::class);
-    }
+  public function issue()
+  {
+    return $this->belongsTo(Issue::class);
+  }
 
-    public function issue_id()
-    {
-        return $this->issue->id;
-    }
+  public function issue_id()
+  {
+    return $this->issue->id;
+  }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 
-    public function user_id()
-    {
-        return $this->user->id;
-    }
+  public function user_id()
+  {
+    return $this->user->id;
+  }
 }

@@ -17,11 +17,11 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('serial');
             $table->string('warranty');
-            $table->integer('stock')->unsigned();
             $table->string('year');
             $table->date('date');
             $table->decimal('price', 10, 2);
             $table->string('photo');
+            $table->integer('stock');
             $table->integer('views');
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('region_id')->unsigned()->nullable();

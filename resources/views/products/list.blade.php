@@ -14,9 +14,7 @@
   <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
 </td>
 <td>
-  {!! Form::open(['route' => ['products.edit', $product->id], 'method' => 'POST']) !!}
-  <button class="btn btn-warning" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-  {!! Form::close() !!}
+  <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 </td>
 <td>
   {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'DELETE']) !!}
