@@ -73,7 +73,7 @@
         @foreach($product->state as $state)
           <tr>
             <td>{{ $state->id }}</td>
-            <td>{{ $state->name }}</td>
+            <td><span class="label label-default">{{ $state->name }}</span></td>
             <td>{{ $state->pivot->quantity }}</td>
           </tr>
         @endforeach

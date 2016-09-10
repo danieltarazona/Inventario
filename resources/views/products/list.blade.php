@@ -13,13 +13,17 @@
 
 
 <td>
-  <a href="{{ route('products.show', $product->id) }}" id="Create" class="btn btn-primary">Show</a>
+  {!! Form::open(['route' => ['products.show', $product->id], 'method' => 'POST']) !!}
+    <button class="btn btn-danger" type="submit"><i class="fa fa-search-plus" aria-hidden="true"></i></button>
+  {!! Form::close() !!}
 </td>
 <td>
-  <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Update</a>
+  {!! Form::open(['route' => ['products.edit', $product->id], 'method' => 'POST']) !!}
+    <button class="btn btn-danger" type="submit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+  {!! Form::close() !!}
 </td>
 <td>
   {!! Form::open(['route' => ['products.destroy', $product->id], 'method' => 'DELETE']) !!}
-  <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+    <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
   {!! Form::close() !!}
 </td>
