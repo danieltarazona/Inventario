@@ -46,7 +46,7 @@ class AuthController extends Controller
   * @param  array  $request
   * @return \Illuminate\Contracts\Validation\Validator
   */
-  protected function validator(Request $request)
+  protected function validator(array $request)
   {
     return Validator::make($request, [
       'username' => 'required|max:255|unique:users',
@@ -62,7 +62,7 @@ class AuthController extends Controller
   * @param  array  $request
   * @return User
   */
-  protected function create(Request $request)
+  protected function create(array $request)
   {
     return User::create([
       'username' => $request['username'],
