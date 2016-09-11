@@ -12,12 +12,25 @@
     {!! Form::label('Description') !!}
     {!! Editor::view($maintenance->description) !!}
   @endif
+  
   <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i></i></button>
   {!! Form::close() !!}
 
   @if(Auth::user()->role_id == 2)
   {!! Form::open(['route' => ['maintenances.complete', $maintenance->id], 'method' => 'POST']) !!}
   <button class="btn btn-success" type="submit">Complete</button>
+  {!! Form::close() !!}
+  @endif
+
+  @if(Auth::user()->role_id == 3)
+  {!! Form::open(['route' => ['maintenances.returned', $maintenance->id], 'method' => 'POST']) !!}
+  <button class="btn btn-success" type="submit">Returned</button>
+  {!! Form::close() !!}
+  @endif
+
+  @if(Auth::user()->role_id == 4)
+  {!! Form::open(['route' => ['maintenances.canceled', $maintenance->id], 'method' => 'POST']) !!}
+  <button class="btn btn-success" type="submit">Cancel</button>
   {!! Form::close() !!}
   @endif
 

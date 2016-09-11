@@ -4,14 +4,15 @@
 
   <h1>Cities</h1>
 
-  {!! Form::open(['route' => 'cities.store', 'files' => true, 'method' => 'POST']) !!}
+  {!! Form::open(['route' => 'cities.store', 'method' => 'POST']) !!}
 
     {!! Form::label('Name') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
+
     {!! Form::label('Region') !!}
     {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
-    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
+    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
   {!! Form::close() !!}
 
   <table class="table">

@@ -18,6 +18,7 @@ use App\Category;
 use App\Provider;
 use App\State;
 use App\Order;
+use App\User;
 
 use Carbon\Carbon;
 use Auth;
@@ -52,7 +53,7 @@ class ProductsController extends Controller
   public function create()
   {
     $categories = Category::lists('name', 'id');
-    $providers = Provider::lists('name', 'id');
+    $providers = User::where('role_id', 2)->lists('username', 'id');
     $stores = Store::lists('name', 'id');
     $cities = City::lists('name', 'id');
     $regions = Region::lists('name', 'id');
@@ -126,7 +127,7 @@ public function edit($id)
   $product = Product::findOrFail($id);
 
   $categories = Category::lists('name', 'id');
-  $providers = Provider::lists('name', 'id');
+  $providers = User::where('role_id', 2)->lists('username', 'id');
   $stores = Store::lists('name', 'id');
   $cities = City::lists('name', 'id');
   $regions = Region::lists('name', 'id');

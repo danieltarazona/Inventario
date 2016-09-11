@@ -7,7 +7,7 @@ class DatabaseSeeder extends Seeder
     factory(App\Role::class)->create(['name' => 'User']);
     factory(App\Role::class)->create(['name' => 'Provider']);
     factory(App\Role::class)->create(['name' => 'Storer']);
-    factory(App\Role::class)->create(['name' => 'Admin']);
+    factory(App\Role::class)->create(['name' => 'Administrator']);
 
     factory(App\State::class)->create(['id' => 200, 'name' => 'Active']);
     factory(App\State::class)->create(['id' => 201, 'name' => 'Inactive']);
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     factory(App\State::class)->create(['id' => 303, 'name' => 'On-Maintenance']);
     factory(App\State::class)->create(['id' => 304, 'name' => 'Damage']);
 
-    factory(App\State::class)->create(['id' => 400, 'name' => 'Done']);
+    factory(App\State::class)->create(['id' => 400, 'name' => 'Complete']);
     factory(App\State::class)->create(['id' => 401, 'name' => 'Waiting']);
     factory(App\State::class)->create(['id' => 402, 'name' => 'Returned']);
     factory(App\State::class)->create(['id' => 403, 'name' => 'Cancelled']);

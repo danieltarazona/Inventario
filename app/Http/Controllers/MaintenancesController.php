@@ -42,7 +42,7 @@ class MaintenancesController extends Controller
   */
   public function create()
   {
-    $providers = User::all()->where('role_id', 1)->get(); # Only Users
+    $providers = User::where('role_id', 2)->lists('username', 'id');
     return view('maintenances.create', compact('providers'));
   }
 
@@ -98,8 +98,58 @@ class MaintenancesController extends Controller
   public function complete($id)
   {
     $maintenance = Maintenance::findOrFail($id);
-    $state = State::findOrFail(400); # On-Maintenance
-    $state->maintenance()->save($maintenance);
+    if($maintenance->state->id == 401) {
+      $state = State::findOrFail(400); # On-Maintenance
+      $state->maintenance()->save($maintenance);
+      flash('Maintenance Complete!', 'success');
+    } else {
+      flash('Maintenance cant be Completed!', 'warning');
+      return redirect('maintenances/' . $id . '/edit');
+    }
+    return redirect('maintenances');
+  }
+
+  /**
+  * Return Products of Maintenance
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+
+  public function returned($id)
+  {
+    $maintenance = Maintenance::findOrFail($id);
+
+    if($maintenance->state->id == 400) {
+      $state = State::findOrFail(402); # On-Maintenance
+      $state->maintenance()->save($maintenance);
+      flash('All Products in Maintenance Returned!', 'success');
+    } else {
+      flash('Some products doesnt be returned yet or repaired!', 'warning');
+      return redirect('maintenances/' . $id . '/edit');
+    }
+    return redirect('maintenances');
+  }
+
+  /**
+  * Cancel a Maintenance
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+
+  public function canceled($id)
+  {
+    $maintenance = Maintenance::findOrFail($id);
+
+    if($maintenance->state->id == 401) {
+      $state = State::findOrFail(403); # On-Maintenance
+      $state->maintenance()->save($maintenance);
+      flash('Maintenance has been Cancelled!', 'success');
+    } else {
+      flash('The maintenance cant be canceled the provider are working now!', 'warning');
+      return redirect('maintenances/' . $id . '/edit');
+    }
     return redirect('maintenances');
   }
 
@@ -141,8 +191,8 @@ class MaintenancesController extends Controller
       }
       $maintenance->name = $request->name;
       $maintenance->save();
+      flash('Update Successful!', 'success');
       return redirect('maintenances/' . $id );
-      flash('Create Successful!', 'success');
     }
   }
 

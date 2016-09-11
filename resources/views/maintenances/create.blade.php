@@ -9,8 +9,10 @@
   {!! Form::label('Name') !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
+  @if(Auth::user()->role_id == 2)
   {!! Form::label('Description') !!}
-  {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+  {!! Editor::view($maintenance->description) !!}
+  @endif
 
   {!! Form::label('Provider') !!}
   {!! Form::select('provider_id', $providers, null, ['class' => 'form-control']) !!}

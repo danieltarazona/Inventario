@@ -50,7 +50,7 @@
       <tr>
         <td>{{ $product->id }}</td>
         <td><img src="{{ $product->photo }}" alt="" style="weight:50px; height:50px;"/></td>
-        <td>{{ $product->name }}</td>
+        <td><a href="/products/{{$product->id}}">{{ $product->name }}</a></td>
         <td>{{ $product->category->name or 'Blank' }}</td>
         <td>{{ $product->provider->name or 'Blank' }}</td>
         <td>{{ $product->store->name or 'Blank' }}</td>

@@ -24,7 +24,6 @@
         <input type="hidden" name="price" value="{{ $product->price or 'Blank' }}">
 
         <h5>Provider: {{ $product->provider->name or 'Blank' }}</h5>
-        <h5>Stock: {{ $product->stock or 'Blank' }}</h5>
         <h5>State: {{ $product->state->name or 'Blank' }}</h5>
         <h5>Serial: {{ $product->serial or 'Blank' }}</h5>
         <h5>Model: {{ $product->year or 'Blank' }}</h5>
