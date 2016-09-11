@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Maintenance;
+use App\Provider;
 use App\Product;
 use App\State;
 use App\User;
+use Editor;
 use Auth;
 use Carbon\Carbon;
 use DB;
@@ -28,6 +30,9 @@ class MaintenancesController extends Controller
   public function index()
   {
     $maintenances = Maintenance::all();
+    if (Auth::user()->role_id == 2) {
+      $maintenances = Maintenance::all()->where('provider_id', Auth::id())->get();
+    }
     return view('maintenances.index', compact('maintenances'));
   }
 
@@ -38,9 +43,8 @@ class MaintenancesController extends Controller
   */
   public function create()
   {
-    $products = Product::lists('name', 'id');
-
-    return view('maintenances.create', compact('products'));
+    $providers = Provider::lists('name', 'id');
+    return view('maintenances.create', compact('providers'));
   }
 
   /**
@@ -54,15 +58,17 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Create Successful!', 'success');
+      flash('Validation Fails!', 'error');
       return redirect('maintenances/create')
       ->withErrors($validator)
       ->withInput();
     } else {
+      $request->description = Input::get(Editor::input());
       $input = $request->all();
       $maintenance = Maintenance::create($input);
       $maintenance->state_id = 401;
       $user = User::findOrFail(Auth::id());
+
       $user->maintenance()->save($maintenance);
       $maintenance->save();
       flash('Create Successful!', 'success');
@@ -81,6 +87,21 @@ class MaintenancesController extends Controller
     $maintenance = Maintenance::findOrFail($id);
 
     return view('maintenances.show', compact('maintenance'));
+  }
+
+  /**
+  * Complete Maintenance
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+
+  public function complete($id)
+  {
+    $maintenance = Maintenance::findOrFail($id);
+    $state = State::findOrFail(400); # On-Maintenance
+    $state->maintenance()->save($maintenance);
+    return redirect('maintenances');
   }
 
   /**
@@ -110,17 +131,18 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Create Successful!', 'success');
+      flash('Validation Fails!', 'error');
       return redirect('maintenances/' . $maintenance->id . '/edit')
       ->withErrors($validator)
       ->withInput();
     } else {
-      $input = $request->all();
-      $maintenance->fill($input)->save();
+      if(Auth::user()->role_id == 2)
+      {
+        $maintenance->description = Input::get(Editor::input());
+      }
+      $maintenance->name = $request->name;
       $maintenance->save();
-      $maintenance->product()->sync($request->product_id);
-
-      return redirect('maintenances');
+      return redirect('maintenances/' . $id );
       flash('Create Successful!', 'success');
     }
   }
@@ -141,8 +163,16 @@ class MaintenancesController extends Controller
 
   /*
   $maintenance = App\Maintenance::find(2)
-  $product = App\Product::findOrFail(2);
+
+  $product = App\Product::findOrFail(10);
   $state = App\State::findOrFail(303);
+  $product->state;
+
+  $state->product()->save($product, ['quantity' => 10]);
+  $state->product()->attach($product, ['quantity' => 10]);
+
+  $state->product()->updateExistingPivot(['quantity' => 20]);
+  $state->product()->detach($product);
 
   */
   public function add($id, $product, Request $request)
@@ -150,10 +180,10 @@ class MaintenancesController extends Controller
     $maintenance = Maintenance::findOrFail($id);
     $product = Product::findOrFail($product);
     $state = State::findOrFail(303); # On-Maintenance
-
-
+    $product->stock = $product->stock - $request->quantity;
 
     if ($maintenance->product->contains($product)) {
+
       DB::table('maintenance_product')
       ->where(['maintenance_id' => $maintenance->id, 'product_id' => $product->id])
       ->update(['quantity' => $request->quantity]);
@@ -162,13 +192,22 @@ class MaintenancesController extends Controller
       ->where(['product_id' => $product->id, 'state_id' => $state->id])
       ->update(['quantity' => $request->quantity]);
 
-      flash('Item has been added!', 'success');
-    } else {
-      DB::table('maintenance_product')->insert(['maintenance_id' => $maintenance->id, 'product_id' => $product->id, 'quantity' => $request->quantity]);
-      DB::table('product_state')->insert(['product_id' => $product->id, 'state_id' => $state->id, 'quantity' => $request->quantity]);
+      $state = State::findOrFail(300); # Available
+      DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
+      ->update(['quantity' => $product->stock]);
 
-      flash('Item has been added!', 'success');
+      flash('Item has been updated!', 'success');
+      return redirect('maintenances/' . $id . '/edit');
     }
+    $state = State::findOrFail(300); # Available
+    DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
+    ->update(['quantity' => $product->stock]);
+
+    $state = State::findOrFail(303); # On-Maintenance
+    $maintenance->product()->attach($product, ['quantity' => $request->quantity]);
+    $state->product()->attach($product, ['quantity' => $request->quantity]);
+
+    flash('Item has been added!', 'success');
     return redirect('maintenances/' . $id . '/edit');
   }
 
@@ -183,6 +222,8 @@ class MaintenancesController extends Controller
   {
     $maintenance = Maintenance::findOrFail($id);
     $product = Product::findOrFail($product);
+    $state = State::findOrFail(303);
+    $state->product()->detach($product);
     $maintenance->product()->detach($product);
     flash('Item has been Removed!', 'success');
     return redirect('products/' . $product->id);
@@ -192,7 +233,6 @@ class MaintenancesController extends Controller
   {
     return [
       'name'    => 'required|string|max:255',
-      'description'=> 'required',
     ];
   }
 }

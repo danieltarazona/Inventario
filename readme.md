@@ -4,6 +4,12 @@ Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Invento
 
 ## Official Documentation
 
+29 29 02 $1,289,432
+29 29 04 $2,645,360
+
+29 29 04 $550,000
+29 29 04 $2,100,000
+
 Documentation for the framework can be found on the [Inventar.io Website](http://inventar.io/docs).
 
 ## Tutorial Laravel Windows
@@ -39,7 +45,8 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 
 ## Security Levels
 1. User (Instructor)
-2. Storer (Almacenista)
+2. Provider (Proveedor)
+3. Storer (Almacenista)
 3. Admin (Administrador)
 
 # Users States

@@ -142,13 +142,6 @@
                 {!! Form::close() !!}
               @endif
             </td>
-            <td>
-              @if(Auth::user()->role_id > 1)
-                {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
-                <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                {!! Form::close() !!}
-              @endif
-            </td>
           </tr>
         @endforeach
 

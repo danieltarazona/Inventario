@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use App\Provider;
+use App\User;
 
 class ProvidersController extends Controller
 {
@@ -30,7 +31,8 @@ class ProvidersController extends Controller
   */
   public function create()
   {
-    return view('providers.create');
+    $users = User::where('role_id', '!=', '2');
+    return view('providers.create', compact('users'));
   }
 
   /**
@@ -49,7 +51,6 @@ class ProvidersController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $provider = new Provider;
       Provider::create($request->all());
       return redirect('providers');
     }

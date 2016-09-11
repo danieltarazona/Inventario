@@ -12,6 +12,9 @@
   {!! Form::label('Description') !!}
   {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
+  {!! Form::label('Provider') !!}
+  {!! Form::select('provider_id', $providers, null, ['class' => 'form-control']) !!}
+
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}

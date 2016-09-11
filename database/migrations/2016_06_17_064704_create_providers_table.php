@@ -17,6 +17,7 @@ class CreateProvidersTable extends Migration
             $table->string('name');
             $table->integer('telephone');
             $table->integer('adress');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

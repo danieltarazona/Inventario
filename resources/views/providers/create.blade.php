@@ -15,6 +15,9 @@
   {!! Form::label('Adress') !!}
   {!! Form::text('adress', null, ['class' => 'form-control']) !!}
 
+  {!! Form::label('User ID') !!}
+  {!! Form::text('user_id', null, ['class' => 'form-control']) !!}
+
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}

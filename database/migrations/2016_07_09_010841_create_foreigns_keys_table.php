@@ -41,6 +41,11 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
+    Schema::table('providers', function ($table) {
+      $table->foreign('user_id')->references('id')->on('users')
+      ->onDelete('cascade')->onUpdate('cascade');
+    });
+
     Schema::table('carts', function ($table) {
       $table->foreign('user_id')->references('id')->on('users')
       ->onDelete('cascade')->onUpdate('cascade');
@@ -79,6 +84,8 @@ class CreateForeignsKeysTable extends Migration
       $table->foreign('user_id')->references('id')->on('users')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('state_id')->references('id')->on('states')
+      ->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('provider_id')->references('id')->on('providers')
       ->onDelete('cascade')->onUpdate('cascade');
     });
 

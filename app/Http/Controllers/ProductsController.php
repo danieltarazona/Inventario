@@ -22,6 +22,7 @@ use App\Order;
 use Carbon\Carbon;
 use Auth;
 use File;
+use DB;
 
 
 class ProductsController extends Controller
@@ -73,7 +74,7 @@ public function store(Request $request)
   $validator = Validator::make($request->all(), $this->rules());
 
   if ($validator->fails()) {
-    flash('Create Successful!', 'success');
+    flash('Validation Fail!', 'danger');
     return redirect('products.create')
     ->withErrors($validator)
     ->withInput();
@@ -94,7 +95,7 @@ public function store(Request $request)
     $product = Product::create($input);
     $state = State::find(300);
     $product->state()->save($state, ['quantity' => $request->stock]);
-    flash('Update Complete!', 'success');
+    flash('Create Product Complete!', 'success');
     return redirect('products');
   }
 }
@@ -157,6 +158,11 @@ public function update(Request $request, $id)
   } else {
     $input = $request->all();
     $product->fill($input)->save();
+
+    $state = State::findOrFail(300); # Available
+    DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
+    ->update(['quantity' => $product->stock]);
+
     flash('Update Complete!', 'success');
     return redirect('products');
   }

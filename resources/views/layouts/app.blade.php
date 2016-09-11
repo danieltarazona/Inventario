@@ -33,21 +33,27 @@
         <!-- Left Side Of Navbar -->
 
         <ul class="nav navbar-nav">
-          <li><a href="{{ url('categories') }}">Categories</a></li>
-          <li><a href="{{ url('products') }}">Products</a></li>
-          @if (Auth::check())
-            <li><a href="{{ url('orders') }}">Orders</a></li>
-            <li><a href="{{ url('sales') }}">Sales</a></li>
+          @if(Auth::check())
+            @if(Auth::user()->role_id != 2)
+              <li><a href="{{ url('categories') }}">Categories</a></li>
+              <li><a href="{{ url('products') }}">Products</a></li>
+            @endif
             <li><a href="{{ url('issues') }}">Issues</a></li>
-            @if (Auth::user()->role_id > 1)
+            @if(Auth::user()->role_id == 1 or Auth::user()->role_id > 2)
+              <li><a href="{{ url('orders') }}">Orders</a></li>
+              <li><a href="{{ url('sales') }}">Sales</a></li>
+            @endif
+            @if (Auth::check() && Auth::user()->role_id > 1)
               <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
-              <li><a href="{{ url('providers') }}">Providers</a></li>
-              <li><a href="{{ url('roles') }}">Roles</a></li>
-              <li><a href="{{ url('states') }}">States</a></li>
-              <li><a href="{{ url('regions') }}">Regions</a></li>
-              <li><a href="{{ url('cities') }}">Cities</a></li>
-              <li><a href="{{ url('stores') }}">Stores</a></li>
-              <li><a href="{{ url('users') }}">Users</a></li>
+              @if (Auth::user()->role_id > 3)
+                <li><a href="{{ url('providers') }}">Providers</a></li>
+                <li><a href="{{ url('roles') }}">Roles</a></li>
+                <li><a href="{{ url('states') }}">States</a></li>
+                <li><a href="{{ url('regions') }}">Regions</a></li>
+                <li><a href="{{ url('cities') }}">Cities</a></li>
+                <li><a href="{{ url('stores') }}">Stores</a></li>
+                <li><a href="{{ url('users') }}">Users</a></li>
+              @endif
             @endif
           @endif
         </ul>

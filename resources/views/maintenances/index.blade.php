@@ -14,8 +14,8 @@
         @if(Auth::user()->role_id > 2)
           <th>Storer</th>
         @endif
-        <th>State</th>
         <th>Date</th>
+        <th>State</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -28,13 +28,14 @@
         @if(Auth::user()->role_id > 2)
           <td>{{ $maintenance->user_id or 'Blank' }}</td>
         @endif
+        <td>{{ $maintenance->created_at or 'Blank' }}</td>
+
+        @if($maintenance->state->name == 'Waiting')
+          <td><span class="label label-warning">{{ $maintenance->state->name or 'Blank' }}</span></td>
+        @endif
 
         @if($maintenance->state->name == 'Done')
           <td><span class="label label-success">{{ $maintenance->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($maintenance->state->name == 'Waiting')
-          <td><span class="label label-warning">{{ $maintenance->state->name or 'Blank'  }}</span></td>
         @endif
 
         @if($maintenance->state->name == 'Product or Products Not Found')
@@ -48,7 +49,6 @@
         @if($maintenance->state->name == 'Cancelled')
           <td><span class="label label-default">{{ $maintenance->state->name or 'Blank'  }}</span></td>
         @endif
-        <td>{{ $maintenance->created_at or 'Blank' }}</td>
 
         <td>
           <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

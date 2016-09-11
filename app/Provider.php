@@ -24,4 +24,14 @@ class Provider extends Model
   {
     return Provider::lists('name', 'id');
   }
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
+
+  public function user_id()
+  {
+    return $this->user->id;
+  }
 }

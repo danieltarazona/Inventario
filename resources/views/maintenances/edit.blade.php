@@ -2,17 +2,24 @@
 
 @section('content')
 
-<h1>Edit</h1>
+  <h1>Edit</h1>
 
-{!! Form::model(array('route' => array('maintenances.update', $maintenance->id), 'method' => 'PATCH')) !!}
+  {!! Form::open(['route' => ['maintenances.update', $maintenance->id], 'method' => 'PATCH']) !!}
 
   {!! Form::label('name', 'Name') !!}
   {!! Form::text('name', $maintenance->name, ['class' => 'form-control']) !!}
+  @if(Auth::user()->role_id == 2)
+    {!! Form::label('Description') !!}
+    {!! Editor::view($maintenance->description) !!}
+  @endif
+  <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i></i></button>
+  {!! Form::close() !!}
 
-  {!! Form::label('Description') !!}
-  {!! Form::textarea('description', $maintenance->description, ['class' => 'form-control']) !!}
-
-  {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
+  @if(Auth::user()->role_id == 2)
+  {!! Form::open(['route' => ['maintenances.complete', $maintenance->id], 'method' => 'POST']) !!}
+  <button class="btn btn-success" type="submit">Complete</button>
+  {!! Form::close() !!}
+  @endif
 
   <br>
   <h1>Products in Maintenance</h1>
@@ -44,14 +51,16 @@
         <td>{{ $product->warranty or 'Blank' }} Months</td>
         <td>{{ $product->pivot->quantity or 'Blank' }}</td>
 
-        <td>
-          {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
-          {!! Form::close() !!}
-        </td>
+        @if(Auth::user()->role_id > 2)
+          <td>
+            {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+            {!! Form::close() !!}
+          </td>
+        @endif
       </tr>
     @endforeach
 
-{!! Form::close() !!}
+    {!! Form::close() !!}
 
-@stop
+  @stop

@@ -25,28 +25,28 @@ class DatabaseSeeder extends Seeder
     factory(App\State::class)->create(['id' => 404, 'name' => 'Product or Products Not Found']);
 
     $user = factory(App\User::class)->create([
-      'username' => 'User',
+      'username' => 'User - Daniel',
       'email' => 'user@user.com',
       'password' => bcrypt("123456"),
       'role_id' => 1,
     ]);
 
     $user = factory(App\User::class)->create([
-      'username' => 'Provider',
+      'username' => 'Provider - Apple',
       'email' => 'provider@provider.com',
       'password' => bcrypt("123456"),
       'role_id' => 2,
     ]);
 
     $user = factory(App\User::class)->create([
-      'username' => 'Storer',
+      'username' => 'Storer - Jesus',
       'email' => 'storer@storer.com',
       'password' => bcrypt("123456"),
       'role_id' => 3,
     ]);
 
     $user = factory(App\User::class)->create([
-      'username' => 'Administrator',
+      'username' => 'Administrator - Carlos',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
       'role_id' => 4,
@@ -64,7 +64,6 @@ class DatabaseSeeder extends Seeder
     $store->user()->save($user);
     $city->store()->save($store);
 
-    $provider = factory(App\Provider::class)->create(['name' => 'Apple']);
     $category = factory(App\Category::class)->create(['name' => 'Notebook']);
 
     $comment = factory(App\Comment::class)->create(['name' => 'Awesome']);
@@ -99,36 +98,37 @@ class DatabaseSeeder extends Seeder
     $maintenances = factory(App\Maintenance::class, 3)->create()->each(function($maintenance)
     {
       $user = App\User::find(1);
+      $user->maintenance()->save($maintenance);
+
       $state = App\State::find(401);
       $state->maintenance()->save($maintenance);
-      $user->maintenance()->save($maintenance);
+
       $product = factory(App\Product::class, 3)->create();
       $maintenance->product()->saveMany($product);
+
+      $state = App\State::find(303);
+      $state->product()->attach($product, ['quantity' => 10]);
     });
 
     factory(App\Product::class, 3)->create()->each(function($product)
     {
       $category = App\Category::find(1);
-      $provider = App\Provider::find(1);
+      $provider = App\User::find(2);
       $store = App\Store::find(1);
-      $maintenance = App\Maintenance::find(1);
       $region = App\Region::find(1);
       $city = App\City::find(1);
 
-      $state = App\State::find(300);
-      $state->product()->attach($product);
-
-      $user = App\User::find(1);
-      $cart = App\Cart::find(1);
-
       $region->product()->save($product);
       $city->product()->save($product);
-
       $category->product()->save($product);
       $provider->product()->save($product);
       $store->product()->save($product);
-      $maintenance->product()->save($product);
 
+      $state = App\State::find(300);
+      $state->product()->attach($product, ['quantity' => $product->stock]);
+
+      $user = App\User::find(1);
+      $cart = App\Cart::find(1);
       $user->cart()->save($cart);
       $cart->product()->save($product);
 
