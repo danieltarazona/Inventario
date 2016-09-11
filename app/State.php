@@ -8,7 +8,7 @@ class State extends Model
 {
 
   protected $fillable = [
-    'name',
+    'name', 'create_at', 'update_at'
   ];
 
   public function user()

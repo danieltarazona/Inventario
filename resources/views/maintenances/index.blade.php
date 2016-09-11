@@ -28,21 +28,38 @@
         @if(Auth::user()->role_id > 2)
           <td>{{ $maintenance->user_id or 'Blank' }}</td>
         @endif
-        <td>{{ $maintenance->state_id or 'Blank' }} : {{ $maintenance->state->name or 'Blank' }}</td>
+        
+        @if($maintenance->state->name == 'Done')
+          <td><span class="label label-success">{{ $maintenance->state->name }}</span></td>
+        @endif
+
+        @if($maintenance->state->name == 'Waiting')
+          <td><span class="label label-warning">{{ $maintenance->state->name }}</span></td>
+        @endif
+
+        @if($maintenance->state->name == 'Product or Products Not Found')
+          <td><span class="label label-danger">{{ $maintenance->state->name }}</span></td>
+        @endif
+
+        @if($maintenance->state->name == 'Return')
+          <td><span class="label label-primary">{{ $maintenance->state->name }}</span></td>
+        @endif
+
+        @if($maintenance->state->name == 'Cancelled')
+          <td><span class="label label-default">{{ $maintenance->state->name }}</span></td>
+        @endif
         <td>{{ $maintenance->created_at or 'Blank' }}</td>
 
         <td>
-          <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary">Show</a>
+          <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
-
         <td>
-          <a href="{{ route('maintenances.edit', $maintenance->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('maintenances.edit', $maintenance->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
-
         @if(Auth::user()->role_id > 2)
         <td>
           {!! Form::open(['route' => ['maintenances.destroy', $maintenance->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           {!! Form::close() !!}
         </td>
         @endif

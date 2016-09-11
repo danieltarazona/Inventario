@@ -16,7 +16,6 @@ class CreateProductStateTable extends Migration
             $table->increments('id');
             $table->integer('state_id')->unsigned()->nullable();
             $table->integer('product_id')->unsigned()->nullable();
-            $table->integer('quantity')->unsigned()->index();
             $table->timestamps();
         });
     }

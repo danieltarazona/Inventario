@@ -26,7 +26,7 @@
       <th>Store</th>
       <th>Serial</th>
       <th>Warranty</th>
-      <th>States</th>
+      <th>Quantity</th>
     </tr>
   </thead>
 
@@ -34,7 +34,7 @@
     <tr>
       <td>{{ $product->id }}</td>
       <td><img src="{{ $product->photo }}" alt="" style="weight:50px; height:50px;"/></td>
-      <td>{{ $product->name }}</td>
+      <td><a href="/products/{{ $product->id }}">{{ $product->name }}</a></td>
       <td>{{ $product->category->name or 'Blank' }}</td>
       <td>{{ $product->provider->name or 'Blank' }}</td>
       <td>{{ $product->store->name or 'Blank' }}</td>
@@ -46,7 +46,10 @@
       <td>{{ $product->warranty or 'Blank' }} Months</td>
       <td>
         @foreach($product->state as $state)
-          <h5>{{ $state->name }} : {{ $state->pivot->quantity }}</h5>
+
+          @if($state->name == 'On-Maintenance')
+            <td><span class="label label-warning">{{ $state->name }} : {{ $state->pivot->quantity }}</span></td>
+          @endif
 
         @endforeach
       </td>

@@ -13,6 +13,7 @@ use App\Product;
 use App\State;
 use Auth;
 use Carbon\Carbon;
+use DB;
 
 
 class MaintenancesController extends Controller
@@ -142,25 +143,29 @@ class MaintenancesController extends Controller
   */
 
   /*
-  $maintenance = App\Maintenance::where(['state_id' => 401, 'user_id' => 4])->get();
-  $product = App\Product::findOrFail(1);
+  $maintenance = App\Maintenance::find(2)
+  $product = App\Product::findOrFail(2);
   $state = App\State::findOrFail(303);
   */
   public function add($id, $product, Request $request)
   {
     $maintenance = Maintenance::findOrFail($id);
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(303);
-
     if ($maintenance->product->contains($product)) {
-      $product->state()->sync($product->state);
-      flash('Item Quantity has been Update!', 'success');
+      DB::table('maintenance_product')->update(
+      ['product_id' => $product->id, 'maintenance_id' => $maintenance->id, 'quantity' => $request->quantity]
+      );
+      #$product->state()->sync(['state_id' => $state->id, 'product_id' => $product->id, 'quantity' => $request->quantity]);
+      flash('Item quantity has been update!', 'success');
     } else {
-      $product->state()->save($state, ['quantity' => $request->quantity]);
-      $maintenance->product()->save($product);
-      flash('Item has been Added!', 'success');
+      $state = State::findOrFail(303);
+      $state->product()->save($state);
+      DB::table('maintenance_product')->insert(
+      ['product_id' => $product->id, 'maintenance_id' => $maintenance->id, 'quantity' => $request->quantity]
+      );
+      flash('Item has been added!', 'success');
     }
-    return redirect('maintenances/' . Auth::id());
+    return redirect('maintenances/' . $id . '/edit');
   }
 
   /**
@@ -176,7 +181,7 @@ class MaintenancesController extends Controller
     $product = Product::findOrFail($product);
     $maintenance->product()->detach($product);
     flash('Item has been Removed!', 'success');
-    return redirect('maintenances/' . $maintenance->id . '/edit');
+    return redirect('products/' . $product->id);
   }
 
   public function rules()

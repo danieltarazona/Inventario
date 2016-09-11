@@ -108,7 +108,7 @@ public function store(Request $request)
 public function show($id)
 {
   $product = Product::findOrFail($id);
-  $maintenances = Maintenance::all();
+  $maintenances = Maintenance::where('state_id', 401)->get();
 
   $products = Product::all()->take(4);
   return view('products.show', compact('product', 'maintenances'));

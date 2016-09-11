@@ -52,9 +52,6 @@ class DatabaseSeeder extends Seeder
       'role_id' => 4,
     ]);
 
-
-
-
     $state = App\State::find(200);
     $state->user()->save($user);
 
@@ -69,11 +66,6 @@ class DatabaseSeeder extends Seeder
 
     $provider = factory(App\Provider::class)->create(['name' => 'Apple']);
     $category = factory(App\Category::class)->create(['name' => 'Notebook']);
-
-    $maintenance = factory(App\Maintenance::class)->create(['name' => 'OSX']);
-    $state = App\State::find(401);
-    $state->maintenance()->save($maintenance);
-    $user->maintenance()->save($maintenance);
 
     $comment = factory(App\Comment::class)->create(['name' => 'Awesome']);
     $issue = factory(App\Issue::class)->create(['name' => 'Error']);
@@ -104,6 +96,17 @@ class DatabaseSeeder extends Seeder
       $user->cart()->save($cart);
     });
 
+    $maintenances = factory(App\Maintenance::class, 3)->create()->each(function($maintenance)
+    {
+      $user = App\User::find(1);
+      $state = App\State::find(401);
+      $state->maintenance()->save($maintenance);
+      $user->maintenance()->save($maintenance);
+      $product = factory(App\Product::class, 3)->create();
+      $maintenance->product()->saveMany($product);
+
+    });
+
     factory(App\Product::class, 10)->create()->each(function($product)
     {
       $category = App\Category::find(1);
@@ -114,19 +117,7 @@ class DatabaseSeeder extends Seeder
       $city = App\City::find(1);
 
       $state = App\State::find(300);
-      $state->product()->attach($product, ['quantity' => $product->stock]);
-
-      $state = App\State::find(301);
-      $state->product()->attach($product, ['quantity' => 0]);
-
-      $state = App\State::find(302);
-      $state->product()->attach($product, ['quantity' => 0]);
-
-      $state = App\State::find(303);
-      $state->product()->attach($product, ['quantity' => 0]);
-
-      $state = App\State::find(304);
-      $state->product()->attach($product, ['quantity' => 0]);
+      $state->product()->attach($product);
 
       $user = App\User::find(1);
       $cart = App\Cart::find(1);
@@ -151,14 +142,6 @@ class DatabaseSeeder extends Seeder
       $order->sale()->save($sale);
       $user->sale()->save($sale);
       $state->sale()->save($sale);
-    });
-
-    $maintenances = factory(App\Maintenance::class, 10)->create()->each(function($maintenance)
-    {
-      $user = App\User::find(1);
-      $state = App\State::find(401);
-      $state->maintenance()->save($maintenance);
-      $user->maintenance()->save($maintenance);
     });
 
     $comments = factory(App\Comment::class, 10)->create()->each(function($comment)
