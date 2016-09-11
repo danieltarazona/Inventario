@@ -5,6 +5,7 @@
   <div class="container">
 
     <p><a href="/categories">{{ $product->category->name or 'Blank' }}</a> / {{ $product->name }}</p>
+    <h1>ID {{ $product->id or 'Blank' }}</h1>
     <h1>{{ $product->name or 'Blank' }}</h1>
     <h2>{{ $product->store->name or 'Blank' }}</h2>
 
@@ -53,14 +54,13 @@
         <thead>
           <tr>
             <th>State</th>
-            <th>Quantity</th>
           </tr>
         </thead>
 
         @foreach($product->state as $state)
           <tr>
             @if($state->name == 'Available')
-              <td><span class="label label-success">{{ $state->name }} : {{ $product->stock }}</span></td>
+              <td><span class="label label-success">{{ $state->name }}</span></td>
             @endif
 
             @if($state->name == 'On-Maintenance')
@@ -78,8 +78,10 @@
             @if($state->name == 'On-Loan')
               <td><span class="label label-default">{{ $state->name }}</span></td>
             @endif
+            <td>
+              {{ $state->pivot->quantity }}
+            </td>
 
-            <td>{{ $state->pivot->quantity }}</td>
           </tr>
         @endforeach
       </table>
@@ -92,7 +94,8 @@
             <th>ID</th>
             <th>Product Name</th>
             <th>Description</th>
-            <th colspan="4">Actions</th>
+            <th>Quantity</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -101,14 +104,7 @@
           <td>{{ $maintenance->id }}</td>
           <td><a href="/maintenances/{{ $maintenance->id }}">{{ $maintenance->name }}</a></td>
           <td>{{ $maintenance->description }}</td>
-          <td>
-            @if(Auth::user()->role_id > 1)
-              {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
-              <input type="number" name="quantity" value="{{ $maintenance->pivot->quantity }}">
-              <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> Repair</button>
-              {!! Form::close() !!}
-            @endif
-          </td>
+          <td>{{ $maintenance->pivot->quantity }}</td>
           <td>
             @if(Auth::user()->role_id > 1)
               {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}

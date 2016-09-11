@@ -11,6 +11,7 @@ use App\Http\Requests;
 use App\Maintenance;
 use App\Product;
 use App\State;
+use App\User;
 use Auth;
 use Carbon\Carbon;
 use DB;
@@ -58,18 +59,14 @@ class MaintenancesController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $maintenance = new Maintenance;
-      $maintenance->name = $request->name;
-      $maintenance->state_id = 7; # Waiting
-      $maintenance->description = $request->description;
-      $maintenance->user()->save(Auth::user());
+      $input = $request->all();
+      $maintenance = Maintenance::create($input);
+      $maintenance->state_id = 401;
+      $user = User::findOrFail(Auth::id());
+      $user->maintenance()->save($maintenance);
       $maintenance->save();
-
-      $maintenance->products()->sync($request->products_id);
-
-      return redirect('maintenances');
-
       flash('Create Successful!', 'success');
+      return redirect('maintenances');
     }
   }
 
@@ -146,23 +143,30 @@ class MaintenancesController extends Controller
   $maintenance = App\Maintenance::find(2)
   $product = App\Product::findOrFail(2);
   $state = App\State::findOrFail(303);
+
   */
   public function add($id, $product, Request $request)
   {
     $maintenance = Maintenance::findOrFail($id);
     $product = Product::findOrFail($product);
+    $state = State::findOrFail(303); # On-Maintenance
+
+
+
     if ($maintenance->product->contains($product)) {
-      DB::table('maintenance_product')->update(
-      ['product_id' => $product->id, 'maintenance_id' => $maintenance->id, 'quantity' => $request->quantity]
-      );
-      #$product->state()->sync(['state_id' => $state->id, 'product_id' => $product->id, 'quantity' => $request->quantity]);
-      flash('Item quantity has been update!', 'success');
+      DB::table('maintenance_product')
+      ->where(['maintenance_id' => $maintenance->id, 'product_id' => $product->id])
+      ->update(['quantity' => $request->quantity]);
+
+      DB::table('product_state')
+      ->where(['product_id' => $product->id, 'state_id' => $state->id])
+      ->update(['quantity' => $request->quantity]);
+
+      flash('Item has been added!', 'success');
     } else {
-      $state = State::findOrFail(303);
-      $state->product()->save($state);
-      DB::table('maintenance_product')->insert(
-      ['product_id' => $product->id, 'maintenance_id' => $maintenance->id, 'quantity' => $request->quantity]
-      );
+      DB::table('maintenance_product')->insert(['maintenance_id' => $maintenance->id, 'product_id' => $product->id, 'quantity' => $request->quantity]);
+      DB::table('product_state')->insert(['product_id' => $product->id, 'state_id' => $state->id, 'quantity' => $request->quantity]);
+
       flash('Item has been added!', 'success');
     }
     return redirect('maintenances/' . $id . '/edit');
@@ -189,7 +193,6 @@ class MaintenancesController extends Controller
     return [
       'name'    => 'required|string|max:255',
       'description'=> 'required',
-      'product_id' => 'required',
     ];
   }
 }

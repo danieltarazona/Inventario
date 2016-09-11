@@ -16,7 +16,7 @@ class CreateCartProductTable extends Migration
             $table->increments('id');
             $table->integer('cart_id')->unsigned()->nullable();
             $table->integer('product_id')->unsigned()->nullable();
-            $table->integer('quantity')->unsigned()->index();
+            $table->integer('quantity')->unsigned()->index()->nullable();
             $table->timestamps();
         });
     }

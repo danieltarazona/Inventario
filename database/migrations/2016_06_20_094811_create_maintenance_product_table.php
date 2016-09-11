@@ -16,7 +16,7 @@ class CreateMaintenanceProductTable extends Migration
             $table->increments('id');
             $table->integer('maintenance_id')->unsigned()->index()->nullable();
             $table->integer('product_id')->unsigned()->index()->nullable();
-            $table->integer('quantity')->unsigned()->index();
+            $table->integer('quantity')->unsigned()->index()->nullable();
             $table->timestamps();
         });
     }

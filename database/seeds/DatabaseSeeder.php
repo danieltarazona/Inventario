@@ -104,10 +104,9 @@ class DatabaseSeeder extends Seeder
       $user->maintenance()->save($maintenance);
       $product = factory(App\Product::class, 3)->create();
       $maintenance->product()->saveMany($product);
-
     });
 
-    factory(App\Product::class, 10)->create()->each(function($product)
+    factory(App\Product::class, 3)->create()->each(function($product)
     {
       $category = App\Category::find(1);
       $provider = App\Provider::find(1);
