@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Maintenance;
-use App\Provider;
 use App\Product;
 use App\State;
 use App\User;
@@ -43,7 +42,7 @@ class MaintenancesController extends Controller
   */
   public function create()
   {
-    $providers = Provider::lists('name', 'id');
+    $providers = User::all()->where('role_id', 1)->get(); # Only Users
     return view('maintenances.create', compact('providers'));
   }
 

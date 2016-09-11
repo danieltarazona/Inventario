@@ -25,28 +25,28 @@ class DatabaseSeeder extends Seeder
     factory(App\State::class)->create(['id' => 404, 'name' => 'Product or Products Not Found']);
 
     $user = factory(App\User::class)->create([
-      'username' => 'User - Daniel',
+      'username' => 'Daniel',
       'email' => 'user@user.com',
       'password' => bcrypt("123456"),
       'role_id' => 1,
     ]);
 
     $user = factory(App\User::class)->create([
-      'username' => 'Provider - Apple',
+      'username' => 'Apple',
       'email' => 'provider@provider.com',
       'password' => bcrypt("123456"),
       'role_id' => 2,
     ]);
 
     $user = factory(App\User::class)->create([
-      'username' => 'Storer - Jesus',
+      'username' => 'Jesus',
       'email' => 'storer@storer.com',
       'password' => bcrypt("123456"),
       'role_id' => 3,
     ]);
 
     $user = factory(App\User::class)->create([
-      'username' => 'Administrator - Carlos',
+      'username' => 'Carlos',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
       'role_id' => 4,
@@ -113,7 +113,6 @@ class DatabaseSeeder extends Seeder
     factory(App\Product::class, 3)->create()->each(function($product)
     {
       $category = App\Category::find(1);
-      $provider = App\User::find(2);
       $store = App\Store::find(1);
       $region = App\Region::find(1);
       $city = App\City::find(1);
@@ -121,7 +120,6 @@ class DatabaseSeeder extends Seeder
       $region->product()->save($product);
       $city->product()->save($product);
       $category->product()->save($product);
-      $provider->product()->save($product);
       $store->product()->save($product);
 
       $state = App\State::find(300);

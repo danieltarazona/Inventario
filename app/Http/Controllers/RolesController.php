@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\User;
 use App\Role;
 
 class RolesController extends Controller
@@ -30,7 +31,7 @@ class RolesController extends Controller
   */
   public function create()
   {
-    //
+    return view('roles.create');
   }
 
   /**
@@ -41,7 +42,33 @@ class RolesController extends Controller
   */
   public function store(Request $request)
   {
-    //
+    $validator = Validator::make($request->all(), $this->rules());
+    if ($validator->fails()) {
+      flash('Validation Fails!', 'error');
+      return redirect('roles/create')
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      Role::create($request->all());
+      flash('Create Successful!', 'success');
+      return redirect('roles');
+    }
+  }
+
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function assign($id, Request $request)
+  {
+    $user_id = $request->user_id;
+    $role = Role::findOrFail($id);
+    $user = User::findOrFail($user_id);
+    $role->user()->save($user);
+    flash('Role has been Assigned!', 'success');
+    return redirect('users/' . $user_id);
   }
 
   /**
@@ -52,7 +79,8 @@ class RolesController extends Controller
   */
   public function show($id)
   {
-    //
+    $role = Role::findOrFail($id);
+    return view('roles.show', compact('role'));
   }
 
   /**
@@ -63,7 +91,8 @@ class RolesController extends Controller
   */
   public function edit($id)
   {
-    //
+    $role = Role::findOrFail($id);
+    return view('roles.edit', compact('role'));
   }
 
   /**
@@ -75,7 +104,20 @@ class RolesController extends Controller
   */
   public function update(Request $request, $id)
   {
-    //
+    $role = Role::findOrFail($id);
+
+    $validator = Validator::make($request->all(), $this->rules());
+    if ($validator->fails()) {
+      flash('Validation Fails!', 'error');
+      return redirect('roles/' . $id . '/edit')
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      $input = $request->all();
+      $role->fill($input)->save();
+      flash('Update Successful!', 'success');
+      return redirect('roles');
+    }
   }
 
   /**
@@ -86,6 +128,15 @@ class RolesController extends Controller
   */
   public function destroy($id)
   {
-    //
+    Role::findOrFail($id)->delete();
+    flash('Role has been Removed!', 'success');
+    return redirect('roles');
+  }
+
+  public function rules()
+  {
+    return [
+      'name' => 'required|max:255|unique:roles',
+    ];
   }
 }

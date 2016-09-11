@@ -4,14 +4,7 @@
 
   <h1>Roles</h1>
 
-  {!! Form::open(['url' => 'roles']) !!}
-
-  {!! Form::label('Name') !!}
-  {!! Form::text('name', null, ['class' => 'form-control']) !!}
-
-  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
-
-  {!! Form::close() !!}
+  <a href="{{ route('roles.create') }}" class="btn btn-primary">Create</a>
 
   <table class="table">
     <thead>
@@ -27,7 +20,7 @@
         <td>{{ $role->id }}</td>
         <td>{{ $role->name }}</td>
         <td>
-          <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
         <td>
           {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'DELETE']) !!}

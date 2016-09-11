@@ -24,10 +24,11 @@ Route::resource('orders', 'OrdersController');
 Route::resource('sales', 'SalesController');
 Route::resource('roles', 'RolesController');
 
+Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', 'as' => 'roles.assign'));
+
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
 
-Route::resource('providers', 'ProvidersController');
 Route::resource('regions', 'RegionsController');
 Route::resource('states', 'StatesController', ['except' => 'show'] );
 Route::resource('cities', 'CitiesController');
