@@ -4,12 +4,6 @@ Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Invento
 
 ## Official Documentation
 
-29 29 02 $1,289,432
-29 29 04 $2,645,360
-
-29 29 04 $550,000
-29 29 04 $2,100,000
-
 Documentation for the framework can be found on the [Inventar.io Website](http://inventar.io/docs).
 
 ## Tutorial Laravel Windows

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "94023232fd77b212a9036e23c718e0b9",
-    "content-hash": "b18fe5b8fe81c496612e61bcbae1a298",
+    "hash": "f523ea3129b5624e5ad08133e027fd28",
+    "content-hash": "7b0540460660c33876fc3be88c3be398",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -60,46 +60,6 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
-        },
-        {
-            "name": "codeapps/calendar",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/codeapps/Calendar.git",
-                "reference": "fb285974c323f59b668b271eb8dfd8c4070220dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/codeapps/Calendar/zipball/fb285974c323f59b668b271eb8dfd8c4070220dd",
-                "reference": "fb285974c323f59b668b271eb8dfd8c4070220dd",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.2.*",
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/Codeapps/Calendar"
-                ],
-                "psr-4": {
-                    "Codeapps\\Calendar\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Codeapps",
-                    "email": "codeapps@aol.com"
-                }
-            ],
-            "description": "This is rewriten Gantt Class to Personal Use. Show Multiple Events per Resource with Laravel 5 Compatibility",
-            "time": "2016-09-10 19:05:57"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3512,9 +3472,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "codeapps/calendar": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

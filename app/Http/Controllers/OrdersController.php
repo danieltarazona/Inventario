@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
+use Sukohi\Julius\Facades\Julius as Calendar;
 
 
 use App\Http\Requests;
@@ -36,6 +37,7 @@ class OrdersController extends Controller
   */
   public function create()
   {
+
     return view('orders.create');
   }
 

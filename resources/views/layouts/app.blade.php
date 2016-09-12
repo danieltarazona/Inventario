@@ -71,7 +71,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 <i class="fa fa-btn fa-user fa-lg"></i>
-                {{ Auth::user()->username }} / {{ Auth::user()->role->name }}<span class="caret"></span>
+                {{ Auth::user()->username }} / <span class="caret"></span>
               </a>
 
               <ul class="dropdown-menu" role="menu">

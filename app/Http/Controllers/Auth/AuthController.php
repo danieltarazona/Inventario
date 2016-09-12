@@ -70,6 +70,7 @@ class AuthController extends Controller
       'email' => $request['email'],
       'password' => bcrypt($request['password']),
       'state_id' => 1,
+      'role_id' => 1,
     ]);
   }
 }
