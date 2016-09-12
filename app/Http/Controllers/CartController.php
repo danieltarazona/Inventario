@@ -43,18 +43,15 @@ class CartController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\JsonResponse
   */
-  public function update(Request $request, $id)
+  public function update($id, Request $request)
   {
-    $validator = Validator::make($request->all(),$this->rules());
+    $product = Product::findOrFail($id);
+    $cart = Cart::findOrFail(Auth::id());
 
-    if ($validator->fails()) {
-      flash('Validation Fails!', 'danger');
-      return response()->json(['success' => false]);
-    } else {
-      Cart::update($id, $request->quantity);
-      flash('Quantity was updated successfully!', 'success');
-      return response()->json(['success' => true]);
-    }
+    DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
+    ->update(['quantity' => $request->quantity]);
+    flash('Quantity was updated successfully!', 'success');
+    return redirect('cart/' . Auth::id());
   }
 
   /**

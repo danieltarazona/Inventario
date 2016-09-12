@@ -8,7 +8,6 @@
 
   {!! Form::label('Date') !!}
   {!! Form::date('date', null, ['class' => 'form-control']) !!}
-
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}

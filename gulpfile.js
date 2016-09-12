@@ -12,8 +12,8 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('calendar.scss')
-      .version('css/calendar.css');
     mix.sass('app.scss')
-      .version('css/app.css');
+        .version('public/css/app.css');
+    mix.sass('calendar.scss')
+        .version('public/css/calendar.css');
 });
