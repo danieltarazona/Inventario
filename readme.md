@@ -48,16 +48,15 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 201. Inactive
 
 # Products States
-300. Available
-301. On-Order
+300. Available (x)
+301. On-Order (x)
 302. On-Loan
-303. On-Maintenance
-304. Damage
+303. On-Maintenance (x)
+304. Damage (x)
 
 ## Orders Sales Maintenance States
 400. Complete
 401. Waiting
-402. Returned
 403. Cancelled
 404. Product or Products Not Found
 
@@ -66,16 +65,20 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Product Returned
-- Sales State
-- Order State
-
+- Event Create Cart after UserRegister
+- On-Loan to Avaiable
+- Sales States
+- Order States
+- Maintenance States
+- Product States
+- User Inactive
+- Assets
+- Event SendEmail
+- Dashboard
+- Search Product, Order, Sales
 - Profile
 - Design
-- Event Create Cart after UserRegister
-- Event SendEmail
 
-- Search Product, Order, Sales
 - Product Order by JQuery
 - Errors & Logging Facade
 - Middleware

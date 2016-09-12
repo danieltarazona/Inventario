@@ -31,12 +31,7 @@
         <h5>Price: {{ $product->price or 'Blank' }}</h5>
         <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
 
-        @if(Auth::user()->role_id > 1)
-          {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
-          <input type="number" name="quantity" value="1">
-          <button class="btn btn-danger" type="submit">Damage</button>
-          {!! Form::close() !!}
-        @endif
+
 
           {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
           <input type="number" name="quantity" value="1">
@@ -71,8 +66,14 @@
               <td><span class="label label-warning">{{ $state->name }}</span></td>
             @endif
 
-            @if($state->name == 'Damage')
-              <td><span class="label label-danger">{{ $state->name }}</span></td>
+            @if(Auth::user()->role_id > 1)
+              @if($state->name == 'Damage')
+                <td><span class="label label-danger">{{ $state->name }}</span></td>
+                {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
+                <input type="number" name="quantity" value="{{ $state->pivot->quantity }}">
+                <button class="btn btn-danger" type="submit">Damage</button>
+                {!! Form::close() !!}
+              @endif
             @endif
 
             @if($state->name == 'On-Order')

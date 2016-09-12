@@ -16,6 +16,11 @@ class Product extends Model
     return $this->belongsTo(Provider::class);
   }
 
+  public function setStock($stock)
+  {
+    return $this->stock = $stock;
+  }
+
   public function provider_id()
   {
     return $this->provider->id;

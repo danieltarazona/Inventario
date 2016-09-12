@@ -77,9 +77,35 @@ class OrdersController extends Controller
     foreach ($cart->product as $product) {
       DB::table('order_product')->where(['product_id' => $product->id, 'order_id' => $order->id])
       ->update(['quantity' => $product->quantity()]);
+      $state = State::findOrFail(301);
+
+      $stock = $product->stock - $product->quantity();
+
+      if($product->state->contains($state))
+      {
+        $product->setStock($stock);
+
+        DB::table('product_state')
+          ->where(['product_id' => $product->id, 'state_id' => 301])
+          ->update(['quantity' => $product->quantity()]);
+
+
+        DB::table('product_state')
+          ->where(['product_id' => $product->id, 'state_id' => 300])
+          ->update(['quantity' => $product->stock]);
+
+      } else {
+
+        DB::table('product_state')
+          ->where(['product_id' => $product->id, 'state_id' => 300])
+          ->update(['quantity' => $product->stock]);
+
+        $state->product()->attach($product, ['quantity' => $product->quantity()]);
+      }
     }
-    $order->save();
     $cart->product()->detach();
+    $order->save();
+
     flash('Order has been Created!', 'success');
     return redirect('orders');
   }

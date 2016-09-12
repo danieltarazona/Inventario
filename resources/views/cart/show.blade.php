@@ -9,6 +9,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th></th>
         <th>Product</th>
         <th>Quantity</th>
@@ -27,6 +28,7 @@
     @foreach($cart->product as $product)
       <tr>
         <td>
+          <td>{{ $product->id }}</td>
           <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
           <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
           <!-- <td>{{ $product->state->name or 'Blank' }}</td> -->
