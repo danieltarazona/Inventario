@@ -8,6 +8,7 @@ use Validator;
 use App\Product;
 use App\Cart;
 use Auth;
+use DB;
 
 class CartController extends Controller
 {
@@ -62,11 +63,20 @@ class CartController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function add($id)
+  public function add($id, Request $request)
   {
     $product = Product::findOrFail($id);
     $cart = Cart::findOrFail(Auth::id());
-    $cart->product()->save($product);
+
+    if ($cart->product->contains($product))
+    {
+      DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
+      ->update(['quantity' => $request->quantity]);
+
+      flash('Item cart quantity Update!', 'success');
+      return redirect('cart/' . Auth::id());
+    }
+    $cart->product()->attach($product, ['quantity' => $request->quantity]);
     flash('Item has been Added!', 'success');
     return redirect('cart/' . Auth::id());
   }

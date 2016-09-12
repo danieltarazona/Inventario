@@ -31,6 +31,13 @@
         <h5>Price: {{ $product->price or 'Blank' }}</h5>
         <h5>Warranty: {{ $product->warranty or 'Blank' }} Months</h5>
 
+        @if(Auth::user()->role_id > 1)
+          {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
+          <input type="number" name="quantity" value="1">
+          <button class="btn btn-danger" type="submit">Damage</button>
+          {!! Form::close() !!}
+        @endif
+
         @if(Auth::user()->role_id == 1)
           {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
           <input type="number" name="quantity" value="1">
@@ -46,7 +53,7 @@
 
     <div class="row">
 
-      <h1>Product State Stats</h1>
+      <h1>States</h1>
 
       <table class="table">
 

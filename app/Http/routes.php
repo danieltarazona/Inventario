@@ -28,6 +28,7 @@ Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', '
 
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
+Route::post('/products/{products}/damage', array('uses' => 'ProductsController@damage', 'as' => 'products.damage'));
 
 Route::resource('regions', 'RegionsController');
 Route::resource('states', 'StatesController', ['except' => 'show'] );

@@ -27,25 +27,21 @@
     @foreach($cart->product as $product)
       <tr>
         <td>
-          <ol>
-            <li>
-              <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
-              <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
-              <!-- <td>{{ $product->state->name or 'Blank' }}</td> -->
-              <!-- <td>{{ $product->price or 'Blank' }}</td> -->
-              <td><input type="number" name="quantity" value="{{ $product->quantity or '1'}}"></td>
-              <td>
-                {!! Form::open(['route' => ['cart.update', $product->id, $product->quantity], 'method' => 'PATCH']) !!}
-                <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o fa-lg" type="submit"></i></button>
-                {!! Form::close() !!}
-              </td>
-              <td>
-                {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'DELETE']) !!}
-                <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
-                {!! Form::close() !!}
-              </td>
-            </li>
-          </ol>
+          <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
+          <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
+          <!-- <td>{{ $product->state->name or 'Blank' }}</td> -->
+          <!-- <td>{{ $product->pivot->quantity or 'Blank' }}</td> -->
+          <td><input type="number" name="quantity" value="{{ $product->pivot->quantity  or '1'}}"></td>
+          <td>
+            {!! Form::open(['route' => ['cart.update', $product->id, $product->quantity], 'method' => 'PATCH']) !!}
+            <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o fa-lg" type="submit"></i></button>
+            {!! Form::close() !!}
+          </td>
+          <td>
+            {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'DELETE']) !!}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+            {!! Form::close() !!}
+          </td>
         </td>
       </tr>
     @endforeach

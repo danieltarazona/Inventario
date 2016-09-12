@@ -61,7 +61,7 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 304. Damage
 
 ## Orders Sales Maintenance States
-400. Done
+400. Complete
 401. Waiting
 402. Returned
 403. Cancelled

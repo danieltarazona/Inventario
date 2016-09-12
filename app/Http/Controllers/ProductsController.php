@@ -117,6 +117,38 @@ public function show($id)
 }
 
 /**
+* Display the specified resource.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function damage($id, Request $request)
+{
+  $product = Product::findOrFail($id);
+  $state = State::findOrFail(304); # Damage State
+  $product->stock = $product->stock - $request->quantity;
+
+  if ($product->state->contains($state))
+  {
+    DB::table('product_state')
+    ->where(['product_id' => $product->id, 'state_id' => $state->id])
+    ->update(['quantity' => $request->quantity]);
+
+    flash('Item quantity update on state Damage!', 'success');
+    return redirect('products/' . $id);
+  }
+  $state->product()->attach($product, ['quantity' => $request->quantity]);
+
+  # Available - Stock
+  $state = State::findOrFail(300); # Available State
+  DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
+  ->update(['quantity' => $product->stock]);
+
+  flash('Item update his statate has been change to Damage!', 'success');
+  return redirect('products/' . $id);
+}
+
+/**
 * Show the form for editing the specified resource.
 *
 * @param  int  $id

@@ -241,10 +241,6 @@ class MaintenancesController extends Controller
       ->where(['product_id' => $product->id, 'state_id' => $state->id])
       ->update(['quantity' => $request->quantity]);
 
-      $state = State::findOrFail(300); # Available
-      DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
-      ->update(['quantity' => $product->stock]);
-
       flash('Item has been updated!', 'success');
       return redirect('maintenances/' . $id . '/edit');
     }
