@@ -23,6 +23,6 @@ class Issue extends Model
 
   public function user_id()
   {
-    return $this->user->list('id');
+    return $this->user->id;
   }
 }

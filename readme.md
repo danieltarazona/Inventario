@@ -65,9 +65,8 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
 ## To Do
-- Trigger to Create Cart
+- Evento Create Cart after UserRegister
 - Cart Checkout
-  - Carbon  
   - Calendar
   - Cancel and Accept
 - Confirm Box

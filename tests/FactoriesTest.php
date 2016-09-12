@@ -91,7 +91,7 @@ class FactoriesTest extends TestCase
       $user = App\User::find(1);
       $products = factory(App\Product::class, 10)->create();
       $order = factory(App\Order::class)->create();
-      $state = App\State::find(1);
+      $state = App\State::find(401); # Waiting
       $user->order()->save($order);
       $state->order()->save($order);
       $order->product()->sync($products);
@@ -106,7 +106,7 @@ class FactoriesTest extends TestCase
       $user = App\User::find(1);
       $order = factory(App\Order::class)->create();
       $sale = factory(App\Sale::class)->create();
-      $state = App\State::find(1);
+      $state = App\State::find(401); # Waiting
       $state->sale()->save($sale);
       $user->sale()->save($sale);
       $order->sale()->save($sale);

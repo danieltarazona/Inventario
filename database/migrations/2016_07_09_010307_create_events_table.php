@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCartProductTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,13 @@ class CreateCartProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart_product', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cart_id')->unsigned()->index()->nullable();
+            $table->time('start');
+            $table->time('end');
             $table->integer('product_id')->unsigned()->index()->nullable();
-            $table->integer('quantity')->unsigned()->index()->nullable();
+            $table->integer('user_id')->unsigned()->index()->nullable();
+            $table->integer('order_id')->unsigned()->index()->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateCartProductTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cart_product');
+        Schema::drop('events');
     }
 }

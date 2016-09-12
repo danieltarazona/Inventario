@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Cart;
+use App\Role;
+use App\State;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -64,13 +67,22 @@ class AuthController extends Controller
   */
   protected function create(array $request)
   {
-    return User::create([
+    $cart = new Cart;
+    $cart->save();
+    $state = State::findOrFail(200);
+    $role = Role::findOrFail(1);
+
+    $user = User::create([
       'username' => $request['username'],
       'dni' => $request['dni'],
       'email' => $request['email'],
       'password' => bcrypt($request['password']),
-      'state_id' => 1,
-      'role_id' => 1,
     ]);
+
+    $user->cart()->save($cart);
+    $state->user()->save($user);
+    $role->user()->save($user);
+
+    return $user;
   }
 }

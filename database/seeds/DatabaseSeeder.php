@@ -4,6 +4,9 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
+
+    factory(App\Event::class, 10)->create();
+
     factory(App\Role::class)->create(['name' => 'User']);
     factory(App\Role::class)->create(['name' => 'Provider']);
     factory(App\Role::class)->create(['name' => 'Storer']);

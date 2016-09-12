@@ -119,6 +119,17 @@ class User extends Authenticatable
     return $this->issue->list('id');
   }
 
+  public function event()
+  {
+    return $this->hasMany(Event::class);
+  }
+
+  public function event_id()
+  {
+    return $this->event->list('id');
+  }
+
+
   public function maintenance()
   {
     return $this->hasMany(Maintenance::class);
