@@ -6,8 +6,16 @@
 
 {!! Form::open(['url' => 'orders']) !!}
 
+  {!! Form::label('Start Hour') !!}
+
+  {!! Form::time('start', $start, ['class' => 'form-control']) !!}
+
+  {!! Form::label('End Hour') !!}
+  {!! Form::time('end', $end, ['class' => 'form-control']) !!}
+
   {!! Form::label('Date') !!}
-  {!! Form::date('date', null, ['class' => 'form-control']) !!}
+  {!! Form::date('date', $day, ['class' => 'form-control']) !!}
+
   {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}

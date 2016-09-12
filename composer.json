@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "nesbot/carbon": "^1.21",
         "intervention/image": "^2.3",
-        "vinelab/laravel-editor": "*"
+        "vinelab/laravel-editor": "*",
+        "maddhatter/laravel-fullcalendar": "^1.2"
     },
     "require-dev": {
         "laravelcollective/html": "5.2.*",

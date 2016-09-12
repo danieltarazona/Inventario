@@ -61,6 +61,16 @@ class Product extends Model
       return $this->store->id;
   }
 
+  public function order()
+  {
+      return $this->belongsToMany(Order::class)->withTimestamps();
+  }
+
+  public function order_id()
+  {
+      return $this->order->lists('id');
+  }
+
   public function state()
   {
       return $this->belongsToMany(State::class)->withPivot('quantity')->withTimestamps();

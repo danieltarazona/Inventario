@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
-use Sukohi\Julius\Facades\Julius as Calendar;
-
 
 use App\Http\Requests;
 
 use App\Order;
 use App\Cart;
+use App\Event;
 use Auth;
 use Carbon\Carbon;
 
@@ -26,6 +25,7 @@ class OrdersController extends Controller
   */
   public function index()
   {
+
     $orders = Order::all();
     return view('orders.index', compact('orders'));
   }
@@ -37,8 +37,10 @@ class OrdersController extends Controller
   */
   public function create()
   {
-
-    return view('orders.create');
+    $start = Carbon::now(-5)->toTimeString();
+    $end = Carbon::now(-4)->toTimeString();
+    $day = Carbon::now(-5);
+    return view('orders.create', compact('start', 'end', 'day'));
   }
 
   /**

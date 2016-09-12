@@ -65,17 +65,24 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
 ## To Do
-- Evento Create Cart after UserRegister
-- Cart Checkout
-  - Calendar
-  - Cancel and Accept
-- Confirm Box
-- Event Mailer
 
+- Order Cart
+- Orders Index
+- Order to Sale
+- Cart Checkout
+  - Range Time
+  - Event Calendar
+  - Cancel and Accept
+- Sales Index
+- Sales State
+- Order State
+- Profile
+- Design
+- Event Create Cart after UserRegister
+- Event SendEmail
 
 - Search Product, Order, Sales
 - Product Order by JQuery
-- Profile
 - Errors & Logging Facade
 - Middleware
 - Dashboard

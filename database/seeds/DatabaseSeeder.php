@@ -5,7 +5,7 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
 
-    factory(App\Event::class, 10)->create();
+
 
     factory(App\Role::class)->create(['name' => 'User']);
     factory(App\Role::class)->create(['name' => 'Provider']);
@@ -148,6 +148,8 @@ class DatabaseSeeder extends Seeder
       $user->sale()->save($sale);
       $state->sale()->save($sale);
     });
+
+    factory(App\Event::class, 10)->create();
 
     $comments = factory(App\Comment::class, 10)->create()->each(function($comment)
     {
