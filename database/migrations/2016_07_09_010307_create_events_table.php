@@ -14,9 +14,12 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('start');
-            $table->time('end');
+            $table->string('title');
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->date('date');
+            $table->boolean('is_all_day');
+            $table->string('background_color')->nullable();
             $table->integer('product_id')->unsigned()->index()->nullable();
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->integer('order_id')->unsigned()->index()->nullable();
