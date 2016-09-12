@@ -2,26 +2,21 @@
 
 @section('content')
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
-{!! Form::open(['url' => 'orders']) !!}
+  {!! Form::open(array('route' => array('orders.update', $order->id), 'method' => 'PATCH')) !!}
 
-  {!! Form::label('Name') !!}
-  {!! Form::text('name', null, ['class' => 'form-control']) !!}
+  {!! Form::label('Start Hour') !!}
 
-  {!! Form::label('Telephone') !!}
-  {!! Form::text('telephone', null, ['class' => 'form-control']) !!}
+  {!! Form::time('start', $order->start, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Adress') !!}
-  {!! Form::text('adress', null, ['class' => 'form-control']) !!}
+  {!! Form::label('End Hour') !!}
+  {!! Form::time('end', $order->end, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Region') !!}
-  {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
+  {!! Form::label('Date') !!}
+  {!! Form::date('date', $order->date, ['class' => 'form-control']) !!}
 
-  {!! Form::label('City') !!}
-  {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
-
-  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+  {{ Form::submit('Update', array('class' => 'btn btn-warning')) }}
 
 {!! Form::close() !!}
 

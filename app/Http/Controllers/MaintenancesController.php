@@ -192,7 +192,7 @@ class MaintenancesController extends Controller
       $maintenance->name = $request->name;
       $maintenance->save();
       flash('Update Successful!', 'success');
-      return redirect('maintenances/' . $id );
+      return redirect('maintenances');
     }
   }
 

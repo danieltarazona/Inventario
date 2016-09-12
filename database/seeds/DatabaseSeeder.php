@@ -145,8 +145,6 @@ class DatabaseSeeder extends Seeder
       $state->sale()->save($sale);
     });
 
-    factory(App\Event::class, 10)->create();
-
     $comments = factory(App\Comment::class, 10)->create()->each(function($comment)
     {
       $user = App\User::find(1);

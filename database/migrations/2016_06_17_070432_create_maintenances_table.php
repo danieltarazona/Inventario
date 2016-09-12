@@ -19,6 +19,7 @@ class CreateMaintenancesTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
+            $table->boolean('complete')->nullable();
             $table->timestamps();
         });
     }

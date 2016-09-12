@@ -22,10 +22,14 @@ Route::resource('events', 'EventsController');
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 Route::resource('orders', 'OrdersController');
-Route::resource('sales', 'SalesController');
-Route::resource('roles', 'RolesController');
 
+Route::resource('roles', 'RolesController');
 Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', 'as' => 'roles.assign'));
+
+
+Route::resource('sales', 'SalesController');
+Route::post('/order/{order}/sale', array('uses' => 'SalesController@store', 'as' => 'sales.store'));
+
 
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));

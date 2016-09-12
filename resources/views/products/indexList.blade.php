@@ -72,7 +72,6 @@
           {!! Form::close() !!}
         </td>
       </tr>
-
     @endforeach
 
   </table>

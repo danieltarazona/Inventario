@@ -4,7 +4,7 @@
 
 <h1>Create</h1>
 
-{!! Form::open(['url' => 'orders']) !!}
+{!! Form::open(['route' => 'orders.store', 'method' => 'POST']) !!}
 
   {!! Form::label('Start Hour') !!}
 

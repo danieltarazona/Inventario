@@ -15,6 +15,7 @@ use App\User;
 use App\State;
 use Auth;
 use Carbon\Carbon;
+use DB;
 
 class OrdersController extends Controller
 {
@@ -38,10 +39,11 @@ class OrdersController extends Controller
   */
   public function create()
   {
+    $cart = Cart::findOrFail(Auth::id());
     $start = Carbon::now(-5)->toTimeString();
     $end = Carbon::now(-4)->toTimeString();
     $day = Carbon::now(-5);
-    return view('orders.create', compact('start', 'end', 'day'));
+    return view('orders.create', compact('start', 'end', 'day', 'cart'));
   }
 
   /**
@@ -53,8 +55,11 @@ class OrdersController extends Controller
 
   # $cart = App\Cart::findOrFail(4);
   # $user = App\User::findOrFail(4);
+  # $product = App\Product::findOrFail(2);
   # $order = new App\Order;
   # $user->order()->save($order);
+  # $order->product()->sync($cart->product);
+  # DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id]);
 
   public function store(Request $request)
   {
@@ -68,8 +73,14 @@ class OrdersController extends Controller
     $state->order()->save($order);
     $user->order()->save($order);
     $order->product()->sync($cart->product);
+
+    foreach ($cart->product as $product) {
+      DB::table('order_product')->where(['product_id' => $product->id, 'order_id' => $order->id])
+      ->update(['quantity' => $product->quantity()]);
+    }
     $order->save();
     $cart->product()->detach();
+    flash('Order has been Created!', 'success');
     return redirect('orders');
   }
 
@@ -106,7 +117,22 @@ class OrdersController extends Controller
   */
   public function update(Request $request, $id)
   {
-    //
+    $order = Order::findOrFail($id);
+    $validator = Validator::make($request->all(), $this->rules());
+
+    if ($validator->fails()) {
+      flash('Validation Fails!', 'error');
+      return redirect('orders/' . $order->id . '/edit')
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      $order->date = $request->date;
+      $order->start = $request->start;
+      $order->end = $request->end;
+      $order->save();
+      flash('Update Successful!', 'success');
+      return redirect('orders');
+    }
   }
 
   /**
@@ -120,5 +146,14 @@ class OrdersController extends Controller
     Order::findOrFail($id)->delete();
     flash('Delete Complete!', 'success');
     return redirect('orders');
+  }
+
+  public function rules()
+  {
+    return [
+      'date'    => 'required',
+      'start'    => 'required',
+      'end'    => 'required',
+    ];
   }
 }

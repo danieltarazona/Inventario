@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->date('date');
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
+            $table->boolean('complete')->nullable();
             $table->timestamps();
         });
     }

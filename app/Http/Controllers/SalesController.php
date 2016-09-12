@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 
 use App\Sale;
+use App\Product;
 use App\Cart;
 use Carbon\Carbon;
 
@@ -27,18 +28,6 @@ class SalesController extends Controller
   }
 
   /**
-  * Show the form for creating a new resource.
-  *
-  * @return \Illuminate\Http\Response
-  */
-  public function create()
-  {
-    $products = Product::all();
-
-    return view('sales.create', compact('products'));
-  }
-
-  /**
   * Store a newly created resource in storage.
   *
   * @param  \Illuminate\Http\Request  $request
@@ -46,8 +35,7 @@ class SalesController extends Controller
   */
   public function store(Request $request, $id)
   {
-    $input = $request->all();
-    Sale::create($input);
+    $order = Order::findOrFail($id);
     return redirect('sales');
   }
 

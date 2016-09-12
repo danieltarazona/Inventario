@@ -16,6 +16,11 @@ class Cart extends Model
       return $this->product->list('id');
   }
 
+  public function product_quantity()
+  {
+      return $this->pivot->quantity;
+  }
+
   public function order()
   {
       return $this->hasOne(Order::class);

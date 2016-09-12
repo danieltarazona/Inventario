@@ -9,6 +9,8 @@
       <tr>
         <th>ID</th>
         <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
         <th>User ID</th>
         <th>User</th>
         <th>State ID</th>
@@ -20,12 +22,28 @@
     @foreach($orders as $order)
       <tr>
         <td>{{ $order->id or 'Blank' }}</td>
-        <td>{{ $order->create_at or 'Blank' }}</td>
+        <td>{{ $order->date or 'Blank' }}</td>
+        <td>{{ $order->start or 'Blank' }}</td>
+        <td>{{ $order->end or 'Blank' }}</td>
         <td>{{ $order->user_id or 'Blank' }}</td>
         <td>{{ $order->user->username or 'Blank' }}</td>
         <td>{{ $order->state_id or 'Blank' }}</td>
         <td>{{ $order->state->name or 'Blank' }}</td>
+
+        <td>
+          <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+        </td>
+        <td>
+          <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        </td>
+
+        @if(Auth::user()->role_id > 2)
+        <td>
+          {!! Form::open(['route' => ['orders.destroy', $order->id], 'method' => 'DELETE']) !!}
+          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          {!! Form::close() !!}
+        </td>
+        @endif
       </tr>
     @endforeach
-
 @stop

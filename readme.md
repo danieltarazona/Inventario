@@ -66,16 +66,10 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Order Cart
-- Orders Index
-- Order to Sale
-- Cart Checkout
-  - Range Time
-  - Event Calendar
-  - Cancel and Accept
-- Sales Index
+- Product Returned
 - Sales State
 - Order State
+
 - Profile
 - Design
 - Event Create Cart after UserRegister
