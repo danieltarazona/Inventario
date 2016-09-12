@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
-Route::resource('calendar', 'CalendarController');
+Route::resource('events', 'EventsController');
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 Route::resource('orders', 'OrdersController');

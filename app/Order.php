@@ -6,16 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-  public function cart()
-  {
-    return $this->belongsTo(Cart::class);
-  }
-
-  public function cart_id()
-  {
-    return $this->cart->id;
-  }
-
   public function user()
   {
     return $this->belongsTo(User::class);
@@ -38,7 +28,7 @@ class Order extends Model
 
   public function sale()
   {
-    return $this->hasMany(Sale::class);
+    return $this->hasOne(Sale::class);
   }
 
   public function sale_id()
@@ -48,12 +38,22 @@ class Order extends Model
 
   public function product()
   {
-    return $this->hasMany(Product::class);
+    return $this->belongsToMany(Product::class)->withTimestamps();
   }
 
   public function product_id()
   {
     return $this->product->list('id');
+  }
+
+  public function start()
+  {
+    return $this->start;
+  }
+
+  public function end()
+  {
+    return $this->end;
   }
 
 }

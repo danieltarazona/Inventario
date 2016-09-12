@@ -4,9 +4,6 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
-
-
-
     factory(App\Role::class)->create(['name' => 'User']);
     factory(App\Role::class)->create(['name' => 'Provider']);
     factory(App\Role::class)->create(['name' => 'Storer']);
@@ -139,7 +136,6 @@ class DatabaseSeeder extends Seeder
       $cart->product()->save($product);
 
       $order = factory(App\Order::class)->create();
-      $cart->order()->save($order);
       $state = App\State::find(401);
       $state->order()->save($order);
 

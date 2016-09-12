@@ -120,3 +120,10 @@ Thank you for considering contributing to the Laravel framework! The contributio
   - Cart
   - CSV Load
   - Shipping Labels
+
+  - Intervention
+  - Carbon
+  - Laravel Generator
+  - Laravel Lazy Debugger
+  - Laravel Debugger
+  - Laravel TestTools

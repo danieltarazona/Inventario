@@ -11,7 +11,8 @@ use App\Http\Requests;
 
 use App\Order;
 use App\Cart;
-use App\Event;
+use App\User;
+use App\State;
 use Auth;
 use Carbon\Carbon;
 
@@ -49,11 +50,27 @@ class OrdersController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
+
+  # $cart = App\Cart::findOrFail(4);
+  # $user = App\User::findOrFail(4);
+  # $order = new App\Order;
+  # $user->order()->save($order);
+
   public function store(Request $request)
   {
     $cart = Cart::findOrFail(Auth::id());
+    $user = Auth::user();
+    $state = State::findOrFail(401);
+    $order = new Order;
+    $order->start = $request->start;
+    $order->end = $request->end;
+    $order->date = $request->date;
+    $state->order()->save($order);
+    $user->order()->save($order);
+    $order->product()->sync($cart->product);
+    $order->save();
     $cart->product()->detach();
-    return redirect('products');
+    return redirect('orders');
   }
 
   /**

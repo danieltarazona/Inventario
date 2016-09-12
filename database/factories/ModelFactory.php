@@ -20,6 +20,7 @@ $factory->define(App\Event::class, function ($faker) {
     'start' => $faker->time($format = 'H:i:s', $max = 'now'),
     'end' => $faker->time($format = 'H:i:s', $max = 'now'),
     'product_id' => $faker->numberBetween($min = 1, $max = 10),
+    'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
     'order_id' => 1,
     'user_id' => 4,
   ];
