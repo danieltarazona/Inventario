@@ -2,11 +2,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
-  <p><a href="{{ url('products') }}">{{trans('strings.Products')}}</a> / Cart</p>
-
-=======
->>>>>>> master
   <h1>Your Cart</h1>
 
   {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
