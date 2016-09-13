@@ -19,7 +19,7 @@ class CartController extends Controller
   */
   public function show($id)
   {
-    $cart = Cart::findOrFail($id);
+    $cart = Cart::where(['user_id' => $id]);
     return view('cart.show', compact('cart'));
   }
 
@@ -46,7 +46,7 @@ class CartController extends Controller
   public function update($id, Request $request)
   {
     $product = Product::findOrFail($id);
-    $cart = Cart::findOrFail(Auth::id());
+    $cart = Cart::where(['user_id' => $id]);
 
     DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
     ->update(['quantity' => $request->quantity]);
@@ -64,7 +64,7 @@ class CartController extends Controller
   public function add($id, Request $request)
   {
     $product = Product::findOrFail($id);
-    $cart = Cart::findOrFail(Auth::id());
+    $cart = Cart::where(['user_id' => $id]);
 
     if ($cart->product->contains($product))
     {
@@ -87,7 +87,7 @@ class CartController extends Controller
   */
   public function remove($id)
   {
-    $cart = Cart::findOrFail(Auth::id());
+    $cart = Cart::where(['user_id' => $id]);
     $cart->product()->detach($id);
     flash('Item has been Removed!', 'success');
     return redirect('cart/' . Auth::id());
@@ -101,7 +101,7 @@ class CartController extends Controller
   */
   public function destroy($id)
   {
-    $cart = Cart::findOrFail(Auth::id());
+    $cart = Cart::where(['user_id' => $id]);
     $cart->product()->detach();
     flash('Cart has been Clear!', 'success');
     return redirect('cart/' . Auth::id());

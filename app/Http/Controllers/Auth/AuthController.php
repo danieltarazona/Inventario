@@ -67,11 +67,12 @@ class AuthController extends Controller
   */
   protected function create(array $request)
   {
-    $user = User::create();
-    $user->username = $request->username;
-    $user->dni = $request->dni;
-    $user->email = $request->email;
-    $user->password = bcrypt($request->password);
+    $user = new User;
+    $user->username = $request['username'];
+    $user->dni = $request['dni'];
+    $user->email = $request['email'];
+    $user->password = bcrypt($request['password']);
+    $user->save();
 
     $cart = Cart::create();
     $user->cart()->save($cart);
@@ -81,8 +82,6 @@ class AuthController extends Controller
 
     $role = Role::findOrFail(1);
     $role->user()->save($user);
-
-    $user->save();
 
     return $user;
   }
