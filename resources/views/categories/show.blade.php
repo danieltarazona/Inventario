@@ -2,12 +2,8 @@
 
 @section('content')
 
-<<<<<<< Updated upstream
 <br>
-<h1><a href="categories">{{ $category->name }}</a> / {{trans('strings.Products')}}</h1>
-=======
-<h1><a href="categories">{{ $category->name }}</a> / Products</h1>
->>>>>>> Stashed changes
+<h1><a href="categories">{{ $category->name }}</a> / {{ trans('strings.Products') }}</h1>
 
 <hr>
 
