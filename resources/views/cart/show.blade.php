@@ -2,15 +2,12 @@
 
 @section('content')
 
-  <p><a href="{{ url('products') }}">Products</a> / Cart</p>
-
   <h1>Your Cart</h1>
 
   {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
-  <button class="btn btn-danger" type="submit" >Delete</button>
+    <button class="btn btn-danger" type="submit">Clean</button>
+    <a href="{{ route('orders.create') }}" class="btn btn-primary">Order</a>
   {!! Form::close() !!}
-
-  <a href="{{ route('orders.create') }}" class="btn btn-success">Order</a>
 
   <hr>
 
@@ -37,7 +34,7 @@
         </td>
         <td>
           {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
           {!! Form::close() !!}
         </td>
       </tr>
