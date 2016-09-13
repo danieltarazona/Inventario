@@ -29,10 +29,10 @@
       <tr>
         <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
         <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
-        <td><input type="number" name="quantity" value="{{ $product->pivot->quantity  or '1'}}"></td>
         <td>
-          {!! Form::open(['route' => ['cart.update', $product->id, $product->quantity], 'method' => 'PATCH']) !!}
-          <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o fa-lg" type="submit"></i></button>
+          {!! Form::open(['route' => ['cart.update', $product->id], 'method' => 'PATCH']) !!}
+            <input type="number" name="quantity" value="{{ $product->pivot->quantity }}">
+            <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o fa-lg" type="submit"></i></button>
           {!! Form::close() !!}
         </td>
         <td>
