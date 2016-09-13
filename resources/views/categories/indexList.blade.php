@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <h1>Categories</h1>
+  <h1>{{trans('strings.Categories')}}</h1>
 
   <br>
 
-  <a href="{{ route('categories.create') }}" class="btn btn-primary">Create</a>
+  <a href="{{ route('categories.create') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
 
   <button type="button" class="btn btn-default">
     <a href="{{ route('categories.index') }}">
@@ -24,9 +24,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Image')}}</th>
+        <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
     @foreach ($categories as $category)

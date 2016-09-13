@@ -3,7 +3,7 @@
 @section('content')
 
 <br>
-<h1><a href="categories">{{ $category->name }}</a> / Products</h1>
+<h1><a href="categories">{{ $category->name }}</a> / {{trans('strings.Products')}}</h1>
 
 <table class="table">
 
@@ -20,7 +20,7 @@
         @if(Auth::user()->role_id == 1)
           {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
             <input type="number" name="quantity" value="1">
-            <button class="btn btn-success" type="submit">Order</button>
+            <button class="btn btn-success" type="submit">{{trans('strings.Order')}}</button>
           {!! Form::close() !!}
         @endif
 

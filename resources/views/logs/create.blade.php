@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Create</h1>
+<h1>{{trans('strings.Create')}}</h1>
 
 {!! Form::open(['url' => 'logs']) !!}
 

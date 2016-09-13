@@ -35,22 +35,22 @@
         <ul class="nav navbar-nav">
           @if(Auth::check())
             @if(Auth::user()->role_id != 2)
-              <li><a href="{{ url('categories') }}">Categories</a></li>
-              <li><a href="{{ url('products') }}">Products</a></li>
+              <li><a href="{{ url('categories') }}">{{trans('strings.Categories')}}</a></li>
+              <li><a href="{{ url('products') }}">{{trans('strings.Products')}}</a></li>
             @endif
             @if(Auth::user()->role_id == 1 or Auth::user()->role_id > 2)
-              <li><a href="{{ url('orders') }}">Orders</a></li>
-              <li><a href="{{ url('sales') }}">Sales</a></li>
+              <li><a href="{{ url('orders') }}">{{trans('strings.Orders')}}</a></li>
+              <li><a href="{{ url('sales') }}">{{trans('strings.Sales')}}</a></li>
             @endif
             @if (Auth::check() && Auth::user()->role_id > 1)
-              <li><a href="{{ url('maintenances') }}">Maintenances</a></li>
+              <li><a href="{{ url('maintenances') }}">{{trans('strings.Maintenances')}}</a></li>
               @if (Auth::user()->role_id > 3)
-                <li><a href="{{ url('roles') }}">Roles</a></li>
-                <li><a href="{{ url('states') }}">States</a></li>
-                <li><a href="{{ url('regions') }}">Regions</a></li>
-                <li><a href="{{ url('cities') }}">Cities</a></li>
-                <li><a href="{{ url('stores') }}">Stores</a></li>
-                <li><a href="{{ url('users') }}">Users</a></li>
+                <li><a href="{{ url('roles') }}">{{trans('strings.Roles')}}</a></li>
+                <li><a href="{{ url('states') }}">{{trans('strings.States')}}</a></li>
+                <li><a href="{{ url('regions') }}">{{trans('strings.Regions')}}</a></li>
+                <li><a href="{{ url('cities') }}">{{trans('strings.Cities')}}</a></li>
+                <li><a href="{{ url('stores') }}">{{trans('strings.Stores')}}</a></li>
+                <li><a href="{{ url('users') }}">{{trans('strings.Users')}}</a></li>
               @endif
             @endif
           @endif
@@ -74,8 +74,8 @@
               </a>
 
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ url('/users/' . Auth::id() . '/edit') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                <li><a href="{{ url('/users/' . Auth::id() . '/edit') }}"><i class="fa fa-btn fa-user"></i>{{trans('strings.Profile')}}</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{trans('strings.Logout')}}</a></li>
               </ul>
             </ul>
           </li>

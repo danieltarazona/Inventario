@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Maintenances</h1>
+  <h1>{{trans('strings.Maintenances')}}</h1>
 
   <br>
 
@@ -14,17 +14,17 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
+        <th>{{trans('strings.Name')}}</th>
         @if(Auth::user()->role_id > 2)
-          <th>Provider</th>
+          <th>{{trans('strings.Provider')}}</th>
         @endif
         @if(Auth::user()->role_id > 1)
-          <th>Storer</th>
+          <th>{{trans('strings.Store')}}</th>
         @endif
-        <th>Create</th>
-        <th>State ID</th>
-        <th>State</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Create')}}</th>
+        <th>{{trans('strings.StateID')}}</th>
+        <th>{{trans('strings.State')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 
