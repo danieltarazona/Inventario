@@ -2,8 +2,14 @@
 
 @section('content')
 
+<<<<<<< Updated upstream
 <br>
 <h1><a href="categories">{{ $category->name }}</a> / {{trans('strings.Products')}}</h1>
+=======
+<h1><a href="categories">{{ $category->name }}</a> / Products</h1>
+>>>>>>> Stashed changes
+
+<hr>
 
 <table class="table">
 
@@ -14,7 +20,6 @@
       <div class="caption text-center">
         <a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="" style="height:100px; width:100px;"></a>
         <a href="{{ url('products/' . $product->id) }}"><h5>{{ $product->name }}</h5></a>
-        <p>Stock: {{ $product->stock }}</p>
         <p>Available: {{ $product->stock }}</p>
 
         @if(Auth::user()->role_id == 1)
