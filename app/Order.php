@@ -28,12 +28,12 @@ class Order extends Model
 
   public function sale()
   {
-    return $this->hasOne(Sale::class);
+    return $this->hasMany(Sale::class);
   }
 
   public function sale_id()
   {
-    return $this->sale->list('id');
+    return $this->sale->id;
   }
 
   public function product()

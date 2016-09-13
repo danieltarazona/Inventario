@@ -13,6 +13,7 @@ use App\Order;
 use App\Cart;
 use App\User;
 use App\State;
+use App\Sale;
 use Auth;
 use Carbon\Carbon;
 use DB;
@@ -45,6 +46,33 @@ class OrdersController extends Controller
     $day = Carbon::now(-5);
     return view('orders.create', compact('start', 'end', 'day', 'cart'));
   }
+
+  /**
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+
+  # $order = App\Order::findOrFail(29);
+  # $sale = App\Sale::findOrFail(10);
+
+  public function sale($id)
+  {
+    $user = User::findOrFail(Auth::id());
+    $order = Order::findOrFail($id);
+    $state = State::findOrFail(400);
+    $state->order()->save($order);
+
+    $sale = Sale::create();
+    $state = State::findOrFail(401);
+    $state->sale()->save($sale);
+    $order->sale()->save($sale);
+    $user->sale()->save($sale);
+
+    return redirect('sales');
+  }
+
 
   /**
   * Store a newly created resource in storage.

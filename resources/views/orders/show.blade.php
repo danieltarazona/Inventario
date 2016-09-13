@@ -2,9 +2,17 @@
 
 @section('content')
 
-  {!! Form::open(array('route' => array('sales.store', $order->id), 'method' => 'POST')) !!}
-  {{ Form::submit('Sale', array('class' => 'btn btn-success')) }}
+  <h1>Order / {{ $order->id }}</h1>
+
+  <br>
+
+  {!! Form::open(array('route' => array('orders.sale', $order->id), 'method' => 'POST')) !!}
+
+    {{ Form::submit('Sale', array('class' => 'btn btn-primary')) }}
+
   {!! Form::close() !!}
+
+  <hr>
 
   <table class="table">
     <thead>

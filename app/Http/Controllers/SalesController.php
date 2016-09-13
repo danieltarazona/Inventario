@@ -10,8 +10,12 @@ use App\Http\Requests;
 
 use App\Sale;
 use App\Product;
+use App\Order;
+use App\User;
+use App\State;
 use App\Cart;
 use Carbon\Carbon;
+use Auth;
 
 class SalesController extends Controller
 {
@@ -25,18 +29,6 @@ class SalesController extends Controller
   {
     $sales = Sale::all();
     return view('sales.index', compact('sales'));
-  }
-
-  /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
-  public function store(Request $request)
-  {
-    $order = Order::findOrFail($id);
-    return redirect('sales');
   }
 
   /**
@@ -81,6 +73,8 @@ class SalesController extends Controller
   */
   public function destroy($id)
   {
-    //
+    Sale::findOrFail($id)->delete();
+    flash('Delete Complete!', 'success');
+    return redirect('sales');
   }
 }
