@@ -66,7 +66,8 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Event Create Cart after UserRegister
+- Product Returned
+- Sale State to Complete
 - Assets
 - Event SendEmail
 - Search Product, Order, Sales

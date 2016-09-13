@@ -40,6 +40,7 @@
 >>>>>>> master
     @foreach($cart->product as $product)
       <tr>
+        <td>{{ $product->id }}</td>
         <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
         <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
         <td>
