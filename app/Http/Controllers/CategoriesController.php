@@ -80,13 +80,14 @@ class CategoriesController extends Controller
         File::exists($filePath) or File::makeDirectory($filePath);
         $image = Image::make($file->getRealPath());
         $image->save($filePath . $fileName);
-        $category->photo = '/img/categories/' . $fileName;
+        $request->photo = '/img/categories/' . $fileName;
       } else {
-        $category->photo = '/img/categories/ipad.jpeg';
+        $request->photo = '/img/categories/ipad.jpeg';
       }
       $category->description = $request->description;
       $category->name = $request->name;
       $category->views = 0;
+      $category->photo = $request->photo;
       $category->save();
       flash('Create Successful!', 'success');
     }
@@ -148,7 +149,7 @@ class CategoriesController extends Controller
   {
     return [
       'name' => 'string|required|max:255|unique:categories',
-      'photo' => 'image|required',
+      'photo' => 'image|optional',
       'description' => 'string|required',
     ];
   }

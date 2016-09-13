@@ -94,8 +94,12 @@ public function store(Request $request)
     }
     $input = $request->all();
     $product = Product::create($input);
+
     $state = State::find(300);
     $product->state()->save($state, ['quantity' => $request->stock]);
+
+    $product->photo = $request->photo;
+    $product->save();
     flash('Create Product Complete!', 'success');
     return redirect('products');
   }
@@ -270,6 +274,7 @@ public function rules()
     'year'    => 'numeric',
     'price'   => 'numeric',
     'warranty'=> 'numeric',
+    'photo' => 'image|optional',
     'category_id' => 'required|numeric',
     'provider_id' => 'required|numeric',
     'city_id' => 'required|numeric',
