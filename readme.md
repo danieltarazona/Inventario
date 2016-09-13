@@ -57,7 +57,7 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Orders Sales Maintenance States
 400. Complete
 401. Waiting
-402. 
+402.
 403. Cancelled
 404. Product or Products Not Found
 
@@ -66,6 +66,7 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
+- Update Cart
 - Event Create Cart after UserRegister
 - On-Loan to Avaiable
 - Sales States

@@ -8,7 +8,6 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Date</th>
         <th>Start</th>
         <th>End</th>
         <th>Storer ID</th>
@@ -22,9 +21,8 @@
     @foreach($sales as $sale)
       <tr>
         <td>{{ $sale->id or 'Blank' }}</td>
-        <td>{{ $sale->date or 'Blank' }}</td>
-        <td>{{ $sale->start or 'Blank' }}</td>
-        <td>{{ $sale->end or 'Blank' }}</td>
+        <td>{{ $sale->out or 'Blank' }}</td>
+        <td>{{ $sale->in or 'Blank' }}</td>
         <td>{{ $sale->user_id or 'Blank' }}</td>
         <td>{{ $sale->user->username or 'Blank' }}</td>
         <td>{{ $sale->state_id or 'Blank' }}</td>

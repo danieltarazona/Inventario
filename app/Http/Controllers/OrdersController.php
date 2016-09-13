@@ -64,11 +64,13 @@ class OrdersController extends Controller
     $state = State::findOrFail(400);
     $state->order()->save($order);
 
-    $sale = Sale::create();
+    $sale = new Sale;
+    $sale->out = Carbon::now(-5)->toTimeString();
     $state = State::findOrFail(401);
     $state->sale()->save($sale);
     $order->sale()->save($sale);
     $user->sale()->save($sale);
+    $sale->save();
 
     return redirect('sales');
   }

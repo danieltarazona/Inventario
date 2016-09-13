@@ -33,10 +33,10 @@
 
 
 
-          {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-          <input type="number" name="quantity" value="1">
-          <button class="btn btn-success" type="submit">Order</button>
-          {!! Form::close() !!}
+        {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+        <input type="number" name="quantity" value="1">
+        <button class="btn btn-success" type="submit">Order</button>
+        {!! Form::close() !!}
 
         {{ $product->description }}
       </div> <!-- end col-md-8 -->
@@ -104,22 +104,21 @@
           </tr>
         </thead>
 
-      @foreach ($product->maintenance as $maintenance)
-        <tr>
-          <td>{{ $maintenance->id }}</td>
-          <td><a href="/maintenances/{{ $maintenance->id }}">{{ $maintenance->name }}</a></td>
-          <td>{{ $maintenance->description }}</td>
-          <td>{{ $maintenance->pivot->quantity }}</td>
-          <td>
-            @if(Auth::user()->role_id > 1)
-              {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
-              <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-              {!! Form::close() !!}
-            @endif
-          </td>
-        </tr>
-      @endforeach
-
+        @foreach ($product->maintenance as $maintenance)
+          <tr>
+            <td>{{ $maintenance->id }}</td>
+            <td><a href="/maintenances/{{ $maintenance->id }}">{{ $maintenance->name }}</a></td>
+            <td>{{ $maintenance->description }}</td>
+            <td>{{ $maintenance->pivot->quantity }}</td>
+            <td>
+              @if(Auth::user()->role_id > 1)
+                {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
+                <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                {!! Form::close() !!}
+              @endif
+            </td>
+          </tr>
+        @endforeach
       </table>
 
       <h1>Maintenances</h1>
@@ -149,8 +148,47 @@
             </td>
           </tr>
         @endforeach
+      </table>
+
+      <h1>Orders</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+          </tr>
+        </thead>
+
+        @foreach ($product->order as $order)
+          <tr>
+            <td><a href="/orders/{{ $order->id }}">{{ $order->id }}</a></td>
+            <td>{{ $order->state->name }}</td>
+          </tr>
+        @endforeach
 
       </table>
+
+      <h1>Sales</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+          </tr>
+        </thead>
+
+        @foreach ($product->sale as $sale)
+          <tr>
+            <td><a href="/sales/{{ $sale->id }}">{{ $sale->id }}</a></td>
+            <td>{{ $sale->state->name }}</td>
+          </tr>
+        @endforeach
+
+      </table>
+
+
     </div>
   </div>
 
