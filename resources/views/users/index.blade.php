@@ -3,7 +3,12 @@
 @section('content')
 
   <h1>Users</h1>
-  <a href="{{ url('register') }}" class="btn btn-success">Create</a>
+
+  <br>
+
+  <a href="{{ url('register') }}" class="btn btn-primary">Create</a>
+
+  <hr>
 
   <table class="table">
     <thead>

@@ -4,14 +4,20 @@
 
   <h1>States</h1>
 
+  <br>
+
   {!! Form::open(['url' => 'states']) !!}
 
     {!! Form::label('Name') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+    <br>
+
+    {{ Form::submit('Create', array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
+
+  <hr>
 
   <table class="table">
     <thead>
@@ -21,8 +27,6 @@
         <th>Actions</th>
       </tr>
     </thead>
-
-
 
     @foreach ($states as $state)
       <tr>

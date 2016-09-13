@@ -76,6 +76,7 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Event SendEmail
 - Dashboard
 - Search Product, Order, Sales
+
 - Profile
 - Design
 

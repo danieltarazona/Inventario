@@ -4,7 +4,11 @@
 
   <h1>Roles</h1>
 
+  <br>
+
   <a href="{{ route('roles.create') }}" class="btn btn-primary">Create</a>
+
+  <hr>
 
   <table class="table">
     <thead>

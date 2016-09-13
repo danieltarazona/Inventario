@@ -3,9 +3,12 @@
 @section('content')
 
   <h1>Stores</h1>
-  @if (Auth::id() == 1)
-    <a href="{{ route('stores.create') }}" class="btn btn-success">Create</a>
-  @endif
+
+  <br>
+
+  <a href="{{ route('stores.create') }}" class="btn btn-primary">Create</a>
+
+  <hr>
 
   <table class="table">
     <thead>

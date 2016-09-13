@@ -2,30 +2,40 @@
 
 @section('content')
 
-  <a href="{{ route('categories.index') }}">
-    <button type="button" class="btn btn-default">
-      <span class="fa fa-th" aria-hidden="true"></span>
-    </button>
-  </a>
-
-  <a href="{{ route('categories.index') }}">
-    <button type="button" class="btn btn-default">
-      <span class="fa fa-th-list" aria-hidden="true"></span>
-    </button>
-  </a>
-
   <h1>Products</h1>
 
-  <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
+  <br>
 
-  <td>
-    {!! Form::open(['route' => ['products.search'], 'method' => 'GET']) !!}
-    <input class="form-control" type="search" name="search" placeholder="Search" value="">
-    <button class="btn" type="submit" >Search</button>
-    {!! Form::close() !!}
-  </td>
+  <a href="{{ route('products.create') }}" class="btn btn-primary">Create</a>
 
+  <button type="button" class="btn btn-default">
+    <a href="{{ route('categories.index') }}">
+      <span class="fa fa-th"></span>
+    </a>
+    &nbsp | &nbsp
+    <a href="{{ route('products.index') }}">
+      <span class="fa fa-th-list"></span>
+    </a>
+  </button>
 
+  {!! Form::open(['route' => ['products.search'], 'method' => 'GET']) !!}
+
+  <br>
+  <div class="search">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" class="form-control" name="search" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  {!! Form::close() !!}
+
+  <hr>
 
   <table class="table">
     <thead>

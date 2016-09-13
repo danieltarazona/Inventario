@@ -4,6 +4,8 @@
 
   <h1>Cities</h1>
 
+  <br>
+
   {!! Form::open(['route' => 'cities.store', 'method' => 'POST']) !!}
 
     {!! Form::label('Name') !!}
@@ -12,8 +14,13 @@
     {!! Form::label('Region') !!}
     {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 
-    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+    <br>
+
+    {{ Form::submit('Create', array('class' => 'btn btn-primary')) }}
+
   {!! Form::close() !!}
+
+  <hr>
 
   <table class="table">
     <thead>

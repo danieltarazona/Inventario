@@ -2,10 +2,11 @@
 
 @section('content')
 
-
-  <a href="{{ route('categories.create') }}" class="btn btn-success">Create</a>
-
   <h1>Categories</h1>
+
+  <br>
+
+  <a href="{{ route('categories.create') }}" class="btn btn-primary">Create</a>
 
   <button type="button" class="btn btn-default">
     <a href="{{ route('categories.index') }}">
@@ -17,7 +18,7 @@
     </a>
   </button>
 
-  <br>
+  <hr>
 
   <table class="table">
     <thead>

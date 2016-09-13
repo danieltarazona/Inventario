@@ -11,11 +11,11 @@
 
     <br>
 
-    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+    {{ Form::submit('Create', array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
 
-  <br>
+  <hr>
 
   <table class="table">
     <thead>

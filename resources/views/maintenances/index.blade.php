@@ -4,7 +4,11 @@
 
   <h1>Maintenances</h1>
 
-  <a href="{{ route('maintenances.create') }}" class="btn btn-success">Create</a>
+  <br>
+
+  <a href="{{ route('maintenances.create') }}" class="btn btn-primary">Create</a>
+
+  <hr>
 
   <table class="table">
     <thead>
