@@ -38,7 +38,6 @@
               <li><a href="{{ url('categories') }}">Categories</a></li>
               <li><a href="{{ url('products') }}">Products</a></li>
             @endif
-            <li><a href="{{ url('issues') }}">Issues</a></li>
             @if(Auth::user()->role_id == 1 or Auth::user()->role_id > 2)
               <li><a href="{{ url('orders') }}">Orders</a></li>
               <li><a href="{{ url('sales') }}">Sales</a></li>

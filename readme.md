@@ -57,6 +57,7 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Orders Sales Maintenance States
 400. Complete
 401. Waiting
+402. 
 403. Cancelled
 404. Product or Products Not Found
 
