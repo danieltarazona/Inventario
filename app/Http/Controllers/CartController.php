@@ -50,6 +50,7 @@ class CartController extends Controller
 
     DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
     ->update(['quantity' => $request->quantity]);
+
     flash('Quantity was updated successfully!', 'success');
     return redirect('cart/' . Auth::id());
   }

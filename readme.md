@@ -66,22 +66,16 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Update Cart
+- Order Attach Sale
 - Event Create Cart after UserRegister
 - On-Loan to Avaiable
-- Sales States
-- Order States
-- Maintenance States
-- Product States
-- User Inactive
 - Assets
 - Event SendEmail
-- Dashboard
 - Search Product, Order, Sales
 
 - Profile
 - Design
-
+- Dashboard
 - Product Order by JQuery
 - Errors & Logging Facade
 - Middleware

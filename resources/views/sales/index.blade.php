@@ -4,6 +4,8 @@
 
   <h1>Sales</h1>
 
+  <hr>
+
   <table class="table">
     <thead>
       <tr>
@@ -26,7 +28,26 @@
         <td>{{ $sale->user_id or 'Blank' }}</td>
         <td>{{ $sale->user->username or 'Blank' }}</td>
         <td>{{ $sale->state_id or 'Blank' }}</td>
-        <td>{{ $sale->state->name or 'Blank' }}</td>
+
+        @if($sale->state->name == 'Waiting')
+          <td><span class="label label-warning">{{ $sale->state->name or 'Blank' }}</span></td>
+        @endif
+
+        @if($sale->state->name == 'Complete')
+          <td><span class="label label-success">{{ $sale->state->name or 'Blank' }}</span></td>
+        @endif
+
+        @if($sale->state->name == 'Product or Products Not Found')
+          <td><span class="label label-danger">{{ $sale->state->name or 'Blank'  }}</span></td>
+        @endif
+
+        @if($sale->state->name == 'Returned')
+          <td><span class="label label-success">{{ $sale->state->name or 'Blank'  }}</span></td>
+        @endif
+
+        @if($sale->state->name == 'Cancelled')
+          <td><span class="label label-default">{{ $sale->state->name or 'Blank'  }}</span></td>
+        @endif
 
         <td>
           <a href="{{ route('sales.show', $sale->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
