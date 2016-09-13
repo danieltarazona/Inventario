@@ -39,7 +39,8 @@ class SalesController extends Controller
   */
   public function show($id)
   {
-    //
+    $sale = Sale::findOrFail($id);
+    return view('sales.show', compact('sale'));
   }
 
   /**
@@ -50,7 +51,8 @@ class SalesController extends Controller
   */
   public function edit($id)
   {
-    //
+    $sale = Sale::findOrFail($id);
+    return view('sales.edit', compact('sale'));
   }
 
   /**
@@ -63,18 +65,5 @@ class SalesController extends Controller
   public function update(Request $request, $id)
   {
     //
-  }
-
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function destroy($id)
-  {
-    Sale::findOrFail($id)->delete();
-    flash('Delete Complete!', 'success');
-    return redirect('sales');
   }
 }

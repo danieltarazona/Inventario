@@ -8,27 +8,27 @@ class Cart extends Model
 {
   public function product()
   {
-      return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
   }
 
   public function product_id()
   {
-      return $this->product->list('id');
+    return $this->product->lists('id');
   }
 
   public function product_quantity()
   {
-      return $this->pivot->quantity;
+    return $this->pivot->quantity;
   }
 
   public function order()
   {
-      return $this->hasOne(Order::class);
+    return $this->hasOne(Order::class);
   }
 
   public function order_id()
   {
-      return $this->order->id;
+    return $this->order->id;
   }
 
   public function user()

@@ -19,7 +19,7 @@ class CartController extends Controller
   */
   public function show($id)
   {
-    $cart = Cart::findOrFail($id);
+    $cart = Cart::findOrFail(Auth::id());
     return view('cart.show', compact('cart'));
   }
 
@@ -50,6 +50,7 @@ class CartController extends Controller
 
     DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
     ->update(['quantity' => $request->quantity]);
+
     flash('Quantity was updated successfully!', 'success');
     return redirect('cart/' . Auth::id());
   }
@@ -71,7 +72,6 @@ class CartController extends Controller
       ->update(['quantity' => $request->quantity]);
 
       flash('Item cart quantity Update!', 'success');
-      return redirect('cart/' . Auth::id());
     }
     $cart->product()->attach($product, ['quantity' => $request->quantity]);
     flash('Item has been Added!', 'success');

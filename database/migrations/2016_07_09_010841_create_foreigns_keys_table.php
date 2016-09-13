@@ -19,6 +19,11 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
+    Schema::table('carts', function ($table) {
+      $table->foreign('user_id')->references('id')->on('users')
+      ->onDelete('cascade')->onUpdate('cascade');
+    });
+
     Schema::table('cities', function ($table) {
       $table->foreign('region_id')->references('id')->on('regions')
       ->onDelete('cascade')->onUpdate('cascade');
@@ -46,11 +51,6 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
-    Schema::table('carts', function ($table) {
-      $table->foreign('user_id')->references('id')->on('users')
-      ->onDelete('cascade')->onUpdate('cascade');
-    });
-
     Schema::table('sales', function ($table) {
       $table->foreign('user_id')->references('id')->on('users')
       ->onDelete('cascade')->onUpdate('cascade');
@@ -72,7 +72,7 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('store_id')->references('id')->on('stores')
       ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('provider_id')->references('id')->on('providers')
+      $table->foreign('provider_id')->references('id')->on('users')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('city_id')->references('id')->on('cities')
       ->onDelete('cascade')->onUpdate('cascade');
@@ -117,12 +117,10 @@ class CreateForeignsKeysTable extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
-    Schema::table('sale_product', function ($table) {
+    Schema::table('product_sale', function ($table) {
       $table->foreign('sale_id')->references('id')->on('sales')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('product_id')->references('id')->on('products')
-      ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('state_id')->references('id')->on('states')
       ->onDelete('cascade')->onUpdate('cascade');
     });
 

@@ -57,7 +57,7 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Orders Sales Maintenance States
 400. Complete
 401. Waiting
-402. 
+402.
 403. Cancelled
 404. Product or Products Not Found
 
@@ -67,23 +67,9 @@ Thank you for considering contributing to the Laravel framework! The contributio
 ## To Do
 
 - Event Create Cart after UserRegister
-- On-Loan to Avaiable
-- Sales States
-- Order States
-- Maintenance States
-- Product States
-- User Inactive
 - Assets
 - Event SendEmail
-- Dashboard
 - Search Product, Order, Sales
-
-- Profile
-- Design
-
-- Product Order by JQuery
-- Errors & Logging Facade
-- Middleware
 - Dashboard
   - Most Cart
   - Less Cart
@@ -91,16 +77,21 @@ Thank you for considering contributing to the Laravel framework! The contributio
   - Logged Users
   - Products Sales
   - Products Order
+- Profile
+- Design
+
+- Slack Notifications
+- Middleware
 - Eager Load
 - Point of Sales
 - Orders to Invoice
+- Orders to PDF
 - Orders to Ship
 - Export Import CSV
 - Print
 - Ship Type
 - Istanbul Coverage
 - Jenkins
-- Slack Notifications
 - Laravel Cashier
   - Braintree
   - Stripe

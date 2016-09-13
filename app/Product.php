@@ -11,11 +11,6 @@ class Product extends Model
     'store_id', 'category_id', 'provider_id',
   ];
 
-  public function provider()
-  {
-    return $this->belongsTo(Provider::class);
-  }
-
   public function setStock($stock)
   {
     return $this->stock = $stock;
@@ -74,6 +69,16 @@ class Product extends Model
   public function order_id()
   {
     return $this->order->lists('id');
+  }
+
+  public function sale()
+  {
+    return $this->belongsToMany(Sale::class)->withPivot('quantity')->withTimestamps();
+  }
+
+  public function sale_id()
+  {
+    return $this->sale->lists('id');
   }
 
   public function state()

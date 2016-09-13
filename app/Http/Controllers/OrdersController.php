@@ -64,11 +64,31 @@ class OrdersController extends Controller
     $state = State::findOrFail(400);
     $state->order()->save($order);
 
-    $sale = Sale::create();
+    $sale = new Sale;
+    $sale->out = Carbon::now(-5)->toTimeString();
     $state = State::findOrFail(401);
     $state->sale()->save($sale);
     $order->sale()->save($sale);
     $user->sale()->save($sale);
+    $sale->save();
+
+    foreach ($order->product as $product) {
+      foreach ($product->state as $state) {
+        if ($state->id == 301) {
+
+          DB::table('product_state')
+          ->where(['product_id' => $product->id, 'state_id' => 301])
+          ->update(['quantity' => 0]);
+
+          $available = $product->stock + $state->quantity;
+
+          DB::table('product_state')
+          ->where(['product_id' => $product->id, 'state_id' => 300])
+          ->update(['quantity' => $available]);
+
+        }
+      }
+    }
 
     return redirect('sales');
   }
@@ -187,19 +207,6 @@ class OrdersController extends Controller
       flash('Update Successful!', 'success');
       return redirect('orders');
     }
-  }
-
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function destroy($id)
-  {
-    Order::findOrFail($id)->delete();
-    flash('Delete Complete!', 'success');
-    return redirect('orders');
   }
 
   public function rules()

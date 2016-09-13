@@ -34,11 +34,11 @@
         <td>{{ $user->email }}</td>
 
         <td>
-          <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">Read</a>
+          <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
 
         <td>
-          <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
         <td>

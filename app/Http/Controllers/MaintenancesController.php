@@ -196,12 +196,7 @@ class MaintenancesController extends Controller
     }
   }
 
-  public function destroy($id)
-  {
-    Maintenance::findOrFail($id)->delete();
-    flash('Create Successful!', 'success');
-    return redirect('maintenances');
-  }
+
 
   /**
   * Add the specified product to maintenance.

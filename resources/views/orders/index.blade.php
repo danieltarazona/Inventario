@@ -4,6 +4,8 @@
 
   <h1>{{trans('strings.Orders')}}</h1>
 
+  <hr>
+
   <table class="table">
     <thead>
       <tr>
@@ -28,7 +30,26 @@
         <td>{{ $order->user_id or 'Blank' }}</td>
         <td>{{ $order->user->username or 'Blank' }}</td>
         <td>{{ $order->state_id or 'Blank' }}</td>
-        <td>{{ $order->state->name or 'Blank' }}</td>
+
+        @if($order->state->name == 'Waiting')
+          <td><span class="label label-warning">{{ $order->state->name or 'Blank' }}</span></td>
+        @endif
+
+        @if($order->state->name == 'Complete')
+          <td><span class="label label-success">{{ $order->state->name or 'Blank' }}</span></td>
+        @endif
+
+        @if($order->state->name == 'Product or Products Not Found')
+          <td><span class="label label-danger">{{ $order->state->name or 'Blank'  }}</span></td>
+        @endif
+
+        @if($order->state->name == 'Returned')
+          <td><span class="label label-success">{{ $order->state->name or 'Blank'  }}</span></td>
+        @endif
+
+        @if($order->state->name == 'Cancelled')
+          <td><span class="label label-default">{{ $order->state->name or 'Blank'  }}</span></td>
+        @endif
 
         <td>
           <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
@@ -37,13 +58,6 @@
           <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
-        @if(Auth::user()->role_id > 2)
-        <td>
-          {!! Form::open(['route' => ['orders.destroy', $order->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-          {!! Form::close() !!}
-        </td>
-        @endif
       </tr>
     @endforeach
 @stop

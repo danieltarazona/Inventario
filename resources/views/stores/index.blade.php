@@ -34,11 +34,11 @@
         <td>{{ $store->adress or 'Blank' }}</td>
 
         <td>
-          <a href="{{ route('stores.show', $store->id) }}" class="btn btn-primary">Show</a>
+          <a href="{{ route('stores.show', $store->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
 
         <td>
-          <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
         <td>

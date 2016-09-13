@@ -20,14 +20,13 @@ Route::get('/contact', 'HomeController@contact');
 
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
+Route::resource('sales', 'SalesController', ['except' => 'destroy']);
 
-Route::resource('orders', 'OrdersController');
+Route::resource('orders', 'OrdersController', ['except' => 'destroy']);
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));
 
 Route::resource('roles', 'RolesController');
 Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', 'as' => 'roles.assign'));
-
-Route::resource('sales', 'SalesController');
 
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
@@ -35,13 +34,13 @@ Route::post('/products/{products}/damage', array('uses' => 'ProductsController@d
 Route::post('/products/{products}/returned', array('uses' => 'ProductsController@returned', 'as' => 'products.returned'));
 
 Route::resource('regions', 'RegionsController');
-Route::resource('states', 'StatesController', ['except' => 'show'] );
+Route::resource('states', 'StatesController', ['except' => 'show']);
 Route::resource('cities', 'CitiesController');
 Route::resource('categories', 'CategoriesController');
 Route::resource('stores', 'StoresController');
 Route::resource('dashboard', 'DashboardController');
 
-Route::resource('cart', 'CartController', ['except' => 'index'] );
+Route::resource('cart', 'CartController', ['except' => ['index', 'create']]);
 Route::delete('/cart/remove/{product}', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
 Route::post('/cart/add/{product}', array('uses' => 'CartController@add', 'as' => 'cart.add'));
 

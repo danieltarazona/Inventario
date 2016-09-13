@@ -31,12 +31,18 @@ class DatabaseSeeder extends Seeder
       'role_id' => 1,
     ]);
 
+    $cart = App\Cart::create();
+    $user->cart()->save($cart);
+
     $user = factory(App\User::class)->create([
       'username' => 'Apple',
       'email' => 'provider@provider.com',
       'password' => bcrypt("123456"),
       'role_id' => 2,
     ]);
+
+    $cart = App\Cart::create();
+    $user->cart()->save($cart);
 
     $user = factory(App\User::class)->create([
       'username' => 'Jesus',
@@ -45,12 +51,18 @@ class DatabaseSeeder extends Seeder
       'role_id' => 3,
     ]);
 
+    $cart = App\Cart::create();
+    $user->cart()->save($cart);
+
     $user = factory(App\User::class)->create([
       'username' => 'Carlos',
       'email' => 'admin@admin.com',
       'password' => bcrypt("123456"),
       'role_id' => 4,
     ]);
+
+    $cart = App\Cart::create();
+    $user->cart()->save($cart);
 
     $state = App\State::find(200);
     $state->user()->save($user);
@@ -91,7 +103,7 @@ class DatabaseSeeder extends Seeder
       $store->user()->save($user);
       $state->user()->save($user);
       $role->user()->save($user);
-      $cart = factory(App\Cart::class)->create();
+      $cart = App\Cart::create();
       $user->cart()->save($cart);
     });
 
@@ -129,20 +141,6 @@ class DatabaseSeeder extends Seeder
 
       $state = App\State::find(300);
       $state->product()->attach($product, ['quantity' => $product->stock]);
-
-      $user = App\User::find(1);
-      $cart = App\Cart::find(1);
-      $user->cart()->save($cart);
-      $cart->product()->save($product);
-
-      $order = factory(App\Order::class)->create();
-      $state = App\State::find(401);
-      $state->order()->save($order);
-
-      $sale = factory(App\Sale::class)->create();
-      $order->sale()->save($sale);
-      $user->sale()->save($sale);
-      $state->sale()->save($sale);
     });
 
     $comments = factory(App\Comment::class, 10)->create()->each(function($comment)
