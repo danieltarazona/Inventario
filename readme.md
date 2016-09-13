@@ -66,19 +66,10 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
-- Order Attach Sale
 - Event Create Cart after UserRegister
-- On-Loan to Avaiable
 - Assets
 - Event SendEmail
 - Search Product, Order, Sales
-
-- Profile
-- Design
-- Dashboard
-- Product Order by JQuery
-- Errors & Logging Facade
-- Middleware
 - Dashboard
   - Most Cart
   - Less Cart
@@ -86,16 +77,21 @@ Thank you for considering contributing to the Laravel framework! The contributio
   - Logged Users
   - Products Sales
   - Products Order
+- Profile
+- Design
+
+- Slack Notifications
+- Middleware
 - Eager Load
 - Point of Sales
 - Orders to Invoice
+- Orders to PDF
 - Orders to Ship
 - Export Import CSV
 - Print
 - Ship Type
 - Istanbul Coverage
 - Jenkins
-- Slack Notifications
 - Laravel Cashier
   - Braintree
   - Stripe

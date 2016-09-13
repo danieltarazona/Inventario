@@ -58,13 +58,6 @@
           <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
-        @if(Auth::user()->role_id > 2)
-        <td>
-          {!! Form::open(['route' => ['orders.destroy', $order->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-          {!! Form::close() !!}
-        </td>
-        @endif
       </tr>
     @endforeach
 @stop

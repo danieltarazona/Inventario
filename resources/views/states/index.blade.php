@@ -33,7 +33,7 @@
         <td>{{ $state->id }}</td>
         <td>{{ $state->name }}</td>
         <td>
-          <a href="{{ route('states.edit', $state->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('states.edit', $state->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
         <td>
           {!! Form::open(['route' => ['states.destroy', $state->id], 'method' => 'DELETE']) !!}

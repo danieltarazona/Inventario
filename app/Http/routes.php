@@ -21,13 +21,13 @@ Route::get('/contact', 'HomeController@contact');
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 
-Route::resource('orders', 'OrdersController');
+Route::resource('orders', 'OrdersController', ['except' => 'destroy'] );
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));
 
 Route::resource('roles', 'RolesController');
 Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', 'as' => 'roles.assign'));
 
-Route::resource('sales', 'SalesController');
+Route::resource('sales', 'SalesController', ['except' => 'destroy'] );
 
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));

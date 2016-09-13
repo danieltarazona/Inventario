@@ -34,7 +34,7 @@
 
         @if (Auth::user()->role_id > 1)
         <td>
-          <a href="{{ route('regions.edit', $region->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('regions.edit', $region->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
         <td>

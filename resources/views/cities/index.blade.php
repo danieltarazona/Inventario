@@ -28,7 +28,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Region</th>
-        <th>Stores</th>
+        <th>Name</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -39,18 +39,14 @@
         <td>{{ $city->id }}</td>
         <td>{{ $city->name or 'Blank' }}</td>
         <td>{{ $city->region_id or 'Blank' }}</td>
+        <td>{{ $city->region->name or 'Blank' }}</td>
+
         <td>
-          @foreach($city->store as $store)
-            {{ $store->id }}
-          @endforeach
+          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
 
         <td>
-          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary">Show</a>
-        </td>
-
-        <td>
-          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
         <td>

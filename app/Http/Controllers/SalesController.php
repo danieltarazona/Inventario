@@ -66,17 +66,4 @@ class SalesController extends Controller
   {
     //
   }
-
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function destroy($id)
-  {
-    Sale::findOrFail($id)->delete();
-    flash('Delete Complete!', 'success');
-    return redirect('sales');
-  }
 }

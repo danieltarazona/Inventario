@@ -102,6 +102,36 @@ public function store(Request $request)
 }
 
 /**
+* Return Products of Sale
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+
+public function returned($id)
+{
+  $product = Product::findOrFail($id);
+  $state = State::findOrFail(302); #On-Loan
+
+  if($product->state->contains($state)) {
+    $state->product->detach($product);
+  }
+
+  foreach ($product->state as $state) {
+    if ($state->id == 300)
+    {
+      $available = $product->stock + $state->quantity;
+
+      DB::table('product_state')
+      ->where(['product_id' => $product->id, 'state_id' => 300])
+      ->update(['quantity' => $available]);
+    }
+  }
+  flash('Product in Sale Returned!', 'success');
+  return redirect('sales/' . $id );
+}
+
+/**
 * Display the specified resource.
 *
 * @param  int  $id
@@ -126,33 +156,36 @@ public function damage($id, Request $request)
 {
   $product = Product::findOrFail($id);
   $state = State::findOrFail(304); # Damage
+  $total = 0;
 
   if ($product->state->contains($state))
   {
     DB::table('product_state')
-      ->where(['product_id' => $product->id, 'state_id' => 304])
-      ->update(['quantity' => $request->quantity]); #10
+    ->where(['product_id' => $product->id, 'state_id' => 304])
+    ->update(['quantity' => $request->quantity]);
 
     flash('Item quantity update on state Damage!', 'success');
-    return redirect('products/' . $id);
-
   } else {
-    $state->product()->attach($product, ['quantity' => $request->quantity]); #10
+    $state->product()->attach($product, ['quantity' => $request->quantity]);
 
-    foreach ($product->state as $state) {
-      if ($state->id == 300) {
-
-        $available = $state->quantity;
-        $remain = $available - $request->quantity;
-
-        DB::table('product_state')
-          ->where(['product_id' => $product->id, 'state_id' => 300])
-          ->update(['quantity' => $remain]); #100 - 10 = 90
-      }
-    }
-
-    flash('Item update his statate has been change to Damage!', 'success');
+    flash('Item update his state has been change to Damage!', 'success');
   }
+
+  foreach ($product->state as $state) {
+
+    $total = $total + $state->pivot->quantity;
+    $available = $product->stock - $total;
+
+    if ($state->id == 300) {
+
+      DB::table('product_state')
+      ->where(['product_id' => $product->id, 'state_id' => 300])
+      ->update(['quantity' => $available]);
+
+      flash('Available quantity Updated!', 'success');
+    }
+  }
+
   return redirect('products/' . $id);
 }
 
@@ -194,16 +227,16 @@ public function update(Request $request, $id)
   if ($validator->fails()) {
     flash('Validation Fail!', 'danger');
     return redirect('products/' . $product->id . '/edit')
-      ->withErrors($validator)
-      ->withInput();
+    ->withErrors($validator)
+    ->withInput();
   } else {
     $input = $request->all();
     $product->fill($input)->save();
 
     $state = State::findOrFail(300); # Available
     DB::table('product_state')
-      ->where(['product_id' => $product->id, 'state_id' => $state->id])
-      ->update(['quantity' => $product->stock]);
+    ->where(['product_id' => $product->id, 'state_id' => $state->id])
+    ->update(['quantity' => $product->stock]);
 
     flash('Update Complete!', 'success');
     return redirect('products');
