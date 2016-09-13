@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Maintenance {{ $maintenance->id }}</h1>
+  <h1>{{trans('strings.Maintenance')}} {{ $maintenance->id }}</h1>
 
   <h3>State: {{ $maintenance->state->name }}</h3>
   <h3>Create: {{ $maintenance->created_at }}</h3>
@@ -13,20 +13,20 @@
 </h3>
 
 <br>
-<h1>Products in Maintenance</h1>
+<h1>{{trans('strings.ProdMaint')}}</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th>ID</th>
       <th></th>
-      <th>Product</th>
-      <th>Category</th>
-      <th>Store</th>
-      <th>Stock</th>
-      <th>Serial</th>
-      <th>Warranty</th>
-      <th>Quantity</th>
+      <th>{{trans('strings.Product')}}</th>
+      <th>{{trans('strings.Category')}}</th>
+      <th>{{trans('strings.Store')}}</th>
+      <th>{{trans('strings.Stock')}}</th>
+      <th>{{trans('strings.Serial')}}</th>
+      <th>{{trans('strings.Warranty')}}</th>
+      <th>{{trans('strings.Quantity')}}</th>
     </tr>
   </thead>
 

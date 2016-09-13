@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Categories</h1>
+  <h1>{{trans('strings.Categories')}}</h1>
 
   <button type="button" class="btn btn-default">
     <a href="{{ route('products.index') }}">

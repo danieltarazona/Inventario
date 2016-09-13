@@ -2,20 +2,20 @@
 
 @section('content')
 
-  <h1>Orders</h1>
+  <h1>{{trans('strings.Orders')}}</h1>
 
   <table class="table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Date</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>User ID</th>
-        <th>User</th>
-        <th>State ID</th>
-        <th>State</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Date')}}</th>
+        <th>{{trans('strings.Start')}}</th>
+        <th>{{trans('strings.End')}}</th>
+        <th>{{trans('strings.UserID')}}</th>
+        <th>{{trans('strings.User')}}</th>
+        <th>{{trans('strings.StateID')}}</th>
+        <th>{{trans('strings.State')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 

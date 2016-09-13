@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Cities</h1>
+  <h1>{{trans('strings.Cities')}}</h1>
 
   <br>
 
@@ -26,10 +26,10 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Region</th>
-        <th>Stores</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.Region')}}</th>
+        <th>{{trans('strings.Tiendas')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 
@@ -46,11 +46,11 @@
         </td>
 
         <td>
-          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary">Show</a>
+          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary">{{trans('strings.Show')}}</a>
         </td>
 
         <td>
-          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning">Update</a>
+          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning">{{trans('strings.Update')}}</a>
         </td>
 
         <td>

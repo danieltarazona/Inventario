@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Order / {{ $order->id }}</h1>
+  <h1>{{trans('strings.Order')}} / {{ $order->id }}</h1>
 
   <br>
 
@@ -18,13 +18,13 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Provider</th>
-        <th>Store</th>
-        <th>Serial</th>
-        <th>Quantity</th>
+        <th>{{trans('strings.Image')}}</th>
+        <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.Category')}}</th>
+        <th>{{trans('strings.Provider')}}</th>
+        <th>{{trans('strings.Store')}}</th>
+        <th>{{trans('strings.Serial')}}</th>
+        <th>{{trans('strings.Quantity')}}</th>
       </tr>
     </thead>
 

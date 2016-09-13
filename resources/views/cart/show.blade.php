@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <p><a href="{{ url('products') }}">Products</a> / Cart</p>
+  <p><a href="{{ url('products') }}">{{trans('strings.Products')}}</a> / Cart</p>
 
   <h1>Your Cart</h1>
 
@@ -11,18 +11,18 @@
       <tr>
         <th>ID</th>
         <th></th>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Product')}}</th>
+        <th>{{trans('strings.Quantity')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 
     <tr>
       {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
-      <button class="btn btn-danger" type="submit" >Delete</button>
+      <button class="btn btn-danger" type="submit" >{{trans('strings.Delete')}}</button>
       {!! Form::close() !!}
 
-      <a href="{{ route('orders.create') }}" class="btn btn-success">Order</a>
+      <a href="{{ route('orders.create') }}" class="btn btn-success">{{trans('strings.Order')}}</a>
     </tr>
 
     @foreach($cart->product as $product)
