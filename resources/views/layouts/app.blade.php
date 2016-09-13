@@ -65,9 +65,7 @@
 
           @else
             @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
-              <li>
-                <a href="{{ route('cart.show', Auth::id()) }}" class="fa fa-shopping-basket fa-lg"></a>
-              </li>
+              <li><a href="{{ url('/cart/' . Auth::id()) }}"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i></a></li>
             @endif
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
