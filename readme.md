@@ -8,11 +8,7 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 
 ## Tutorial Laravel Windows
 - Instalar Composer para WIndows
-- Instalar Laravel utilizando Composer
-```bash
-composer global require "laravel/installer"
-```
-- Crear una Base de Datos llamada Inventario
+- Crear una Base de Datos llamada inventario en minusculas
 - Renombrar el .env.example a .env
 - Ejecutar el .BAT en esta Carpeta
 - Ingresar mediante CMD a la Carpeta de Inventario
@@ -57,7 +53,7 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Orders Sales Maintenance States
 400. Complete
 401. Waiting
-402.
+402. Returned
 403. Cancelled
 404. Product or Products Not Found
 
