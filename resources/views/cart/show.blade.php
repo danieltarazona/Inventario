@@ -22,7 +22,7 @@
       </tr>
     </thead>
 
-<<<<<<< HEAD
+
     <tr>
       {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
       <button class="btn btn-danger" type="submit" >{{trans('strings.Delete')}}</button>
@@ -31,8 +31,7 @@
       <a href="{{ route('orders.create') }}" class="btn btn-success">{{trans('strings.Order')}}</a>
     </tr>
 
-=======
->>>>>>> master
+
     @foreach($cart->product as $product)
       <tr>
         <td>{{ $product->id }}</td>

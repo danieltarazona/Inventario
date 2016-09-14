@@ -73,6 +73,19 @@ return array(
 
 	'DetCity' => 'Detalles Ciudad',
 
+	'ClickResetPass' => 'Click aquí para restablecer su contraseña',
+
+	'Model' => 'Modelo',
+	'Buy' => 'Comprar',
+	'Price' => 'Precio',
+	'BuyDate' => 'Fecha de Compra',
+	'Returned' => 'Regresar',
+	
+	'ProdRepair' => 'Reparar Producto',
+
+	'Description' => 'Descripción',
+	
+
 	
 	
 	
