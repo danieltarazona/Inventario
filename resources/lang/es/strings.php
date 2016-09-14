@@ -71,6 +71,8 @@ return array(
 	'UserID' => 'ID Usuario',
 	'User' => 'Usuario',
 
+	'DetCity' => 'Detalles Ciudad',
+
 	
 	
 	
