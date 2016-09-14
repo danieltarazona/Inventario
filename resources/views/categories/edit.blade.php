@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Edit</h1>
+<h1>{{trans('strings.Edit')}}</h1>
 
 <p><a href="{{ url('categories') }}">{{trans('strings.Categories')}}</a> / {{ $category->name }}</p>
 

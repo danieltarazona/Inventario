@@ -39,7 +39,7 @@ return array(
 	'Image' => 'Imágen',
 	'Name' => 'Nombre',
 
-	'Region' => 'Rigión',
+	'Region' => 'Región',
 
 	'Show' => 'Ver',
 	'Update' => 'Actualizar',
@@ -76,6 +76,19 @@ return array(
 
 	'Buy' => 'Compra',
 	'Price' => 'Precio',
+	'Year' => 'Año',
+	'City' => 'Ciudad',
+	'BuyDate' => 'Fecha de Compra',
+
+	'ProdRepair' => 'Reparar Producto',
+
+	'Returned' => 'Regresado',
+	'Damage' => 'Dañado',
+	'Repair' => 'Reparar',
+
+	'StoreID' => 'ID Tienda',
+
+	
 
 	
 	
