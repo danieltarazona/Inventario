@@ -71,6 +71,12 @@ return array(
 	'UserID' => 'ID Usuario',
 	'User' => 'Usuario',
 
+	'Description' => 'Descripción',
+	'Model' => 'Modelo',
+
+	'Buy' => 'Compra',
+	'Price' => 'Precio',
+
 	
 	
 	
