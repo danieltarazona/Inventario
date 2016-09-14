@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Sale {{ $sale->id }}</h1>
+  <h1>{{trans('strings.Sale')}} {{ $sale->id }}</h1>
 
   <hr>
 
@@ -10,9 +10,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.Quantity')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 
@@ -24,7 +24,7 @@
 
         <td>
           {!! Form::open(['route' => ['products.returned', $product->id], 'method' => 'POST']) !!}
-          <button class="btn btn-primary" type="submit">Returned</button>
+          <button class="btn btn-primary" type="submit">{{trans('strings.Returned')}}</button>
           {!! Form::close() !!}
         </td>
       </tr>

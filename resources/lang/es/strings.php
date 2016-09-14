@@ -52,7 +52,7 @@ return array(
 	'ProdMaint' => 'Productos en Mantenimiento',
 
 	'Category' => 'Categoría',
-	'Provider' => 'Provedor',
+	'Provider' => 'Proveedor',
 	'Store' => 'Tienda',
 	'Serial' => 'Serial',
 	'Warranty' => 'Garantía',
@@ -87,6 +87,17 @@ return array(
 	'Repair' => 'Reparar',
 
 	'StoreID' => 'ID Tienda',
+	'Sale' => 'Préstamo',
+
+	'Complete' => 'Completo',
+	'Cancel' => 'Cancelar',
+
+	'Assign' => 'Asignar',
+	'Save' => 'Guardar',
+	'DetailCity' => 'Detalles de Ciudad',
+
+	'CityStores' => 'Tiendas de la Ciudad'
+
 
 	
 

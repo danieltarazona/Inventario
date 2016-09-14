@@ -3,18 +3,18 @@
 @section('content')
 
 
-  <h1>Detail City</h1>
+  <h1>{{trans('strings.DetailCity')}}</h1>
 
   <h3>ID: {{ $city->id }}</h3>
-  <h3>Name: {{ $city->name }}</h3>
+  <h3>{{trans('strings.Name')}}: {{ $city->name }}</h3>
 
-  <h1>City Stores</h1>
+  <h1>{{trans('strings.CityStores')}}</h1>
 
   <table class="table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Store Name</th>
+        <th>{{trans('strings.Name')}}</th>
       </tr>
     </thead>
     @foreach($city->store as $store)
