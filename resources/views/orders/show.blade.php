@@ -8,7 +8,7 @@
 
   {!! Form::open(array('route' => array('orders.sale', $order->id), 'method' => 'POST')) !!}
 
-    {{ Form::submit('Sale', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit(trans('strings.Sale'), array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
 

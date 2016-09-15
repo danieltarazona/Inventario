@@ -13,7 +13,7 @@
   {!! Form::label('Description', trans('strings.Description')) !!}
   {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
-  {{ Form::submit('Create', array('class' => 'btn btn-success'))}}
+  {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-success'))}}
 
 {!! Form::close() !!}
 

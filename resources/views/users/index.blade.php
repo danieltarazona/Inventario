@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <h1>Users</h1>
+  <h1>{{trans('strings.Users')}}</h1>
 
   <br>
 
-  <a href="{{ url('register') }}" class="btn btn-primary">Create</a>
+  <a href="{{ url('register') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
 
   <hr>
 
@@ -14,12 +14,12 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Role ID</th>
-        <th>Tipo</th>
-        <th>Username</th>
-        <th>DNI</th>
-        <th>Email</th>
-        <th colspan="3">Actions</th>
+        <th>{{trans('strings.RoleID')}}</th>
+        <th>{{trans('strings.Tipo')}}</th>
+        <th>{{trans('strings.Username')}}</th>
+        <th>{{trans('strings.DNI')}}</th>
+        <th>{{trans('strings.E-Mail')}}</th>
+        <th colspan="3">{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 

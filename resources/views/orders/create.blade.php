@@ -16,7 +16,7 @@
   {!! Form::label('Date') !!}
   {!! Form::date('date', $day, ['class' => 'form-control']) !!}
 
-  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+  {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 
