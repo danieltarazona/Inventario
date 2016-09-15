@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>Sales</h1>
+  <h1>{{trans('strings.Sales')}}</h1>
 
   <hr>
 
@@ -10,13 +10,13 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Storer ID</th>
-        <th>Storer</th>
-        <th>State ID</th>
-        <th>State</th>
-        <th>Actions</th>
+        <th>{{trans('strings.Start')}}</th>
+        <th>{{trans('strings.End')}}</th>
+        <th>{{trans('strings.StoreID')}}</th>
+        <th>{{trans('strings.Store')}}</th>
+        <th>{{trans('strings.StateID')}}</th>
+        <th>{{trans('strings.State')}}</th>
+        <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 

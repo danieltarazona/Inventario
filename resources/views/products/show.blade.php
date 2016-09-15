@@ -41,7 +41,7 @@
 
         {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
         <input type="number" name="quantity" value="1">
-        <button class="btn btn-danger" type="submit">Damage</button>
+        <button class="btn btn-danger" type="submit">{{trans('strings.Damage')}}</button>
         {!! Form::close() !!}
 
         {{ $product->description }}
@@ -144,7 +144,7 @@
             @if(Auth::user()->role_id > 1)
               {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
               <input type="number" name="quantity" value="1">
-              <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> Repair</button>
+              <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> {{trans('strings.Repair')}}</button>
               {!! Form::close() !!}
             @endif
           </td>

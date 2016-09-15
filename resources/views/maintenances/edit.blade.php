@@ -6,10 +6,10 @@
 
   {!! Form::open(array('route' => array('maintenances.update', $maintenance->id), 'method' => 'PATCH')) !!}
 
-  {!! Form::label('name', 'Name') !!}
+  {!! Form::label('name', trans('strings.Name')) !!}
   {!! Form::text('name', $maintenance->name, ['class' => 'form-control']) !!}
   @if(Auth::user()->role_id == 2)
-    {!! Form::label('Description') !!}
+    {!! Form::label('Description', trans(strings.Description)) !!}
     {!! Editor::view($maintenance->description) !!}
   @endif
   
@@ -18,19 +18,19 @@
 
   @if(Auth::user()->role_id == 2)
   {!! Form::open(['route' => ['maintenances.complete', $maintenance->id], 'method' => 'POST']) !!}
-  <button class="btn btn-success" type="submit">Complete</button>
+  <button class="btn btn-success" type="submit">{{trans('strings.Complete')}}</button>
   {!! Form::close() !!}
   @endif
 
   @if(Auth::user()->role_id == 3)
   {!! Form::open(['route' => ['maintenances.returned', $maintenance->id], 'method' => 'POST']) !!}
-  <button class="btn btn-success" type="submit">Returned</button>
+  <button class="btn btn-success" type="submit">{{trans('strings.Returned')}}</button>
   {!! Form::close() !!}
   @endif
 
   @if(Auth::user()->role_id == 4)
   {!! Form::open(['route' => ['maintenances.canceled', $maintenance->id], 'method' => 'POST']) !!}
-  <button class="btn btn-success" type="submit">Cancel</button>
+  <button class="btn btn-success" type="submit">{{trans('strings.Cancel')}}</button>
   {!! Form::close() !!}
   @endif
 

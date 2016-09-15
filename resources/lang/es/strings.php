@@ -39,7 +39,7 @@ return array(
 	'Image' => 'Imágen',
 	'Name' => 'Nombre',
 
-	'Region' => 'Rigión',
+	'Region' => 'Región',
 
 	'Show' => 'Ver',
 	'Update' => 'Actualizar',
@@ -52,7 +52,7 @@ return array(
 	'ProdMaint' => 'Productos en Mantenimiento',
 
 	'Category' => 'Categoría',
-	'Provider' => 'Provedor',
+	'Provider' => 'Proveedor',
 	'Store' => 'Tienda',
 	'Serial' => 'Serial',
 	'Warranty' => 'Garantía',
@@ -71,22 +71,38 @@ return array(
 	'UserID' => 'ID Usuario',
 	'User' => 'Usuario',
 
-	'DetCity' => 'Detalles Ciudad',
-
-	'ClickResetPass' => 'Click aquí para restablecer su contraseña',
-
+	'Description' => 'Descripción',
 	'Model' => 'Modelo',
-	'Buy' => 'Comprar',
+
+	'Buy' => 'Compra',
 	'Price' => 'Precio',
+	'Year' => 'Año',
+	'City' => 'Ciudad',
 	'BuyDate' => 'Fecha de Compra',
-	'Returned' => 'Regresar',
-	
+
 	'ProdRepair' => 'Reparar Producto',
 
-	'Description' => 'Descripción',
+	'Returned' => 'Regresado',
+	'Damage' => 'Dañado',
+	'Repair' => 'Reparar',
+
+	'StoreID' => 'ID Tienda',
+	'Sale' => 'Préstamo',
+
+	'Complete' => 'Completo',
+	'Cancel' => 'Cancelar',
+
+	'Assign' => 'Asignar',
+	'Save' => 'Guardar',
+	'DetailCity' => 'Detalles de Ciudad',
+
+	'CityStores' => 'Tiendas de la Ciudad'
+
+
 	
 
 	
+
 	
 	
 

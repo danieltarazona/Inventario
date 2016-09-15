@@ -8,15 +8,15 @@
 
   {!! Form::open(['route' => 'cities.store', 'method' => 'POST']) !!}
 
-    {!! Form::label('Name') !!}
+    {!! Form::label('Name', trans('strings.Name')) !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-    {!! Form::label('Region') !!}
+    {!! Form::label('Region', trans('strings.Region')) !!}
     {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 
     <br>
 
-    {{ Form::submit('Create', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
 
@@ -32,10 +32,7 @@
         <th>{{trans('strings.Stores')}}</th>
         <th>{{trans('strings.Actions')}}</th>
 
-        <!--<th>Name</th>
-        <th>Region</th>
-        <th>Name</th>
-        <th>Actions</th>-->
+
 
       </tr>
     </thead>

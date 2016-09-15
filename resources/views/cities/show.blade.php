@@ -3,12 +3,12 @@
 @section('content')
 
 
-  <h1>{{trans('strings.DetCity')}}</h1>
+  <h1>{{trans('strings.DetailCity')}}</h1>
 
   <h3>ID: {{ $city->id }}</h3>
   <h3>{{trans('strings.Name')}}: {{ $city->name }}</h3>
 
-  <h1>City Stores</h1>
+  <h1>{{trans('strings.CityStores')}}</h1>
 
   <table class="table">
     <thead>

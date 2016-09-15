@@ -4,11 +4,11 @@
 
   <h1>{{trans('strings.Maintenance')}} {{ $maintenance->id }}</h1>
 
-  <h3>State: {{ $maintenance->state->name }}</h3>
-  <h3>Create: {{ $maintenance->created_at }}</h3>
-  <h3>Name: {{ $maintenance->name }}</h3>
-  <h3>Storer: {{ $maintenance->user->username or 'Blank' }}</h3>
-  <h3>Provider Detail: </h3>
+  <h3>{{trans('strings.State')}}: {{ $maintenance->state->name }}</h3>
+  <h3>{{trans('strings.Create')}}: {{ $maintenance->created_at }}</h3>
+  <h3>{{trans('strings.Name')}}: {{ $maintenance->name }}</h3>
+  <h3>{{trans('strings.Store')}}: {{ $maintenance->user->username or 'Blank' }}</h3>
+  <h3>{{trans('strings.Provider')}}: </h3>
   <h4>{{ $maintenance->description }}</h4>
 </h3>
 
