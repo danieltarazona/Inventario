@@ -41,7 +41,7 @@
 {!! Form::label('Provider', trans('strings.Provider')) !!}
 {!! Form::select('provider_id', $providers, $product->provider_id, ['class' => 'form-control']) !!}
 
-{{ Form::submit('Save', array('class' => 'btn btn-success')) }}
+{{ Form::submit(trans('strings.Save'), array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 

@@ -2,26 +2,26 @@
 
 @section('content')
 
-<h1>Create</h1>
+<h1>{{trans('strings.Create')}}</h1>
 
 {!! Form::open(['url' => 'stores']) !!}
 
-  {!! Form::label('Name') !!}
+  {!! Form::label(trans('strings.Name')) !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Telephone') !!}
+  {!! Form::label(trans('strings.Telephone')) !!}
   {!! Form::text('telephone', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Adress') !!}
+  {!! Form::label(trans('strings.Adress')) !!}
   {!! Form::text('adress', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Region') !!}
+  {!! Form::label(trans('strings.Region')) !!}
   {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('City') !!}
+  {!! Form::label(trans('strings.City')) !!}
   {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
 
-  {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+  {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 

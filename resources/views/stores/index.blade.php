@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <h1>Stores</h1>
+  <h1>{{trans('strings.Stores')}}</h1>
 
   <br>
 
-  <a href="{{ route('stores.create') }}" class="btn btn-primary">Create</a>
+  <a href="{{ route('stores.create') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
 
   <hr>
 
@@ -14,12 +14,12 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Region</th>
-        <th>City</th>
-        <th>Telephone</th>
-        <th>Adress</th>
-        <th colspan="3">Actions</th>
+        <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.Region')}}</th>
+        <th>{{trans('strings.City')}}</th>
+        <th>{{trans('strings.Telephone')}}</th>
+        <th>{{trans('strings.Adress')}}</th>
+        <th colspan="3">{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
 
