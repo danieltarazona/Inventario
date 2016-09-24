@@ -62,6 +62,21 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
+- Historia
+- Contextualizar
+- Ejemplo
+- Aprendiz
+- Instructor
+- Almacenista
+- Propuesta
+- Caso Real - Contar una Historia
+- Mapa de Navegación
+- Diseño de la Aplicación 
+- Metodología a Seguir
+- Arquitectura de la Información
+- Programación(Demo)
+- Medible, Escalable, Alcanzable
+
 - Product Returned
 - Sale State to Complete
 - Assets
