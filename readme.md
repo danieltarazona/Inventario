@@ -1,13 +1,11 @@
 # Inventar.io
+  _____ _   ___      ________ _   _ _______       _____        _____ ____  
+ |_   _| \ | \ \    / /  ____| \ | |__   __|/\   |  __ \      |_   _/ __ \
+   | | |  \| |\ \  / /| |__  |  \| |  | |  /  \  | |__) |       | || |  | |
+   | | | . ` | \ \/ / |  __| | . ` |  | | / /\ \ |  _  /        | || |  | |
+  _| |_| |\  |  \  /  | |____| |\  |  | |/ ____ \| | \ \   _   _| || |__| |
+ |_____|_| \_|   \/   |______|_| \_|  |_/_/    \_\_|  \_\ (_) |_____\____/
 
-#    _____ _   ___      ________ _   _ _______       _____        _____ ____  
-#   |_   _| \ | \ \    / /  ____| \ | |__   __|/\   |  __ \      |_   _/ __ \ 
-#     | | |  \| |\ \  / /| |__  |  \| |  | |  /  \  | |__) |       | || |  | |
-#     | | | . ` | \ \/ / |  __| | . ` |  | | / /\ \ |  _  /        | || |  | |
-#    _| |_| |\  |  \  /  | |____| |\  |  | |/ ____ \| | \ \   _   _| || |__| |
-#   |_____|_| \_|   \/   |______|_| \_|  |_/_/    \_\_|  \_\ (_) |_____\____/ 
-#                                                                             
-                                                                         
 Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Inventory Management Solution that Simplifies your Entire Retail Business. Build in Laravel.
 
 ## Official Documentation
@@ -68,11 +66,7 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
-## To Do
-
-<<<<<<< HEAD
-- Product Serial
-=======
+## Presentation
 - Historia
 - Contextualizar
 - Ejemplo
@@ -82,13 +76,14 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Propuesta
 - Caso Real - Contar una Historia
 - Mapa de Navegación
-- Diseño de la Aplicación 
+- Diseño de la Aplicación
 - Metodología a Seguir
 - Arquitectura de la Información
 - Programación(Demo)
 - Medible, Escalable, Alcanzable
 
->>>>>>> ab8a5d040fcd03781946d246ac2b8a70b6b83908
+## To Do
+- Product Serial
 - Product Returned
 - Sale State to Complete
 - Assets
