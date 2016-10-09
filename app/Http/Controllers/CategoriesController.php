@@ -23,7 +23,7 @@ class CategoriesController extends Controller
   */
   public function index()
   {
-    $categories = Category::all();
+    $categories = Category::all()->sortBy("name");
 
     if (Auth::user()->role_id == 1)
     {
@@ -124,12 +124,13 @@ class CategoriesController extends Controller
         ->withErrors($validator)
         ->withInput();
     } else {
-      $category->photo = $request->photo;
-      $category->name = $request->name;
-      $category->save();
-      flash('Update Complete!', 'success');
-      return redirect('categories');
+      $request->photo = '/img/categories/category.png';
     }
+    $category->photo = $request->photo;
+    $category->name = $request->name;
+    $category->save();
+    flash('Update Complete!', 'success');
+    return redirect('categories');
   }
 
   /**

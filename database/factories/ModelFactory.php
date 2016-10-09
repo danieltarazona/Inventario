@@ -13,8 +13,6 @@ use Faker\Generator;
 |
 */
 
-$faker = Faker\Factory::create('es_ES');
-
 $factory->define(App\Event::class, function ($faker) {
   return [
     'start' => $faker->time($format = 'H:i:s', $max = 'now'),
@@ -94,7 +92,7 @@ $factory->define(App\User::class, function ($faker) {
   return [
     'dni' => $faker->unique()->ean8,
     'username' => $faker->unique()->userName,
-    'email' => $faker->safeEmail,
+    'email' => $faker->unique()->safeEmail,
     'first_name' => $faker->name,
     'last_name' => $faker->name,
     'first_lastname' => $faker->name,
