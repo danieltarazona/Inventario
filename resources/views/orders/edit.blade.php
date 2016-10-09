@@ -16,7 +16,7 @@
   {!! Form::label('Date') !!}
   {!! Form::date('date', $order->date, ['class' => 'form-control']) !!}
 
-  {{ Form::submit('Update', array('class' => 'btn btn-warning')) }}
+  {{ Form::submit(trans('strings.Update'), array('class' => 'btn btn-warning')) }}
 
 {!! Form::close() !!}
 

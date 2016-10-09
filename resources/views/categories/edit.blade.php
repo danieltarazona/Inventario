@@ -17,7 +17,7 @@
   {!! Form::label('Description', trans('strings.Description')) !!}
   {!! Form::textarea('description', $category->description, ['class' => 'form-control']) !!}
 
-  {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
+  {{ Form::submit(trans('strings.Update'), array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
 

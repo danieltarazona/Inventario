@@ -96,7 +96,16 @@ return array(
 	'Save' => 'Guardar',
 	'DetailCity' => 'Detalles de Ciudad',
 
-	'CityStores' => 'Tiendas de la Ciudad'
+	'CityStores' => 'Tiendas de la Ciudad',
+	'Telephone' => 'Teléfono',
+	'Adress' => 'Dirección',
+	'MiddleName' => 'Segundo Nombre',
+
+	'Lastname' => 'Apellido',
+	'LastLastname' => 'Segundo Apellido',
+	'Cellphone' => 'Celular',
+	'Tipo' => 'Tipo',
+	'RoleID' => 'ID Rol',
 
 
 	

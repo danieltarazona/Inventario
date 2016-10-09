@@ -1,5 +1,13 @@
 # Inventar.io
 
+#    _____ _   ___      ________ _   _ _______       _____        _____ ____  
+#   |_   _| \ | \ \    / /  ____| \ | |__   __|/\   |  __ \      |_   _/ __ \ 
+#     | | |  \| |\ \  / /| |__  |  \| |  | |  /  \  | |__) |       | || |  | |
+#     | | | . ` | \ \/ / |  __| | . ` |  | | / /\ \ |  _  /        | || |  | |
+#    _| |_| |\  |  \  /  | |____| |\  |  | |/ ____ \| | \ \   _   _| || |__| |
+#   |_____|_| \_|   \/   |______|_| \_|  |_/_/    \_\_|  \_\ (_) |_____\____/ 
+#                                                                             
+                                                                         
 Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Inventory Management Solution that Simplifies your Entire Retail Business. Build in Laravel.
 
 ## Official Documentation
@@ -62,7 +70,25 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 ## To Do
 
+<<<<<<< HEAD
 - Product Serial
+=======
+- Historia
+- Contextualizar
+- Ejemplo
+- Aprendiz
+- Instructor
+- Almacenista
+- Propuesta
+- Caso Real - Contar una Historia
+- Mapa de Navegación
+- Diseño de la Aplicación 
+- Metodología a Seguir
+- Arquitectura de la Información
+- Programación(Demo)
+- Medible, Escalable, Alcanzable
+
+>>>>>>> ab8a5d040fcd03781946d246ac2b8a70b6b83908
 - Product Returned
 - Sale State to Complete
 - Assets
