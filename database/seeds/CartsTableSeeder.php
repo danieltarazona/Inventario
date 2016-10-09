@@ -11,6 +11,8 @@ class CartsTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Cart::class, 10);
+      factory(App\Cart::class, 100);
+
+      echo "Done" . PHP_EOL;
     }
 }

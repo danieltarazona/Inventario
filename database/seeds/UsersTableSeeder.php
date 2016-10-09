@@ -12,38 +12,42 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-      $user = factory(App\User::class)->create([
+      factory(App\User::class)->create([
         'username' => 'Daniel',
         'email' => 'user@user.com',
         'password' => bcrypt("123456"),
         'role_id' => 1,
+        'store_id' => 1,
         'cart_id' => 1,
         'state_id' => 200
       ]);
 
-      $user = factory(App\User::class)->create([
+      factory(App\User::class)->create([
         'username' => 'Apple',
         'email' => 'provider@provider.com',
         'password' => bcrypt("123456"),
         'role_id' => 2,
+        'store_id' => 1,
         'cart_id' => 2,
         'state_id' => 200
       ]);
 
-      $user = factory(App\User::class)->create([
+      factory(App\User::class)->create([
         'username' => 'Jesus',
         'email' => 'storer@storer.com',
         'password' => bcrypt("123456"),
         'role_id' => 3,
+        'store_id' => 1,
         'cart_id' => 3,
         'state_id' => 200
       ]);
 
-      $user = factory(App\User::class)->create([
+      factory(App\User::class)->create([
         'username' => 'Carlos',
         'email' => 'admin@admin.com',
         'password' => bcrypt("123456"),
         'role_id' => 4,
+        'store_id' => 1,
         'cart_id' => 4,
         'state_id' => 200
       ]);
@@ -55,7 +59,10 @@ class UsersTableSeeder extends Seeder
       ])->each(function($user)
       {
         $cart = App\Cart::create();
-        $user->cart()->save($cart);
+        $cart->user()->save($user);
       });
+
+      echo "Done" . PHP_EOL;
+
     }
 }

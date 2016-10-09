@@ -11,6 +11,10 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-      $category = factory(App\Category::class)->create(['name' => 'Notebook']);
+      factory(App\Category::class)->create(['name' => 'Notebook']);
+
+      $categories = factory(App\Category::class, 9)->create();
+
+      echo "Done" . PHP_EOL;
     }
 }

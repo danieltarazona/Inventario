@@ -18,5 +18,7 @@ class CommentsTableSeeder extends Seeder
         $user->comment()->save($comment);
         $issue->comment()->save($comment);
       });
+
+      echo "Done" . PHP_EOL;
     }
 }

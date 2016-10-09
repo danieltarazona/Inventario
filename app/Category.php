@@ -16,8 +16,4 @@ class Category extends Model
     return $this->product->list('id');
   }
 
-  public function name_id()
-  {
-    return Category::lists('name', 'id');
-  }
 }

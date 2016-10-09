@@ -16,5 +16,7 @@ class IssuesTableSeeder extends Seeder
         $user = App\User::find(1);
         $user->issue()->save($issue);
       });
+
+      echo "Done" . PHP_EOL;
     }
 }

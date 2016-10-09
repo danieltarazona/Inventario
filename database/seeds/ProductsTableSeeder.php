@@ -17,14 +17,15 @@ class ProductsTableSeeder extends Seeder
         $store = App\Store::find(1);
         $region = App\Region::find(1);
         $city = App\City::find(1);
+        $state = App\State::find(300);
 
         $region->product()->save($product);
         $city->product()->save($product);
         $category->product()->save($product);
         $store->product()->save($product);
-
-        $state = App\State::find(300);
         $state->product()->attach($product, ['quantity' => $product->stock]);
       });
+
+      echo "Done" . PHP_EOL;
     }
 }

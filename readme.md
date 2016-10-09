@@ -83,25 +83,29 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Medible, Escalable, Alcanzable
 
 ## To Do
+- Dashboard
+  - Totals
+  - Products Sales
+  - Products Order
 - Product Serial
 - Product Returned
 - Sale State to Complete
-- Assets
-- Event SendEmail
 - Search Product, Order, Sales
-- Dashboard
-  - Most Cart
-  - Less Cart
-  - Charts
-  - Logged Users
-  - Products Sales
-  - Products Order
+- Event SendEmail
 - Profile
 - Design
-
-- Slack Notifications
+  - JavaScript Charts
+  - jQuery
+  - Cart jQuery
+- Calendar
 - Middleware
 - Eager Load
+- Istanbul Coverage
+- Jenkins
+- Laravel Cashier
+  - Braintree
+  - Stripe
+- Slack Notifications
 - Point of Sales
 - Orders to Invoice
 - Orders to PDF
@@ -109,11 +113,6 @@ Thank you for considering contributing to the Laravel framework! The contributio
 - Export Import CSV
 - Print
 - Ship Type
-- Istanbul Coverage
-- Jenkins
-- Laravel Cashier
-  - Braintree
-  - Stripe
 - Tracking Shipping
   - 4/72 Account
 - Social

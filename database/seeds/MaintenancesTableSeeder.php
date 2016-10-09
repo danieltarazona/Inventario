@@ -19,16 +19,18 @@ class MaintenancesTableSeeder extends Seeder
         $state = App\State::find(401);
         $state->maintenance()->save($maintenance);
 
-        $product = factory(App\Product::class, 3)->create()->each(function($product)
+        $products = factory(App\Product::class, 3)->create()->each(function($product)
         {
           $state = App\State::find(300);
           $state->product()->attach($product, ['quantity' => $product->stock]);
         });
 
-        $maintenance->product()->attach($product, ['quantity' => 10]);
+        $maintenance->product()->attach($products, ['quantity' => 10]);
 
         $state = App\State::find(303);
-        $state->product()->attach($product, ['quantity' => 10]);
+        $state->product()->attach($products, ['quantity' => 10]);
       });
+
+      echo "Done" . PHP_EOL;
     }
 }

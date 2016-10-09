@@ -15,5 +15,8 @@ class RolesTableSeeder extends Seeder
       factory(App\Role::class)->create(['name' => 'Provider']);
       factory(App\Role::class)->create(['name' => 'Storer']);
       factory(App\Role::class)->create(['name' => 'Administrator']);
+
+      echo "Done" . PHP_EOL;
+
     }
 }

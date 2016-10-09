@@ -25,5 +25,8 @@ class StatesTableSeeder extends Seeder
       factory(App\State::class)->create(['id' => 402, 'name' => 'Returned']);
       factory(App\State::class)->create(['id' => 403, 'name' => 'Cancelled']);
       factory(App\State::class)->create(['id' => 404, 'name' => 'Product or Products Not Found']);
+
+      echo "Done" . PHP_EOL;
+      
     }
 }

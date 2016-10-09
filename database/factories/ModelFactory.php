@@ -103,6 +103,7 @@ $factory->define(App\User::class, function ($faker) {
     'password' => bcrypt(str_random(10)),
     'photo' => "/img/users/profile.png",
     'remember_token' => str_random(10),
+    'cart_id' => 1
   ];
 });
 
