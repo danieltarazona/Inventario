@@ -6,7 +6,7 @@
 
   <hr>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>
@@ -16,7 +16,7 @@
         <th>{{trans('strings.dni')}}</th>
         <th>{{trans('strings.user')}}</th>
         <th>{{trans('strings.state')}}</th>
-        <th>{{trans('strings.actions')}}</th>
+        <th colspan="2">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 
@@ -39,4 +39,5 @@
 
       </tr>
     @endforeach
+
 @stop

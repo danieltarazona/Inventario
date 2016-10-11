@@ -9,6 +9,7 @@ use App\Product;
 use App\Cart;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -19,8 +20,11 @@ class CartController extends Controller
   */
   public function show($id)
   {
+    $start = Carbon::now(-5)->toTimeString();
+    $end = Carbon::now(-4)->toTimeString();
+    $day = Carbon::now(-5);
     $cart = Cart::findOrFail(Auth::id());
-    return view('cart.show', compact('cart'));
+    return view('cart.show', compact('cart', 'start', 'end', 'day'));
   }
 
   /**
@@ -36,12 +40,17 @@ class CartController extends Controller
 
     if ($cart->product->contains($product))
     {
-      Flash('Item in now inside the Cart!', 'danger');
-      return redirect('products/' . $product->id . '/show');
+      Flash('Item is now inside the Cart!', 'danger');
+      return redirect('cart/' . Auth::id());
     }
-    $cart->product()->save($product);
 
-    Flash('Item has been Added!', 'success');
+    if ($product->state->id == 300) {
+      $cart->product()->save($product);
+      Flash('Item has been Added!', 'success');
+    } else {
+      Flash('Item can`t be reserved because his status is ' . $product->state->name  .'!', 'danger');
+    }
+
     return redirect('cart/' . Auth::id());
   }
 
@@ -71,12 +80,6 @@ class CartController extends Controller
     $cart->product()->detach();
     Flash('Cart has been Clear!', 'success');
     return redirect('cart/' . Auth::id());
-  }
-
-  public function rules()
-  {
-    return [
-    ];
   }
 
 }

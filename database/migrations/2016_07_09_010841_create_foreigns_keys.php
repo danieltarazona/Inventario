@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateForeignsKeysTable extends Migration
+class CreateForeignsKeys extends Migration
 {
   /**
   * Run the migrations.
@@ -117,6 +117,7 @@ class CreateForeignsKeysTable extends Migration
     });
 
   }
+
   /**
   * Reverse the migrations.
   *

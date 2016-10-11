@@ -4,6 +4,10 @@
 
   <h1>{{trans('strings.sale')}} No. {{ $sale->id }}</h1>
 
+  {!! Form::open(['route' => ['sales.complete', $sale->id], 'method' => 'POST']) !!}
+    <button class="btn btn-primary" type="submit">{{trans('strings.complete')}}</button>
+  {!! Form::close() !!}
+
   <hr>
 
   <table class="table">
@@ -27,8 +31,6 @@
 
     </table>
 
-    {!! Form::open(['route' => ['sales.complete', $sale->id], 'method' => 'POST']) !!}
-      <button class="btn btn-primary" type="submit">{{trans('strings.complete')}}</button>
-    {!! Form::close() !!}
+
 
 @stop

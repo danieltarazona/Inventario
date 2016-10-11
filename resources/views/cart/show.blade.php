@@ -4,25 +4,15 @@
 
   <h1>{{ trans('strings.your') }} {{trans('strings.cart')}}</h1>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>
         <th></th>
-        <th>{{trans('strings.product')}}</th>
+        <th></th>
         <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
-
-
-    <tr>
-      {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
-      <button class="btn btn-danger" type="submit" >{{trans('strings.clean')}}</button>
-      {!! Form::close() !!}
-
-      <a href="{{ route('orders.create') }}" class="btn btn-success">{{trans('strings.order')}}</a>
-    </tr>
-
 
     @foreach($cart->product as $product)
       <tr>
@@ -38,5 +28,26 @@
     @endforeach
 
   </table>
+
+  {!! Form::open(['url' => 'orders']) !!}
+
+    {!! Form::label('Start', trans('strings.hour_start')) !!}
+    {!! Form::time('start', $start, ['class' => 'form-control']) !!}
+
+    {!! Form::label('End', trans('strings.hour_end')) !!}
+    {!! Form::time('end', $start, ['class' => 'form-control']) !!}
+
+    {!! Form::label('Date', trans('strings.date')) !!}
+    {!! Form::date('date', $day, ['class' => 'form-control']) !!}
+
+    <br>
+
+    {{ Form::submit(trans('strings.order'), array('class' => 'btn btn-success')) }}
+
+  {!! Form::close() !!}
+
+  {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
+    <button class="btn btn-danger" type="submit" >{{trans('strings.clean')}}</button>
+  {!! Form::close() !!}
 
 @endsection

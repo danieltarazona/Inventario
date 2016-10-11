@@ -11,57 +11,67 @@ class StatesTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\State::class)->create(['id' => 200, 'name' => 'Active']);
+      factory(App\State::class)->create([
+        'id' => 200,
+        'name' => trans('strings.active'),
+        'label' => 'label label-primary'
+      ]);
 
       factory(App\State::class)->create([
         'id' => 201,
-        'name' => 'Inactive',
+        'name' => trans('strings.inactive'),
         'label' => 'label label-default'
       ]);
 
-      factory(App\State::class)->create(['id' => 300, 'name' => 'Available']);
+      factory(App\State::class)->create([
+        'id' => 300,
+        'name' => trans('strings.available')
+      ]);
 
       factory(App\State::class)->create([
         'id' => 302,
-        'name' => 'On-Loan',
+        'name' => trans('strings.on_loan'),
         'label' => 'label label-info'
       ]);
 
       factory(App\State::class)->create([
         'id' => 303,
-        'name' => 'On-Maintenance',
+        'name' => trans('strings.on_maintenance'),
         'label' => 'label label-warning'
       ]);
 
       factory(App\State::class)->create([
         'id' => 304,
-        'name' => 'Damage',
+        'name' => trans('strings.damage'),
         'label' => 'label label-danger'
       ]);
 
-      factory(App\State::class)->create(['id' => 400, 'name' => 'Complete']);
+      factory(App\State::class)->create([
+        'id' => 400,
+        'name' => trans('strings.complete'),
+      ]);
 
       factory(App\State::class)->create([
         'id' => 401,
-        'name' => 'Waiting',
+        'name' => trans('strings.on_waiting'),
         'label' => 'label label-warning'
       ]);
 
       factory(App\State::class)->create([
         'id' => 402,
-        'name' => 'Returned',
+        'name' => trans('strings.returned'),
         'label' => 'label label-primary'
       ]);
 
       factory(App\State::class)->create([
         'id' => 403,
-        'name' => 'Cancelled',
+        'name' => trans('strings.cancelled'),
         'label' => 'label label-default'
       ]);
 
       factory(App\State::class)->create([
         'id' => 404,
-        'name' => 'Product or Products Not Found',
+        'name' => trans('strings.product_not_found'),
         'label' => 'label laber-warning'
       ]);
 

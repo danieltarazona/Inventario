@@ -10,7 +10,7 @@
 
   <hr>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>

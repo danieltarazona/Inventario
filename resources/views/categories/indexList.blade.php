@@ -20,13 +20,13 @@
 
   <hr>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>
         <th>{{trans('strings.image')}}</th>
         <th>{{trans('strings.name')}}</th>
-        <th>{{trans('strings.actions')}}</th>
+        <th colspan="2">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
     @foreach ($categories as $category)

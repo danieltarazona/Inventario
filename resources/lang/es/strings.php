@@ -2,6 +2,18 @@
 
 return array(
 
+	'sale_id' => 'ID Prestamo',
+	'order_id' => 'ID Reserva',
+	'active' => 'Activo',
+	'inactive' => 'Inactivo',
+	'on_maintenance' => 'En Mantenimiento',
+	'available' => 'Disponible',
+	'on_loan' => 'Prestado',
+	'damage' => 'Dañado',
+	'on_waiting' => 'En Espera',
+	'cancelled' => 'Cancelado',
+	'product_not_found' => 'Producto Perdido',
+	'role' => 'Rol',
 	'hour_start' => 'Hora Recogida',
 	'model' => 'Model',
 	'hour_end' => 'Hora Entrega',
@@ -96,7 +108,7 @@ return array(
 	'repair' => 'Reparar',
 
 	'store_id' => 'ID Tienda',
-	'sale' => 'Préstar',
+	'sale' => 'Préstamo',
 
 	'complete' => 'Completo',
 	'cancel' => 'Cancelar',

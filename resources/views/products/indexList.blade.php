@@ -37,7 +37,7 @@
 
   <hr>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>
@@ -52,7 +52,7 @@
         <th>{{trans('strings.buy')}}</th>
         <th>{{trans('strings.price')}}</th>
         <th>{{trans('strings.warranty')}}</th>
-        <th>{{trans('strings.actions')}}</th>
+        <th colspan="3">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 

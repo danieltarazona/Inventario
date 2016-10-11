@@ -2,24 +2,24 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Users')}}</h1>
+  <h1>{{trans('strings.users')}}</h1>
 
   <br>
 
-  <a href="{{ url('register') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
+  <a href="{{ url('register') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
   <hr>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.RoleID')}}</th>
-        <th>{{trans('strings.Tipo')}}</th>
-        <th>{{trans('strings.Username')}}</th>
-        <th>{{trans('strings.DNI')}}</th>
-        <th>{{trans('strings.E-Mail')}}</th>
-        <th colspan="3">{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.role_id')}}</th>
+        <th>{{trans('strings.role')}}</th>
+        <th>{{trans('strings.username')}}</th>
+        <th>{{trans('strings.dni')}}</th>
+        <th>{{trans('strings.email')}}</th>
+        <th colspan="3">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 

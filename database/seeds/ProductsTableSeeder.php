@@ -19,7 +19,7 @@ class ProductsTableSeeder extends Seeder
         $store = App\Store::find(1);
         $store->product()->save($product);
 
-        $state = App\State::find(200);
+        $state = App\State::find(300);
         $state->product()->save($product);
 
         $region = App\Region::find(1);

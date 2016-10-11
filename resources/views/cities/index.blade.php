@@ -22,18 +22,14 @@
 
   <hr>
 
-  <table class="table">
+  <table class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>
-
         <th>{{trans('strings.name')}}</th>
         <th>{{trans('strings.region')}}</th>
         <th>{{trans('strings.stores')}}</th>
-        <th>{{trans('strings.actions')}}</th>
-
-
-
+        <th colspan="3">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 
@@ -46,21 +42,11 @@
         <td>{{ $city->region->name or 'Blank' }}</td>
 
         <td>
-
-          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary">{{trans('strings.show')}}</a>
-        </td>
-
-        <td>
-          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning">{{trans('strings.update')}}</a>
-
           <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
-
         <td>
           <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
         </td>
-
         <td>
           {!! Form::open(['route' => ['cities.destroy', $city->id], 'method' => 'DELETE']) !!}
             <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>

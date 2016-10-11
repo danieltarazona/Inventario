@@ -15,6 +15,8 @@
   {!! Form::label('Date', trans('strings.date')) !!}
   {!! Form::date('date', $day, ['class' => 'form-control']) !!}
 
+  <br>
+
   {{ Form::submit(trans('strings.create'), array('class' => 'btn btn-success')) }}
 
 {!! Form::close() !!}
