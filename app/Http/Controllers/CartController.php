@@ -32,26 +32,7 @@ class CartController extends Controller
   public function store(Request $request)
   {
 
-    flash('Item was added to your cart!', 'success');
-    return redirect('cart/' . Auth::id());
-  }
-
-  /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\JsonResponse
-  */
-  public function update($id, Request $request)
-  {
-    $product = Product::findOrFail($id);
-    $cart = Cart::findOrFail(Auth::id());
-
-    DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
-    ->update(['quantity' => $request->quantity]);
-
-    flash('Quantity was updated successfully!', 'success');
+    Flash('Item was added to your cart!', 'success');
     return redirect('cart/' . Auth::id());
   }
 
@@ -68,13 +49,11 @@ class CartController extends Controller
 
     if ($cart->product->contains($product))
     {
-      DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id])
-      ->update(['quantity' => $request->quantity]);
-
-      flash('Item cart quantity Update!', 'success');
+      Flash('Item in now inside the Cart!', 'danger');
+      return redirect('product/' . $product->id);
     }
-    $cart->product()->attach($product, ['quantity' => $request->quantity]);
-    flash('Item has been Added!', 'success');
+    $cart->product()->save($product);
+    Flash('Item has been Added!', 'success');
     return redirect('cart/' . Auth::id());
   }
 
@@ -88,7 +67,7 @@ class CartController extends Controller
   {
     $cart = Cart::findOrFail(Auth::id());
     $cart->product()->detach($id);
-    flash('Item has been Removed!', 'success');
+    Flash('Item has been Removed!', 'success');
     return redirect('cart/' . Auth::id());
   }
 
@@ -102,14 +81,13 @@ class CartController extends Controller
   {
     $cart = Cart::findOrFail(Auth::id());
     $cart->product()->detach();
-    flash('Cart has been Clear!', 'success');
+    Flash('Cart has been Clear!', 'success');
     return redirect('cart/' . Auth::id());
   }
 
   public function rules()
   {
     return [
-      'quantity' => 'required|numeric',
     ];
   }
 

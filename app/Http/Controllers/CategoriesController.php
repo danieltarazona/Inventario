@@ -66,7 +66,7 @@ class CategoriesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fail!', 'danger');
+      Flash('Validation Fail!', 'danger');
       return redirect('categories/create')
       ->withErrors($validator)
       ->withInput();
@@ -89,7 +89,7 @@ class CategoriesController extends Controller
       $category->views = 0;
       $category->photo = $request->photo;
       $category->save();
-      flash('Create Successful!', 'success');
+      Flash('Create Successful!', 'success');
     }
     return redirect('categories');
   }
@@ -119,7 +119,7 @@ class CategoriesController extends Controller
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      flash('Validation Fails!', 'danger');
+      Flash('Validation Fails!', 'danger');
       return redirect('categories/' . $category->id . '/edit')
         ->withErrors($validator)
         ->withInput();
@@ -129,7 +129,7 @@ class CategoriesController extends Controller
     $category->photo = $request->photo;
     $category->name = $request->name;
     $category->save();
-    flash('Update Complete!', 'success');
+    Flash('Update Complete!', 'success');
     return redirect('categories');
   }
 
@@ -142,7 +142,7 @@ class CategoriesController extends Controller
   public function destroy($id)
   {
     Category::findOrFail($id)->delete();
-    flash('Delete Complete!', 'success');
+    Flash('Delete Complete!', 'success');
     return redirect('categories');
   }
 

@@ -11,19 +11,25 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Product::class, 3)->create()->each(function($product)
+      factory(App\Product::class, 10)->create()->each(function($product)
       {
         $category = App\Category::find(1);
-        $store = App\Store::find(1);
-        $region = App\Region::find(1);
-        $city = App\City::find(1);
-        $state = App\State::find(300);
-
-        $region->product()->save($product);
-        $city->product()->save($product);
         $category->product()->save($product);
+
+        $store = App\Store::find(1);
         $store->product()->save($product);
-        $state->product()->attach($product, ['quantity' => $product->stock]);
+
+        $state = App\State::find(200);
+        $state->product()->save($product);
+
+        $region = App\Region::find(1);
+        $region->product()->save($product);
+
+        $city = App\City::find(1);
+        $city->product()->save($product);
+
+        $provider = App\User::find(2);
+        $provider->product()->save($product);
       });
 
       echo "Done" . PHP_EOL;

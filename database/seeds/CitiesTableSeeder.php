@@ -11,9 +11,11 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-      $cities = factory(App\City::class, 10)->create([
-        'region_id' => 1
-      ]);
+      factory(App\City::class, 10)->create()->each(function($city)
+      {
+        $region = App\Region::find(1);
+        $region->city()->save($city);
+      });
 
       echo "Done" . PHP_EOL;
 

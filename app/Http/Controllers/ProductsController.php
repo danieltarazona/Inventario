@@ -61,6 +61,29 @@ class ProductsController extends Controller
     return view('products.create', compact(
     'categories', 'providers',
     'stores', 'cities', 'regions'
+    ));
+  }
+
+/**
+* Show the form for editing the specified resource.
+*
+* @param  int  $id
+* @return \Illuminate\Http\Response
+*/
+public function edit($id)
+{
+  $product = Product::findOrFail($id);
+
+  $categories = Category::lists('name', 'id');
+  $providers = User::where('role_id', 2)->lists('username', 'id');
+  $stores = Store::lists('name', 'id');
+  $cities = City::lists('name', 'id');
+  $regions = Region::lists('name', 'id');
+  $states = State::lists('name', 'id');
+
+  return view('products.edit', compact(
+  'product', 'categories', 'providers',
+  'stores', 'cities', 'regions', 'states'
   ));
 }
 
@@ -75,7 +98,7 @@ public function store(Request $request)
   $validator = Validator::make($request->all(), $this->rules());
 
   if ($validator->fails()) {
-    flash('Validation Fail!', 'danger');
+    Flash('Validation Fail!', 'danger');
     return redirect('products.create')
     ->withErrors($validator)
     ->withInput();
@@ -94,13 +117,11 @@ public function store(Request $request)
     }
     $input = $request->all();
     $product = Product::create($input);
-
-    $state = State::find(300);
-    $product->state()->save($state, ['quantity' => $request->stock]);
-
     $product->photo = $request->photo;
+    $product->state_id = 200;
     $product->save();
-    flash('Create Product Complete!', 'success');
+
+    Flash('Create Product Complete!', 'success');
     return redirect('products');
   }
 }
@@ -115,24 +136,11 @@ public function store(Request $request)
 public function returned($id)
 {
   $product = Product::findOrFail($id);
-  $state = State::findOrFail(302); #On-Loan
+  $product->update(['state_id' => 300]);
 
-  if($product->state->contains($state)) {
-    $state->product->detach($product);
-  }
+  Flash('Item Update to Available!', 'success');
 
-  foreach ($product->state as $state) {
-    if ($state->id == 300)
-    {
-      $available = $product->stock + $state->quantity;
-
-      DB::table('product_state')
-      ->where(['product_id' => $product->id, 'state_id' => 300])
-      ->update(['quantity' => $available]);
-    }
-  }
-  flash('Product in Sale Returned!', 'success');
-  return redirect('sales/' . $id );
+  return redirect('products/' . $id);
 }
 
 /**
@@ -156,64 +164,17 @@ public function show($id)
 * @param  int  $id
 * @return \Illuminate\Http\Response
 */
-public function damage($id, Request $request)
+public function damage($id)
 {
   $product = Product::findOrFail($id);
-  $state = State::findOrFail(304); # Damage
-  $total = 0;
+  $product->update(['state_id' => 304]);
 
-  if ($product->state->contains($state))
-  {
-    DB::table('product_state')
-    ->where(['product_id' => $product->id, 'state_id' => 304])
-    ->update(['quantity' => $request->quantity]);
-
-    flash('Item quantity update on state Damage!', 'success');
-  } else {
-    $state->product()->attach($product, ['quantity' => $request->quantity]);
-
-    flash('Item update his state has been change to Damage!', 'success');
-  }
-
-  foreach ($product->state as $state) {
-
-    $total = $total + $state->pivot->quantity;
-    $available = $product->stock - $total;
-
-    if ($state->id == 300) {
-
-      DB::table('product_state')
-      ->where(['product_id' => $product->id, 'state_id' => 300])
-      ->update(['quantity' => $available]);
-
-      flash('Available quantity Updated!', 'success');
-    }
-  }
+  Flash('Item Update to Damage!', 'success');
 
   return redirect('products/' . $id);
 }
 
-/**
-* Show the form for editing the specified resource.
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function edit($id)
-{
-  $product = Product::findOrFail($id);
 
-  $categories = Category::lists('name', 'id');
-  $providers = User::where('role_id', 2)->lists('username', 'id');
-  $stores = Store::lists('name', 'id');
-  $cities = City::lists('name', 'id');
-  $regions = Region::lists('name', 'id');
-
-  return view('products.edit', compact(
-  'product', 'categories', 'providers',
-  'stores', 'cities', 'regions'
-));
-}
 
 /**
 * Update the specified resource in storage.
@@ -229,7 +190,7 @@ public function update(Request $request, $id)
   $validator = Validator::make($request->all(), $this->rules());
 
   if ($validator->fails()) {
-    flash('Validation Fail!', 'danger');
+    Flash('Validation Fail!', 'danger');
     return redirect('products/' . $product->id . '/edit')
     ->withErrors($validator)
     ->withInput();
@@ -242,7 +203,7 @@ public function update(Request $request, $id)
     ->where(['product_id' => $product->id, 'state_id' => $state->id])
     ->update(['quantity' => $product->stock]);
 
-    flash('Update Complete!', 'success');
+    Flash('Update Complete!', 'success');
     return redirect('products');
   }
 }
@@ -262,19 +223,18 @@ public function destroy($id)
 {
   Product::findOrFail($id)->delete();
   return redirect('products');
-  flash('Delete Successful!', 'success');
+  Flash('Delete Successful!', 'success');
 }
 
 public function rules()
 {
   return [
     'name'    => 'required|max:255',
-    'stock'   => 'required|numeric',
     'serial'  => 'required|max:255',
     'year'    => 'numeric',
     'price'   => 'numeric',
     'warranty'=> 'numeric',
-    'photo' => 'image|optional',
+    'photo' => 'image',
     'category_id' => 'required|numeric',
     'provider_id' => 'required|numeric',
     'city_id' => 'required|numeric',

@@ -8,7 +8,7 @@
                 <div class="panel-heading">Bienvenido</div>
 
                 <div class="panel-body">
-                    SAPEIM ADSI 107.
+                    ADSI 107
                 </div>
             </div>
         </div>

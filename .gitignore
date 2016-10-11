@@ -16,7 +16,7 @@ bootstrap/cache/
 .env.*.php
 .env.php
 .env
-.env.example
+*.sqlite
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

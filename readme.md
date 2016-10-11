@@ -1,10 +1,4 @@
 # Inventar.io
-  _____ _   ___      ________ _   _ _______       _____        _____ ____  
- |_   _| \ | \ \    / /  ____| \ | |__   __|/\   |  __ \      |_   _/ __ \
-   | | |  \| |\ \  / /| |__  |  \| |  | |  /  \  | |__) |       | || |  | |
-   | | | . ` | \ \/ / |  __| | . ` |  | | / /\ \ |  _  /        | || |  | |
-  _| |_| |\  |  \  /  | |____| |\  |  | |/ ____ \| | \ \   _   _| || |__| |
- |_____|_| \_|   \/   |______|_| \_|  |_/_/    \_\_|  \_\ (_) |_____\____/
 
 Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Inventory Management Solution that Simplifies your Entire Retail Business. Build in Laravel.
 
@@ -66,65 +60,6 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
 
-## Presentation
-- Historia
-- Contextualizar
-- Ejemplo
-- Aprendiz
-- Instructor
-- Almacenista
-- Propuesta
-- Caso Real - Contar una Historia
-- Mapa de Navegación
-- Diseño de la Aplicación
-- Metodología a Seguir
-- Arquitectura de la Información
-- Programación(Demo)
-- Medible, Escalable, Alcanzable
-
-## To Do
-- Dashboard
-  - Totals
-  - Products Sales
-  - Products Order
-- Product Serial
-- Product Returned
-- Sale State to Complete
-- Search Product, Order, Sales
-- Event SendEmail
-- Profile
-- Design
-  - JavaScript Charts
-  - jQuery
-  - Cart jQuery
-- Calendar
-- Middleware
-- Eager Load
-- Istanbul Coverage
-- Jenkins
-- Laravel Cashier
-  - Braintree
-  - Stripe
-- Slack Notifications
-- Point of Sales
-- Orders to Invoice
-- Orders to PDF
-- Orders to Ship
-- Export Import CSV
-- Print
-- Ship Type
-- Tracking Shipping
-  - 4/72 Account
-- Social
-  - Intagram & EBay & Amazon
-- iPhone App
-  - Scan Code
-  - Request AR Load
-    - InBox
-    - OutBox
-  - Augment Reality
-  - View Type
-  - Modify
-  - Cart
-  - CSV Load
-  - Shipping Labels
+## Asana
+Asana Codeapps
+Slack Codeapps

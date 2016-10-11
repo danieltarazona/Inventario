@@ -30,26 +30,7 @@
         <td>{{ $order->user_id or 'Blank' }}</td>
         <td>{{ $order->user->username or 'Blank' }}</td>
         <td>{{ $order->state_id or 'Blank' }}</td>
-
-        @if($order->state->name == 'Waiting')
-          <td><span class="label label-warning">{{ $order->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($order->state->name == 'Complete')
-          <td><span class="label label-success">{{ $order->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($order->state->name == 'Product or Products Not Found')
-          <td><span class="label label-danger">{{ $order->state->name or 'Blank'  }}</span></td>
-        @endif
-
-        @if($order->state->name == 'Returned')
-          <td><span class="label label-success">{{ $order->state->name or 'Blank'  }}</span></td>
-        @endif
-
-        @if($order->state->name == 'Cancelled')
-          <td><span class="label label-default">{{ $order->state->name or 'Blank'  }}</span></td>
-        @endif
+        <td><span class="{{ $order->state->label }}">{{ $order->state->name or 'Blank'  }}</span></td>
 
         <td>
           <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

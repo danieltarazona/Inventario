@@ -28,7 +28,6 @@ class OrdersController extends Controller
   */
   public function index()
   {
-
     $orders = Order::all();
     return view('orders.index', compact('orders'));
   }
@@ -40,11 +39,10 @@ class OrdersController extends Controller
   */
   public function create()
   {
-    $cart = Cart::findOrFail(Auth::id());
     $start = Carbon::now(-5)->toTimeString();
     $end = Carbon::now(-4)->toTimeString();
     $day = Carbon::now(-5);
-    return view('orders.create', compact('start', 'end', 'day', 'cart'));
+    return view('orders.create', compact('start', 'end', 'day'));
   }
 
   /**
@@ -59,35 +57,18 @@ class OrdersController extends Controller
 
   public function sale($id)
   {
-    $user = User::findOrFail(Auth::id());
     $order = Order::findOrFail($id);
-    $state = State::findOrFail(400);
-    $state->order()->save($order);
+    $order->update(['state_id' => 400]);
 
-    $sale = new Sale;
-    $sale->out = Carbon::now(-5)->toTimeString();
-    $state = State::findOrFail(401);
-    $state->sale()->save($sale);
-    $order->sale()->save($sale);
-    $user->sale()->save($sale);
-    $sale->save();
+    $sale = Sale::create([
+      'out' => Carbon::now(-5)->toTimeString(),
+      'state_id' => 401,
+      'user_id' => Auth::id(),
+      'order_id' => $order->id
+    ]);
 
     foreach ($order->product as $product) {
-      foreach ($product->state as $state) {
-        if ($state->id == 301) {
-
-          DB::table('product_state')
-          ->where(['product_id' => $product->id, 'state_id' => 301])
-          ->update(['quantity' => 0]);
-
-          $available = $product->stock + $state->quantity;
-
-          DB::table('product_state')
-          ->where(['product_id' => $product->id, 'state_id' => 300])
-          ->update(['quantity' => $available]);
-
-        }
-      }
+      $product->update(['state_id' => 302]);
     }
 
     return redirect('sales');
@@ -101,60 +82,22 @@ class OrdersController extends Controller
   * @return \Illuminate\Http\Response
   */
 
-  # $cart = App\Cart::findOrFail(4);
-  # $user = App\User::findOrFail(4);
-  # $product = App\Product::findOrFail(2);
-  # $order = new App\Order;
-  # $user->order()->save($order);
-  # $order->product()->sync($cart->product);
-  # DB::table('cart_product')->where(['cart_id' => $cart->id, 'product_id' => $product->id]);
-
   public function store(Request $request)
   {
+    $order = Order::create([
+      'start' => $request->start,
+      'end' => $request->end,
+      'date' => $request->date,
+      'state_id' => 401,
+      'user_id' => Auth::id()
+    ]);
+
     $cart = Cart::findOrFail(Auth::id());
-    $user = Auth::user();
-    $state = State::findOrFail(401);
-    $order = new Order;
-    $order->start = $request->start;
-    $order->end = $request->end;
-    $order->date = $request->date;
-    $state->order()->save($order);
-    $user->order()->save($order);
     $order->product()->sync($cart->product);
-
-    foreach ($cart->product as $product) {
-      DB::table('order_product')->where(['product_id' => $product->id, 'order_id' => $order->id])
-      ->update(['quantity' => $product->quantity()]);
-      $state = State::findOrFail(301);
-
-      $stock = $product->stock - $product->quantity();
-
-      if($product->state->contains($state))
-      {
-        $product->setStock($stock);
-
-        DB::table('product_state')
-          ->where(['product_id' => $product->id, 'state_id' => 301])
-          ->update(['quantity' => $product->quantity()]);
-
-
-        DB::table('product_state')
-          ->where(['product_id' => $product->id, 'state_id' => 300])
-          ->update(['quantity' => $product->stock]);
-
-      } else {
-
-        DB::table('product_state')
-          ->where(['product_id' => $product->id, 'state_id' => 300])
-          ->update(['quantity' => $product->stock]);
-
-        $state->product()->attach($product, ['quantity' => $product->quantity()]);
-      }
-    }
     $cart->product()->detach();
-    $order->save();
 
-    flash('Order has been Created!', 'success');
+    Flash('Order has been Created!', 'success');
+
     return redirect('orders');
   }
 
@@ -164,6 +107,7 @@ class OrdersController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
+
   public function show($id)
   {
     $order = Order::findOrFail($id);
@@ -195,7 +139,7 @@ class OrdersController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'error');
       return redirect('orders/' . $order->id . '/edit')
       ->withErrors($validator)
       ->withInput();
@@ -204,7 +148,7 @@ class OrdersController extends Controller
       $order->start = $request->start;
       $order->end = $request->end;
       $order->save();
-      flash('Update Successful!', 'success');
+      Flash('Update Successful!', 'success');
       return redirect('orders');
     }
   }

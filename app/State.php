@@ -23,7 +23,7 @@ class State extends Model
 
   public function product()
   {
-    return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
+    return $this->hasMany(Product::class);
   }
 
   public function product_id()

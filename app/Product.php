@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
   protected $fillable = [
-    'name', 'stock', 'photo', 'serial', 'year', 'price', 'warranty',
-    'store_id', 'category_id', 'provider_id',
+    'name', 'photo', 'serial', 'year', 'price', 'warranty',
+    'store_id', 'category_id', 'provider_id', 'state_id'
   ];
 
-  public function setStock($stock)
+  public function provider()
   {
-    return $this->stock = $stock;
+    return $this->belongsTo(User::class);
   }
 
   public function provider_id()
@@ -63,7 +63,7 @@ class Product extends Model
 
   public function order()
   {
-    return $this->belongsToMany(Order::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsToMany(Order::class)->withTimestamps();
   }
 
   public function order_id()
@@ -73,7 +73,7 @@ class Product extends Model
 
   public function sale()
   {
-    return $this->belongsToMany(Sale::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsToMany(Sale::class)->withTimestamps();
   }
 
   public function sale_id()
@@ -83,7 +83,7 @@ class Product extends Model
 
   public function state()
   {
-    return $this->belongsToMany(State::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsTo(State::class);
   }
 
   public function state_id()
@@ -93,7 +93,7 @@ class Product extends Model
 
   public function cart()
   {
-    return $this->belongsToMany(Cart::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsToMany(Cart::class)->withTimestamps();
   }
 
   public function cart_id()
@@ -108,7 +108,7 @@ class Product extends Model
 
   public function maintenance()
   {
-    return $this->belongsToMany(Maintenance::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsToMany(Maintenance::class)->withTimestamps();
   }
 
   public function maintenance_id()

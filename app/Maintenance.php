@@ -10,6 +10,16 @@ class Maintenance extends Model
     'name', 'description',
   ];
 
+  public function provider()
+  {
+    return $this->belongsTo(User::class);
+  }
+
+  public function provider_id()
+  {
+    return $this->provider->id;
+  }
+
   public function product()
   {
     return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
@@ -20,14 +30,14 @@ class Maintenance extends Model
     return $this->product->lists('id');
   }
 
-  public function user()
+  public function storer()
   {
     return $this->belongsTo(User::class);
   }
 
-  public function user_id()
+  public function storer_id()
   {
-    return $this->user->id;
+    return $this->storer->id;
   }
 
   public function state()

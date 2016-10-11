@@ -28,9 +28,12 @@ class MaintenancesController extends Controller
   */
   public function index()
   {
-    $maintenances = Maintenance::all();
+    $maintenances = Maintenance::with('provider')->get();
+    
     if (Auth::user()->role_id == 2) {
-      $maintenances = Maintenance::all()->where('provider_id', Auth::id())->get();
+      $maintenances = Maintenance::with(['provider' => function ($query) {
+          $query->where('provider_id', Auth::id());
+      }])->get();
     }
     return view('maintenances.index', compact('maintenances'));
   }
@@ -57,7 +60,7 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'error');
       return redirect('maintenances/create')
       ->withErrors($validator)
       ->withInput();
@@ -70,7 +73,7 @@ class MaintenancesController extends Controller
 
       $user->maintenance()->save($maintenance);
       $maintenance->save();
-      flash('Create Successful!', 'success');
+      Flash('Create Successful!', 'success');
       return redirect('maintenances');
     }
   }
@@ -101,9 +104,9 @@ class MaintenancesController extends Controller
     if($maintenance->state->id == 401) {
       $state = State::findOrFail(400); # On-Maintenance
       $state->maintenance()->save($maintenance);
-      flash('Maintenance Complete!', 'success');
+      Flash('Maintenance Complete!', 'success');
     } else {
-      flash('Maintenance cant be Completed!', 'warning');
+      Flash('Maintenance cant be Completed!', 'warning');
       return redirect('maintenances/' . $id . '/edit');
     }
     return redirect('maintenances');
@@ -123,9 +126,9 @@ class MaintenancesController extends Controller
     if($maintenance->state->id == 400) {
       $state = State::findOrFail(402); # On-Maintenance
       $state->maintenance()->save($maintenance);
-      flash('All Products in Maintenance Returned!', 'success');
+      Flash('All Products in Maintenance Returned!', 'success');
     } else {
-      flash('Some products doesnt be returned yet or repaired!', 'warning');
+      Flash('Some products doesnt be returned yet or repaired!', 'warning');
       return redirect('maintenances/' . $id . '/edit');
     }
     return redirect('maintenances');
@@ -145,9 +148,9 @@ class MaintenancesController extends Controller
     if($maintenance->state->id == 401) {
       $state = State::findOrFail(403); # On-Maintenance
       $state->maintenance()->save($maintenance);
-      flash('Maintenance has been Cancelled!', 'success');
+      Flash('Maintenance has been Cancelled!', 'success');
     } else {
-      flash('The maintenance cant be canceled the provider are working now!', 'warning');
+      Flash('The maintenance cant be canceled the provider are working now!', 'warning');
       return redirect('maintenances/' . $id . '/edit');
     }
     return redirect('maintenances');
@@ -180,7 +183,7 @@ class MaintenancesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'error');
       return redirect('maintenances/' . $maintenance->id . '/edit')
       ->withErrors($validator)
       ->withInput();
@@ -191,7 +194,7 @@ class MaintenancesController extends Controller
       }
       $maintenance->name = $request->name;
       $maintenance->save();
-      flash('Update Successful!', 'success');
+      Flash('Update Successful!', 'success');
       return redirect('maintenances');
     }
   }
@@ -236,7 +239,7 @@ class MaintenancesController extends Controller
       ->where(['product_id' => $product->id, 'state_id' => $state->id])
       ->update(['quantity' => $request->quantity]);
 
-      flash('Item has been updated!', 'success');
+      Flash('Item has been updated!', 'success');
       return redirect('maintenances/' . $id . '/edit');
     }
     $state = State::findOrFail(300); # Available
@@ -247,7 +250,7 @@ class MaintenancesController extends Controller
     $maintenance->product()->attach($product, ['quantity' => $request->quantity]);
     $state->product()->attach($product, ['quantity' => $request->quantity]);
 
-    flash('Item has been added!', 'success');
+    Flash('Item has been added!', 'success');
     return redirect('maintenances/' . $id . '/edit');
   }
 
@@ -265,7 +268,7 @@ class MaintenancesController extends Controller
     $state = State::findOrFail(303);
     $state->product()->detach($product);
     $maintenance->product()->detach($product);
-    flash('Item has been Removed!', 'success');
+    Flash('Item has been Removed!', 'success');
     return redirect('products/' . $product->id);
   }
 

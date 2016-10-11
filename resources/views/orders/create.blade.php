@@ -4,10 +4,9 @@
 
 <h1>{{trans('strings.Create')}}</h1>
 
-{!! Form::open(['route' => 'orders.store', 'method' => 'POST']) !!}
+{!! Form::open(['url' => 'orders']) !!}
 
   {!! Form::label('Start Hour') !!}
-
   {!! Form::time('start', $start, ['class' => 'form-control']) !!}
 
   {!! Form::label('End Hour') !!}

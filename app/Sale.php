@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
+
+  protected $fillable = [
+    'out', 'state_id', 'user_id', 'order_id'
+  ];
+
   public function user()
   {
     return $this->belongsTo(User::class);

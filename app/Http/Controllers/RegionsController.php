@@ -45,13 +45,13 @@ class RegionsController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'error');
       return redirect('regions/create')
       ->withErrors($validator)
       ->withInput();
     } else {
       Region::create($request->all());
-      flash('Create Successful!', 'success');
+      Flash('Create Successful!', 'success');
       return redirect('regions');
     }
   }
@@ -92,7 +92,7 @@ class RegionsController extends Controller
   public function destroy($id)
   {
     Region::findOrFail($id)->delete();
-    flash('Region has been Removed!', 'success');
+    Flash('Region has been Removed!', 'success');
     return redirect('regions');
   }
 

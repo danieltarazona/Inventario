@@ -21,8 +21,7 @@ class CreateProductsTable extends Migration
             $table->date('date');
             $table->decimal('price', 10, 2);
             $table->string('photo');
-            $table->integer('stock');
-            $table->integer('views');
+            $table->integer('state_id')->unsigned()->nullable();
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('region_id')->unsigned()->nullable();
             $table->integer('city_id')->unsigned()->nullable();

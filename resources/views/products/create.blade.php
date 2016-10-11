@@ -12,9 +12,6 @@
   {!! Form::label('Photo', trans('strings.Image')) !!}
   {!! Form::file('photo', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Stock', trans('strings.Stock')) !!}
-  {!! Form::text('stock', null, ['class' => 'form-control']) !!}
-
   {!! Form::label('Serial', trans('strings.Serial')) !!}
   {!! Form::text('serial', null, ['class' => 'form-control']) !!}
 

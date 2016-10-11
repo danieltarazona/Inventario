@@ -16,14 +16,14 @@
   {!! Form::label('Warranty', trans('strings.Warranty')) !!}
   {!! Form::text('warranty', $product->warranty, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Stock', trans('strings.Stock')) !!}
-  {!! Form::text('stock', $product->stock, ['class' => 'form-control']) !!}
-
   {!! Form::label('Year', trans('strings.Year')) !!}
   {!! Form::text('year', $product->year, ['class' => 'form-control']) !!}
 
   {!! Form::label('Price', trans('strings.Price')) !!}
   {!! Form::text('price', $product->price, ['class' => 'form-control']) !!}
+
+  {!! Form::label('State', trans('strings.State')) !!}
+  {!! Form::select('state_id', $states, $product->state_id, ['class' => 'form-control']) !!}
 
   {!! Form::label('Region', trans('strings.Region')) !!}
   {!! Form::select('region_id', $regions, $product->region_id, ['class' => 'form-control']) !!}

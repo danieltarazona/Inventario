@@ -44,13 +44,13 @@ class RolesController extends Controller
   {
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'error');
       return redirect('roles/create')
       ->withErrors($validator)
       ->withInput();
     } else {
       Role::create($request->all());
-      flash('Create Successful!', 'success');
+      Flash('Create Successful!', 'success');
       return redirect('roles');
     }
   }
@@ -67,7 +67,7 @@ class RolesController extends Controller
     $role = Role::findOrFail($id);
     $user = User::findOrFail($user_id);
     $role->user()->save($user);
-    flash('Role has been Assigned!', 'success');
+    Flash('Role has been Assigned!', 'success');
     return redirect('users/' . $user_id);
   }
 
@@ -108,14 +108,14 @@ class RolesController extends Controller
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'error');
       return redirect('roles/' . $id . '/edit')
       ->withErrors($validator)
       ->withInput();
     } else {
       $input = $request->all();
       $role->fill($input)->save();
-      flash('Update Successful!', 'success');
+      Flash('Update Successful!', 'success');
       return redirect('roles');
     }
   }
@@ -129,7 +129,7 @@ class RolesController extends Controller
   public function destroy($id)
   {
     Role::findOrFail($id)->delete();
-    flash('Role has been Removed!', 'success');
+    Flash('Role has been Removed!', 'success');
     return redirect('roles');
   }
 

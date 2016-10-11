@@ -11,6 +11,9 @@
     {!! Form::label('Name', trans('strings.Name')) !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
+    {!! Form::label('Label', trans('strings.label')) !!}
+    {!! Form::text('label', null, ['class' => 'form-control']) !!}
+
     <br>
 
     {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-primary')) }}
@@ -24,6 +27,7 @@
       <tr>
         <th>ID</th>
         <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.label')}}</th>
         <th>{{trans('strings.Actions')}}</th>
       </tr>
     </thead>
@@ -32,6 +36,7 @@
       <tr>
         <td>{{ $state->id }}</td>
         <td>{{ $state->name }}</td>
+        <td>{{ $state->label }}</td>
         <td>
           <a href="{{ route('states.edit', $state->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>

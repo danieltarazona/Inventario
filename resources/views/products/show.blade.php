@@ -22,104 +22,37 @@
         <input type="hidden" name="name" value="{{ $product->name or 'Blank' }}">
         <input type="hidden" name="price" value="{{ $product->price or 'Blank' }}">
 
+        <h4>
+          {{trans('strings.State')}}
+          <span class="{{ $product->state->label }}">{{ $product->state->name }}</span>
+        </h4>
+
         <h4>{{trans('strings.Provider')}}: {{ $product->provider->name or 'Blank' }}</h4>
-        <h4>{{trans('strings.State')}}: {{ $product->state->name or 'Blank' }}</h4>
         <h4>{{trans('strings.Serial')}}: {{ $product->serial or 'Blank' }}</h4>
         <h4>{{trans('strings.Model')}}: {{ $product->year or 'Blank' }}</h4>
-        <h4>{{trans('strings.BuyDate')}}: {{ $product->buy or 'Blank' }}</h4>
+        <h4>{{trans('strings.BuyDate')}}: {{ $product->create_at or 'Blank' }}</h4>
         <h4>{{trans('strings.Price')}}: {{ $product->price or 'Blank' }}</h4>
         <h4>{{trans('strings.Warranty')}}: {{ $product->warranty or 'Blank' }} Months</h4>
 
         {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-        <input type="number" name="quantity" value="1">
         <button class="btn btn-success" type="submit">{{trans('strings.Order')}}</button>
         {!! Form::close() !!}
+
+        <br>
+
+        {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
+        <button class="btn btn-danger" type="submit">{{trans('strings.Damage')}}</button>
+        {!! Form::close() !!}
+
+        <br>
 
         {!! Form::open(['route' => ['products.returned', $product->id], 'method' => 'POST']) !!}
         <button class="btn btn-primary" type="submit">{{trans('strings.Returned')}}</button>
         {!! Form::close() !!}
 
-        {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
-        <input type="number" name="quantity" value="1">
-        <button class="btn btn-danger" type="submit">{{trans('strings.Damage')}}</button>
-        {!! Form::close() !!}
-
         {{ $product->description }}
       </div> <!-- end col-md-8 -->
     </div> <!-- end row -->
-
-    <hr>
-
-    <h1>{{trans('strings.States')}}</h1>
-
-    <table class="table">
-
-      <thead>
-        <tr>
-          <th>{{trans('strings.State')}}</th>
-          <th>{{trans('strings.Quantity')}}</th>
-        </tr>
-      </thead>
-
-      @foreach($product->state as $state)
-        <tr>
-          @if($state->name == 'Available')
-            <td><span class="label label-success">{{ $state->name }}</span></td>
-          @endif
-
-          @if($state->name == 'On-Maintenance')
-            <td><span class="label label-warning">{{ $state->name }}</span></td>
-          @endif
-
-          @if($state->name == 'Damage')
-            <td><span class="label label-danger">{{ $state->name }}</span></td>
-
-          @endif
-
-          @if($state->name == 'On-Order')
-            <td><span class="label label-primary">{{ $state->name }}</span></td>
-          @endif
-
-          @if($state->name == 'On-Loan')
-            <td><span class="label label-default">{{ $state->name }}</span></td>
-          @endif
-
-          <td>{{ $state->pivot->quantity }}</td>
-        </tr>
-      @endforeach
-    </table>
-
-    <hr>
-
-    <h1>{{trans('strings.ProdRepair')}}</h1>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>{{trans('strings.Name')}}</th>
-          <th>{{trans('strings.Description')}}</th>
-          <th>{{trans('strings.Quantity')}}</th>
-          <th>{{trans('strings.Actions')}}</th>
-        </tr>
-      </thead>
-
-      @foreach ($product->maintenance as $maintenance)
-        <tr>
-          <td>{{ $maintenance->id }}</td>
-          <td><a href="/maintenances/{{ $maintenance->id }}">{{ $maintenance->name }}</a></td>
-          <td>{{ $maintenance->description }}</td>
-          <td>{{ $maintenance->pivot->quantity }}</td>
-          <td>
-            @if(Auth::user()->role_id > 1)
-              {!! Form::open(['route' => ['maintenances.remove', $maintenance->id, $product->id], 'method' => 'DELETE']) !!}
-              <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-              {!! Form::close() !!}
-            @endif
-          </td>
-        </tr>
-      @endforeach
-    </table>
 
     <hr>
 
@@ -141,12 +74,9 @@
           <td><a href="/maintenances/{{ $maintenance->id }}">{{ $maintenance->name }}</a></td>
           <td>{{ $maintenance->description }}</td>
           <td>
-            @if(Auth::user()->role_id > 1)
-              {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
-              <input type="number" name="quantity" value="1">
-              <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> {{trans('strings.Repair')}}</button>
-              {!! Form::close() !!}
-            @endif
+            {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
+            <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> {{trans('strings.Repair')}}</button>
+            {!! Form::close() !!}
           </td>
         </tr>
       @endforeach

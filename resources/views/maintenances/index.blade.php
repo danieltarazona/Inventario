@@ -15,14 +15,9 @@
       <tr>
         <th>ID</th>
         <th>{{trans('strings.Name')}}</th>
-        @if(Auth::user()->role_id > 2)
-          <th>{{trans('strings.Provider')}}</th>
-        @endif
-        @if(Auth::user()->role_id > 1)
-          <th>{{trans('strings.Store')}}</th>
-        @endif
-        <th>{{trans('strings.Create')}}</th>
-        <th>{{trans('strings.StateID')}}</th>
+        <th>{{trans('strings.Provider')}}</th>
+        <th>{{trans('strings.Store')}}</th>
+        <th>{{trans('strings.Date')}}</th>
         <th>{{trans('strings.State')}}</th>
         <th>{{trans('strings.Actions')}}</th>
       </tr>
@@ -33,34 +28,10 @@
       <tr>
         <td>{{ $maintenance->id or 'Blank'  }}</td>
         <td>{{ $maintenance->name or 'Blank' }}</td>
-        @if(Auth::user()->role_id > 2)
-          <td>{{ $maintenance->provider_id or 'Blank' }}</td>
-        @endif
-        @if(Auth::user()->role_id > 1)
-          <td>{{ $maintenance->user_id or 'Blank' }}</td>
-        @endif
+        <td>{{ $maintenance->provider->username or 'Blank' }}</td>
+        <td>{{ $maintenance->provider->store->name or 'Blank' }}</td>
         <td>{{ $maintenance->created_at or 'Blank' }}</td>
-        <td>{{ $maintenance->state->id }}</td>
-
-        @if($maintenance->state->name == 'Waiting')
-          <td><span class="label label-warning">{{ $maintenance->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($maintenance->state->name == 'Complete')
-          <td><span class="label label-primary">{{ $maintenance->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($maintenance->state->name == 'Product or Products Not Found')
-          <td><span class="label label-danger">{{ $maintenance->state->name or 'Blank'  }}</span></td>
-        @endif
-
-        @if($maintenance->state->name == 'Returned')
-          <td><span class="label label-success">{{ $maintenance->state->name or 'Blank'  }}</span></td>
-        @endif
-
-        @if($maintenance->state->name == 'Cancelled')
-          <td><span class="label label-default">{{ $maintenance->state->name or 'Blank'  }}</span></td>
-        @endif
+        <td><span class="{{ $maintenance->state->label }}">{{ $maintenance->state->name or 'Blank' }}</span></td>
 
         <td>
           <a href="{{ route('maintenances.show', $maintenance->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

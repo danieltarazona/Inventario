@@ -11,7 +11,7 @@ class RegionsTableSeeder extends Seeder
      */
     public function run()
     {
-      $region = factory(App\Region::class)->create(['name' => 'Detroit']);
+      factory(App\Region::class, 5)->create();
 
       echo "Done" . PHP_EOL;
 

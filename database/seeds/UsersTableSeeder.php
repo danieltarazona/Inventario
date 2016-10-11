@@ -11,7 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
       factory(App\User::class)->create([
         'username' => 'Daniel',
         'email' => 'user@user.com',
@@ -52,12 +51,17 @@ class UsersTableSeeder extends Seeder
         'state_id' => 200
       ]);
 
-      $users = factory(App\User::class, 10)->create([
-        'store_id' => 1,
-        'role_id' => 1,
-        'state_id' => 200,
-      ])->each(function($user)
+      $users = factory(App\User::class, 10)->create()->each(function($user)
       {
+        $state = App\State::find(200);
+        $state->user()->save($user);
+
+        $role = App\Role::find(1);
+        $role->user()->save($user);
+
+        $store = App\Store::find(1);
+        $store->user()->save($user);
+
         $cart = App\Cart::create();
         $cart->user()->save($user);
       });

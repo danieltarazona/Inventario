@@ -16,7 +16,7 @@ class CreateMaintenancesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('storer_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
             $table->boolean('complete')->nullable();

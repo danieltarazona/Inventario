@@ -49,13 +49,13 @@ class CitiesController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      flash('Validation Fail!', 'error');
+      Flash('Validation Fail!', 'error');
       return redirect('cities')
         ->withErrors($validator)
         ->withInput();
     } else {
       City::create($request->all());
-      flash('Create Successful!', 'success');
+      Flash('Create Successful!', 'success');
       return redirect('cities');
     }
   }
@@ -98,14 +98,14 @@ class CitiesController extends Controller
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      flash('Validation Fail!', 'danger');
+      Flash('Validation Fail!', 'danger');
       return redirect('cities/' . $city->id . '/edit')
       ->withErrors($validator)
       ->withInput();
     } else {
       $input = $request->all();
       $city->fill($input)->save();
-      flash('Update Successful!', 'success');
+      Flash('Update Successful!', 'success');
       return redirect('cities');
     }
   }

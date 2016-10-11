@@ -11,24 +11,23 @@ class MaintenancesTableSeeder extends Seeder
      */
     public function run()
     {
-      $maintenances = factory(App\Maintenance::class, 3)->create()->each(function($maintenance)
+      factory(App\Maintenance::class, 3)->create()->each(function($maintenance)
       {
-        $user = App\User::find(1);
-        $user->maintenance()->save($maintenance);
+        $provider = App\User::find(2);
+        $provider->maintenance_provider()->save($maintenance);
+
+        $storer = App\User::find(3);
+        $storer->maintenance_storer()->save($maintenance);
+
+        $products = App\Product::all()->take(5);
+
+        $state = App\State::find(303);
+        $state->product()->saveMany($products);
 
         $state = App\State::find(401);
         $state->maintenance()->save($maintenance);
 
-        $products = factory(App\Product::class, 3)->create()->each(function($product)
-        {
-          $state = App\State::find(300);
-          $state->product()->attach($product, ['quantity' => $product->stock]);
-        });
-
-        $maintenance->product()->attach($products, ['quantity' => 10]);
-
-        $state = App\State::find(303);
-        $state->product()->attach($products, ['quantity' => 10]);
+        $maintenance->product()->saveMany($products);
       });
 
       echo "Done" . PHP_EOL;

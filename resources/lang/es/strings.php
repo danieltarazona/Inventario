@@ -2,7 +2,10 @@
 
 return array(
 
-
+	'clean' => 'Limpiar',
+	'cart' => 'Carrito',
+	'months' => 'Meses',
+	'your' => 'Tu',
 	'E-Mail' => 'Correo Electrónico',
 	'Password' => 'Contraseña',
 	'Rememberme' => 'Recordarme',
@@ -35,7 +38,7 @@ return array(
 	'Order' => 'Reservar',
 
 	'Create' => 'Agregar',
-	
+
 	'Image' => 'Imágen',
 	'Name' => 'Nombre',
 
@@ -64,6 +67,7 @@ return array(
 	'Maintenance' => 'Mantenimiento',
 
 	'Stock' => 'Stock',
+	'label' => 'Label',
 
 	'Date' => 'Fecha',
 	'Start' => 'Inicio',
@@ -108,12 +112,12 @@ return array(
 	'RoleID' => 'ID Rol',
 
 
-	
 
-	
 
-	
-	
+
+
+
+
 
 	);
 ?>

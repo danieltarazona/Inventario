@@ -46,7 +46,7 @@
         <th>{{trans('strings.Category')}}</th>
         <th>{{trans('strings.Provider')}}</th>
         <th>{{trans('strings.Store')}}</th>
-        <th>{{trans('strings.Stock')}}</th>
+        <th>{{trans('strings.State')}}</th>
         <th>{{trans('strings.Serial')}}</th>
         <th>{{trans('strings.Model')}}</th>
         <th>{{trans('strings.Buy')}}</th>
@@ -62,14 +62,14 @@
         <td><img src="{{ $product->photo }}" alt="" style="weight:50px; height:50px;"/></td>
         <td><a href="/products/{{$product->id}}">{{ $product->name }}</a></td>
         <td>{{ $product->category->name or 'Blank' }}</td>
-        <td>{{ $product->provider->name or 'Blank' }}</td>
+        <td>{{ $product->provider->username or 'Blank' }}</td>
         <td>{{ $product->store->name or 'Blank' }}</td>
-        <td>{{ $product->stock or 'Blank' }}</td>
+        <td><span class="{{ $product->state->label }}">{{ $product->state->name }}</span></td>
         <td>{{ $product->serial or 'Blank' }}</td>
         <td>{{ $product->year or 'Blank' }}</td>
         <td>{{ $product->created_at->year or 'Blank' }}</td>
         <td>{{ $product->price or 'Blank' }}</td>
-        <td>{{ $product->warranty or 'Blank' }} Months</td>
+        <td>{{ $product->warranty or 'Blank' }} {{trans('strings.months')}}</td>
         <td>
           <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>

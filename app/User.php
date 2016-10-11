@@ -29,6 +29,16 @@ class User extends Authenticatable
     'password', 'remember_token',
   ];
 
+  public function product()
+  {
+    return $this->hasMany(Product::class, 'provider_id');
+  }
+
+  public function product_id()
+  {
+    return $this->product->id;
+  }
+
   public function cart()
   {
     return $this->belongsTo(Cart::class);
@@ -129,10 +139,14 @@ class User extends Authenticatable
     return $this->event->list('id');
   }
 
-
-  public function maintenance()
+  public function maintenance_provider()
   {
-    return $this->hasMany(Maintenance::class);
+    return $this->hasMany(Maintenance::class, 'provider_id');
+  }
+
+  public function maintenance_storer()
+  {
+    return $this->hasMany(Maintenance::class, 'storer_id');
   }
 
   public function maintenance_id()

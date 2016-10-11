@@ -36,6 +36,7 @@ $factory->define(App\Category::class, function ($faker) {
 $factory->define(App\State::class, function ($faker) {
   return [
     'name' => $faker->word,
+    'label' => 'label label-success'
   ];
 });
 
@@ -71,13 +72,11 @@ $factory->define(App\Product::class, function ($faker) {
   return [
     'name' => $faker->name,
     'photo' => "/img/products/ipad.jpeg",
-    'stock' => 100,
-    'views' => 0,
     'warranty' => $faker->numberBetween($min = 1, $max = 60),
     'price' => $faker->numberBetween($min = 100000, $max = 5000000),
     'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
     'year' => $faker->numberBetween($min = 2010, $max = 2016),
-    'serial' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]'),
+    'serial' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]')
   ];
 });
 
@@ -102,14 +101,13 @@ $factory->define(App\User::class, function ($faker) {
     'cellphone' => $faker->phoneNumber,
     'password' => bcrypt(str_random(10)),
     'photo' => "/img/users/profile.png",
-    'remember_token' => str_random(10),
-    'cart_id' => 1
+    'remember_token' => str_random(10)
   ];
 });
 
 $factory->define(App\Comment::class, function ($faker) {
   return [
-    'name' => $faker->text,
+    'name' => $faker->bs,
   ];
 });
 
