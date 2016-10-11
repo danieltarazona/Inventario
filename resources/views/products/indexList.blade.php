@@ -56,6 +56,8 @@
       </tr>
     </thead>
 
+    {{ $products->links() }}
+
     @foreach ($products as $product)
       <tr>
         <td>{{ $product->id }}</td>

@@ -23,6 +23,8 @@
       </tr>
     </thead>
 
+    {{ $users->links() }}
+
     @foreach ($users as $user)
 
       <tr>
@@ -49,6 +51,11 @@
       </tr>
 
     @endforeach
+
+
+
   </table>
+
+
 
 @stop

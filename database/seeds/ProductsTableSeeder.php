@@ -11,7 +11,7 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Product::class, 10)->create()->each(function($product)
+      factory(App\Product::class, 50)->create()->each(function($product)
       {
         $category = App\Category::find(1);
         $category->product()->save($product);

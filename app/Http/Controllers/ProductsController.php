@@ -37,7 +37,7 @@ class ProductsController extends Controller
   */
   public function index()
   {
-    $products = Product::all();
+    $products = Product::paginate(10);
     if (Auth::id() == 1)
     {
       return view('products.indexCard', compact('products'));
