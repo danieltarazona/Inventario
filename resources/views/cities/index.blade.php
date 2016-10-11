@@ -2,21 +2,21 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Cities')}}</h1>
+  <h1>{{trans('strings.cities')}}</h1>
 
   <br>
 
   {!! Form::open(['route' => 'cities.store', 'method' => 'POST']) !!}
 
-    {!! Form::label('Name', trans('strings.Name')) !!}
+    {!! Form::label('Name', trans('strings.name')) !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-    {!! Form::label('Region', trans('strings.Region')) !!}
+    {!! Form::label('Region', trans('strings.region')) !!}
     {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 
     <br>
 
-    {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-primary')) }}
+    {{ Form::submit(trans('strings.create'), array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
 
@@ -27,10 +27,10 @@
       <tr>
         <th>ID</th>
 
-        <th>{{trans('strings.Name')}}</th>
-        <th>{{trans('strings.Region')}}</th>
-        <th>{{trans('strings.Stores')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.name')}}</th>
+        <th>{{trans('strings.region')}}</th>
+        <th>{{trans('strings.stores')}}</th>
+        <th>{{trans('strings.actions')}}</th>
 
 
 
@@ -47,11 +47,11 @@
 
         <td>
 
-          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary">{{trans('strings.Show')}}</a>
+          <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary">{{trans('strings.show')}}</a>
         </td>
 
         <td>
-          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning">{{trans('strings.Update')}}</a>
+          <a href="{{ route('cities.edit', $city->id) }}" class="btn btn-warning">{{trans('strings.update')}}</a>
 
           <a href="{{ route('cities.show', $city->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>

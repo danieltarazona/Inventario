@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Maintenances')}}</h1>
+  <h1>{{trans('strings.maintenances')}}</h1>
 
   <br>
 
-  <a href="{{ route('maintenances.create') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
+  <a href="{{ route('maintenances.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
   <hr>
 
@@ -14,12 +14,12 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Name')}}</th>
-        <th>{{trans('strings.Provider')}}</th>
-        <th>{{trans('strings.Store')}}</th>
-        <th>{{trans('strings.Date')}}</th>
-        <th>{{trans('strings.State')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.name')}}</th>
+        <th>{{trans('strings.provider')}}</th>
+        <th>{{trans('strings.store')}}</th>
+        <th>{{trans('strings.date')}}</th>
+        <th>{{trans('strings.state')}}</th>
+        <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 

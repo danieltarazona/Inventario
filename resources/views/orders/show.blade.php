@@ -18,12 +18,12 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Image')}}</th>
-        <th>{{trans('strings.Name')}}</th>
-        <th>{{trans('strings.Category')}}</th>
-        <th>{{trans('strings.Provider')}}</th>
-        <th>{{trans('strings.Store')}}</th>
-        <th>{{trans('strings.Serial')}}</th>
+        <th>{{trans('strings.image')}}</th>
+        <th>{{trans('strings.name')}}</th>
+        <th>{{trans('strings.category')}}</th>
+        <th>{{trans('strings.provider')}}</th>
+        <th>{{trans('strings.store')}}</th>
+        <th>{{trans('strings.serial')}}</th>
       </tr>
     </thead>
 

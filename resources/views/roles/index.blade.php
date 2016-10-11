@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Roles')}}</h1>
+  <h1>{{trans('strings.roles')}}</h1>
 
   <br>
 
-  <a href="{{ route('roles.create') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
+  <a href="{{ route('roles.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
   <hr>
 
@@ -14,8 +14,8 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Name')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.name')}}</th>
+        <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 

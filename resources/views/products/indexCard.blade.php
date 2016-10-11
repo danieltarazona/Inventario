@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Products')}}</h1>
+  <h1>{{trans('strings.product')}}</h1>
 
   <button type="button" class="btn btn-default">
     <a href="{{ route('products.index') }}">
@@ -32,7 +32,7 @@
               @if(Auth::user()->role_id > 1)
                 {!! Form::open(['route' => ['maintenances.add', $product->id], 'method' => 'POST']) !!}
                   <input type="number" name="quantity" value="1">
-                  <button class="btn btn-warning" type="submit">{{trans('strings.Maintenance')}}</button>
+                  <button class="btn btn-warning" type="submit">{{trans('strings.maintenance')}}</button>
                 {!! Form::close() !!}
               @endif
 

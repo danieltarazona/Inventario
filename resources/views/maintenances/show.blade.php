@@ -2,31 +2,31 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Maintenance')}} {{ $maintenance->id }}</h1>
+  <h1>{{trans('strings.maintenance')}} {{ $maintenance->id }}</h1>
 
-  <h3>{{trans('strings.State')}}: {{ $maintenance->state->name }}</h3>
-  <h3>{{trans('strings.Create')}}: {{ $maintenance->created_at }}</h3>
-  <h3>{{trans('strings.Name')}}: {{ $maintenance->name }}</h3>
-  <h3>{{trans('strings.Store')}}: {{ $maintenance->user->username or 'Blank' }}</h3>
-  <h3>{{trans('strings.Provider')}}: </h3>
+  <h3>{{trans('strings.state')}}: {{ $maintenance->state->name }}</h3>
+  <h3>{{trans('strings.create')}}: {{ $maintenance->created_at }}</h3>
+  <h3>{{trans('strings.name')}}: {{ $maintenance->name }}</h3>
+  <h3>{{trans('strings.store')}}: {{ $maintenance->user->username or 'Blank' }}</h3>
+  <h3>{{trans('strings.provider')}}: </h3>
   <h4>{{ $maintenance->description }}</h4>
 </h3>
 
 <br>
-<h1>{{trans('strings.ProdMaint')}}</h1>
+<h1>{{trans('strings.product_maintenance')}}</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th>ID</th>
       <th></th>
-      <th>{{trans('strings.Product')}}</th>
-      <th>{{trans('strings.Category')}}</th>
-      <th>{{trans('strings.Store')}}</th>
-      <th>{{trans('strings.Stock')}}</th>
-      <th>{{trans('strings.Serial')}}</th>
-      <th>{{trans('strings.Warranty')}}</th>
-      <th>{{trans('strings.Quantity')}}</th>
+      <th>{{trans('strings.product')}}</th>
+      <th>{{trans('strings.category')}}</th>
+      <th>{{trans('strings.store')}}</th>
+      <th>{{trans('strings.stock')}}</th>
+      <th>{{trans('strings.serial')}}</th>
+      <th>{{trans('strings.warranty')}}</th>
+      <th>{{trans('strings.quantity')}}</th>
     </tr>
   </thead>
 

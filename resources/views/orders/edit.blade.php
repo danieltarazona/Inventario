@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>{{trans('strings.Edit')}}</h1>
+<h1>{{trans('strings.edit')}}</h1>
 
   {!! Form::open(array('route' => array('orders.update', $order->id), 'method' => 'PATCH')) !!}
 
@@ -16,7 +16,7 @@
   {!! Form::label('Date') !!}
   {!! Form::date('date', $order->date, ['class' => 'form-control']) !!}
 
-  {{ Form::submit(trans('strings.Update'), array('class' => 'btn btn-warning')) }}
+  {{ Form::submit(trans('strings.update'), array('class' => 'btn btn-warning')) }}
 
 {!! Form::close() !!}
 

@@ -96,7 +96,7 @@ $factory->define(App\User::class, function ($faker) {
     'last_name' => $faker->name,
     'first_lastname' => $faker->name,
     'last_lastname' => $faker->name,
-    'adress' => $faker->address,
+    'address' => $faker->address,
     'telephone' => $faker->phoneNumber,
     'cellphone' => $faker->phoneNumber,
     'password' => bcrypt(str_random(10)),

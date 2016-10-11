@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{trans('strings.ResetPass')}}</div>
+                <div class="panel-heading">{{trans('strings.reset_password')}}</div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -18,7 +18,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">{{trans('strings.E-Mail')}}</label>
+                            <label for="email" class="col-md-4 control-label">{{trans('strings.email')}}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i> {{trans('strings.SendResetPass')}}
+                                    <i class="fa fa-btn fa-envelope"></i> {{trans('strings.send_reset_password')}}
                                 </button>
                             </div>
                         </div>
