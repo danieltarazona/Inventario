@@ -17,10 +17,13 @@ bootstrap/cache/
 .env.php
 .env
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.sqlite
 =======
 .env.example
 >>>>>>> parent of f496709... Update .gitignore
+=======
+>>>>>>> f4967093abfce4a2ad5061235d4f2ddddfb20657
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
