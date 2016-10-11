@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Sale')}} {{ $sale->id }}</h1>
+  <h1>{{trans('strings.sale')}} No. {{ $sale->id }}</h1>
 
   <hr>
 
@@ -10,9 +10,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Name')}}</th>
-        <th>{{trans('strings.Quantity')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.name')}}</th>
+        <th>{{trans('strings.serial')}}</th>
+        <th>{{trans('strings.state')}}</th>
       </tr>
     </thead>
 
@@ -20,14 +20,15 @@
       <tr>
         <td>{{ $product->id or 'Blank' }}</td>
         <td>{{ $product->name or 'Blank' }}</td>
-        <td>{{ $product->pivot->quantity or 'Blank' }}</td>
-
-        <td>
-          {!! Form::open(['route' => ['products.returned', $product->id], 'method' => 'POST']) !!}
-          <button class="btn btn-primary" type="submit">{{trans('strings.Returned')}}</button>
-          {!! Form::close() !!}
-        </td>
+        <td>{{ $product->serial or 'Blank' }}</td>
+        <td><span class="{{ $product->state->label }}">{{ $product->state->name or 'Blank' }}</span></td>
       </tr>
     @endforeach
+
+    </table>
+
+    {!! Form::open(['route' => ['sales.complete', $sale->id], 'method' => 'POST']) !!}
+      <button class="btn btn-primary" type="submit">{{trans('strings.complete')}}</button>
+    {!! Form::close() !!}
 
 @stop

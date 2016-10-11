@@ -9,8 +9,8 @@
       <tr>
         <th>ID</th>
         <th></th>
-        <th>{{trans('strings.Product')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.product')}}</th>
+        <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 
@@ -20,7 +20,7 @@
       <button class="btn btn-danger" type="submit" >{{trans('strings.clean')}}</button>
       {!! Form::close() !!}
 
-      <a href="{{ route('orders.create') }}" class="btn btn-success">{{trans('strings.Order')}}</a>
+      <a href="{{ route('orders.create') }}" class="btn btn-success">{{trans('strings.order')}}</a>
     </tr>
 
 

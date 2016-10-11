@@ -4,16 +4,16 @@
 
 {!! Form::open(['route' => 'categories.store', 'files' => true, 'method' => 'POST']) !!}
 
-  {!! Form::label('Name', trans('strings.Name')) !!}
+  {!! Form::label('Name', trans('strings.name')) !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Photo', trans('strings.Image')) !!}
+  {!! Form::label('Photo', trans('strings.image')) !!}
   {!! Form::file('photo', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Description', trans('strings.Description')) !!}
+  {!! Form::label('Description', trans('strings.description')) !!}
   {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
-  {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-success'))}}
+  {{ Form::submit(trans('strings.create'), array('class' => 'btn btn-success'))}}
 
 {!! Form::close() !!}
 

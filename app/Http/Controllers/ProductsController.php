@@ -19,6 +19,7 @@ use App\Provider;
 use App\State;
 use App\Order;
 use App\User;
+use App\Sale;
 
 use Carbon\Carbon;
 use Auth;
@@ -127,23 +128,6 @@ public function store(Request $request)
 }
 
 /**
-* Return Products of Sale
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-
-public function returned($id)
-{
-  $product = Product::findOrFail($id);
-  $product->update(['state_id' => 300]);
-
-  Flash('Item Update to Available!', 'success');
-
-  return redirect('products/' . $id);
-}
-
-/**
 * Display the specified resource.
 *
 * @param  int  $id
@@ -197,11 +181,6 @@ public function update(Request $request, $id)
   } else {
     $input = $request->all();
     $product->fill($input)->save();
-
-    $state = State::findOrFail(300); # Available
-    DB::table('product_state')
-    ->where(['product_id' => $product->id, 'state_id' => $state->id])
-    ->update(['quantity' => $product->stock]);
 
     Flash('Update Complete!', 'success');
     return redirect('products');

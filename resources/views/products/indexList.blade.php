@@ -2,11 +2,11 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Products')}}</h1>
+  <h1>{{trans('strings.products')}}</h1>
 
   <br>
 
-  <a href="{{ route('products.create') }}" class="btn btn-primary">{{trans('strings.Create')}}</a>
+  <a href="{{ route('products.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
   <button type="button" class="btn btn-default">
     <a href="{{ route('categories.index') }}">
@@ -41,18 +41,18 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Image')}}</th>
-        <th>{{trans('strings.Name')}}</th>
-        <th>{{trans('strings.Category')}}</th>
-        <th>{{trans('strings.Provider')}}</th>
-        <th>{{trans('strings.Store')}}</th>
-        <th>{{trans('strings.State')}}</th>
-        <th>{{trans('strings.Serial')}}</th>
-        <th>{{trans('strings.Model')}}</th>
-        <th>{{trans('strings.Buy')}}</th>
-        <th>{{trans('strings.Price')}}</th>
-        <th>{{trans('strings.Warranty')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.image')}}</th>
+        <th>{{trans('strings.name')}}</th>
+        <th>{{trans('strings.category')}}</th>
+        <th>{{trans('strings.provider')}}</th>
+        <th>{{trans('strings.store')}}</th>
+        <th>{{trans('strings.state')}}</th>
+        <th>{{trans('strings.serial')}}</th>
+        <th>{{trans('strings.model')}}</th>
+        <th>{{trans('strings.buy')}}</th>
+        <th>{{trans('strings.price')}}</th>
+        <th>{{trans('strings.warranty')}}</th>
+        <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 

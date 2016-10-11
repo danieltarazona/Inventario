@@ -23,31 +23,25 @@
         <input type="hidden" name="price" value="{{ $product->price or 'Blank' }}">
 
         <h4>
-          {{trans('strings.State')}}
+          {{trans('strings.state')}}
           <span class="{{ $product->state->label }}">{{ $product->state->name }}</span>
         </h4>
 
-        <h4>{{trans('strings.Provider')}}: {{ $product->provider->name or 'Blank' }}</h4>
-        <h4>{{trans('strings.Serial')}}: {{ $product->serial or 'Blank' }}</h4>
-        <h4>{{trans('strings.Model')}}: {{ $product->year or 'Blank' }}</h4>
-        <h4>{{trans('strings.BuyDate')}}: {{ $product->create_at or 'Blank' }}</h4>
-        <h4>{{trans('strings.Price')}}: {{ $product->price or 'Blank' }}</h4>
-        <h4>{{trans('strings.Warranty')}}: {{ $product->warranty or 'Blank' }} Months</h4>
+        <h4>{{trans('strings.provider')}}: {{ $product->provider->name or 'Blank' }}</h4>
+        <h4>{{trans('strings.serial')}}: {{ $product->serial or 'Blank' }}</h4>
+        <h4>{{trans('strings.model')}}: {{ $product->year or 'Blank' }}</h4>
+        <h4>{{trans('strings.buy_date')}}: {{ $product->create_at or 'Blank' }}</h4>
+        <h4>{{trans('strings.price')}}: {{ $product->price or 'Blank' }}</h4>
+        <h4>{{trans('strings.warranty')}}: {{ $product->warranty or 'Blank' }} Months</h4>
 
         {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-        <button class="btn btn-success" type="submit">{{trans('strings.Order')}}</button>
+        <button class="btn btn-success" type="submit">{{trans('strings.order')}}</button>
         {!! Form::close() !!}
 
         <br>
 
         {!! Form::open(['route' => ['products.damage', $product->id], 'method' => 'POST']) !!}
-        <button class="btn btn-danger" type="submit">{{trans('strings.Damage')}}</button>
-        {!! Form::close() !!}
-
-        <br>
-
-        {!! Form::open(['route' => ['products.returned', $product->id], 'method' => 'POST']) !!}
-        <button class="btn btn-primary" type="submit">{{trans('strings.Returned')}}</button>
+        <button class="btn btn-danger" type="submit">{{trans('strings.damage')}}</button>
         {!! Form::close() !!}
 
         {{ $product->description }}
@@ -56,15 +50,15 @@
 
     <hr>
 
-    <h1>{{trans('strings.Maintenances')}}</h1>
+    <h1>{{trans('strings.maintenances')}}</h1>
 
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
-          <th>{{trans('strings.Name')}}</th>
-          <th>{{trans('strings.Description')}}</th>
-          <th colspan="4">{{trans('strings.Actions')}}</th>
+          <th>{{trans('strings.name')}}</th>
+          <th>{{trans('strings.description')}}</th>
+          <th colspan="4">{{trans('strings.actions')}}</th>
         </tr>
       </thead>
 
@@ -75,7 +69,7 @@
           <td>{{ $maintenance->description }}</td>
           <td>
             {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
-            <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> {{trans('strings.Repair')}}</button>
+            <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> {{trans('strings.repair')}}</button>
             {!! Form::close() !!}
           </td>
         </tr>
@@ -84,13 +78,13 @@
 
     <hr>
 
-    <h1>{{trans('strings.Orders')}}</h1>
+    <h1>{{trans('strings.orders')}}</h1>
 
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
-          <th>{{trans('strings.State')}}</th>
+          <th>{{trans('strings.state')}}</th>
         </tr>
       </thead>
 
@@ -105,13 +99,13 @@
 
     <hr>
 
-    <h1>{{trans('strings.Sales')}}</h1>
+    <h1>{{trans('strings.sales')}}</h1>
 
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
-          <th>{{trans('strings.State')}}</th>
+          <th>{{trans('strings.state')}}</th>
         </tr>
       </thead>
 

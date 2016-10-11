@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Sales')}}</h1>
+  <h1>{{trans('strings.sales')}}</h1>
 
   <hr>
 
@@ -10,13 +10,12 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Start')}}</th>
-        <th>{{trans('strings.End')}}</th>
-        <th>{{trans('strings.StoreID')}}</th>
-        <th>{{trans('strings.Store')}}</th>
-        <th>{{trans('strings.StateID')}}</th>
-        <th>{{trans('strings.State')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.delivery')}}</th>
+        <th>{{trans('strings.return')}}</th>
+        <th>{{trans('strings.store_id')}}</th>
+        <th>{{trans('strings.storer')}}</th>
+        <th>{{trans('strings.state')}}</th>
+        <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 
@@ -27,27 +26,7 @@
         <td>{{ $sale->in or 'Blank' }}</td>
         <td>{{ $sale->user_id or 'Blank' }}</td>
         <td>{{ $sale->user->username or 'Blank' }}</td>
-        <td>{{ $sale->state_id or 'Blank' }}</td>
-
-        @if($sale->state->name == 'Waiting')
-          <td><span class="label label-warning">{{ $sale->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($sale->state->name == 'Complete')
-          <td><span class="label label-success">{{ $sale->state->name or 'Blank' }}</span></td>
-        @endif
-
-        @if($sale->state->name == 'Product or Products Not Found')
-          <td><span class="label label-danger">{{ $sale->state->name or 'Blank'  }}</span></td>
-        @endif
-
-        @if($sale->state->name == 'Returned')
-          <td><span class="label label-success">{{ $sale->state->name or 'Blank'  }}</span></td>
-        @endif
-
-        @if($sale->state->name == 'Cancelled')
-          <td><span class="label label-default">{{ $sale->state->name or 'Blank'  }}</span></td>
-        @endif
+        <td><span class="{{ $sale->state->label }}">{{ $sale->state->name or 'Blank' }}</span></td>
 
         <td>
           <a href="{{ route('sales.show', $sale->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>

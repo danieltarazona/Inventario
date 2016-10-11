@@ -69,6 +69,7 @@ class OrdersController extends Controller
 
     foreach ($order->product as $product) {
       $product->update(['state_id' => 302]);
+      $sale->product()->save($product);
     }
 
     return redirect('sales');

@@ -2,13 +2,13 @@
 
 @section('content')
 
-  <h1>{{trans('strings.States')}}</h1>
+  <h1>{{trans('strings.states')}}</h1>
 
   <br>
 
   {!! Form::open(['url' => 'states']) !!}
 
-    {!! Form::label('Name', trans('strings.Name')) !!}
+    {!! Form::label('Name', trans('strings.name')) !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 
     {!! Form::label('Label', trans('strings.label')) !!}
@@ -16,7 +16,7 @@
 
     <br>
 
-    {{ Form::submit(trans('strings.Create'), array('class' => 'btn btn-primary')) }}
+    {{ Form::submit(trans('strings.create'), array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
 
@@ -26,9 +26,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>{{trans('strings.Name')}}</th>
+        <th>{{trans('strings.name')}}</th>
         <th>{{trans('strings.label')}}</th>
-        <th>{{trans('strings.Actions')}}</th>
+        <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 

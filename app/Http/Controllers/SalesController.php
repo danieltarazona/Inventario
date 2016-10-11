@@ -44,26 +44,25 @@ class SalesController extends Controller
   }
 
   /**
-  * Show the form for editing the specified resource.
+  * Display the specified resource.
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function edit($id)
+  public function complete($id)
   {
+    $state = State::findOrFail(400);
     $sale = Sale::findOrFail($id);
-    return view('sales.edit', compact('sale'));
+    $state->sale()->save($sale);
+    $sale->in = Carbon::now(-5)->toTimeString();
+    $sale->save();
+
+    foreach ($sale->product as $product) {
+      $product->update(['state_id' => 300]);
+    }
+
+    Flash('Sale has been Complete!', 'success');
+    return redirect('sales');
   }
 
-  /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function update(Request $request, $id)
-  {
-    //
-  }
 }

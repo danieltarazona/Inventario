@@ -51,7 +51,7 @@ class UsersTableSeeder extends Seeder
         'state_id' => 200
       ]);
 
-      $users = factory(App\User::class, 10)->create()->each(function($user)
+      factory(App\User::class, 10)->create()->each(function($user)
       {
         $state = App\State::find(200);
         $state->user()->save($user);

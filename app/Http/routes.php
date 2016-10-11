@@ -20,7 +20,9 @@ Route::get('/contact', 'HomeController@contact');
 
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
-Route::resource('sales', 'SalesController', ['except' => 'destroy']);
+
+Route::resource('sales', 'SalesController', ['except' => 'destroy', 'update']);
+Route::post('/sales/{sales}/complete', array('uses' => 'SalesController@complete', 'as' => 'sales.complete'));
 
 Route::resource('orders', 'OrdersController', ['except' => 'destroy']);
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));
@@ -31,7 +33,6 @@ Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', '
 Route::resource('products', 'ProductsController');
 Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
 Route::post('/products/{products}/damage', array('uses' => 'ProductsController@damage', 'as' => 'products.damage'));
-Route::post('/products/{products}/returned', array('uses' => 'ProductsController@returned', 'as' => 'products.returned'));
 
 Route::resource('regions', 'RegionsController');
 Route::resource('states', 'StatesController', ['except' => 'show']);
@@ -40,7 +41,7 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('stores', 'StoresController');
 Route::resource('dashboard', 'DashboardController');
 
-Route::resource('cart', 'CartController', ['except' => ['index', 'create']]);
+Route::resource('cart', 'CartController', ['except' => ['index', 'store', 'create']]);
 Route::delete('/cart/remove/{product}', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
 Route::post('/cart/add/{product}', array('uses' => 'CartController@add', 'as' => 'cart.add'));
 

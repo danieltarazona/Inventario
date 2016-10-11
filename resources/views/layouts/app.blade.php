@@ -35,22 +35,22 @@
         <ul class="nav navbar-nav">
           @if(Auth::check())
             @if(Auth::user()->role_id != 2)
-              <li><a href="{{ url('categories') }}">{{trans('strings.Categories')}}</a></li>
-              <li><a href="{{ url('products') }}">{{trans('strings.Products')}}</a></li>
+              <li><a href="{{ url('categories') }}">{{trans('strings.categories')}}</a></li>
+              <li><a href="{{ url('products') }}">{{trans('strings.products')}}</a></li>
             @endif
             @if(Auth::user()->role_id == 1 or Auth::user()->role_id > 2)
-              <li><a href="{{ url('orders') }}">{{trans('strings.Orders')}}</a></li>
-              <li><a href="{{ url('sales') }}">{{trans('strings.Sales')}}</a></li>
+              <li><a href="{{ url('orders') }}">{{trans('strings.orders')}}</a></li>
+              <li><a href="{{ url('sales') }}">{{trans('strings.sales')}}</a></li>
             @endif
             @if (Auth::check() && Auth::user()->role_id > 1)
-              <li><a href="{{ url('maintenances') }}">{{trans('strings.Maintenances')}}</a></li>
+              <li><a href="{{ url('maintenances') }}">{{trans('strings.maintenances')}}</a></li>
               @if (Auth::user()->role_id > 3)
-                <li><a href="{{ url('roles') }}">{{trans('strings.Roles')}}</a></li>
-                <li><a href="{{ url('states') }}">{{trans('strings.States')}}</a></li>
-                <li><a href="{{ url('regions') }}">{{trans('strings.Regions')}}</a></li>
-                <li><a href="{{ url('cities') }}">{{trans('strings.Cities')}}</a></li>
-                <li><a href="{{ url('stores') }}">{{trans('strings.Stores')}}</a></li>
-                <li><a href="{{ url('users') }}">{{trans('strings.Users')}}</a></li>
+                <li><a href="{{ url('roles') }}">{{trans('strings.roles')}}</a></li>
+                <li><a href="{{ url('states') }}">{{trans('strings.states')}}</a></li>
+                <li><a href="{{ url('regions') }}">{{trans('strings.regions')}}</a></li>
+                <li><a href="{{ url('cities') }}">{{trans('strings.cities')}}</a></li>
+                <li><a href="{{ url('stores') }}">{{trans('strings.stores')}}</a></li>
+                <li><a href="{{ url('users') }}">{{trans('strings.users')}}</a></li>
               @endif
             @endif
           @endif
@@ -60,8 +60,8 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           @if (Auth::guest())
-            <li><a href="{{ url('/login') }}">{{trans('strings.Login')}}</a></li>
-            <li><a href="{{ url('/register') }}">{{trans('strings.Register')}}</a></li>
+            <li><a href="{{ url('/login') }}">{{trans('strings.login')}}</a></li>
+            <li><a href="{{ url('/register') }}">{{trans('strings.register')}}</a></li>
 
           @else
             @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
@@ -74,8 +74,8 @@
               </a>
 
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ url('/users/' . Auth::id() . '/edit') }}"><i class="fa fa-btn fa-user"></i>{{trans('strings.Profile')}}</a></li>
-                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{trans('strings.Logout')}}</a></li>
+                <li><a href="{{ url('/users/' . Auth::id() . '/edit') }}"><i class="fa fa-btn fa-user"></i>{{trans('strings.profile')}}</a></li>
+                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{trans('strings.logout')}}</a></li>
               </ul>
             </ul>
           </li>

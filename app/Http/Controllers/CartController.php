@@ -24,19 +24,6 @@ class CartController extends Controller
   }
 
   /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
-  public function store(Request $request)
-  {
-
-    Flash('Item was added to your cart!', 'success');
-    return redirect('cart/' . Auth::id());
-  }
-
-  /**
   * Add the specified product to cart.
   *
   * @param  int  $id
@@ -50,9 +37,10 @@ class CartController extends Controller
     if ($cart->product->contains($product))
     {
       Flash('Item in now inside the Cart!', 'danger');
-      return redirect('product/' . $product->id);
+      return redirect('products/' . $product->id . '/show');
     }
     $cart->product()->save($product);
+
     Flash('Item has been Added!', 'success');
     return redirect('cart/' . Auth::id());
   }

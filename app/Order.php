@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
   protected $fillable = [
-    'state_id'
+    'state_id', 'start', 'end', 'date', 'user_id'
   ];
 
   public function user()
@@ -42,7 +42,7 @@ class Order extends Model
 
   public function product()
   {
-    return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsToMany(Product::class)->withTimestamps();
   }
 
   public function product_id()

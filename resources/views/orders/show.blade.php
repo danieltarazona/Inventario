@@ -2,13 +2,13 @@
 
 @section('content')
 
-  <h1>{{trans('strings.Order')}} / {{ $order->id }}</h1>
+  <h1>{{trans('strings.orders')}} No. {{ $order->id }}</h1>
 
   <br>
 
   {!! Form::open(array('route' => array('orders.sale', $order->id), 'method' => 'POST')) !!}
 
-    {{ Form::submit(trans('strings.Sale'), array('class' => 'btn btn-primary')) }}
+    {{ Form::submit(trans('strings.sale'), array('class' => 'btn btn-primary')) }}
 
   {!! Form::close() !!}
 
@@ -24,7 +24,6 @@
         <th>{{trans('strings.Provider')}}</th>
         <th>{{trans('strings.Store')}}</th>
         <th>{{trans('strings.Serial')}}</th>
-        <th>{{trans('strings.Quantity')}}</th>
       </tr>
     </thead>
 
@@ -34,10 +33,9 @@
       <td><img src="{{ $product->photo }}" alt="" style="weight:50px; height:50px;"/></td>
       <td><a href="/products/{{$product->id}}">{{ $product->name }}</a></td>
       <td>{{ $product->category->name or 'Blank' }}</td>
-      <td>{{ $product->provider->name or 'Blank' }}</td>
+      <td>{{ $product->provider->username or 'Blank' }}</td>
       <td>{{ $product->store->name or 'Blank' }}</td>
       <td>{{ $product->serial or 'Blank' }}</td>
-      <td>{{ $product->pivot->quantity or 'Blank' }}</td>
     </tr>
   @endforeach
 
