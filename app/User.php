@@ -139,19 +139,19 @@ class User extends Authenticatable
     return $this->event->list('id');
   }
 
-  public function maintenance_provider()
+  public function repair_provider()
   {
-    return $this->hasMany(Maintenance::class, 'provider_id');
+    return $this->hasMany(Repair::class, 'provider_id');
   }
 
-  public function maintenance_storer()
+  public function repair_storer()
   {
-    return $this->hasMany(Maintenance::class, 'storer_id');
+    return $this->hasMany(Repair::class, 'storer_id');
   }
 
-  public function maintenance_id()
+  public function repair_id()
   {
-    return $this->maintenance->list('id');
+    return $this->repair->list('id');
   }
 
   public function role()

@@ -36,7 +36,7 @@ class StatesTableSeeder extends Seeder
 
       factory(App\State::class)->create([
         'id' => 303,
-        'name' => trans('strings.on_maintenance'),
+        'name' => trans('strings.on_repair'),
         'label' => 'label label-warning'
       ]);
 
@@ -73,6 +73,12 @@ class StatesTableSeeder extends Seeder
         'id' => 404,
         'name' => trans('strings.product_not_found'),
         'label' => 'label laber-warning'
+      ]);
+
+      factory(App\State::class)->create([
+        'id' => 405,
+        'name' => trans('strings.not_reclaim'),
+        'label' => 'label label-default'
       ]);
 
       echo "Done" . PHP_EOL;

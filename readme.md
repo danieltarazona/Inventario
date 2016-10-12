@@ -47,10 +47,10 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 300. Available (x)
 301. On-Order (x)
 302. On-Loan
-303. On-Maintenance (x)
+303. On-repair (x)
 304. Damage (x)
 
-## Orders Sales Maintenance States
+## Orders Sales repair States
 400. Complete
 401. Waiting
 402. Returned

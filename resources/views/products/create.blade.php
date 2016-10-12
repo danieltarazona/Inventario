@@ -24,9 +24,6 @@
   {!! Form::label('Warranty', trans('strings.warranty')) !!}
   {!! Form::text('warranty', null, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Date Buy', trans('strings.buy_date')) !!}
-  {!! Form::date('date', null, ['class' => 'form-control']) !!}
-
   {!! Form::label('Region', trans('strings.region')) !!}
   {!! Form::select('region_id', $regions, null, ['class' => 'form-control']) !!}
 

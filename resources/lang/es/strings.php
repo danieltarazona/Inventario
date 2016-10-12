@@ -2,11 +2,25 @@
 
 return array(
 
+	'not_reclaim' => 'No Reclamado',
+	'hour' => 'Hora',
+	'day' => 'Day',
+	'monday' => 'Lunes',
+	'tuesday' => 'Martes',
+	'wednesday' => 'Miercoles',
+	'thursday' =>'Jueves',
+	'friday' => 'Viernes',
+	'saturday' => 'Sabado',
+	'sunday' => 'Domingo',
+	'calendar' => 'Calendario',
+	'calendars' => 'Calendarios',
+	'events' => 'Eventos',
+	'event' => 'Evento',
 	'sale_id' => 'ID Prestamo',
 	'order_id' => 'ID Reserva',
 	'active' => 'Activo',
 	'inactive' => 'Inactivo',
-	'on_maintenance' => 'En Mantenimiento',
+	'on_repair' => 'En Mantenimiento',
 	'available' => 'Disponible',
 	'on_loan' => 'Prestado',
 	'damage' => 'Dañado',
@@ -41,7 +55,7 @@ return array(
 	'products' => 'Productos',
 	'orders' => 'Reservas',
 	'sales' => 'Préstamos',
-	'maintenances' => 'Mantenimientos',
+	'repairs' => 'Mantenimientos',
 	'roles' => 'Roles',
 	'states' => 'Estados',
 	'regions' => 'Regiones',
@@ -71,7 +85,7 @@ return array(
 
 	'edit' => 'Editar',
 
-	'product_maintenance' => 'Productos en Mantenimiento',
+	'product_repair' => 'Productos en Mantenimiento',
 
 	'category' => 'Categoría',
 	'provider' => 'Proveedor',
@@ -82,7 +96,7 @@ return array(
 	'state_id' => 'ID Estado',
 	'state' => 'Estado',
 
-	'maintenance' => 'Mantenimiento',
+	'repair' => 'Mantenimiento',
 
 	'stock' => 'Stock',
 	'label' => 'Label',

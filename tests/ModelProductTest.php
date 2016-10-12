@@ -60,14 +60,14 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testModelProductMaintenance()
+  public function testModelProductrepair()
   {
     $products = factory(App\Product::class, 10)->create();
-    $maintenance = App\Maintenance::find(1);
-    $maintenance->product()->sync($products);
-    $this->seeInDatabase('maintenance_product',
+    $repair = App\Repair::find(1);
+    $repair->product()->sync($products);
+    $this->seeInDatabase('repair_product',
     [
-      'maintenance_id' => $maintenance->id,
+      'repair_id' => $repair->id,
     ]);
   }
 }

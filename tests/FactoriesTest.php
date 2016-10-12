@@ -80,10 +80,10 @@ class FactoriesTest extends TestCase
       $this->seeInDatabase('logs', ['name' => $log->name]);
     }
 
-    public function testFactoryMaintenance()
+    public function testFactoryrepair()
     {
-      $maintenance = factory(App\Maintenance::class)->create(['name' => 'TestMaintenance']);
-      $this->seeInDatabase('maintenances', ['name' => $maintenance->name]);
+      $repair = factory(App\Repair::class)->create(['name' => 'Testrepair']);
+      $this->seeInDatabase('repairs', ['name' => $repair->name]);
     }
 
     public function testFactoryOrder()

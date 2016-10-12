@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaintenancesTable extends Migration
+class CreateRepairsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,14 @@ class CreateMaintenancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('maintenances', function (Blueprint $table) {
+        Schema::create('repairs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('description');
             $table->integer('storer_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
-            $table->boolean('complete')->nullable();
+            $table->integer('event_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateMaintenancesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('maintenances');
+        Schema::drop('repairs');
     }
 }

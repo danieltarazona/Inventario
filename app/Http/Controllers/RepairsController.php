@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 
-use App\Maintenance;
+use App\Repair;
 use App\Product;
 use App\State;
 use App\User;
@@ -18,7 +18,7 @@ use Carbon\Carbon;
 use DB;
 
 
-class MaintenancesController extends Controller
+class repairsController extends Controller
 {
 
   /**
@@ -28,14 +28,14 @@ class MaintenancesController extends Controller
   */
   public function index()
   {
-    $maintenances = Maintenance::with('provider')->get();
+    $repairs = Repair::with('provider')->get();
     
     if (Auth::user()->role_id == 2) {
-      $maintenances = Maintenance::with(['provider' => function ($query) {
+      $repairs = Repair::with(['provider' => function ($query) {
           $query->where('provider_id', Auth::id());
       }])->get();
     }
-    return view('maintenances.index', compact('maintenances'));
+    return view('repairs.index', compact('repairs'));
   }
 
   /**
@@ -46,7 +46,7 @@ class MaintenancesController extends Controller
   public function create()
   {
     $providers = User::where('role_id', 2)->lists('username', 'id');
-    return view('maintenances.create', compact('providers'));
+    return view('repairs.create', compact('providers'));
   }
 
   /**
@@ -61,20 +61,20 @@ class MaintenancesController extends Controller
 
     if ($validator->fails()) {
       Flash('Validation Fails!', 'error');
-      return redirect('maintenances/create')
+      return redirect('repairs/create')
       ->withErrors($validator)
       ->withInput();
     } else {
       $request->description = Input::get(Editor::input());
       $input = $request->all();
-      $maintenance = Maintenance::create($input);
-      $maintenance->state_id = 401;
+      $repair = Repair::create($input);
+      $repair->state_id = 401;
       $user = User::findOrFail(Auth::id());
 
-      $user->maintenance()->save($maintenance);
-      $maintenance->save();
+      $user->repair()->save($repair);
+      $repair->save();
       Flash('Create Successful!', 'success');
-      return redirect('maintenances');
+      return redirect('repairs');
     }
   }
 
@@ -86,13 +86,13 @@ class MaintenancesController extends Controller
   */
   public function show($id)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
 
-    return view('maintenances.show', compact('maintenance'));
+    return view('repairs.show', compact('repair'));
   }
 
   /**
-  * Complete Maintenance
+  * Complete repair
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
@@ -100,20 +100,20 @@ class MaintenancesController extends Controller
 
   public function complete($id)
   {
-    $maintenance = Maintenance::findOrFail($id);
-    if($maintenance->state->id == 401) {
-      $state = State::findOrFail(400); # On-Maintenance
-      $state->maintenance()->save($maintenance);
-      Flash('Maintenance Complete!', 'success');
+    $repair = Repair::findOrFail($id);
+    if($repair->state->id == 401) {
+      $state = State::findOrFail(400); # On-repair
+      $state->repair()->save($repair);
+      Flash('repair Complete!', 'success');
     } else {
-      Flash('Maintenance cant be Completed!', 'warning');
-      return redirect('maintenances/' . $id . '/edit');
+      Flash('repair cant be Completed!', 'warning');
+      return redirect('repairs/' . $id . '/edit');
     }
-    return redirect('maintenances');
+    return redirect('repairs');
   }
 
   /**
-  * Return Products of Maintenance
+  * Return Products of repair
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
@@ -121,21 +121,21 @@ class MaintenancesController extends Controller
 
   public function returned($id)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
 
-    if($maintenance->state->id == 400) {
-      $state = State::findOrFail(402); # On-Maintenance
-      $state->maintenance()->save($maintenance);
-      Flash('All Products in Maintenance Returned!', 'success');
+    if($repair->state->id == 400) {
+      $state = State::findOrFail(402); # On-repair
+      $state->repair()->save($repair);
+      Flash('All Products in repair Returned!', 'success');
     } else {
       Flash('Some products doesnt be returned yet or repaired!', 'warning');
-      return redirect('maintenances/' . $id . '/edit');
+      return redirect('repairs/' . $id . '/edit');
     }
-    return redirect('maintenances');
+    return redirect('repairs');
   }
 
   /**
-  * Cancel a Maintenance
+  * Cancel a repair
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
@@ -143,17 +143,17 @@ class MaintenancesController extends Controller
 
   public function canceled($id)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
 
-    if($maintenance->state->id == 401) {
-      $state = State::findOrFail(403); # On-Maintenance
-      $state->maintenance()->save($maintenance);
-      Flash('Maintenance has been Cancelled!', 'success');
+    if($repair->state->id == 401) {
+      $state = State::findOrFail(403); # On-repair
+      $state->repair()->save($repair);
+      Flash('repair has been Cancelled!', 'success');
     } else {
-      Flash('The maintenance cant be canceled the provider are working now!', 'warning');
-      return redirect('maintenances/' . $id . '/edit');
+      Flash('The repair cant be canceled the provider are working now!', 'warning');
+      return redirect('repairs/' . $id . '/edit');
     }
-    return redirect('maintenances');
+    return redirect('repairs');
   }
 
   /**
@@ -164,10 +164,10 @@ class MaintenancesController extends Controller
   */
   public function edit($id)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
     $products = Product::lists('name', 'id');
 
-    return view('maintenances.edit', compact('maintenance', 'products'));
+    return view('repairs.edit', compact('repair', 'products'));
   }
 
   /**
@@ -179,37 +179,37 @@ class MaintenancesController extends Controller
   */
   public function update(Request $request, $id)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
       Flash('Validation Fails!', 'error');
-      return redirect('maintenances/' . $maintenance->id . '/edit')
+      return redirect('repairs/' . $repair->id . '/edit')
       ->withErrors($validator)
       ->withInput();
     } else {
       if(Auth::user()->role_id == 2)
       {
-        $maintenance->description = Input::get(Editor::input());
+        $repair->description = Input::get(Editor::input());
       }
-      $maintenance->name = $request->name;
-      $maintenance->save();
+      $repair->name = $request->name;
+      $repair->save();
       Flash('Update Successful!', 'success');
-      return redirect('maintenances');
+      return redirect('repairs');
     }
   }
 
 
 
   /**
-  * Add the specified product to maintenance.
+  * Add the specified product to repair.
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
 
   /*
-  $maintenance = App\Maintenance::find(2)
+  $repair = App\Repair::find(2)
 
   $product = App\Product::findOrFail(10);
   $state = App\State::findOrFail(303);
@@ -224,15 +224,15 @@ class MaintenancesController extends Controller
   */
   public function add($id, $product, Request $request)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(303); # On-Maintenance
+    $state = State::findOrFail(303); # On-repair
     $product->stock = $product->stock - $request->quantity;
 
-    if ($maintenance->product->contains($product)) {
+    if ($repair->product->contains($product)) {
 
-      DB::table('maintenance_product')
-      ->where(['maintenance_id' => $maintenance->id, 'product_id' => $product->id])
+      DB::table('repair_product')
+      ->where(['repair_id' => $repair->id, 'product_id' => $product->id])
       ->update(['quantity' => $request->quantity]);
 
       DB::table('product_state')
@@ -240,22 +240,22 @@ class MaintenancesController extends Controller
       ->update(['quantity' => $request->quantity]);
 
       Flash('Item has been updated!', 'success');
-      return redirect('maintenances/' . $id . '/edit');
+      return redirect('repairs/' . $id . '/edit');
     }
     $state = State::findOrFail(300); # Available
     DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
     ->update(['quantity' => $product->stock]);
 
-    $state = State::findOrFail(303); # On-Maintenance
-    $maintenance->product()->attach($product, ['quantity' => $request->quantity]);
+    $state = State::findOrFail(303); # On-repair
+    $repair->product()->attach($product, ['quantity' => $request->quantity]);
     $state->product()->attach($product, ['quantity' => $request->quantity]);
 
     Flash('Item has been added!', 'success');
-    return redirect('maintenances/' . $id . '/edit');
+    return redirect('repairs/' . $id . '/edit');
   }
 
   /**
-  * Remove the specified resource from maintenance.
+  * Remove the specified resource from repair.
   *
   * @param  int  $id
   * @return \Illuminate\Http\Response
@@ -263,11 +263,11 @@ class MaintenancesController extends Controller
 
   public function remove($id, $product)
   {
-    $maintenance = Maintenance::findOrFail($id);
+    $repair = Repair::findOrFail($id);
     $product = Product::findOrFail($product);
     $state = State::findOrFail(303);
     $state->product()->detach($product);
-    $maintenance->product()->detach($product);
+    $repair->product()->detach($product);
     Flash('Item has been Removed!', 'success');
     return redirect('products/' . $product->id);
   }

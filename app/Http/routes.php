@@ -21,6 +21,8 @@ Route::get('/contact', 'HomeController@contact');
 Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 
+Route::resource('events', 'EventsController');
+
 Route::resource('sales', 'SalesController', ['except' => 'destroy', 'update']);
 Route::post('/sales/{sales}/complete', array('uses' => 'SalesController@complete', 'as' => 'sales.complete'));
 
@@ -45,9 +47,9 @@ Route::resource('cart', 'CartController', ['except' => ['index', 'store', 'creat
 Route::delete('/cart/remove/{product}', array('uses' => 'CartController@remove', 'as' => 'cart.remove'));
 Route::post('/cart/add/{product}', array('uses' => 'CartController@add', 'as' => 'cart.add'));
 
-Route::resource('maintenances', 'MaintenancesController');
-Route::delete('/maintenances/{maintenances}/remove/{product}', array('uses' => 'MaintenancesController@remove', 'as' => 'maintenances.remove'));
-Route::post('/maintenances/{maintenances}/add/{product}', array('uses' => 'MaintenancesController@add', 'as' => 'maintenances.add'));
-Route::post('/maintenances/{maintenances}/complete', array('uses' => 'MaintenancesController@complete', 'as' => 'maintenances.complete'));
-Route::post('/maintenances/{maintenances}/returned', array('uses' => 'MaintenancesController@returned', 'as' => 'maintenances.returned'));
-Route::post('/maintenances/{maintenances}/canceled', array('uses' => 'MaintenancesController@canceled', 'as' => 'maintenances.canceled'));
+Route::resource('repairs', 'RepairsController');
+Route::delete('/repairs/{repairs}/remove/{product}', array('uses' => 'RepairsController@remove', 'as' => 'repairs.remove'));
+Route::post('/repairs/{repairs}/add/{product}', array('uses' => 'RepairsController@add', 'as' => 'repairs.add'));
+Route::post('/repairs/{repairs}/complete', array('uses' => 'RepairsController@complete', 'as' => 'repairs.complete'));
+Route::post('/repairs/{repairs}/returned', array('uses' => 'RepairsController@returned', 'as' => 'repairs.returned'));
+Route::post('/repairs/{repairs}/canceled', array('uses' => 'RepairsController@canceled', 'as' => 'repairs.canceled'));

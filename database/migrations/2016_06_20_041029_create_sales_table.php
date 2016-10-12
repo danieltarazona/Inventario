@@ -19,7 +19,6 @@ class CreateSalesTable extends Migration
             $table->integer('state_id')->unsigned()->nullable();
             $table->time('out');
             $table->time('in');
-            $table->boolean('complete')->nullable();
             $table->timestamps();
         });
     }

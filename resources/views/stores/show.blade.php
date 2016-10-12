@@ -19,7 +19,7 @@
 <h3>Warranty: {{ $product->warranty or 'Blank' }} Months</h3>
 
 <br>
-<h1>Product Maintenances</h1>
+<h1>Product repairs</h1>
 
 <table class="table">
 
@@ -30,10 +30,10 @@
    </tr>
 </thead>
 
-@foreach($product->maintenances as $maintenance)
+@foreach($product->repairs as $repair)
    <tr>
-    <td>{{ $maintenance->id }}</td>
-    <td>{{ $maintenance->name }}</td>
+    <td>{{ $repair->id }}</td>
+    <td>{{ $repair->name }}</td>
   </tr>
 @endforeach
 

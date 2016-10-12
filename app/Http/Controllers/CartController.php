@@ -20,11 +20,11 @@ class CartController extends Controller
   */
   public function show($id)
   {
-    $start = Carbon::now(-5)->toTimeString();
-    $end = Carbon::now(-4)->toTimeString();
-    $day = Carbon::now(-5);
+    $start = Carbon::now(-5);
+    $end = Carbon::now(-4);
+    $date = Carbon::now(-5);
     $cart = Cart::findOrFail(Auth::id());
-    return view('cart.show', compact('cart', 'start', 'end', 'day'));
+    return view('cart.show', compact('cart', 'start', 'end', 'date'));
   }
 
   /**

@@ -9,14 +9,16 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
 use App\Dashboard;
+use App\Event;
 use App\Cart;
 use App\Sale;
 use App\Store;
 use App\Order;
 use App\User;
+use App\State;
 use App\City;
 use App\Issue;
-use App\Maintenance;
+use App\Repair;
 use App\Product;
 use App\Region;
 
@@ -40,18 +42,19 @@ class HomeController extends Controller
     public function welcome()
     {
       $carts = Cart::all();
-      $stores = Store::all()->orderBy('name');
-      $cities = City::all()->orderBy('name');
-      $issues = Issue::all()->orderBy('name');
-      $maintenances = Maintenance::all()->orderBy('name');
-      $products = Product::all()->orderBy('name')->with('category');
-      $regions = Region::all()->orderBy('name');
-      $users = User::all()->orderBy('username');
-      $states = State::all()->orderBy('id');
+      $stores = Store::all()->sortBy('name');
+      $cities = City::all()->sortBy('name');
+      $issues = Issue::all()->sortBy('name');
+      $repairs = Repair::all()->sortBy('name');
+      $products = Product::all()->load('category')->sortBy('name');
+      $regions = Region::all()->sortBy('name');
+      $users = User::all()->sortBy('username');
+      $states = State::all()->sortBy('id');
+      $events = Event::all();
 
       return view('welcome', compact(
-        'stores', 'cities', 'issues', 'maintenances', 'products',
-        'regions', 'users', 'states'
+        'stores', 'cities', 'issues', 'repairs', 'products',
+        'regions', 'users', 'states', 'events'
       ));
     }
 

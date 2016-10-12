@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MaintenancesTableSeeder extends Seeder
+class repairsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,13 +11,13 @@ class MaintenancesTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Maintenance::class, 3)->create()->each(function($maintenance)
+      factory(App\Repair::class, 3)->create()->each(function($repair)
       {
         $provider = App\User::find(2);
-        $provider->maintenance_provider()->save($maintenance);
+        $provider->repair_provider()->save($repair);
 
         $storer = App\User::find(3);
-        $storer->maintenance_storer()->save($maintenance);
+        $storer->repair_storer()->save($repair);
 
         $products = App\Product::all()->take(5);
 
@@ -25,9 +25,10 @@ class MaintenancesTableSeeder extends Seeder
         $state->product()->saveMany($products);
 
         $state = App\State::find(401);
-        $state->maintenance()->save($maintenance);
+        $state->repair()->save($repair);
 
-        $maintenance->product()->saveMany($products);
+        $cart = App\Cart::find($storer->id);
+        $cart->repair()->save($repair);
       });
 
       echo "Done" . PHP_EOL;

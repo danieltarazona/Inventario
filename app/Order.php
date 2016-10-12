@@ -10,6 +10,16 @@ class Order extends Model
     'state_id', 'start', 'end', 'date', 'user_id'
   ];
 
+  public function event()
+  {
+    return $this->hasMany(Event::class);
+  }
+
+  public function event_id()
+  {
+    return $this->event->id;
+  }
+
   public function user()
   {
     return $this->belongsTo(User::class);
@@ -32,32 +42,12 @@ class Order extends Model
 
   public function sale()
   {
-    return $this->hasMany(Sale::class);
+    return $this->hasOne(Sale::class);
   }
 
   public function sale_id()
   {
     return $this->sale->id;
-  }
-
-  public function product()
-  {
-    return $this->belongsToMany(Product::class)->withTimestamps();
-  }
-
-  public function product_id()
-  {
-    return $this->product->list('id');
-  }
-
-  public function start()
-  {
-    return $this->start;
-  }
-
-  public function end()
-  {
-    return $this->end;
   }
 
 }

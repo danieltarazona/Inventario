@@ -11,6 +11,16 @@ class Product extends Model
     'store_id', 'category_id', 'provider_id', 'state_id'
   ];
 
+  public function event()
+  {
+    return $this->hasMany(Event::class);
+  }
+
+  public function event_id()
+  {
+    return $this->event->id;
+  }
+
   public function provider()
   {
     return $this->belongsTo(User::class);
@@ -101,18 +111,13 @@ class Product extends Model
     return $this->cart->lists('id');
   }
 
-  public function quantity()
+  public function repair()
   {
-    return $this->pivot->quantity;
+    return $this->belongsToMany(Repair::class)->withTimestamps();
   }
 
-  public function maintenance()
+  public function repair_id()
   {
-    return $this->belongsToMany(Maintenance::class)->withTimestamps();
-  }
-
-  public function maintenance_id()
-  {
-    return $this->maintenance->lists('id');
+    return $this->repair->lists('id');
   }
 }

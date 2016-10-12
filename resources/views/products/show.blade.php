@@ -27,10 +27,12 @@
           <span class="{{ $product->state->label }}">{{ $product->state->name }}</span>
         </h4>
 
-        <h4>{{trans('strings.provider')}}: {{ $product->provider->name or 'Blank' }}</h4>
+        <h4>{{trans('strings.category')}}: {{ $product->category->name or 'Blank' }}</h4>
+        <h4>{{trans('strings.provider')}}: {{ $product->provider->username or 'Blank' }}</h4>
+        <h4>{{trans('strings.store')}}: {{ $product->store->name or 'Blank' }}</h4>
         <h4>{{trans('strings.serial')}}: {{ $product->serial or 'Blank' }}</h4>
         <h4>{{trans('strings.model')}}: {{ $product->year or 'Blank' }}</h4>
-        <h4>{{trans('strings.buy_date')}}: {{ $product->create_at or 'Blank' }}</h4>
+        <h4>{{trans('strings.buy_date')}}: {{ $product->date or 'Blank' }}</h4>
         <h4>{{trans('strings.price')}}: {{ $product->price or 'Blank' }}</h4>
         <h4>{{trans('strings.warranty')}}: {{ $product->warranty or 'Blank' }} Months</h4>
 
@@ -48,76 +50,7 @@
       </div> <!-- end col-md-8 -->
     </div> <!-- end row -->
 
-    <hr>
-
-    <h1>{{trans('strings.maintenances')}}</h1>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>{{trans('strings.name')}}</th>
-          <th>{{trans('strings.description')}}</th>
-          <th colspan="4">{{trans('strings.actions')}}</th>
-        </tr>
-      </thead>
-
-      @foreach ($maintenances as $maintenance)
-        <tr>
-          <td>{{ $maintenance->id }}</td>
-          <td><a href="/maintenances/{{ $maintenance->id }}">{{ $maintenance->name }}</a></td>
-          <td>{{ $maintenance->description }}</td>
-          <td>
-            {!! Form::open(['route' => ['maintenances.add', $maintenance->id, $product->id], 'method' => 'POST']) !!}
-            <button class="btn btn-warning" type="submit"><i class="fa fa-life-ring" aria-hidden="true"></i> {{trans('strings.repair')}}</button>
-            {!! Form::close() !!}
-          </td>
-        </tr>
-      @endforeach
     </table>
-
-    <hr>
-
-    <h1>{{trans('strings.orders')}}</h1>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>{{trans('strings.state')}}</th>
-        </tr>
-      </thead>
-
-      @foreach ($product->order as $order)
-        <tr>
-          <td><a href="/orders/{{ $order->id }}">{{ $order->id }}</a></td>
-          <td>{{ $order->state->name }}</td>
-        </tr>
-      @endforeach
-
-    </table>
-
-    <hr>
-
-    <h1>{{trans('strings.sales')}}</h1>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>{{trans('strings.state')}}</th>
-        </tr>
-      </thead>
-
-      @foreach ($product->sale as $sale)
-        <tr>
-          <td><a href="/sales/{{ $sale->id }}">{{ $sale->id }}</a></td>
-          <td>{{ $sale->state->name }}</td>
-        </tr>
-      @endforeach
-
-    </table>
-
 
   </div>
 </div>

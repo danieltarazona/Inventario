@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Maintenance extends Model
+class repair extends Model
 {
   protected $fillable = [
     'name', 'description',
@@ -20,14 +20,14 @@ class Maintenance extends Model
     return $this->provider->id;
   }
 
-  public function product()
+  public function event()
   {
-    return $this->belongsToMany(Product::class)->withPivot('quantity')->withTimestamps();
+    return $this->belongsTo(Event::class);
   }
 
-  public function product_id()
+  public function event_id()
   {
-    return $this->product->lists('id');
+    return $this->event->id;
   }
 
   public function storer()
