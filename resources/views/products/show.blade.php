@@ -52,6 +52,30 @@
 
     </table>
 
+    <h2>{{ trans('strings.events') }}</h2>
+
+    <hr>
+
+    <table class="table table-bordered table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      @foreach($product->event as $event)
+        <tr>
+          <td>{{ $event->id }}</td>
+          <td>{{ $event->start }}</td>
+          <td>{{ $event->end }}</td>
+          <td>{{ $event->date }}</td>
+        </tr>
+      @endforeach
+    </table>
+
   </div>
 </div>
 

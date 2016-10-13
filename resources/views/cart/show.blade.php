@@ -14,8 +14,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th></th>
-        <th></th>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Serial</th>
         <th>{{trans('strings.actions')}}</th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
         <td>{{ $product->id }}</td>
         <td><a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="{{ $product->name }}" style="weight:100px; height:100px;"/></a></td>
         <td><a href="{{ url('products/' . $product->id) }}">{{ $product->name }}</a></td>
+        <td><a href="{{ url('products/' . $product->id) }}">{{ $product->serial }}</a></td>
         <td>
           {!! Form::open(['route' => ['cart.remove', $product->id], 'method' => 'DELETE']) !!}
           <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>

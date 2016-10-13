@@ -29,7 +29,7 @@ class repairsController extends Controller
   public function index()
   {
     $repairs = Repair::with('provider')->get();
-    
+
     if (Auth::user()->role_id == 2) {
       $repairs = Repair::with(['provider' => function ($query) {
           $query->where('provider_id', Auth::id());
@@ -228,27 +228,6 @@ class repairsController extends Controller
     $product = Product::findOrFail($product);
     $state = State::findOrFail(303); # On-repair
     $product->stock = $product->stock - $request->quantity;
-
-    if ($repair->product->contains($product)) {
-
-      DB::table('repair_product')
-      ->where(['repair_id' => $repair->id, 'product_id' => $product->id])
-      ->update(['quantity' => $request->quantity]);
-
-      DB::table('product_state')
-      ->where(['product_id' => $product->id, 'state_id' => $state->id])
-      ->update(['quantity' => $request->quantity]);
-
-      Flash('Item has been updated!', 'success');
-      return redirect('repairs/' . $id . '/edit');
-    }
-    $state = State::findOrFail(300); # Available
-    DB::table('product_state')->where(['product_id' => $product->id, 'state_id' => $state->id])
-    ->update(['quantity' => $product->stock]);
-
-    $state = State::findOrFail(303); # On-repair
-    $repair->product()->attach($product, ['quantity' => $request->quantity]);
-    $state->product()->attach($product, ['quantity' => $request->quantity]);
 
     Flash('Item has been added!', 'success');
     return redirect('repairs/' . $id . '/edit');

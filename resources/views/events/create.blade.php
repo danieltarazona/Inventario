@@ -12,7 +12,7 @@
   {!! Form::time('start', $start, ['class' => 'form-control']) !!}
 
   {!! Form::label('End', trans('strings.hour_end')) !!}
-  {!! Form::time('end', $start, ['class' => 'form-control']) !!}
+  {!! Form::time('end', $end, ['class' => 'form-control']) !!}
 
   {!! Form::label('Date', trans('strings.date')) !!}
   {!! Form::date('date', $date, ['class' => 'form-control']) !!}
@@ -30,10 +30,6 @@
   <hr>
 
   @include('events.day')
-
-    @foreach ($cart->product as $product)
-      {{ $product->event }}
-    @endforeach
 
   <br>
 

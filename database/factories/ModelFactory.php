@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,9 @@ use Faker\Generator;
 
 $factory->define(App\Event::class, function ($faker) {
   return [
-    'start' => $faker->time($format = 'H:i:s', $max = 'now'),
-    'end' => $faker->time($format = 'H:i:s', $max = 'now'),
-    'date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-    'product_id' => 1
+    'start' => $faker->numberBetween($min = 10, $max = 12) . ':00:00',
+    'end' => $faker->numberBetween($min = 13, $max = 18) . ':00:00',
+    'date' => Carbon::now()
   ];
 });
 

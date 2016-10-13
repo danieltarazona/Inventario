@@ -33,8 +33,28 @@ class EventsController extends Controller
     {
       $start = Carbon::now(-5);
       $end = Carbon::now(-4);
-      $date = Carbon::now(-5);
+      $date = Carbon::now();
       $cart = Cart::findOrFail(Auth::id());
+      $events = Event::all()->where('product_id', $cart->product);
+
+      return view('events.create', compact('events', 'start', 'end', 'date'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+      $start = Carbon::now(-5);
+      $end = Carbon::now(-4);
+      $date = $request->$date;
+
+      $cart = Cart::findOrFail(Auth::id());
+
+      $events = Event::where(['date' => $date, 'product_id' => $cart->productv ]);
+
       return view('events.create', compact('cart', 'start', 'end', 'date'));
     }
 

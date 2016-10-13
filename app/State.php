@@ -33,7 +33,7 @@ class State extends Model
 
   public function order()
   {
-    return $this->hasOne(Order::class);
+    return $this->hasMany(Order::class);
   }
 
   public function order_id()
@@ -61,8 +61,4 @@ class State extends Model
     return $this->sale->list('id');
   }
 
-  public function name_id()
-  {
-    return State::lists('name', 'id');
-  }
 }

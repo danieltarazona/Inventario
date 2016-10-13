@@ -149,11 +149,6 @@ class User extends Authenticatable
     return $this->hasMany(Repair::class, 'storer_id');
   }
 
-  public function repair_id()
-  {
-    return $this->repair->list('id');
-  }
-
   public function role()
   {
     return $this->belongsTo(Role::class);

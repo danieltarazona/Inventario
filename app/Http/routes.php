@@ -22,9 +22,9 @@ Route::resource('users', 'UsersController');
 Route::resource('issues', 'IssuesController');
 
 Route::resource('events', 'EventsController');
+Route::post('/events/create/search', array('uses' => 'EventsController@search', 'as' => 'events.search'));
 
 Route::resource('sales', 'SalesController', ['except' => 'destroy', 'update']);
-Route::post('/sales/{sales}/complete', array('uses' => 'SalesController@complete', 'as' => 'sales.complete'));
 
 Route::resource('orders', 'OrdersController', ['except' => 'destroy']);
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));
