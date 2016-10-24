@@ -6,7 +6,7 @@
 
   <br>
 
-  {!! Form::open(['url' => 'events']) !!}
+  {!! Form::open(['route' => 'events.store', 'method' => 'POST']) !!}
 
   {!! Form::label('Start', trans('strings.hour_start')) !!}
   {!! Form::time('start', $start, ['class' => 'form-control']) !!}
@@ -22,6 +22,8 @@
   {{ Form::submit(trans('strings.order'), array('class' => 'btn btn-success')) }}
 
   {!! Form::close() !!}
+
+  <br>
 
   <button class="btn btn-warning" type="submit">
     {{ trans('strings.repair') }}

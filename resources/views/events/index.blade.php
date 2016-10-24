@@ -9,7 +9,6 @@
       <tr>
         <th>{{ trans('strings.id') }}</th>
         <th>{{ trans('strings.id_product') }}</th>
-        <th>{{ trans('strings.serial') }}</th>
         <th>{{ trans('strings.start') }}</th>
         <th>{{ trans('strings.end') }}</th>
         <th>{{ trans('strings.date') }}</th>
@@ -20,7 +19,6 @@
       <tr>
         <td>{{ $event->id }}</td>
         <td>{{ $event->product_id }}</td>
-        <td>{{ $event->product->serial }}</td>
         <td>{{ $event->start }}</td>
         <td>{{ $event->end }}</td>
         <td>{{ $event->date }}</td>

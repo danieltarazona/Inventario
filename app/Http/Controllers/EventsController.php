@@ -31,8 +31,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-      $start = Carbon::now(-5);
-      $end = Carbon::now(-4);
+      $start = Carbon::now(-5)->toTimeString();
+      $end = Carbon::now(-4)->toTimeString();
       $date = Carbon::now();
       $cart = Cart::findOrFail(Auth::id());
       $events = Event::all()->where('product_id', $cart->product);
@@ -66,9 +66,20 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-      $request->cart_id = Auth::id();
-      $event = Event::create($request->all());
-      return redirect('events.create');
+      $cart = Cart::findOrFail(Auth::id());
+
+      foreach ($cart->product as $product) {
+        $event = Event::create([
+          'date' => $request->date,
+          'start' => $request->start,
+          'end' => $request->end
+        ]);
+        $product->event()->save($event);
+      }
+
+      $cart->product()->detach();
+
+      return redirect('events');
     }
 
     /**
