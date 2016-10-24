@@ -33,7 +33,8 @@
 
   <br>
 
-  <input type="date" name="date_search" value="{{ $date_search }}">
+  {!! Form::label('Date', trans('strings.date')) !!}
+  {!! Form::date('date_search', $date_search, ['class' => 'form-control']) !!}
 
   <br>
 

@@ -8,7 +8,11 @@
       @if ($i < 12)
         {{ $i }} AM
       @else
-        {{ $i }} PM
+        @if ($i == 12)
+          {{ $i }} AM
+        @else
+          {{ $i - 12 }} PM
+        @endif
       @endif
     </td>
   @endfor
@@ -20,7 +24,7 @@
       @if ($i == $event->start)
           <div class="progress">
             <div class="progress-bar progress-bar-success" role="progressbar"
-              style="width:{{ $event->end - $event->start }}0%; margin-left: {{ abs(8 - $event->start) }}0%;">
+              style="width:{{ $event->end - $event->start  }}0%; margin-left: {{ abs(8 - $event->start) }}0%;">
               {{ $event->start }} - {{ $event->end }}
             </div>
           </div>
@@ -28,3 +32,5 @@
     @endforeach
   </tr>
   @endfor
+
+</table>

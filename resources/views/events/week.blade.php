@@ -18,9 +18,15 @@
             {{ $i }} AM
           </td>
         @else
-          <td>
-            {{ $i }} PM
-          </td>
+          @if ($i == 12)
+            <td>
+              {{ $i }} AM
+            </td>
+          @else
+            <td>
+              {{ $i - 12 }} PM
+            </td>
+          @endif
         @endif
       </tr>
     @endfor
