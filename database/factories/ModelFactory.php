@@ -16,9 +16,9 @@ use Carbon\Carbon;
 
 $factory->define(App\Event::class, function ($faker) {
   return [
-    'start' => $faker->numberBetween($min = 10, $max = 12) . ':00:00',
-    'end' => $faker->numberBetween($min = 13, $max = 18) . ':00:00',
-    'date' => Carbon::now()
+    'start' => $faker->numberBetween($min = 11, $max = 12) . ':00:00',
+    'end' => $faker->numberBetween($min = 13, $max = 14) . ':00:00',
+    'date' => Carbon::now()->subDay()
   ];
 });
 

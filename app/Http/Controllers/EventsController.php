@@ -31,13 +31,16 @@ class EventsController extends Controller
      */
     public function create()
     {
-      $start = Carbon::now(-5)->toTimeString();
-      $end = Carbon::now(-4)->toTimeString();
-      $date = Carbon::now();
+      $start = Carbon::now(-5)->subDay();
+      $end = Carbon::now(-4)->subDay();
+      $date = Carbon::now()->subDay();
+      $date_search = Carbon::now()->subDay();
       $cart = Cart::findOrFail(Auth::id());
-      $events = Event::all()->where('product_id', $cart->product);
+      $events = Event::where('product_id', $cart->product_id() )->get();
 
-      return view('events.create', compact('events', 'start', 'end', 'date'));
+      return view('events.create', compact(
+        'events', 'start', 'end', 'date', 'date_search'
+      ));
     }
 
     /**
@@ -47,15 +50,19 @@ class EventsController extends Controller
      */
     public function search(Request $request)
     {
-      $start = Carbon::now(-5);
-      $end = Carbon::now(-4);
-      $date = $request->$date;
-
+      $start = Carbon::now(-5)->subDay();
+      $end = Carbon::now(-4)->subDay();
+      $date = Carbon::now()->subDay();
+      $date_search = $request->date_search;
       $cart = Cart::findOrFail(Auth::id());
+      $events = Event::where([
+        'date' => $date_search,
+        'product_id' => $cart->product_id()
+      ])->get();
 
-      $events = Event::where(['date' => $date, 'product_id' => $cart->productv ]);
-
-      return view('events.create', compact('cart', 'start', 'end', 'date'));
+      return view('events.create', compact(
+        'events', 'start', 'end', 'date', 'date_search'
+      ));
     }
 
     /**

@@ -29,19 +29,13 @@
               <a href="{{ url('products/' . $product->id) }}"><h5>{{ $product->name }}</h5></a>
               <p>Available: {{ $product->stock }}</p>
 
-              @if(Auth::user()->role_id > 1)
-                {!! Form::open(['route' => ['repairs.add', $product->id], 'method' => 'POST']) !!}
-                  <input type="number" name="quantity" value="1">
-                  <button class="btn btn-warning" type="submit">{{trans('strings.repair')}}</button>
-                {!! Form::close() !!}
-              @endif
+              {!! Form::open(['route' => ['repairs.add', $product->id], 'method' => 'POST']) !!}
+                <button class="btn btn-warning" type="submit">{{trans('strings.repair')}}</button>
+              {!! Form::close() !!}
 
-              @if(Auth::user()->role_id == 1)
-                {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-                  <input type="number" name="quantity" value="1">
-                  <button class="btn btn-primary" type="submit">Order</button>
-                {!! Form::close() !!}
-              @endif
+              {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+                <button class="btn btn-primary" type="submit">Order</button>
+              {!! Form::close() !!}
 
             </div> <!-- end caption -->
           </div> <!-- end thumbnail -->

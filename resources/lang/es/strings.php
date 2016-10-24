@@ -2,6 +2,8 @@
 
 return array(
 
+	'time' => 'Tiempo',
+	'search' => 'Buscar',
 	'id_product' => 'ID Product',
 	'id' => 'ID',
 	'not_reclaim' => 'No Reclamado',
