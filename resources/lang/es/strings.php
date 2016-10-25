@@ -146,5 +146,7 @@ return array(
 	'type' => 'Tipo',
 	'role_id' => 'ID Rol',
 
+	'confirm_password' => 'Confirmar Contraseña',
+
 	);
 ?>
