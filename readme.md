@@ -16,11 +16,11 @@ Documentation for the framework can be found on the [Inventar.io Website](http:/
 ```bash
 php artisan serve
 ```
-- Abrir la siguiente URL en Chrome
+7. Abrir la siguiente URL en Chrome
 ```bash
 localhost:8000
 ```
-- Disfrutar
+8. Disfrutar
 
 ## Palette of Colors
 
