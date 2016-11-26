@@ -53,3 +53,7 @@ Route::post('/repairs/{repairs}/add/{product}', array('uses' => 'RepairsControll
 Route::post('/repairs/{repairs}/complete', array('uses' => 'RepairsController@complete', 'as' => 'repairs.complete'));
 Route::post('/repairs/{repairs}/returned', array('uses' => 'RepairsController@returned', 'as' => 'repairs.returned'));
 Route::post('/repairs/{repairs}/canceled', array('uses' => 'RepairsController@canceled', 'as' => 'repairs.canceled'));
+
+Route::get('docs', function(){
+  return View::make('docs.api.v1.index');
+});

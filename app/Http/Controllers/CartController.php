@@ -18,6 +18,7 @@ class CartController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+
   public function show($id)
   {
     $cart = Cart::findOrFail(Auth::id());
