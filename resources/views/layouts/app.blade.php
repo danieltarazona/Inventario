@@ -65,7 +65,7 @@
             <li><a href="{{ url('/register') }}">{{trans('strings.register')}}</a></li>
 
           @else
-            @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
+            @if(Auth::user()->role_id == 1 || Auth::user()->role_id > 2)
               <li><a href="{{ url('/cart/' . Auth::user()->cart->id) }}"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i></a></li>
             @endif
             <li class="dropdown">

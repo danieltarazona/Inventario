@@ -152,8 +152,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Vinelab\Editor\EditorServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
-        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
-        F2m2\Apidocs\ApidocsServiceProvider::class,
 
         /*
          * Application Service Providers...

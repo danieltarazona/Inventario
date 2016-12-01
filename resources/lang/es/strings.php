@@ -2,6 +2,7 @@
 
 return array(
 
+	'order_all' => 'Reservar Todo',
 	'time' => 'Tiempo',
 	'search' => 'Buscar',
 	'id_product' => 'ID Equipo',

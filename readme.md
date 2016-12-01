@@ -59,7 +59,3 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
-
-## Asana
-Asana Codeapps
-Slack Codeapps

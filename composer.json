@@ -10,8 +10,7 @@
         "nesbot/carbon": "^1.21",
         "intervention/image": "^2.3",
         "vinelab/laravel-editor": "*",
-        "maddhatter/laravel-fullcalendar": "^1.2",
-        "f2m2/apidocs": "dev-master"
+        "maddhatter/laravel-fullcalendar": "^1.2"
     },
     "require-dev": {
         "laravelcollective/html": "5.2.*",

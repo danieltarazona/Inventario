@@ -37,8 +37,8 @@
   </table>
 
   <a href="{{ url('/events/create') }}">
-    <button class="btn btn-success" type="button" name="button">
-      {{ trans('strings.order') }}
+    <button class="btn btn-success" type="button" name="{{trans('strings.order')}}">
+      {{ trans('strings.order_all') }}
     </button>
   </a>
 

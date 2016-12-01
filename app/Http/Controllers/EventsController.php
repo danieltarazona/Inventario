@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Event;
 use App\Cart;
+use App\Order;
 use Carbon\Carbon;
 use Auth;
 
@@ -74,6 +75,11 @@ class EventsController extends Controller
     public function store(Request $request)
     {
       $cart = Cart::findOrFail(Auth::id());
+
+      $order = Order::create([
+        'user_id' => Auth::id(),
+        'state_id' => 300
+      ]);
 
       foreach ($cart->product as $product) {
         $event = Event::create([
