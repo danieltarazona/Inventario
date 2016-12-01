@@ -67,7 +67,7 @@ class EventsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Event and Order in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -78,7 +78,8 @@ class EventsController extends Controller
 
       $order = Order::create([
         'user_id' => Auth::id(),
-        'state_id' => 300
+        'state_id' => 401,
+        'start' => $request->start
       ]);
 
       foreach ($cart->product as $product) {

@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('event_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
+            $table->time('start');
             $table->timestamps();
         });
     }
