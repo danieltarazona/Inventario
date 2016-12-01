@@ -16,8 +16,14 @@
   {!! Form::label('Date') !!}
   {!! Form::date('date', $order->date, ['class' => 'form-control']) !!}
 
+  <br>
+
   {{ Form::submit(trans('strings.update'), array('class' => 'btn btn-warning')) }}
 
+{!! Form::close() !!}
+
+{!! Form::open(['route' => ['orders.cancel', $order->id], 'method' => 'POST']) !!}
+<button class="btn btn-danger" type="submit">{{trans('strings.cancel')}}</button>
 {!! Form::close() !!}
 
 @stop

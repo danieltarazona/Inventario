@@ -25,9 +25,11 @@ Route::resource('events', 'EventsController');
 Route::post('/events/create/search', array('uses' => 'EventsController@search', 'as' => 'events.search'));
 
 Route::resource('sales', 'SalesController', ['except' => 'destroy', 'update']);
+Route::post('/sales/{sales}/complete', array('uses' => 'SalesController@complete', 'as' => 'sales.complete'));
 
 Route::resource('orders', 'OrdersController', ['except' => 'destroy']);
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));
+Route::post('/orders/{orders}/cancel', array('uses' => 'OrdersController@cancel', 'as' => 'orders.cancel'));
 
 Route::resource('roles', 'RolesController');
 Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', 'as' => 'roles.assign'));

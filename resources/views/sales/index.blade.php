@@ -33,9 +33,6 @@
         <td>
           <a href="{{ route('sales.show', $sale->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
-        <td>
-          <a href="{{ route('sales.edit', $sale->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-        </td>
 
       </tr>
     @endforeach

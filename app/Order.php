@@ -12,12 +12,12 @@ class Order extends Model
 
   public function product()
   {
-    return $this->hasMany(Product::class);
+    return $this->belongsToMany(Product::class)->withTimestamps();
   }
 
   public function product_id()
   {
-    return $this->product->id;
+    return $this->product->lists('id');
   }
 
   public function user()

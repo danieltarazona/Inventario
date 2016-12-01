@@ -46,20 +46,27 @@ class OrdersController extends Controller
   {
     $order = Order::findOrFail($id);
 
-    $sale = Sale::create([
-      'out' => Carbon::now(-5)->toTimeString(),
-      'state_id' => 401,
-      'user_id' => Auth::id(),
-      'order_id' => $order->id
-    ]);
+    if ($order->state_id == 401) {
+      $sale = Sale::create([
+        'out' => Carbon::now(-5)->toTimeString(),
+        'state_id' => 401,
+        'user_id' => Auth::id(),
+        'order_id' => $order->id
+      ]);
 
-    $product->update(['state_id' => 302]);
-    $sale->product()->save($product);
+      foreach ($order->product as $product) {
+        $product->update(['state_id' => 302]);
+        $product->sale()->save($sale);
+      }
 
-    $order->update(['state_id' => 400]);
+      $order->update(['state_id' => 400]);
+      Flash('Order to Sale Complete!', 'success');
+      return redirect('orders');
 
-    Flash('Order to Sale Complete!', 'success');
-    return redirect('orders');
+    } else {
+      Flash('Order can`t be Sale!', 'danger');
+      return redirect('orders/' . $order->id);
+    }
   }
 
 
@@ -110,7 +117,13 @@ class OrdersController extends Controller
   public function edit($id)
   {
     $order = Order::findOrFail($id);
-    return view('orders.edit', compact('order'));
+
+    if ((Carbon::parse($order->start)->diffInHours(Carbon::now()) > 1) && ($order->state_id == 401)) {
+      return view('orders.edit', compact('order'));
+    } else {
+      Flash('Order can`t be Edited!', 'danger');
+      return redirect('orders');
+    }
   }
 
   /**
@@ -126,9 +139,9 @@ class OrdersController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      Flash('Validation Fails!', 'error');
+      Flash('Validation Fails!', 'danger');
       return redirect('orders/' . $order->id . '/edit')
-      ->withErrors($validator)
+      ->withºs($validator)
       ->withInput();
     } else {
       $order->date = $request->date;
@@ -136,6 +149,25 @@ class OrdersController extends Controller
       $order->end = $request->end;
       $order->save();
       Flash('Update Successful!', 'success');
+      return redirect('orders');
+    }
+  }
+
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function cancel($id)
+  {
+    $order = Order::findOrFail($id);
+    if ($order->state_id == 401) {
+      $order->update(['state_id' => 403]);
+      Flash('Order Cancel Successful!', 'success');
+      return redirect('orders');
+    } else {
+      Flash('Order has not Waiting Status!', 'danger');
       return redirect('orders');
     }
   }

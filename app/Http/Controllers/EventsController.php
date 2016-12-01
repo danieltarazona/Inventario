@@ -91,7 +91,7 @@ class EventsController extends Controller
           'end' => $request->end
         ]);
         $product->event()->save($event);
-        $order->product()->save($product);
+        $product->order()->save($order);
       }
 
       $cart->product()->detach();

@@ -6,7 +6,7 @@
 
   <br>
 
-  <a href="{{ route('repairs.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
+  <a href="{{ route('repairs.create') }}" class="btn btn-primary">{{trans('strings.request')}}</a>
 
   <hr>
 
