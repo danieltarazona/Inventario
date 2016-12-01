@@ -4,7 +4,7 @@ return array(
 
 	'time' => 'Tiempo',
 	'search' => 'Buscar',
-	'id_product' => 'ID Product',
+	'id_product' => 'ID Equipo',
 	'id' => 'ID',
 	'not_reclaim' => 'No Reclamado',
 	'hour' => 'Hora',
@@ -31,7 +31,7 @@ return array(
 	'damage' => 'Dañado',
 	'on_waiting' => 'En Espera',
 	'cancelled' => 'Cancelado',
-	'product_not_found' => 'Producto Perdido',
+	'product_not_found' => 'Equipo Perdido',
 	'role' => 'Rol',
 	'hour_start' => 'Hora Recogida',
 	'model' => 'Model',
@@ -57,7 +57,7 @@ return array(
 	'login' => 'Iniciar Sesión',
 
 	'categories' => 'Categorias',
-	'products' => 'Productos',
+	'products' => 'Equipos',
 	'orders' => 'Reservas',
 	'sales' => 'Préstamos',
 	'repairs' => 'Mantenimientos',
@@ -68,7 +68,7 @@ return array(
 	'stores' => 'Tiendas',
 	'users' => 'Usuarios',
 
-	'product' => 'Producto',
+	'product' => 'Equipo',
 	'quantity' => 'Cantidad',
 	'actions' => 'Acciones',
 
@@ -90,7 +90,7 @@ return array(
 
 	'edit' => 'Editar',
 
-	'product_repair' => 'Productos en Mantenimiento',
+	'product_repair' => 'Equipo en Mantenimiento',
 
 	'category' => 'Categoría',
 	'provider' => 'Proveedor',
@@ -120,7 +120,7 @@ return array(
 	'city' => 'Ciudad',
 	'buy_date' => 'Fecha de Compra',
 
-	'product_repair' => 'Reparar Producto',
+	'product_repair' => 'Reparar Equipo',
 
 	'returned' => 'Regresado',
 	'damage' => 'Dañado',
@@ -146,6 +146,8 @@ return array(
 	'cellphone' => 'Celular',
 	'type' => 'Tipo',
 	'role_id' => 'ID Rol',
+
+	'confirm_password' => 'Confirmar Contraseña',
 
 	);
 ?>

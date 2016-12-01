@@ -7,20 +7,20 @@ Simple, Smart and Beatiful Shipping and Shopping Analytics with built-in Invento
 Documentation for the framework can be found on the [Inventar.io Website](http://inventar.io/docs).
 
 ## Tutorial Laravel Windows
-- Instalar Composer para WIndows
-- Crear una Base de Datos llamada inventario en minusculas
-- Renombrar el .env.example a .env
-- Ejecutar el .BAT en esta Carpeta
-- Ingresar mediante CMD a la Carpeta de Inventario
-- Ejecutar el siguiente comando estando dentro de la Carpeta
+1. Instalar Composer para WIndows
+2. Crear una Base de Datos llamada inventario en minusculas en XAMP
+3. Renombrar el .env.example a .env
+4. Ejecutar el .BAT en esta Carpeta
+5. Ingresar mediante CMD a la Carpeta de Inventario
+6. Ejecutar el siguiente comando estando dentro de la Carpeta
 ```bash
 php artisan serve
 ```
-- Abrir la siguiente URL en Chrome
+7. Abrir la siguiente URL en Chrome
 ```bash
 localhost:8000
 ```
-- Disfrutar
+8. Disfrutar
 
 ## Palette of Colors
 
