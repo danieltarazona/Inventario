@@ -6,8 +6,6 @@
 
   <br>
 
-  <a href="{{ url('register') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
-
   <hr>
 
   <table class="table table-bordered table-hover table-responsive">

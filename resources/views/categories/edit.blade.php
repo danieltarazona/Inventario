@@ -6,7 +6,7 @@
 
 <p><a href="{{ url('categories') }}">{{trans('strings.categories')}}</a> / {{ $category->name }}</p>
 
-{!! Form::open(array('route' => array('categories.update', $category->id), 'files' => true, 'method' => 'PATCH')) !!}
+{!! Form::open(['route' => array('categories.update', $category->id), 'files' => true, 'method' => 'PATCH']) !!}
 
   {!! Form::label('Name', trans('strings.name')) !!}
   {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}

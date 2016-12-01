@@ -72,16 +72,17 @@ class AuthController extends Controller
     $user->dni = $request['dni'];
     $user->email = $request['email'];
     $user->password = bcrypt($request['password']);
-    $user->save();
 
     $cart = Cart::create();
-    $user->cart()->save($cart);
+    $cart->user()->save($user);
 
     $state = State::findOrFail(200);
     $state->user()->save($user);
 
     $role = Role::findOrFail(1);
     $role->user()->save($user);
+
+    $user->save();
 
     return $user;
   }

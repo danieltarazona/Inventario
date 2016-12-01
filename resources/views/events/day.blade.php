@@ -25,7 +25,7 @@
           <div class="progress">
             <div class="progress-bar progress-bar-success" role="progressbar"
               style="width:{{ $event->end - $event->start  }}0%; margin-left: {{ abs(8 - $event->start) }}0%;">
-              {{ $event->start }} - {{ $event->end }}
+                {{ $event->product->name }} {{ $event->start }} - {{ $event->end }}
             </div>
           </div>
       @endif

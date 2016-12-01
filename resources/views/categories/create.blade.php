@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['route' => 'categories.store', 'files' => true, 'method' => 'POST']) !!}
+{!! Form::model(['route' => 'categories.store', 'files' => true, 'method' => 'POST']) !!}
 
   {!! Form::label('Name', trans('strings.name')) !!}
   {!! Form::text('name', null, ['class' => 'form-control']) !!}

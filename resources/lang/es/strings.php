@@ -9,6 +9,7 @@ return array(
 	'not_reclaim' => 'No Reclamado',
 	'hour' => 'Hora',
 	'day' => 'Day',
+	'confirm_password' => 'Confirmar Contraseña',
 	'monday' => 'Lunes',
 	'tuesday' => 'Martes',
 	'wednesday' => 'Miercoles',

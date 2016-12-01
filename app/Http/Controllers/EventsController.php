@@ -36,7 +36,7 @@ class EventsController extends Controller
       $date = Carbon::now()->subDay();
       $date_search = Carbon::now()->subDay();
       $cart = Cart::findOrFail(Auth::id());
-      $events = Event::where('product_id', $cart->product_id() )->get();
+      $events = Event::whereIn('product_id', $cart->product_id() )->get();
 
       return view('events.create', compact(
         'events', 'start', 'end', 'date', 'date_search'
