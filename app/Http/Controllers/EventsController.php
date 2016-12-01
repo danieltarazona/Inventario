@@ -79,7 +79,9 @@ class EventsController extends Controller
       $order = Order::create([
         'user_id' => Auth::id(),
         'state_id' => 401,
-        'start' => $request->start
+        'start' => $request->start,
+        'end' => $request->end,
+        'date' => $request->date
       ]);
 
       foreach ($cart->product as $product) {
@@ -89,11 +91,12 @@ class EventsController extends Controller
           'end' => $request->end
         ]);
         $product->event()->save($event);
+        $order->product()->save($product);
       }
 
       $cart->product()->detach();
 
-      return redirect('events');
+      return redirect('orders');
     }
 
     /**

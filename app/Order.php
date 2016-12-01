@@ -10,14 +10,14 @@ class Order extends Model
     'state_id', 'start', 'end', 'date', 'user_id'
   ];
 
-  public function event()
+  public function product()
   {
-    return $this->hasMany(Event::class);
+    return $this->hasMany(Product::class);
   }
 
-  public function event_id()
+  public function product_id()
   {
-    return $this->event->id;
+    return $this->product->id;
   }
 
   public function user()

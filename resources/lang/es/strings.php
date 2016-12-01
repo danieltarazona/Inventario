@@ -2,6 +2,7 @@
 
 return array(
 
+	'date_create' => 'Fecha Creacion',
 	'order_all' => 'Reservar Todo',
 	'time' => 'Tiempo',
 	'search' => 'Buscar',
