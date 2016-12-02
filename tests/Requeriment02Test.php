@@ -16,12 +16,11 @@ class Requeriment02Test extends TestCase
    */
   public function testLogin()
   {
-    $this->visit('/login');
-    $this->type('admin', 'email');
-    $this->type('admin@admin.com', 'email');
-    $this->type('123456', 'password');
-    $this->press('Iniciar Sesión');
-    $this->seePageIs('/');
+    $this->visit('/login')
+    ->type('test@test.com', 'email')
+    ->type('123456', 'password')
+    ->press('Iniciar Sesión')
+    ->seePageIs('/');
   }
 
   /**
@@ -32,10 +31,14 @@ class Requeriment02Test extends TestCase
 
   public function testLogout()
   {
-    $this->visit('/');
-    $this->press('Carlos / Administrator');
-    $this->press('Salir');
-    $this->seePageIs('/login');
+    $this->visit('/login')
+    ->type('admin@admin.com', 'email')
+    ->type('123456', 'password')
+    ->press('Iniciar Sesión')
+    ->seePageIs('/')
+    ->press('Carlos / Administrator')
+    ->press('Salir')
+    ->seePageIs('/login');
   }
 
 }

@@ -33,10 +33,11 @@
         <td><span class="{{ $order->state->label }}">{{ $order->state->name or 'Blank'  }}</span></td>
 
         <td>
-          <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+          <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary"><i name="Show" class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
+
         <td>
-          <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+          <a href="{{ route('orders.edit', $order->id) }}" name="Edit" class="btn btn-warning"><i name="Edit" class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
 
       </tr>

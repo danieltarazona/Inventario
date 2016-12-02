@@ -13,15 +13,15 @@ class Requeriment01Test extends TestCase
      */
     public function testRegister()
     {
-      $this->visit('/login');
-      $this->visit('/register');
-      $this->type('Test', 'username');
-      $this->type('1010101010', 'dni');
-      $this->type('test@test.com', 'email');
-      $this->type('123456', 'password');
-      $this->type('123456', 'password_confirmation');
-      $this->press('Registrar');
-      $this->seePageIs('/');
+      $this->visit('/login')
+      ->visit('/register')
+      ->type('Test', 'username')
+      ->type('1010101010', 'dni')
+      ->type('test@test.com', 'email')
+      ->type('123456', 'password')
+      ->type('123456', 'password_confirmation')
+      ->press('Registrar')
+      ->seePageIs('/');
     }
 
 }
