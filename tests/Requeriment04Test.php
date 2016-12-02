@@ -20,7 +20,7 @@ class Requeriment04Test extends TestCase
       ->visit('/products/7')
       ->press('Reservar')
       ->seePageIs('/cart/4')
-      ->press('Reservar Todo')
+      ->press('Continuar')
       ->seePageIs('/events/create');
     }
 }

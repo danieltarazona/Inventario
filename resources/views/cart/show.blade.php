@@ -37,10 +37,19 @@
   </table>
 
   <a href="{{ url('/events/create') }}">
-    <button class="btn btn-success" type="button" name="{{trans('strings.order')}}">
-      {{ trans('strings.order_all') }}
+    <button class="btn btn-success align-right" type="button" name="{{trans('strings.order')}}">
+      {{ trans('strings.continue') }}
     </button>
   </a>
+
+  <br>
+
+  <a href="{{ url('/repairs/create') }}">
+    <button class="btn btn-warning" type="button" name="{{trans('strings.repair')}}">
+      {{ trans('strings.repair') }}
+    </button>
+  </a>
+
 
 
 
