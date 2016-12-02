@@ -36,11 +36,14 @@
     @endforeach
   </table>
 
-  <a href="{{ url('/events/create') }}">
-    <button class="btn btn-success align-right" type="button" name="{{trans('strings.order')}}">
-      {{ trans('strings.continue') }}
-    </button>
-  </a>
+  @if (Auth::user()->role_id == 1 )
+    <a href="{{ url('/events/create') }}">
+      <button class="btn btn-success align-right" type="button" name="{{trans('strings.order')}}">
+        {{ trans('strings.continue') }}
+      </button>
+    </a>
+  @endif
+
 
   <br>
 

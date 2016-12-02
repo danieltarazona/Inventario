@@ -27,14 +27,10 @@
             <div class="caption text-center">
               <a href="{{ url('products/' . $product->id) }}"><img src="{{ $product->photo }}" alt="" style="height:100px; width:100px;"></a>
               <a href="{{ url('products/' . $product->id) }}"><h5>{{ $product->name }}</h5></a>
-              <p>Available: {{ $product->stock }}</p>
-
-              {!! Form::open(['route' => ['repairs.add', $product->id], 'method' => 'POST']) !!}
-                <button class="btn btn-warning" type="submit">{{trans('strings.repair')}}</button>
-              {!! Form::close() !!}
+              <p><span class="{{ $product->state->label }}">{{ $product->state->name }}</span></p>
 
               {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-                <button class="btn btn-primary" type="submit">Order</button>
+                <button class="btn btn-primary" type="submit">{{trans('strings.order')}}</button>
               {!! Form::close() !!}
 
             </div> <!-- end caption -->

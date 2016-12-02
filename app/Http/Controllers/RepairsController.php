@@ -213,26 +213,12 @@ class RepairsController extends Controller
   * @return \Illuminate\Http\Response
   */
 
-  /*
-  $repair = App\Repair::find(2)
-
-  $product = App\Product::findOrFail(10);
-  $state = App\State::findOrFail(303);
-  $product->state;
-
-  $state->product()->save($product, ['quantity' => 10]);
-  $state->product()->attach($product, ['quantity' => 10]);
-
-  $state->product()->updateExistingPivot(['quantity' => 20]);
-  $state->product()->detach($product);
-
-  */
-  public function add($id, $product, Request $request)
+  public function add($id, $product)
   {
     $repair = Repair::findOrFail($id);
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(303); # On-repair
-    $product->stock = $product->stock - $request->quantity;
+    $repair->product()->save($product);
+    $product->update(['state_id' => 303]); # On-repair
 
     Flash('Product has been added to Repair!', 'success');
     return redirect('repairs/' . $id . '/edit');
@@ -249,9 +235,9 @@ class RepairsController extends Controller
   {
     $repair = Repair::findOrFail($id);
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(303);
-    $state->product()->detach($product);
     $repair->product()->detach($product);
+    $product->update(['state_id' => 300]);
+
     Flash('Product has been Removed from Repair!', 'success');
     return redirect('products/' . $product->id);
   }
