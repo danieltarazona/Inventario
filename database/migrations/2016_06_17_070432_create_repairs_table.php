@@ -19,7 +19,6 @@ class CreateRepairsTable extends Migration
             $table->integer('storer_id')->unsigned()->nullable();
             $table->integer('provider_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
-            $table->integer('event_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

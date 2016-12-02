@@ -5,36 +5,29 @@
   <h1>{{ trans('strings.edit') }}</h1>
 
   {!! Form::open(array('route' => array('repairs.update', $repair->id), 'method' => 'PATCH')) !!}
-
   {!! Form::label('name', {{ trans('strings.name')) }} !!}
   {!! Form::text('name', $repair->name, ['class' => 'form-control']) !!}
-  @if(Auth::user()->role_id == 2)
-    {!! Form::label('Description', {{ trans('strings.description') }} ) !!}
-    {!! Editor::view($repair->description) !!}
-  @endif
 
-  <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i></i></button>
+  {!! Form::label('Description', {{ trans('strings.description') }} ) !!}
+  {!! Form::textarea('description', $repair->description, ['class' => 'form-control']) !!}
+
+  <button class="btn btn-warning" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
   {!! Form::close() !!}
 
-  @if(Auth::user()->role_id == 2)
   {!! Form::open(['route' => ['repairs.complete', $repair->id], 'method' => 'POST']) !!}
   <button class="btn btn-success" type="submit">{{ trans('strings.complete') }}</button>
   {!! Form::close() !!}
-  @endif
 
-  @if(Auth::user()->role_id == 3)
   {!! Form::open(['route' => ['repairs.returned', $repair->id], 'method' => 'POST']) !!}
   <button class="btn btn-success" type="submit">{{trans('strings.returned')}}</button>
   {!! Form::close() !!}
-  @endif
 
-  @if(Auth::user()->role_id == 4)
   {!! Form::open(['route' => ['repairs.canceled', $repair->id], 'method' => 'POST']) !!}
   <button class="btn btn-success" type="submit">{{trans('strings.cancel')}}</button>
   {!! Form::close() !!}
-  @endif
 
   <br>
+
   <h1>{{trans('strings.product_repair')}}</h1>
 
   <table class="table">
