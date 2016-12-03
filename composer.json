@@ -10,7 +10,8 @@
         "nesbot/carbon": "^1.21",
         "intervention/image": "^2.3",
         "vinelab/laravel-editor": "*",
-        "maddhatter/laravel-fullcalendar": "^1.2"
+        "maddhatter/laravel-fullcalendar": "^1.2",
+        "phpdocumentor/phpdocumentor": "2.*"
     },
     "require-dev": {
         "laravelcollective/html": "5.2.*",
@@ -38,18 +39,18 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"copy('.env.example', '.env');\""
+            "/usr/local/bin/php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "php artisan key:generate"
+            "/usr/local/bin/php artisan key:generate"
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+            "/usr/local/bin/php artisan optimize"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "/usr/local/bin/php artisan optimize"
         ]
     },
     "config": {

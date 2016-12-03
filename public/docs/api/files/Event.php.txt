@@ -1,0 +1,25 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Event extends Model
+{
+
+  protected $fillable = [
+    'start', 'end', 'date',
+  ];
+
+  public function product()
+  {
+    return $this->belongsTo(Product::class);
+  }
+
+  public function product_id()
+  {
+    return $this->product_id;
+  }
+
+}
+
