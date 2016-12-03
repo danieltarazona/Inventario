@@ -11,14 +11,14 @@ use App\Http\Requests;
 use App\Repair;
 use App\Product;
 use App\State;
+use App\Cart;
 use App\User;
-use Editor;
 use Auth;
 use Carbon\Carbon;
 use DB;
 
 
-class repairsController extends Controller
+class RepairsController extends Controller
 {
 
   /**
@@ -65,14 +65,19 @@ class repairsController extends Controller
       ->withErrors($validator)
       ->withInput();
     } else {
-      $request->description = Input::get(Editor::input());
       $input = $request->all();
       $repair = Repair::create($input);
+      $repair->provider_id = $request->provider;
+      $repair->storer_id = Auth::id();
       $repair->state_id = 401;
-      $user = User::findOrFail(Auth::id());
-
-      $user->repair()->save($repair);
       $repair->save();
+
+      $cart = Cart::findOrFail(Auth::id());
+
+      foreach ($cart->product as $product) {
+        $repair->product()->save($product);
+      }
+
       Flash('Create Successful!', 'success');
       return redirect('repairs');
     }
@@ -190,7 +195,7 @@ class repairsController extends Controller
     } else {
       if(Auth::user()->role_id == 2)
       {
-        $repair->description = Input::get(Editor::input());
+        $repair->description = $request->description;
       }
       $repair->name = $request->name;
       $repair->save();
@@ -208,28 +213,14 @@ class repairsController extends Controller
   * @return \Illuminate\Http\Response
   */
 
-  /*
-  $repair = App\Repair::find(2)
-
-  $product = App\Product::findOrFail(10);
-  $state = App\State::findOrFail(303);
-  $product->state;
-
-  $state->product()->save($product, ['quantity' => 10]);
-  $state->product()->attach($product, ['quantity' => 10]);
-
-  $state->product()->updateExistingPivot(['quantity' => 20]);
-  $state->product()->detach($product);
-
-  */
-  public function add($id, $product, Request $request)
+  public function add($id, $product)
   {
     $repair = Repair::findOrFail($id);
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(303); # On-repair
-    $product->stock = $product->stock - $request->quantity;
+    $repair->product()->save($product);
+    $product->update(['state_id' => 303]); # On-repair
 
-    Flash('Item has been added!', 'success');
+    Flash('Product has been added to Repair!', 'success');
     return redirect('repairs/' . $id . '/edit');
   }
 
@@ -244,11 +235,24 @@ class repairsController extends Controller
   {
     $repair = Repair::findOrFail($id);
     $product = Product::findOrFail($product);
-    $state = State::findOrFail(303);
-    $state->product()->detach($product);
     $repair->product()->detach($product);
-    Flash('Item has been Removed!', 'success');
+    $product->update(['state_id' => 300]);
+
+    Flash('Product has been Removed from Repair!', 'success');
     return redirect('products/' . $product->id);
+  }
+
+  /**
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function destroy($id)
+  {
+    Repair::findOrFail($id)->delete();
+    Flash('Repair has been Removed!', 'success');
+    return redirect('repairs');
   }
 
   public function rules()

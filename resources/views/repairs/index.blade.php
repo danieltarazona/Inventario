@@ -4,10 +4,6 @@
 
   <h1>{{trans('strings.repairs')}}</h1>
 
-  <br>
-
-  <a href="{{ route('repairs.create') }}" class="btn btn-primary">{{trans('strings.request')}}</a>
-
   <hr>
 
   <table class="table table-bordered table-hover table-responsive">
@@ -19,7 +15,7 @@
         <th>{{trans('strings.store')}}</th>
         <th>{{trans('strings.date')}}</th>
         <th>{{trans('strings.state')}}</th>
-        <th colspan="2">{{trans('strings.actions')}}</th>
+        <th colspan="3">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
 
@@ -38,6 +34,11 @@
         </td>
         <td>
           <a href="{{ route('repairs.edit', $repair->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        </td>
+        <td>
+          {!! Form::open(['route' => ['repairs.destroy', $repair->id], 'method' => 'DELETE']) !!}
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+          {!! Form::close() !!}
         </td>
 
       </tr>

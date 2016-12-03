@@ -13,11 +13,11 @@ class Requeriment03Test extends TestCase
    */
   public function testPassword()
   {
-    $this->visit('/login');
-    $this->visit('/password/reset');
-    $this->type('test@test.com', 'email');
-    $this->press('Enviar Link de Restablecimiento');
-    $this->seePageIs('/password/reset');
-    $this->see('Hemos enviado tu contraseña de recuperacion!');
+    $this->visit('/login')
+    ->visit('/password/reset')
+    ->type('test@test.com', 'email')
+    ->press('Enviar Link de Restablecimiento')
+    ->seePageIs('/password/reset')
+    ->see('Hemos enviado tu contraseña de recuperacion!');
   }
 }

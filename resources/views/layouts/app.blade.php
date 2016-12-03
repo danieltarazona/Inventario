@@ -41,11 +41,11 @@
             @if(Auth::user()->role_id == 1 or Auth::user()->role_id > 2)
               <li><a href="{{ url('orders') }}">{{trans('strings.orders')}}</a></li>
               <li><a href="{{ url('sales') }}">{{trans('strings.sales')}}</a></li>
-              <li><a href="{{ url('events') }}">{{trans('strings.events')}}</a></li>
             @endif
             @if (Auth::check() && Auth::user()->role_id > 1)
               <li><a href="{{ url('repairs') }}">{{trans('strings.repairs')}}</a></li>
               @if (Auth::user()->role_id > 3)
+                <li><a href="{{ url('events') }}">{{trans('strings.events')}}</a></li>
                 <li><a href="{{ url('roles') }}">{{trans('strings.roles')}}</a></li>
                 <li><a href="{{ url('states') }}">{{trans('strings.states')}}</a></li>
                 <li><a href="{{ url('regions') }}">{{trans('strings.regions')}}</a></li>

@@ -61,7 +61,7 @@ class OrdersController extends Controller
 
       $order->update(['state_id' => 400]);
       Flash('Order to Sale Complete!', 'success');
-      return redirect('orders');
+      return redirect('sales');
 
     } else {
       Flash('Order can`t be Sale!', 'danger');

@@ -25,10 +25,6 @@
 
   <br>
 
-  <button class="btn btn-warning" type="submit">
-    {{ trans('strings.repair') }}
-  </button>
-
   {!! Form::open(['route' => 'events.search', 'method' => 'POST']) !!}
 
   <br>

@@ -13,14 +13,14 @@ class Requeriment04Test extends TestCase
      */
     public function testOrder()
     {
-      $this->visit('/');
-      $this->visit('/products');
-      $this->visit('/products/6');
-      $this->press('Reservar');
-      $this->visit('/products/7');
-      $this->press('Reservar');
-      $this->seePageIs('/cart/4');
-      $this->press('Reservar Todo');
-      $this->seePageIs('/events/create');
+      $this->visit('/')
+      ->visit('/products')
+      ->visit('/products/6')
+      ->press('Reservar')
+      ->visit('/products/7')
+      ->press('Reservar')
+      ->seePageIs('/cart/4')
+      ->press('Continuar')
+      ->seePageIs('/events/create');
     }
 }

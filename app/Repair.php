@@ -50,4 +50,14 @@ class Repair extends Model
     return $this->state->id;
   }
 
+  public function product()
+  {
+    return $this->belongsToMany(Product::class)->withTimestamps();
+  }
+
+  public function product_id()
+  {
+    return $this->product->lists('id');
+  }
+
 }
