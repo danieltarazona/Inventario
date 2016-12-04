@@ -44,14 +44,15 @@
     </a>
   @endif
 
-
   <br>
 
-  <a href="{{ url('/repairs/create') }}">
-    <button class="btn btn-warning" type="button" name="{{trans('strings.repair')}}">
-      {{ trans('strings.repair') }}
-    </button>
-  </a>
+  @if (Auth::user()->role_id > 2 )
+    <a href="{{ url('/repairs/create') }}">
+      <button class="btn btn-warning" type="button" name="{{trans('strings.repair')}}">
+        {{ trans('strings.repair') }}
+      </button>
+    </a>
+  @endif
 
 
 

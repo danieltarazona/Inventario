@@ -75,11 +75,10 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                         @if(Auth::user()->role_id == 1 || Auth::user()->role_id > 2)
-                          <li><a href="{{ url('/cart/' . Auth::user()->cart->id) }}"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i></a></li>
+                          <li><a href="{{ url('/cart/' . Auth::user()->cart->id) }}"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i> Carrito</a></li>
                         @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                  <i class="fa fa-btn fa-user fa-lg"></i>
                                   Menu
                                   <span class="caret"></span>
                                 </a>
@@ -88,7 +87,7 @@
 
                                     <li>
                                       <a href="{{ url('/users/' . Auth::id() . '/edit') }}">
-                                      <i class="fa fa-btn fa-user"></i>{{trans('strings.profile')}}</a>
+                                      <i class="fa fa-btn fa-user"></i> {{trans('strings.profile')}}</a>
                                     </li>
 
                                     <li>

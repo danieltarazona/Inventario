@@ -36,9 +36,11 @@
           <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary"><i name="Show" class="fa fa-search-plus" aria-hidden="true"></i></a>
         </td>
 
-        <td>
-          <a href="{{ route('orders.edit', $order->id) }}" name="Edit" class="btn btn-warning"><i name="Edit" class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-        </td>
+        @if ($order->state_id == 401)
+          <td>
+            <a href="{{ route('orders.edit', $order->id) }}" name="Edit" class="btn btn-warning"><i name="Edit" class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+          </td>
+        @endif
 
       </tr>
     @endforeach

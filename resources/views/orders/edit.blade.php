@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>{{trans('strings.edit')}}</h1>
+  <h1>{{trans('strings.edit')}}</h1>
 
   {!! Form::open(array('route' => array('orders.update', $order->id), 'method' => 'PATCH')) !!}
 
@@ -20,10 +20,12 @@
 
   {{ Form::submit(trans('strings.update'), array('class' => 'btn btn-warning')) }}
 
-{!! Form::close() !!}
+  {!! Form::close() !!}
 
-{!! Form::open(['route' => ['orders.cancel', $order->id], 'method' => 'POST']) !!}
-<button class="btn btn-danger" type="submit">{{trans('strings.cancel')}}</button>
-{!! Form::close() !!}
+  <br>
+
+  {!! Form::open(['route' => ['orders.cancel', $order->id], 'method' => 'POST']) !!}
+    <button class="btn btn-danger" type="submit">{{trans('strings.cancel')}}</button>
+  {!! Form::close() !!}
 
 @stop

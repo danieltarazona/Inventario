@@ -19,7 +19,7 @@ class CreateSalesTable extends Migration
             $table->integer('order_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
             $table->time('out');
-            $table->time('in');
+            $table->time('in')->nullable();
             $table->timestamps();
         });
     }
