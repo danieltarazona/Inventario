@@ -18,7 +18,7 @@ class State extends Model
 
   public function users_id()
   {
-    return $this->users->list('id');
+    return $this->users->pluck('id');
   }
 
   public function product()
@@ -28,7 +28,7 @@ class State extends Model
 
   public function product_id()
   {
-    return $this->product->list('id');
+    return $this->product->pluck('id');
   }
 
   public function order()
@@ -58,7 +58,7 @@ class State extends Model
 
   public function sale_id()
   {
-    return $this->sale->list('id');
+    return $this->sale->pluck('id');
   }
 
 }

@@ -78,7 +78,7 @@ class Product extends Model
 
   public function order_id()
   {
-    return $this->order->lists('id');
+    return $this->order->pluck('id');
   }
 
   public function sale()
@@ -88,7 +88,7 @@ class Product extends Model
 
   public function sale_id()
   {
-    return $this->sale->lists('id');
+    return $this->sale->pluck('id');
   }
 
   public function state()
@@ -98,7 +98,7 @@ class Product extends Model
 
   public function state_id()
   {
-    return $this->state->lists('id');
+    return $this->state->pluck('id');
   }
 
   public function cart()
@@ -108,7 +108,7 @@ class Product extends Model
 
   public function cart_id()
   {
-    return $this->cart->lists('id');
+    return $this->cart->pluck('id');
   }
 
   public function repair()
@@ -118,6 +118,6 @@ class Product extends Model
 
   public function repair_id()
   {
-    return $this->repair->lists('id');
+    return $this->repair->pluck('id');
   }
 }

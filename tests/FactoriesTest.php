@@ -76,6 +76,7 @@ class FactoriesTest extends TestCase
 
     public function testFactoryOrder()
     {
+      $faker = Faker\Factory::create();
       $user = App\User::find(1);
       $products = factory(App\Product::class, 10)->create();
       $order = factory(App\Order::class)->create();
@@ -85,12 +86,13 @@ class FactoriesTest extends TestCase
       $order->product()->sync($products);
       $this->seeInDatabase('orders', [
         'state_id' => $state->id,
-        'user_id' => $user->id,
+        'user_id' => $user->id
       ]);
     }
 
     public function testFactorySale()
     {
+      $faker = Faker\Factory::create();
       $user = App\User::find(1);
       $order = factory(App\Order::class)->create();
       $sale = factory(App\Sale::class)->create();
@@ -101,7 +103,7 @@ class FactoriesTest extends TestCase
       $this->seeInDatabase('sales', [
         'order_id' => $order->id,
         'state_id' => $state->id,
-        'user_id' => $user->id,
+        'user_id' => $user->id
       ]);
     }
 }

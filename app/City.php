@@ -17,7 +17,7 @@ class City extends Model
 
   public function store_id()
   {
-    return $this->store->list('id');
+    return $this->store->pluck('id');
   }
 
   public function user()
@@ -27,7 +27,7 @@ class City extends Model
 
   public function user_id()
   {
-    return $this->user->list('id');
+    return $this->user->pluck('id');
   }
 
   public function product()
@@ -37,7 +37,7 @@ class City extends Model
 
   public function product_id()
   {
-    return $this->product->list('id');
+    return $this->product->pluck('id');
   }
 
   public function region()
@@ -52,7 +52,7 @@ class City extends Model
 
   public function name_id()
   {
-    return City::lists('name', 'id');
+    return City::pluck('name', 'id');
   }
 
 }

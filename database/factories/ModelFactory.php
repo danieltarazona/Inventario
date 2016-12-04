@@ -121,11 +121,16 @@ $factory->define(App\Cart::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Order::class, function (Faker\Generator $faker) {
   return [
+    'start' => $faker->numberBetween($min = 11, $max = 12) . ':00:00',
+    'end' => $faker->numberBetween($min = 13, $max = 14) . ':00:00',
+    'date' => Carbon::now()->subDay()
   ];
 });
 
 $factory->define(App\Sale::class, function (Faker\Generator $faker) {
   return [
+    'out' => $faker->numberBetween($min = 11, $max = 12) . ':00:00',
+    'in' => $faker->numberBetween($min = 13, $max = 14) . ':00:00'
   ];
 });
 

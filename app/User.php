@@ -97,7 +97,7 @@ class User extends Authenticatable
 
   public function sale_id()
   {
-    return $this->sale->list('id');
+    return $this->sale->pluck('id');
   }
 
   public function order()
@@ -107,7 +107,7 @@ class User extends Authenticatable
 
   public function order_id()
   {
-    return $this->order->list('id');
+    return $this->order->pluck('id');
   }
 
   public function comment()
@@ -117,7 +117,7 @@ class User extends Authenticatable
 
   public function comment_id()
   {
-    return $this->comment->list('id');
+    return $this->comment->pluck('id');
   }
 
   public function issue()
@@ -127,7 +127,7 @@ class User extends Authenticatable
 
   public function issue_id()
   {
-    return $this->issue->list('id');
+    return $this->issue->pluck('id');
   }
 
   public function event()
@@ -137,7 +137,7 @@ class User extends Authenticatable
 
   public function event_id()
   {
-    return $this->event->list('id');
+    return $this->event->pluck('id');
   }
 
   public function repair_provider()

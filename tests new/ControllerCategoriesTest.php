@@ -18,29 +18,27 @@ class ControllerCategoriesTest extends TestCase
 
   public function testCategoriesStoreController()
   {
-    $admin = App\User::find(4);
-    $params = [
-      '_token' => csrf_token(),
-      'name'   => 'Tablets 2 in 1',
-      'photo'  => '/img/categories/ipad.jpeg',
-    ];
-    $response = $this->actingAs($admin)->call('POST', 'CategoriesController@store', $params);
-    $this->assertResponseOk();
+    $category = factory(\App\Category::class)->create(['name' => 'HUD']);
+    $response = $this->action('POST',
+      'CategoriesController@store',
+      $category->jsonSerialize()
+    );
+    $this->seeInDatabase('categories', ['name' => $category->name]);
+    $this->assertSessionHas('flash', 'success');
+    $this->assertEquals(302, $response->status());
     $this->assertRedirectedTo('categories');
   }
 
   public function testCategoriesUpdateController()
   {
-    $user = App\User::find(4);
-    $this->actingAs($user);
-    $category = App\Category::first();
-    $category->name = "Tablets";
+    $category = App\Category::find(1);
+    $category->name = "Test Tablet";
     $response = $this->action(
-      'PUT', 'CategoriesController@update',
+      'PATCH', 'CategoriesController@update',
       ['categories' => $category->id],
       $category->jsonSerialize()
     );
-    $this->seeInDatabase('categories', ['name' => $category->name]);
+    $this->seeInDatabase('categories', ['name' => 'Test Tablet']);
     $this->assertEquals(302, $response->status());
     $this->assertRedirectedTo('categories');
   }
@@ -58,7 +56,7 @@ class ControllerCategoriesTest extends TestCase
     $admin = App\User::find(4);
     $this->actingAs($admin);
     $response = $this->action('DELETE', 'CategoriesController@destroy', ['category' => 1]);
-    $this->assertEquals(200, $response->status());
+    $this->assertEquals(302, $response->status());
     $this->assertRedirectedTo('categories');
   }
 }

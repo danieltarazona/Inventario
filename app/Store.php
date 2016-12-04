@@ -13,7 +13,7 @@ class Store extends Model
 
   public function product_id()
   {
-    return $this->product->list('id');
+    return $this->product->pluck('id');
   }
 
   public function city()
@@ -33,12 +33,12 @@ class Store extends Model
 
   public function user_id()
   {
-    return $this->user->list('id');
+    return $this->user->pluck('id');
   }
 
   public function name_id()
   {
-    return Store::lists('name', 'id');
+    return Store::pluck('name', 'id');
   }
 
 }

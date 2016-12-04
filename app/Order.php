@@ -17,7 +17,7 @@ class Order extends Model
 
   public function product_id()
   {
-    return $this->product->lists('id');
+    return $this->product->pluck('id');
   }
 
   public function user()

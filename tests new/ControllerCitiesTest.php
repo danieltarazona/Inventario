@@ -19,11 +19,12 @@ class ControllerCitiesTest extends TestCase
     $city = factory(\App\City::class)->create(['name' => 'Tokyo']);
     $response = $this->action('POST',
       'CitiesController@store',
-      $city->jsonSerialize()->name
+      $city->jsonSerialize()
     );
     $this->seeInDatabase('cities', ['name' => $city->name]);
     $this->assertSessionHas('flash', 'success');
     $this->assertEquals(302, $response->status());
+    $this->assertRedirectedTo('cities');
   }
 
   public function testCitiesUpdateController()

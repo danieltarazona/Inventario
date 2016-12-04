@@ -18,7 +18,7 @@ class Region extends Model
 
   public function user_id()
   {
-    return $this->user->list('id');
+    return $this->user->pluck('id');
   }
 
   public function city()
@@ -28,7 +28,7 @@ class Region extends Model
 
   public function city_id()
   {
-    return $this->city->list('id');
+    return $this->city->pluck('id');
   }
 
   public function store()
@@ -38,7 +38,7 @@ class Region extends Model
 
   public function store_id()
   {
-    return $this->store->list('id');
+    return $this->store->pluck('id');
   }
 
   public function product()
@@ -48,11 +48,11 @@ class Region extends Model
 
   public function product_id()
   {
-      return $this->product->list('id');
+      return $this->product->pluck('id');
   }
 
   public function name_id()
   {
-    return Region::lists('name', 'id');
+    return Region::pluck('name', 'id');
   }
 }

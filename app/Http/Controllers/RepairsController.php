@@ -45,7 +45,7 @@ class RepairsController extends Controller
   */
   public function create()
   {
-    $providers = User::where('role_id', 2)->lists('username', 'id');
+    $providers = User::where('role_id', 2)->pluck('username', 'id');
     return view('repairs.create', compact('providers'));
   }
 

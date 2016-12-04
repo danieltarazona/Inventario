@@ -37,11 +37,13 @@ class ProductsController extends Controller
   */
   public function index()
   {
-    $products = Product::paginate(10);
+
     if (Auth::id() == 1)
     {
+      $products = Product::where('state_id', 300)->paginate(10);
       return view('products.indexCard', compact('products'));
     } else {
+      $products = Product::paginate(10);
       return view('products.indexList', compact('products'));
     }
   }
@@ -54,7 +56,7 @@ class ProductsController extends Controller
   public function create()
   {
     $categories = Category::pluck('name', 'id');
-    $providers = User::where('role_id', 2)->lists('username', 'id');
+    $providers = User::where('role_id', 2)->pluck('username', 'id');
     $stores = Store::pluck('name', 'id');
     $cities = City::pluck('name', 'id');
     $regions = Region::pluck('name', 'id');
