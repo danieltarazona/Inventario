@@ -2,6 +2,8 @@
 
 return array(
 
+	'address' => 'Dirección',
+	'first_name' => 'Nombre',
 	'continue' => 'Continuar',
 	'request' => 'Solicitar',
 	'date_create' => 'Fecha Creacion',

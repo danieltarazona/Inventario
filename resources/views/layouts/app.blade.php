@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    @include('layouts.links')
 
     <!-- Scripts -->
     <script>
@@ -79,21 +79,30 @@
                         @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                  <i class="fa fa-btn fa-user fa-lg"></i>
+                                  Menu
+                                  <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+
+                                    <li>
+                                      <a href="{{ url('/users/' . Auth::id() . '/edit') }}">
+                                      <i class="fa fa-btn fa-user"></i>{{trans('strings.profile')}}</a>
+                                    </li>
+
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            {{ trans('strings.logout') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+
                                 </ul>
                             </li>
                         @endif

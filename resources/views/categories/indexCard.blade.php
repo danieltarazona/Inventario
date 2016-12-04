@@ -4,19 +4,6 @@
 
   <h1>{{trans('strings.categories')}}</h1>
 
-  <button type="button" class="btn btn-default">
-    <a href="{{ route('products.index') }}">
-      <span class="fa fa-th"></span>
-    </a>
-  </button>
-  <button type="button" class="btn btn-default">
-
-    <a href="{{ route('products.index') }}">
-      <span class="fa fa-th-list"></span>
-    </a>
-  </button>
-
-  <br>
   <hr>
 
   @foreach ($categories as $category)

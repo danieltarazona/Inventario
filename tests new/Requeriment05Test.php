@@ -13,7 +13,8 @@ class Requeriment05Test extends TestCase
      */
     public function testSale()
     {
-      $this->visit('/orders')
+      $admin = App\User::find(4);
+      $this->actingAs($admin)
       ->visit('/orders/1')
       ->see('ID')
       ->see('Apple')

@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Requeriment01Test extends TestCase
 {
+
+    use DatabaseTransactions;
     /**
      * Test Register Requeriment
      *
@@ -13,15 +15,18 @@ class Requeriment01Test extends TestCase
      */
     public function testRegister()
     {
-      $this->visit('/login')
-      ->visit('/register')
-      ->type('Test', 'username')
-      ->type('1010101010', 'dni')
-      ->type('test@test.com', 'email')
-      ->type('123456', 'password')
-      ->type('123456', 'password_confirmation')
-      ->press('Registrar')
-      ->seePageIs('/');
+      $this->visit('/register');
+      $this->type('Test', 'username');
+      $this->press('Registrar');
+      $this->seePageIs('/register');
+      $this->type('TestUser', 'first_name');
+      $this->type('TestLast', 'last_name');
+      $this->type('1234', 'dni');
+      $this->type('test@test.com', 'email');
+      $this->type('123456', 'password');
+      $this->type('123456', 'password_confirmation');
+      $this->press('Registrar');
+      $this->seePageIs('/home');
     }
 
 }

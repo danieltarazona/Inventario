@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Cart;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -52,6 +53,8 @@ class RegisterController extends Controller
           'dni' => 'required|max:255|unique:users',
           'email' => 'required|email|max:255|unique:users',
           'password' => 'required|min:6|confirmed',
+          'first_name' => 'required|string',
+          'last_name' => 'required|string',
         ]);
     }
 
@@ -63,13 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = new User;
-        $user->username = $data['username'];
-        $user->dni = $data['dni'];
-        $user->email = $data['email'];
+        $user = User::create([
+          'username' => $data['username'],
+          'dni' => $data['dni'],
+          'email' => $data['email'],
+          'first_name' => $data['first_name'],
+          'last_name' => $data['last_name'],
+          'password' => bcrypt($data['password'])
+        ]);
+
         $user->role_id = 1;
         $user->state_id = 200;
-        $user->password = bcrypt($data['password']);
 
         $cart = Cart::create();
         $cart->user()->save($user);

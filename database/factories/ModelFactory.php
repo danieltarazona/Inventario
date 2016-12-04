@@ -24,6 +24,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
       'first_lastname' => $faker->name,
       'last_lastname' => $faker->name,
       'address' => $faker->address,
+      'state_id' => 200,
       'telephone' => $faker->phoneNumber,
       'cellphone' => $faker->phoneNumber,
       'password' => $password ?: $password = bcrypt('123456'),

@@ -13,12 +13,7 @@ class User extends Authenticatable
   * @var array
   */
   protected $fillable = [
-    'username', 'dni', 'email', 'password',
-  ];
-
-  protected $casts = [
-    'isAdmin' => 'boolean',
-    'isSeller' => 'boolean',
+    'username', 'dni', 'email', 'password', 'first_name', 'last_name'
   ];
 
   /**

@@ -13,8 +13,8 @@ class Requeriment04Test extends TestCase
      */
     public function testOrder()
     {
-      $this->visit('/')
-      ->visit('/products')
+      $admin = App\User::find(4);
+      $this->actingAs($admin)
       ->visit('/products/6')
       ->press('Reservar')
       ->visit('/products/7')

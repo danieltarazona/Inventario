@@ -19,7 +19,7 @@ class CreateForeignsKeys extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('role_id')->references('id')->on('roles')
       ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('cart_id')->references('id')->on('users')
+      $table->foreign('cart_id')->references('id')->on('carts')
       ->onDelete('cascade')->onUpdate('cascade');
     });
 

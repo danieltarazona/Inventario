@@ -24,13 +24,13 @@ class CreateUsersTable extends Migration
           $table->string('email')->unique();
           $table->string('first_name');
           $table->string('last_name');
-          $table->string('first_lastname');
-          $table->string('last_lastname');
-          $table->string('address');
-          $table->string('telephone');
-          $table->string('cellphone');
+          $table->string('first_lastname')->nullable();
+          $table->string('last_lastname')->nullable();
+          $table->string('address')->nullable();
+          $table->string('telephone')->nullable();
+          $table->string('cellphone')->nullable();
           $table->string('password');
-          $table->string('photo');
+          $table->string('photo')->nullable();
           $table->rememberToken();
           $table->timestamps();
         });
@@ -43,6 +43,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('users');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
