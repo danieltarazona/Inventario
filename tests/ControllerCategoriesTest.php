@@ -19,13 +19,12 @@ class ControllerCategoriesTest extends TestCase
   public function testCategoriesStoreController()
   {
     $admin = App\User::find(4);
-    $this->actingAs($admin);
     $params = [
       '_token' => csrf_token(),
       'name'   => 'Tablets 2 in 1',
       'photo'  => '/img/categories/ipad.jpeg',
     ];
-    $response = $this->call('POST', 'CategoriesController@store', $params);
+    $response = $this->actingAs($admin)->call('POST', 'CategoriesController@store', $params);
     $this->assertResponseOk();
     $this->assertRedirectedTo('categories');
   }

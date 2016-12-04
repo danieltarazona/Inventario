@@ -53,11 +53,11 @@ class ProductsController extends Controller
   */
   public function create()
   {
-    $categories = Category::lists('name', 'id');
+    $categories = Category::pluck('name', 'id');
     $providers = User::where('role_id', 2)->lists('username', 'id');
-    $stores = Store::lists('name', 'id');
-    $cities = City::lists('name', 'id');
-    $regions = Region::lists('name', 'id');
+    $stores = Store::pluck('name', 'id');
+    $cities = City::pluck('name', 'id');
+    $regions = Region::pluck('name', 'id');
 
     return view('products.create', compact(
     'categories', 'providers',
@@ -75,12 +75,12 @@ public function edit($id)
 {
   $product = Product::findOrFail($id);
 
-  $categories = Category::lists('name', 'id');
+  $categories = Category::pluck('name', 'id');
   $providers = User::where('role_id', 2)->lists('username', 'id');
-  $stores = Store::lists('name', 'id');
-  $cities = City::lists('name', 'id');
-  $regions = Region::lists('name', 'id');
-  $states = State::lists('name', 'id');
+  $stores = Store::pluck('name', 'id');
+  $cities = City::pluck('name', 'id');
+  $regions = Region::pluck('name', 'id');
+  $states = State::pluck('name', 'id');
 
   return view('products.edit', compact(
   'product', 'categories', 'providers',

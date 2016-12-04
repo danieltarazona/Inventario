@@ -5,21 +5,18 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "nesbot/carbon": "^1.21",
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
         "intervention/image": "^2.3",
-        "vinelab/laravel-editor": "*",
-        "maddhatter/laravel-fullcalendar": "^1.2",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "nesbot/carbon": "^1.21"
     },
     "require-dev": {
-        "laravelcollective/html": "5.2.*",
+        "laravelcollective/html": "5.3.*",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "phpunit/phpunit": "~5.0",
+        "symfony/css-selector": "3.1.*",
+        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [
@@ -39,18 +36,18 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "/usr/local/bin/php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "/usr/local/bin/php artisan key:generate"
+            "php artisan key:generate"
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "/usr/local/bin/php artisan optimize"
+            "php artisan optimize"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "/usr/local/bin/php artisan optimize"
+            "php artisan optimize"
         ]
     },
     "config": {

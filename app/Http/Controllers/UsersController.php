@@ -52,10 +52,10 @@ class UsersController extends Controller
   public function edit($id)
   {
     $user = User::findOrFail($id);
-    $cities = City::lists('name', 'id');
-    $regions = Region::lists('name', 'id');
-    $stores = Store::lists('name', 'id');
-    $states = State::lists('name', 'id');
+    $cities = City::pluck('name', 'id');
+    $regions = Region::pluck('name', 'id');
+    $stores = Store::pluck('name', 'id');
+    $states = State::pluck('name', 'id');
 
     return view('users.edit', compact(
     'user', 'cities', 'stores', 'states', 'regions'

@@ -1,8 +1,5 @@
 <?php
 
-use Faker\Generator;
-use Carbon\Carbon;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -14,7 +11,28 @@ use Carbon\Carbon;
 |
 */
 
-$factory->define(App\Event::class, function ($faker) {
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+      'dni' => $faker->unique()->ean8,
+      'username' => $faker->unique()->userName,
+      'email' => $faker->unique()->safeEmail,
+      'first_name' => $faker->name,
+      'last_name' => $faker->name,
+      'first_lastname' => $faker->name,
+      'last_lastname' => $faker->name,
+      'address' => $faker->address,
+      'telephone' => $faker->phoneNumber,
+      'cellphone' => $faker->phoneNumber,
+      'password' => $password ?: $password = bcrypt('123456'),
+      'photo' => "/img/users/profile.png",
+      'remember_token' => str_random(10)
+    ];
+});
+
+$factory->define(App\Event::class, function (Faker\Generator $faker) {
   return [
     'start' => $faker->numberBetween($min = 11, $max = 12) . ':00:00',
     'end' => $faker->numberBetween($min = 13, $max = 14) . ':00:00',
@@ -22,7 +40,7 @@ $factory->define(App\Event::class, function ($faker) {
   ];
 });
 
-$factory->define(App\Category::class, function ($faker) {
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->word,
     'photo' => "/img/categories/ipad.jpeg",
@@ -30,32 +48,32 @@ $factory->define(App\Category::class, function ($faker) {
   ];
 });
 
-$factory->define(App\State::class, function ($faker) {
+$factory->define(App\State::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->word,
     'label' => 'label label-success'
   ];
 });
 
-$factory->define(App\Country::class, function ($faker) {
+$factory->define(App\Country::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->country,
   ];
 });
 
-$factory->define(App\Region::class, function ($faker) {
+$factory->define(App\Region::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->state,
   ];
 });
 
-$factory->define(App\City::class, function ($faker) {
+$factory->define(App\City::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->city,
   ];
 });
 
-$factory->define(App\Store::class, function ($faker) {
+$factory->define(App\Store::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
     'description' => $faker->text,
@@ -65,7 +83,7 @@ $factory->define(App\Store::class, function ($faker) {
   ];
 });
 
-$factory->define(App\Product::class, function ($faker) {
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
     'photo' => "/img/products/ipad.jpeg",
@@ -77,59 +95,41 @@ $factory->define(App\Product::class, function ($faker) {
   ];
 });
 
-$factory->define(App\Repair::class, function ($faker) {
+$factory->define(App\Repair::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->catchPhrase,
     'description' => $faker->text,
   ];
 });
 
-$factory->define(App\User::class, function ($faker) {
-  return [
-    'dni' => $faker->unique()->ean8,
-    'username' => $faker->unique()->userName,
-    'email' => $faker->unique()->safeEmail,
-    'first_name' => $faker->name,
-    'last_name' => $faker->name,
-    'first_lastname' => $faker->name,
-    'last_lastname' => $faker->name,
-    'address' => $faker->address,
-    'telephone' => $faker->phoneNumber,
-    'cellphone' => $faker->phoneNumber,
-    'password' => bcrypt(str_random(10)),
-    'photo' => "/img/users/profile.png",
-    'remember_token' => str_random(10)
-  ];
-});
-
-$factory->define(App\Comment::class, function ($faker) {
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->bs,
   ];
 });
 
-$factory->define(App\Issue::class, function ($faker) {
+$factory->define(App\Issue::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->bs,
   ];
 });
 
-$factory->define(App\Cart::class, function ($faker) {
+$factory->define(App\Cart::class, function (Faker\Generator $faker) {
   return [
   ];
 });
 
-$factory->define(App\Order::class, function ($faker) {
+$factory->define(App\Order::class, function (Faker\Generator $faker) {
   return [
   ];
 });
 
-$factory->define(App\Sale::class, function ($faker) {
+$factory->define(App\Sale::class, function (Faker\Generator $faker) {
   return [
   ];
 });
 
-$factory->define(App\Role::class, function ($faker) {
+$factory->define(App\Role::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
   ];

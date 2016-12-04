@@ -33,8 +33,8 @@ class StoresController extends Controller
   */
   public function create()
   {
-    $cities = City::lists('name', 'id');
-    $regions = Region::lists('name', 'id');
+    $cities = City::pluck('name', 'id');
+    $regions = Region::pluck('name', 'id');
 
     return view('stores.create', compact('cities', 'regions'));
   }

@@ -170,7 +170,7 @@ class RepairsController extends Controller
   public function edit($id)
   {
     $repair = Repair::findOrFail($id);
-    $products = Product::lists('name', 'id');
+    $products = Product::pluck('name', 'id');
 
     return view('repairs.edit', compact('repair', 'products'));
   }
