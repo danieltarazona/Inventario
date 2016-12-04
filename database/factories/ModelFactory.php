@@ -26,7 +26,6 @@ $factory->define(App\Category::class, function ($faker) {
   return [
     'name' => $faker->word,
     'photo' => "/img/categories/ipad.jpeg",
-    'views' => 1000,
     'description' => $faker->text,
   ];
 });

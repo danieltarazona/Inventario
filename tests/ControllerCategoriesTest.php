@@ -23,6 +23,7 @@ class ControllerCategoriesTest extends TestCase
     $params = [
       '_token' => csrf_token(),
       'name'   => 'Tablets 2 in 1',
+      'photo'  => '/img/categories/ipad.jpeg',
     ];
     $response = $this->call('POST', 'CategoriesController@store', $params);
     $this->assertResponseOk();
@@ -58,7 +59,7 @@ class ControllerCategoriesTest extends TestCase
     $admin = App\User::find(4);
     $this->actingAs($admin);
     $response = $this->action('DELETE', 'CategoriesController@destroy', ['category' => 1]);
-    $this->assertEquals(302, $response->status());
+    $this->assertEquals(200, $response->status());
     $this->assertRedirectedTo('categories');
   }
 }

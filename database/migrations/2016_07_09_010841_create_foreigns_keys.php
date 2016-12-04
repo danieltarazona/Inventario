@@ -125,6 +125,5 @@ class CreateForeignsKeys extends Migration
   */
   public function down()
   {
-    Schema::drop('foreigns_keys');
   }
 }

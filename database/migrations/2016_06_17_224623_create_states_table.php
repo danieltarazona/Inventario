@@ -27,6 +27,8 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('states');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+      Schema::drop('states');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

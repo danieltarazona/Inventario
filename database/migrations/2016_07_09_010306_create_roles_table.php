@@ -26,6 +26,8 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('roles');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+      Schema::drop('roles');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
