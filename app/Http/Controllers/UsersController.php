@@ -75,6 +75,7 @@ public function update(Request $request, $id)
   $user = User::FindOrFail($id);
   $input = $request->all();
   $user->fill($input)->save();
+  Flash('User Update Successful!', 'success');
   return redirect('users');
 }
 
@@ -87,6 +88,7 @@ public function update(Request $request, $id)
 public function destroy($id)
 {
   User::findOrFail($id)->delete();
+  Flash('User Delete Successful!', 'success');
   return redirect('users');
   // return redirect()->route('users.index');
 }

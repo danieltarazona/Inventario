@@ -6,11 +6,13 @@
 
   <br>
 
-  {!! Form::open(array('route' => array('orders.sale', $order->id), 'method' => 'POST')) !!}
+  @if (Auth::user()->role_id > 2)
+    {!! Form::open(array('route' => array('orders.sale', $order->id), 'method' => 'POST')) !!}
 
-    {{ Form::submit(trans('strings.sale'), array('class' => 'btn btn-primary')) }}
+      {{ Form::submit(trans('strings.sale'), array('class' => 'btn btn-primary')) }}
 
-  {!! Form::close() !!}
+    {!! Form::close() !!}
+  @endif
 
   <hr>
 

@@ -121,6 +121,7 @@ return array(
 	'detailCity' => 'Detalles de Ciudad',
 	'city_stores' => 'Tiendas de la Ciudad',
 	'telephone' => 'Teléfono',
+	'address' => 'Dirección',
 	'adress' => 'Dirección',
 	'middle_name' => 'Segundo Nombre',
 	'last_name' => 'Apellido',

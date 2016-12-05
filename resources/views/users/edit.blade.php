@@ -12,7 +12,7 @@
   {!! Form::label(trans('strings.middle_name')) !!}
   {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
 
-  {!! Form::label(trans('strings.lastname')) !!}
+  {!! Form::label(trans('strings.last_name')) !!}
   {!! Form::text('first_lastname', $user->first_lastname, ['class' => 'form-control']) !!}
 
   {!! Form::label(trans('strings.last_lastname')) !!}
