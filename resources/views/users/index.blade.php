@@ -4,8 +4,6 @@
 
   <h1>{{trans('strings.users')}}</h1>
 
-  <br>
-
   <hr>
 
   <table class="table table-bordered table-hover table-responsive">

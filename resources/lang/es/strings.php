@@ -142,6 +142,7 @@ return array(
 
 	'city_stores' => 'Tiendas de la Ciudad',
 	'telephone' => 'Teléfono',
+	'address' => 'Dirección',
 	'adress' => 'Dirección',
 	'middle_name' => 'Segundo Nombre',
 

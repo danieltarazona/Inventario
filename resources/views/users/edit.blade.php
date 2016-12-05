@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1>{{ $user->username }}</h1>
-<h2>{{ $user->dni }}</h2>
+<h1>Username {{ $user->username }}</h1>
+<h2>DNI {{ $user->dni }}</h2>
 
 {!! Form::open(array('route' => array('users.update', $user->id), 'method' => 'PATCH')) !!}
 
@@ -13,7 +13,7 @@
   {!! Form::label(trans('strings.middle_name')) !!}
   {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
 
-  {!! Form::label(trans('strings.lastname')) !!}
+  {!! Form::label(trans('strings.last_name')) !!}
   {!! Form::text('first_lastname', $user->first_lastname, ['class' => 'form-control']) !!}
 
   {!! Form::label(trans('strings.last_lastname')) !!}
