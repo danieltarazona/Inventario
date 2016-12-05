@@ -19,7 +19,7 @@
 
   <br>
 
-  {{ Form::submit(trans('strings.order'), array('class' => 'btn btn-success')) }}
+  {{ Form::submit(trans('strings.continue'), array('class' => 'btn btn-success')) }}
 
   {!! Form::close() !!}
 
@@ -44,10 +44,14 @@
 
   <br>
 
+  <!--
+
   @include('events.week')
 
   <br>
 
   @include('events.month')
+
+  -!>
 
   @endsection

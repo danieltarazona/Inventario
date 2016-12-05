@@ -60,6 +60,20 @@ class UsersTableSeeder extends Seeder
 
         $cart = App\Cart::create();
         $cart->user()->save($user);
+
+        /*
+        $state = App\State::find(200);
+        $state->user()->save($user);
+
+        $role = App\Role::find(1);
+        $role->user()->save($user);
+
+        $store = App\Store::find(1);
+        $store->user()->save($user);
+
+        $cart = App\Cart::create();
+        $cart->user()->save($user);
+        */
       });
 
       echo "Done" . PHP_EOL;

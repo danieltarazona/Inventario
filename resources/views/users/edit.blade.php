@@ -36,7 +36,9 @@
   {!! Form::label(trans('strings.state')) !!}
   {!! Form::select('state_id', $states, $user->state_id, ['class' => 'form-control']) !!}
 
-  <input type="submit" class="btn btn-primary" name="submit" value="Save">
+  <br>
+
+  <input type="submit" class="btn btn-primary" name="submit" value="{{ trans('strings.save') }}">
 
 {!! Form::close() !!}
 

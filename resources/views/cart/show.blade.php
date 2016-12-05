@@ -39,7 +39,7 @@
   @if (Auth::user()->role_id == 1 )
     <a href="{{ url('/events/create') }}">
       <button class="btn btn-success align-right" type="button" name="{{trans('strings.order')}}">
-        {{ trans('strings.continue') }}
+        {{ trans('strings.order') }}
       </button>
     </a>
   @endif
