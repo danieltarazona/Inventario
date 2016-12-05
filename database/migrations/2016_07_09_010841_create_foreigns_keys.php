@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 class CreateForeignsKeys extends Migration
@@ -17,7 +19,7 @@ class CreateForeignsKeys extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('role_id')->references('id')->on('roles')
       ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('cart_id')->references('id')->on('users')
+      $table->foreign('cart_id')->references('id')->on('carts')
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
@@ -58,8 +60,6 @@ class CreateForeignsKeys extends Migration
     });
 
     Schema::table('orders', function ($table) {
-      $table->foreign('event_id')->references('id')->on('events')
-      ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('state_id')->references('id')->on('states')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('user_id')->references('id')->on('users')
@@ -87,8 +87,6 @@ class CreateForeignsKeys extends Migration
       $table->foreign('provider_id')->references('id')->on('users')
       ->onDelete('cascade')->onUpdate('cascade');
       $table->foreign('state_id')->references('id')->on('states')
-      ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('event_id')->references('id')->on('events')
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
@@ -129,6 +127,5 @@ class CreateForeignsKeys extends Migration
   */
   public function down()
   {
-    Schema::drop('foreigns_keys');
   }
 }

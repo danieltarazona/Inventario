@@ -13,7 +13,7 @@ class Issue extends Model
 
   public function comment_id()
   {
-    return $this->comment->list('id');
+    return $this->comment->pluck('id');
   }
 
   public function user()

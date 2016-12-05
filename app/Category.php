@@ -13,7 +13,7 @@ class Category extends Model
 
   public function product_id()
   {
-    return $this->product->list('id');
+    return $this->product->pluck('id');
   }
 
 }

@@ -25,7 +25,7 @@
         <td>{{ $sale->id or 'Blank' }}</td>
         <td>{{ $sale->order_id or 'Blank' }}</td>
         <td>{{ $sale->out or 'Blank' }}</td>
-        <td>{{ $sale->in or 'Blank' }}</td>
+        <td>{{  $sale->in or trans('strings.on_waiting') }}</td>
         <td>{{ $sale->user_id or 'Blank' }}</td>
         <td>{{ $sale->user->username or 'Blank' }}</td>
         <td><span class="{{ $sale->state->label }}">{{ $sale->state->name or 'Blank' }}</span></td>

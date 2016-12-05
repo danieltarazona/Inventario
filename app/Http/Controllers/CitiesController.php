@@ -23,7 +23,7 @@ class CitiesController extends Controller
   public function index()
   {
     $cities = City::all();
-    $regions = Region::lists('name', 'id');
+    $regions = Region::pluck('name', 'id');
     return view('cities.index', compact('cities', 'regions'));
   }
 
@@ -34,7 +34,7 @@ class CitiesController extends Controller
   */
   public function create()
   {
-    $regions = Region::lists('name', 'id');
+    $regions = Region::pluck('name', 'id');
     return view('cities.create', compact('regions'));
   }
 
@@ -69,7 +69,7 @@ class CitiesController extends Controller
   public function edit($id)
   {
     $city = City::findOrFail($id);
-    $regions = Region::lists('name', 'id');
+    $regions = Region::pluck('name', 'id');
     return view('cities.edit', compact('city', 'regions'));
   }
 

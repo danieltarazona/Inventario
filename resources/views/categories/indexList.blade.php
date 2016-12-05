@@ -8,16 +8,6 @@
 
   <a href="{{ route('categories.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
-  <button type="button" class="btn btn-default">
-    <a href="{{ route('categories.index') }}">
-      <span class="fa fa-th"></span>
-    </a>
-    &nbsp | &nbsp
-    <a href="{{ route('products.index') }}">
-      <span class="fa fa-th-list"></span>
-    </a>
-  </button>
-
   <hr>
 
   <table class="table table-bordered table-hover table-responsive">

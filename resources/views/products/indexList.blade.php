@@ -8,16 +8,6 @@
 
   <a href="{{ route('products.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
-  <button type="button" class="btn btn-default">
-    <a href="{{ route('categories.index') }}">
-      <span class="fa fa-th"></span>
-    </a>
-    &nbsp | &nbsp
-    <a href="{{ route('products.index') }}">
-      <span class="fa fa-th-list"></span>
-    </a>
-  </button>
-
   {!! Form::open(['route' => ['products.search'], 'method' => 'GET']) !!}
 
   <br>

@@ -18,6 +18,6 @@ class Role extends Model
 
   public function user_id()
   {
-      return $this->users->list('id');
+      return $this->users->pluck('id');
   }
 }

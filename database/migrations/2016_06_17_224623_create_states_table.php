@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -27,6 +28,8 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('states');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+      Schema::dropIfExists('states');
+      DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

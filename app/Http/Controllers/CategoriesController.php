@@ -28,7 +28,7 @@ class CategoriesController extends Controller
     if (Auth::user()->role_id == 1)
     {
       return view('categories.indexCard', compact('categories'));
-    } else {
+    } elseif (Auth::user()->role_id > 1) {
       return view('categories.indexList', compact('categories'));
     }
   }
@@ -86,7 +86,6 @@ class CategoriesController extends Controller
       }
       $category->description = $request->description;
       $category->name = $request->name;
-      $category->views = 0;
       $category->photo = $request->photo;
       $category->save();
       Flash('Create Successful!', 'success');

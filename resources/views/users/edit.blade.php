@@ -2,8 +2,7 @@
 
 @section('content')
 
-<h1>Username {{ $user->username }}</h1>
-<h2>DNI {{ $user->dni }}</h2>
+<h1>{{ $user->first_name }} {{ $user->last_name}}</h1>
 
 {!! Form::open(array('route' => array('users.update', $user->id), 'method' => 'PATCH')) !!}
 

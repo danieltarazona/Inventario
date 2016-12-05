@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -18,7 +19,7 @@ class CreateSalesTable extends Migration
             $table->integer('order_id')->unsigned()->nullable();
             $table->integer('state_id')->unsigned()->nullable();
             $table->time('out');
-            $table->time('in');
+            $table->time('in')->nullable();
             $table->timestamps();
         });
     }

@@ -14,13 +14,13 @@ class Requeriment02Test extends TestCase
    *
    * @return void
    */
-  public function testLogin()
+  public function testLoginUser()
   {
     $this->visit('/login')
-    ->type('test@test.com', 'email')
+    ->type('user@user.com', 'email')
     ->type('123456', 'password')
     ->press('Iniciar Sesión')
-    ->seePageIs('/');
+    ->seePageIs('/home');
   }
 
   /**
@@ -31,14 +31,11 @@ class Requeriment02Test extends TestCase
 
   public function testLogout()
   {
-    $this->visit('/login')
-    ->type('admin@admin.com', 'email')
-    ->type('123456', 'password')
-    ->press('Iniciar Sesión')
-    ->seePageIs('/')
-    ->press('Carlos / Administrator')
-    ->press('Salir')
-    ->seePageIs('/login');
+    $user = App\User::find(1);
+    $this->actingAs($user)
+    ->visit('/home')
+    ->press('Menu')
+    ->seePageIs('/');
   }
 
 }

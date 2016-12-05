@@ -20,12 +20,6 @@ class FactoriesTest extends TestCase
       $this->seeInDatabase('categories', ['name' => $category->name]);
     }
 
-    public function testFactoryProvider()
-    {
-      $provider = factory(App\Provider::class)->create(['name' => 'TestProvider']);
-      $this->seeInDatabase('providers', ['name' => $provider->name]);
-    }
-
     public function testFactoryState()
     {
       $state = factory(App\State::class)->create(['name' => 'TestState']);
@@ -74,13 +68,7 @@ class FactoriesTest extends TestCase
       $this->seeInDatabase('roles', ['name' => $role->name]);
     }
 
-    public function testFactoryLog()
-    {
-      $log = factory(App\Log::class)->create(['name' => 'TestLog']);
-      $this->seeInDatabase('logs', ['name' => $log->name]);
-    }
-
-    public function testFactoryrepair()
+    public function testFactoryRepair()
     {
       $repair = factory(App\Repair::class)->create(['name' => 'Testrepair']);
       $this->seeInDatabase('repairs', ['name' => $repair->name]);
@@ -88,6 +76,7 @@ class FactoriesTest extends TestCase
 
     public function testFactoryOrder()
     {
+      $faker = Faker\Factory::create();
       $user = App\User::find(1);
       $products = factory(App\Product::class, 10)->create();
       $order = factory(App\Order::class)->create();
@@ -97,12 +86,13 @@ class FactoriesTest extends TestCase
       $order->product()->sync($products);
       $this->seeInDatabase('orders', [
         'state_id' => $state->id,
-        'user_id' => $user->id,
+        'user_id' => $user->id
       ]);
     }
 
     public function testFactorySale()
     {
+      $faker = Faker\Factory::create();
       $user = App\User::find(1);
       $order = factory(App\Order::class)->create();
       $sale = factory(App\Sale::class)->create();
@@ -113,7 +103,7 @@ class FactoriesTest extends TestCase
       $this->seeInDatabase('sales', [
         'order_id' => $order->id,
         'state_id' => $state->id,
-        'user_id' => $user->id,
+        'user_id' => $user->id
       ]);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -25,6 +26,8 @@ class CreateCartsTable extends Migration
   */
   public function down()
   {
+    DB::statement('SET FOREIGN_KEY_CHECKS = 0');
     Schema::drop('carts');
+    DB::statement('SET FOREIGN_KEY_CHECKS = 1');
   }
 }

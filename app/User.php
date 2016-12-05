@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -12,12 +13,7 @@ class User extends Authenticatable
   * @var array
   */
   protected $fillable = [
-    'username', 'dni', 'email', 'password',
-  ];
-
-  protected $casts = [
-    'isAdmin' => 'boolean',
-    'isSeller' => 'boolean',
+    'username', 'dni', 'email', 'password', 'first_name', 'last_name'
   ];
 
   /**
@@ -96,7 +92,7 @@ class User extends Authenticatable
 
   public function sale_id()
   {
-    return $this->sale->list('id');
+    return $this->sale->pluck('id');
   }
 
   public function order()
@@ -106,7 +102,7 @@ class User extends Authenticatable
 
   public function order_id()
   {
-    return $this->order->list('id');
+    return $this->order->pluck('id');
   }
 
   public function comment()
@@ -116,7 +112,7 @@ class User extends Authenticatable
 
   public function comment_id()
   {
-    return $this->comment->list('id');
+    return $this->comment->pluck('id');
   }
 
   public function issue()
@@ -126,7 +122,7 @@ class User extends Authenticatable
 
   public function issue_id()
   {
-    return $this->issue->list('id');
+    return $this->issue->pluck('id');
   }
 
   public function event()
@@ -136,7 +132,7 @@ class User extends Authenticatable
 
   public function event_id()
   {
-    return $this->event->list('id');
+    return $this->event->pluck('id');
   }
 
   public function repair_provider()
@@ -193,5 +189,4 @@ class User extends Authenticatable
       return False;
     }
   }
-
 }

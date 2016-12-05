@@ -57,5 +57,11 @@ If you discover a security vulnerability within Inventar.io, please send an e-ma
 403. Cancelled
 404. Product or Products Not Found
 
+## Tools
+PHPDocumentor
+PHPSpec
+PHPMetrics
+PHPUnit
+
 ## Contributing
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Inventar.io documentation](http://inventar.io/docs/contributions).
