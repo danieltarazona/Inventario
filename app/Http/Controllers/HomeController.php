@@ -41,26 +41,33 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-      $carts = Cart::all();
+      return view('welcome');
+    }
+
+    public function index()
+    {
       $stores = Store::all()->sortBy('name');
       $cities = City::all()->sortBy('name');
       $issues = Issue::all()->sortBy('name');
-      $repairs = Repair::all()->sortBy('name');
+      $repairs = Repair::all();
       $products = Product::all()->load('category')->sortBy('name');
       $regions = Region::all()->sortBy('name');
       $users = User::all()->sortBy('username');
       $states = State::all()->sortBy('id');
       $events = Event::all();
 
-      return view('welcome', compact(
-        'stores', 'cities', 'issues', 'repairs', 'products',
-        'regions', 'users', 'states', 'events'
-      ));
-    }
+      $stores_count = $stores->count();
+      $cities_count = $cities->count();
+      $repairs_count = $repairs->count();
+      $products_count = $products->count();
+      $regions_count = $regions->count();
+      $users_count = $users->count();
 
-    public function index()
-    {
-        return view('home');
+      return view('home', compact(
+        'stores', 'cities', 'issues', 'repairs', 'products',
+        'regions', 'users', 'states', 'events', 'stores_count', 'cities_count',
+        'repairs_count', 'products_count', 'regions_count', 'users_count'
+      ));
     }
 
     public function about()

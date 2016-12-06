@@ -8,7 +8,11 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    {{ trans('strings.status_login')}}
+                    Stores: {{ $stores_count }}
+                    Repairs: {{$repairs_count}}
+                    Products: {{$products_count}}
+                    Users: {{$users_count}}
                 </div>
             </div>
         </div>
