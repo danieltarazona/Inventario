@@ -8,18 +8,6 @@ class ModelProductTest extends TestCase
 {
   use DatabaseTransactions;
 
-  public function testModelProductProvider()
-  {
-    $product = App\Product::find(1);
-    $provider = App\Provider::find(1);
-    $provider->product()->save($product);
-    $this->seeInDatabase('products',
-    [
-      'id' => $product->id,
-      'provider_id' => $provider->id
-    ]);
-  }
-
   public function testModelProductCategory()
   {
     $product = App\Product::find(1);
@@ -60,7 +48,7 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testModelProductrepair()
+  public function testModelProductRepair()
   {
     $products = factory(App\Product::class, 10)->create();
     $repair = App\Repair::find(1);

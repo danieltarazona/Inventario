@@ -13,14 +13,14 @@ class Requeriment07Test extends TestCase
      *
      * @return void
      */
-    public function testSaleCancel()
+    public function testSaleCancelAsUser()
     {
-      $this->visit('/orders')
-      ->press('Edit')
-      ->seePageIs('/orders/1/edit')
-      ->press('Cancelar')
-      ->seePageIs('/orders')
-      ->see('Order Cancel Successful!')
-      ->see('Cancelado');
+      $user = App\User::find(1);
+      $this->actingAs($user);
+      $this->visit('/orders');
+      $this->visit('/orders/1/edit');
+      $this->press('Cancelar');
+      $this->seePageIs('/orders');
+      $this->see('Order Cancel Successful!');
     }
 }

@@ -13,10 +13,10 @@ class Requeriment05Test extends TestCase
      *
      * @return void
      */
-    public function testSale()
+    public function testSaleAsStorer()
     {
-      $admin = App\User::find(4);
-      $this->actingAs($admin);
+      $storer = App\User::find(3);
+      $this->actingAs($storer);
       $this->visit('/orders');
       $this->see('En Espera');
       $this->visit('/orders/1');
