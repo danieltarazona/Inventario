@@ -166,9 +166,6 @@ class OrdersController extends Controller
     if ($order->state_id == 401) {
       $order->update(['state_id' => 403]);
       $event = Event::find($order->event_id);
-      foreach ($order->product as $product) {
-        $product->detach($event);
-      }
       Flash('Order Cancel Successful!', 'success');
       return redirect('orders');
     } else {

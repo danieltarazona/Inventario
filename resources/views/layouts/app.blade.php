@@ -38,21 +38,32 @@
       <!-- Header Navbar -->
       <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
+
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
+
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <!-- Messages: style can be found in dropdown.less-->
             <li class="dropdown messages-menu">
               <!-- Menu toggle button -->
-              @if(Auth::user()->role_id < 3)
-              <a href="{{ url('/cart/' . Auth::user()->id) }}">
-                <i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i>
-                <span class="label label-success">{{App\Cart::find(Auth::id())->product->count()}}</span> Carrito
-              </a>
+              @if (Auth::guest())
+                <div class="pull-left">
+                  <li><a href="{{ url('/login') }}" class="btn btn-default btn-flat">Login</a></li>
+                  <li><a href="{{ url('/register') }}" class="btn btn-default btn-flat">Register</a></li>
+                </div>
               @endif
+
+              @if (Auth::check())
+
+                @if(Auth::user()->role_id < 3)
+                <a href="{{ url('/cart/' . Auth::user()->id) }}">
+                  <i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i>
+                  <span class="label label-success">{{App\Cart::find(Auth::id())->product->count()}}</span> Carrito
+                </a>
+                @endif
 
               <ul class="dropdown-menu">
                 <li class="header">You have 4 messages</li>
@@ -154,7 +165,7 @@
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src="{{ URL::asset(Auth::user()->photo)}}" class="user-image" alt="User Image">
+                  <img src="{{ URL::asset(Auth::user()->photo)}}" class="circle-image" alt="User Image">
 
                   <p style="color:gray;">
                     {{Auth::user()->first_name}} {{Auth::user()->last_name}}
@@ -199,7 +210,7 @@
 
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            <img src="{{ URL::asset(Auth::user()->photo)}}" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
             <p>{{ Auth::user()->username }}</p>
@@ -248,6 +259,7 @@
             @endif
           @endif
 
+
           <!--
           <li class="treeview">
             <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
@@ -266,6 +278,9 @@
       </section>
       <!-- /.sidebar -->
     </aside>
+
+    @endif
+
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -298,6 +313,8 @@
     </div>
     <!-- /.content-wrapper -->
 
+
+
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
@@ -305,7 +322,7 @@
         ADSI 107
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2016 <a href="#">SENA</a>.</strong> All rights reserved.
+      Copyright &copy; 2016 <a href="#">SENA</a>. All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -385,6 +402,8 @@
     immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
   </div>
+
+
 
   <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
   <script src="{{ URL::asset('js/bootstrap-3.3.7/bootstrap.min.js') }}"></script>

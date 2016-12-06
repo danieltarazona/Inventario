@@ -9,10 +9,10 @@
   {!! Form::open(['route' => 'events.store', 'method' => 'POST']) !!}
 
   {!! Form::label('Start', trans('strings.hour_start')) !!}
-  {!! Form::time('start', $start->toTimeString(), ['class' => 'form-control']) !!}
+  {!! Form::time('start', $start, ['class' => 'form-control']) !!}
 
   {!! Form::label('End', trans('strings.hour_end')) !!}
-  {!! Form::time('end', $end->toTimeString(), ['class' => 'form-control']) !!}
+  {!! Form::time('end', $end, ['class' => 'form-control']) !!}
 
   {!! Form::label('Date', trans('strings.date')) !!}
   {!! Form::date('date', $date, ['class' => 'form-control']) !!}
@@ -44,6 +44,8 @@
 
   <br>
 
+@stop
+
   <!--
 
   @include('events.week')
@@ -53,5 +55,3 @@
   @include('events.month')
 
   -!>
-
-  @endsection

@@ -32,8 +32,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-      $start = Carbon::now(-5);
-      $end = Carbon::now(-4);
+      $start = Carbon::now(-5)->toTimeString();
+      $end = Carbon::now(-4)->toTimeString();
       $date = Carbon::now()->subDay();
       $date_search = Carbon::now();
       $cart = Cart::findOrFail(Auth::id());
