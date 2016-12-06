@@ -32,11 +32,11 @@ class Requeriment02Test extends TestCase
   public function testLogout()
   {
     $user = App\User::find(1);
-    $this->actingAs($user)
-    ->visit('/home')
-    ->press($user->username)
-    ->press('Salir')
-    ->seePageIs('/home');
+    $this->actingAs($user);
+    Auth::logout();
+    $this->visit('/');
+    $this->see('LOGIN');
+    $this->see('REGISTER');
   }
 
 }

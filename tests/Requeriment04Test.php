@@ -17,14 +17,11 @@ class Requeriment04Test extends TestCase
     {
       $user = App\User::find(1);
       $this->actingAs($user);
-      $this->visit('/products/6');
-      $this->press('Agregar');
-      $this->seePageIs('/cart/4');
       $this->visit('/products/7');
       $this->press('Agregar');
-      $this->seePageIs('/cart/4');
+      $this->seePageIs('/cart/1');
       $this->press('Reservar');
-      $this->seePageIs('/events/create');
+      $this->seePageIs('/events/create?Reservar=');
       $this->press('Continuar');
       $this->seePageIs('/orders');
     }

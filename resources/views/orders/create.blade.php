@@ -17,7 +17,7 @@
 
   <br>
 
-  {{ Form::submit(trans('strings.create'), array('class' => 'btn btn-success')) }}
+  {{ Form::submit(trans('strings.create'), ['name' => trans('strings.create'), 'class' => 'btn btn-success'] ) }}
 
 {!! Form::close() !!}
 

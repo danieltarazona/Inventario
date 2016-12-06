@@ -18,14 +18,16 @@
 
   <br>
 
-  {{ Form::submit(trans('strings.update'), array('class' => 'btn btn-warning')) }}
+  {{ Form::submit(trans('strings.update'), ['name' => trans('strings.update'), 'class' => 'btn btn-warning'] ) }}
 
   {!! Form::close() !!}
 
   <br>
 
   {!! Form::open(['route' => ['orders.cancel', $order->id], 'method' => 'POST']) !!}
-    <button class="btn btn-danger" type="submit">{{trans('strings.cancel')}}</button>
+    <button class="btn btn-danger" type="submit" name="{{trans('strings.cancel')}}">
+      {{ trans('strings.cancel') }}
+    </button>
   {!! Form::close() !!}
 
 @stop

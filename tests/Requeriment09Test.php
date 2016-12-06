@@ -18,7 +18,7 @@ class Requeriment09Test extends TestCase
       $user = App\User::find(1);
       $this->actingAs($user);
       $this->visit('/products');
-      $this->visit('/products/6');
+      $this->visit('/products/7');
       $this->see('Disponible');
       $this->press('Agregar');
       $this->seePageIs('/cart/1');

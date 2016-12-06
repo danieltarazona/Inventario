@@ -34,27 +34,23 @@
         </td>
       </tr>
     @endforeach
-  </table>
 
-  @if (Auth::user()->role_id == 1 )
-    <a href="{{ route('events.create') }}">
-      <button class="btn btn-success" type="submit" name="{{trans('strings.order')}}">
-        {{ trans('strings.order') }}
-      </button>
-    </a>
-  @endif
+    </table>
 
-  <br>
+    @if (Auth::user()->role_id == 1 )
+      {!! Form::open(['route' => 'events.create', 'method' => 'GET']) !!}
+        <button class="btn btn-success" type="submit" name="{{ trans('strings.order') }}">
+          {{trans('strings.order')}}</button>
+      {!! Form::close() !!}
+    @endif
 
-  @if (Auth::user()->role_id > 2 )
-    <a href="{{ route('repairs.create') }}">
-      <button class="btn btn-warning" type="submit" name="{{trans('strings.repair')}}">
-        {{ trans('strings.repair') }}
-      </button>
-    </a>
-  @endif
+    <br>
 
+    @if (Auth::user()->role_id > 2 )
+      {!! Form::open(['route' => 'repairs.create', 'method' => 'GET']) !!}
+        <button class="btn btn-warning" type="submit" name="{{ trans('strings.repair') }}">
+          {{trans('strings.repair')}}</button>
+      {!! Form::close() !!}
+    @endif
 
-
-
-@endsection
+@stop
