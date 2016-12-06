@@ -32,7 +32,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>S</b>M</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>{{ config('app.name', 'Laravel') }}</b></span>
+        <span class="logo-lg">{{ config('app.name', 'Laravel') }}</span>
       </a>
 
       <!-- Header Navbar -->
@@ -145,16 +145,16 @@
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="{{ url('/users/' . Auth::id() . '/edit') }}" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img src="{{Auth::user()->photo}}" class="user-image" alt="User Image">
+                <img src="{{ URL::asset(Auth::user()->photo)}}" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs">{{ Auth::user()->username }}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src="{{Auth::user()->photo}}" class="img-circle" alt="User Image">
+                  <img src="{{ URL::asset(Auth::user()->photo)}}" class="user-image" alt="User Image">
 
                   <p style="color:gray;">
                     {{Auth::user()->first_name}} {{Auth::user()->last_name}}
@@ -386,9 +386,9 @@
     <div class="control-sidebar-bg"></div>
   </div>
 
-  <script src="{{ URL::asset('js/AdminLTE/AdminLTE.min.js') }}"></script>
   <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
   <script src="{{ URL::asset('js/bootstrap-3.3.7/bootstrap.min.js') }}"></script>
+  <script src="{{ URL::asset('js/AdminLTE/AdminLTE.min.js') }}"></script>
 
   </body>
 </html>
