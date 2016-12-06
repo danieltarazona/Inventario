@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Requeriment16Test extends TestCase
 {
+
+  use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -13,11 +15,8 @@ class Requeriment16Test extends TestCase
      */
     public function testProductStore()
     {
-      $this->visit('/login')
-      ->type('admin@admin.com', 'email')
-      ->type('123456', 'password')
-      ->press('Iniciar Sesión')
-      ->seePageIs('/home')
+      $$admin = App\User::find(4);
+      $this->actingAs($admin)
       ->visit('/products')
       ->visit('/products/create')
       ->type('TestProduct', 'name')

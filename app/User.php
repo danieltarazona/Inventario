@@ -2,11 +2,13 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+  use Notifiable;
   /**
   * The attributes that are mass assignable.
   *
@@ -43,16 +45,6 @@ class User extends Authenticatable
   public function cart_id()
   {
     return $this->cart->id;
-  }
-
-  public function city()
-  {
-    return $this->belongsTo(City::class);
-  }
-
-  public function city_id()
-  {
-    return $this->city->id;
   }
 
   public function store()

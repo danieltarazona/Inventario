@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Requeriment05Test extends TestCase
 {
+
+  use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -14,13 +16,12 @@ class Requeriment05Test extends TestCase
     public function testSale()
     {
       $admin = App\User::find(4);
-      $this->actingAs($admin)
-      ->visit('/orders/1')
-      ->see('ID')
-      ->see('Apple')
-      ->see('6')
-      ->press('Préstamo')
-      ->seePageIs('/sales');
+      $this->actingAs($admin);
+      $this->visit('/orders');
+      $this->see('En Espera');
+      $this->visit('/orders/1');
+      $this->press('Préstar');
+      $this->seePageIs('/sales');
     }
 
 }

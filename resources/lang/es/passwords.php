@@ -15,7 +15,7 @@ return [
 
     'password' => 'Las contraseñas deben coincidir y tener al menos seis caracteres.',
     'reset' => 'Tu password ha sido reiniciada!',
-    'sent' => 'Enviar Link de Restablecimiento',
+    'sent' => 'Hemos enviado tu contraseña de recuperacion',
     'token' => 'El token de reinicio es invalido',
     'user' => "No podemos encontrar un usuario con este email",
 

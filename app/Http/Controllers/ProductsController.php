@@ -78,7 +78,7 @@ public function edit($id)
   $product = Product::findOrFail($id);
 
   $categories = Category::pluck('name', 'id');
-  $providers = User::where('role_id', 2)->lists('username', 'id');
+  $providers = User::where('role_id', 2)->pluck('username', 'id');
   $stores = Store::pluck('name', 'id');
   $cities = City::pluck('name', 'id');
   $regions = Region::pluck('name', 'id');

@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Requeriment03Test extends TestCase
 {
+
+  use DatabaseTransactions;
   /**
    * Test Password Recuperation Requeriment
    *
@@ -15,9 +17,9 @@ class Requeriment03Test extends TestCase
   {
     $this->visit('/login')
     ->visit('/password/reset')
-    ->type('test@test.com', 'email')
+    ->type('user@user.com', 'email')
     ->press('Enviar Link de Restablecimiento')
     ->seePageIs('/password/reset')
-    ->see('Hemos enviado tu contraseña de recuperacion!');
+    ->see('Hemos enviado tu contraseña de recuperacion');
   }
 }

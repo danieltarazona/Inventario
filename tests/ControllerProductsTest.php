@@ -27,8 +27,10 @@ class ControllerProductsTest extends TestCase
 
   public function testProductsEditController()
   {
+    $admin = App\User::find(4);
+    $this->actingAs($admin);
     $response = $this->action('GET', 'ProductsController@edit', ['product' => 1]);
-    $this->assertEquals(200, $response->status());
+    $this->assertResponseOk();
   }
 
   public function testProductsDestroyController()

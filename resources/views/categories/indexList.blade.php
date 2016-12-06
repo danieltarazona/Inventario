@@ -29,7 +29,7 @@
       </td>
       <td>
         {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
-          <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+          <button class="btn btn-danger" type="submit" name="{{ trans('strings.delete') }}"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
         {!! Form::close() !!}
       </td>
     </tr>

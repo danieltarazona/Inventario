@@ -50,4 +50,14 @@ class Order extends Model
     return $this->sale->id;
   }
 
+  public function event()
+  {
+    return $this->hasOne(Event::class);
+  }
+
+  public function event_id()
+  {
+    return $this->event->id;
+  }
+
 }

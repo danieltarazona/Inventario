@@ -12,7 +12,7 @@
   {!! Form::label(trans('strings.region')) !!}
   {!! Form::select('region_id', $regions, $city->region_id, ['class' => 'form-control']) !!}
 
-  {{ Form::submit(trans('strings.save'), array('class' => 'btn btn-success')) }}
+  {{ Form::submit(trans('strings.update'), ['name' => trans('strings.update'), 'class' => 'btn btn-success']) }}
 
 {!! Form::close() !!}
 

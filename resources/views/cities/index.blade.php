@@ -16,7 +16,7 @@
 
     <br>
 
-    {{ Form::submit(trans('strings.create'), array('class' => 'btn btn-primary')) }}
+    {{ Form::submit(trans('strings.create'), ['name' => trans('strings.create'), 'class' => 'btn btn-primary']) }}
 
   {!! Form::close() !!}
 
@@ -49,7 +49,7 @@
         </td>
         <td>
           {!! Form::open(['route' => ['cities.destroy', $city->id], 'method' => 'DELETE']) !!}
-            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
+            <button class="btn btn-danger" type="submit" name="{{trans('strings.delete')}}"><i class="fa fa-trash-o fa-lg" type="submit"></i></button>
           {!! Form::close() !!}
         </td>
       </tr>

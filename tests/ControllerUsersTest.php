@@ -22,6 +22,8 @@ class ControllerUsersTest extends TestCase
 
   public function testUsersShowController()
   {
+    $user = App\User::find(1);
+    $this->actingAs($user);
     $response = $this->action('GET', 'UsersController@show', ['user' => 1]);
     $this->assertEquals(200, $response->status());
   }

@@ -25,10 +25,11 @@ class ControllerRepairsTest extends TestCase
     $repair = factory(\App\Repair::class)->create(['name' => 'Install Windows']);
     $response = $this->action(
       'POST', 'repairsController@store',
-      $repair->jsonSerialize()->name
+      $repair->jsonSerialize()
     );
     $this->seeInDatabase('repairs', ['name' => $repair->name]);
     $this->assertEquals(302, $response->status());
+    $this->assertRedirectedTo('repairs');
   }
 
   public function testrepairsUpdateController()

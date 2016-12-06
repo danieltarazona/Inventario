@@ -10,23 +10,30 @@ class ViewCategoriesTest extends TestCase
 
   public function testViewCategoriesIndexBehavior()
   {
+
+    $admin = App\User::find(4);
+    $this->actingAs($admin);
     $this->visit('/categories')
       ->see('Categories')
       ->see('Name')
       ->see('ID')
-      ->see('Actions');
+      ->see('Acciones');
   }
 
   public function testViewCategoriesCreateBehavior()
   {
+    $admin = App\User::find(4);
+    $this->actingAs($admin);
     $this->visit('/categories')
       ->type('Hello', 'name')
-      ->press('')
+      ->press('Agregar')
       ->seePageIs('/categories');
   }
 
   public function testViewCategoriesEditBehavior()
   {
+    $admin = App\User::find(4);
+    $this->actingAs($admin);
     $this->visit('/categories/1/edit')
       ->type('Desktop', 'name')
       ->press('')
@@ -35,6 +42,8 @@ class ViewCategoriesTest extends TestCase
 
   public function testViewCategoriesDestroyBehavior()
   {
+    $admin = App\User::find(4);
+    $this->actingAs($admin);
     $this->visit('/categories')
       ->press('Delete')
       ->seePageIs('/categories');

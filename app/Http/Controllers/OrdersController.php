@@ -14,6 +14,7 @@ use App\Cart;
 use App\User;
 use App\State;
 use App\Sale;
+use App\Event;
 use Auth;
 use Carbon\Carbon;
 use DB;
@@ -164,6 +165,10 @@ class OrdersController extends Controller
     $order = Order::findOrFail($id);
     if ($order->state_id == 401) {
       $order->update(['state_id' => 403]);
+      $event = Event::find($order->event_id);
+      foreach ($order->product as $product) {
+        $product->detach($event);
+      }
       Flash('Order Cancel Successful!', 'success');
       return redirect('orders');
     } else {

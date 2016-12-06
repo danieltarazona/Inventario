@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Requeriment07Test extends TestCase
 {
+
+  use DatabaseTransactions;
     /**
      * A basic test example.
      *

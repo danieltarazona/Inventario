@@ -32,12 +32,14 @@ class EventsController extends Controller
      */
     public function create()
     {
-      $start = Carbon::now(-5)->subDay();
-      $end = Carbon::now(-4)->subDay();
+      $start = Carbon::now(-5);
+      $end = Carbon::now(-4);
       $date = Carbon::now()->subDay();
-      $date_search = Carbon::now()->subDay();
+      $date_search = Carbon::now();
       $cart = Cart::findOrFail(Auth::id());
-      $events = Event::whereIn('product_id', $cart->product_id() )->get();
+      $events = Event::whereIn('product_id', $cart->product_id())
+        ->whereDate('date', $date)
+        ->get();
 
       return view('events.create', compact(
         'events', 'start', 'end', 'date', 'date_search'
@@ -56,7 +58,8 @@ class EventsController extends Controller
       $date = Carbon::now()->subDay();
       $date_search = $request->date_search;
       $cart = Cart::findOrFail(Auth::id());
-      $events = Event::where([
+
+      $events = Event::whereIn([
         'date' => $date_search,
         'product_id' => $cart->product_id()
       ])->get();
@@ -97,28 +100,6 @@ class EventsController extends Controller
       $cart->product()->detach();
 
       return redirect('orders');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
