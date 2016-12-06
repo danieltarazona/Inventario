@@ -22,24 +22,12 @@ class ModelUserTest extends TestCase
   public function testModelUserState()
   {
     $user = App\User::find(1);
-    $state = App\State::find(1);
+    $state = App\State::find(200);
     $state->user()->save($user);
     $this->seeInDatabase('users',
     [
       'id' => $user->id,
       'state_id' => $state->id
-    ]);
-  }
-
-  public function testModelUserRegion()
-  {
-    $user = App\User::find(1);
-    $region = App\Region::find(1);
-    $region->user()->save($user);
-    $this->seeInDatabase('users',
-    [
-      'id' => $user->id,
-      'region_id' => $region->id
     ]);
   }
 

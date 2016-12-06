@@ -15,16 +15,17 @@ class Requeriment04Test extends TestCase
      */
     public function testOrder()
     {
-      $admin = App\User::find(4);
-      $this->actingAs($admin);
+      $user = App\User::find(1);
+      $this->actingAs($user);
       $this->visit('/products/6');
-      $this->press('Reservar');
+      $this->press('Agregar');
+      $this->seePageIs('/cart/4');
       $this->visit('/products/7');
-      $this->press('Reservar');
+      $this->press('Agregar');
       $this->seePageIs('/cart/4');
       $this->press('Reservar');
       $this->seePageIs('/events/create');
       $this->press('Continuar');
-      $this->seePageIs('orders');
+      $this->seePageIs('/orders');
     }
 }

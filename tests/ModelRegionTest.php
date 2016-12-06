@@ -18,16 +18,6 @@ class ModelRegionTest extends TestCase
     }
   }
 
-  public function testModelRegionHasManyStore()
-  {
-    $Collection = 'Illuminate\Database\Eloquent\Collection';
-    $region = App\Region::find(1);
-    $this->assertInstanceOf($Collection, $region->store);
-    foreach($region->store as $store) {
-      $this->assertEquals($region->id, $store->region_id);
-    }
-  }
-
   public function testModelRegionHasManyUser()
   {
     $Collection = 'Illuminate\Database\Eloquent\Collection';

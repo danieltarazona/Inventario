@@ -15,7 +15,7 @@ class Requeriment14Test extends TestCase
    */
   public function testSalesLog()
   {
-    $$admin = App\User::find(4);
+    $admin = App\User::find(4);
     $this->actingAs($admin)
     ->visit('/sales')
     ->see('ID Prestamo')

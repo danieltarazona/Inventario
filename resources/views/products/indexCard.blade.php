@@ -17,7 +17,7 @@
               <p><span class="{{ $product->state->label }}">{{ $product->state->name }}</span></p>
 
               {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-                <button class="btn btn-primary" type="submit">{{trans('strings.order')}}</button>
+                <button class="btn btn-success" type="submit">{{trans('strings.add')}}</button>
               {!! Form::close() !!}
 
             </div> <!-- end caption -->

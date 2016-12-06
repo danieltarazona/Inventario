@@ -37,7 +37,7 @@
         <h4>{{trans('strings.warranty')}}: {{ $product->warranty or 'Blank' }} Months</h4>
 
         {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-        <button class="btn btn-success" type="submit">{{trans('strings.order')}}</button>
+        <button class="btn btn-success" type="submit" name="{{trans('strings.add')}}">{{trans('strings.add')}}</button>
         {!! Form::close() !!}
 
         <br>

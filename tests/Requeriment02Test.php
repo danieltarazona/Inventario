@@ -34,8 +34,9 @@ class Requeriment02Test extends TestCase
     $user = App\User::find(1);
     $this->actingAs($user)
     ->visit('/home')
-    ->press('Menu')
-    ->seePageIs('/');
+    ->press($user->username)
+    ->press('Salir')
+    ->seePageIs('/home');
   }
 
 }

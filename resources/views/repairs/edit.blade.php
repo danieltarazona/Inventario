@@ -6,11 +6,11 @@
 
   {!! Form::open(array('route' => array('repairs.update', $repair->id), 'method' => 'PATCH')) !!}
 
-  {!! Form::label('name', {{ trans('strings.name')) }} !!}
+  {!! Form::label('name', trans('strings.name')) !!}
 
   {!! Form::text('name', $repair->name, ['class' => 'form-control']) !!}
 
-  {!! Form::label('Description', {{ trans('strings.description') }} ) !!}
+  {!! Form::label('Description', trans('strings.description') ) !!}
 
   {!! Form::textarea('description', $repair->description, ['class' => 'form-control']) !!}
 
@@ -22,11 +22,11 @@
   {!! Form::close() !!}
 
   {!! Form::open(['route' => ['repairs.returned', $repair->id], 'method' => 'POST']) !!}
-    <button class="btn btn-success" type="submit">{{trans('strings.returned')}}</button>
+    <button class="btn btn-success" type="submit">{{ trans('strings.returned') }}</button>
   {!! Form::close() !!}
 
   {!! Form::open(['route' => ['repairs.canceled', $repair->id], 'method' => 'POST']) !!}
-    <button class="btn btn-success" type="submit">{{trans('strings.cancel')}}</button>
+    <button class="btn btn-success" type="submit">{{ trans('strings.cancel') }}</button>
   {!! Form::close() !!}
 
   <br>

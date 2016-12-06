@@ -15,9 +15,9 @@ class Requeriment06Test extends TestCase
      */
     public function testSaleUpdate()
     {
-      $this->visit('/orders');
-      $this->press('Edit');
-      $this->seePageIs('/orders/1/edit');
+      $storer = App\User::find(3);
+      $this->actingAs($storer);
+      $this->visit('/orders/1/edit');
       $this->press('Actualizar');
       $this->seePageIs('/orders');
       $this->see('Update Successful!');

@@ -26,17 +26,6 @@ class ModelProductTest extends TestCase
     ]);
   }
 
-  public function testModelProductState()
-  {
-    $products = factory(App\Product::class, 10)->create();
-    $state = App\State::find(1);
-    $state->product()->sync($products);
-    $this->seeInDatabase('product_state',
-    [
-      'state_id' => $state->id
-    ]);
-  }
-
   public function testModelProductOrder()
   {
     $products = factory(App\Product::class, 10)->create();
@@ -53,7 +42,7 @@ class ModelProductTest extends TestCase
     $products = factory(App\Product::class, 10)->create();
     $repair = App\Repair::find(1);
     $repair->product()->sync($products);
-    $this->seeInDatabase('repair_product',
+    $this->seeInDatabase('product_repair',
     [
       'repair_id' => $repair->id,
     ]);

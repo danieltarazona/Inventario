@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ trans('passwords.sent') }}
+                                    {{ trans('strings.send_reset_password') }}
                                 </button>
                             </div>
                         </div>

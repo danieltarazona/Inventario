@@ -13,15 +13,15 @@ class Requeriment09Test extends TestCase
      *
      * @return void
      */
-    public function testOrderProduct()
+    public function testOrderProductAsUser()
     {
-      $admin = App\User::find(4);
-      $this->actingAs($admin);
+      $user = App\User::find(1);
+      $this->actingAs($user);
       $this->visit('/products');
       $this->visit('/products/6');
       $this->see('Disponible');
-      $this->press('Reservar');
-      $this->seePageIs('/cart/4');
+      $this->press('Agregar');
+      $this->seePageIs('/cart/1');
       $this->see('Item has been Added!');
     }
 }

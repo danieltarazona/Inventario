@@ -2,6 +2,7 @@
 
 return array(
 
+	'add' => 'Agregar',
 	'address' => 'Dirección',
 	'first_name' => 'Nombre',
 	'continue' => 'Continuar',

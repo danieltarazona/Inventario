@@ -5,7 +5,7 @@
   <h1>{{ trans('strings.your') }} {{trans('strings.cart')}}</h1>
 
   {!! Form::open(['route' => ['cart.destroy', $cart->id], 'method' => 'DELETE']) !!}
-    <button class="btn btn-danger right" type="submit" >{{trans('strings.clean')}}</button>
+    <button class="btn btn-danger right" type="submit">{{trans('strings.clean')}}</button>
   {!! Form::close() !!}
 
   <br>
@@ -37,8 +37,8 @@
   </table>
 
   @if (Auth::user()->role_id == 1 )
-    <a href="{{ url('/events/create') }}">
-      <button class="btn btn-success align-right" type="button" name="{{trans('strings.order')}}">
+    <a href="{{ route('events.create') }}">
+      <button class="btn btn-success" type="submit" name="{{trans('strings.order')}}">
         {{ trans('strings.order') }}
       </button>
     </a>
@@ -47,8 +47,8 @@
   <br>
 
   @if (Auth::user()->role_id > 2 )
-    <a href="{{ url('/repairs/create') }}">
-      <button class="btn btn-warning" type="button" name="{{trans('strings.repair')}}">
+    <a href="{{ route('repairs.create') }}">
+      <button class="btn btn-warning" type="submit" name="{{trans('strings.repair')}}">
         {{ trans('strings.repair') }}
       </button>
     </a>
