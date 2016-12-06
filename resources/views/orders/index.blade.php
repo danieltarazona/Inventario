@@ -45,4 +45,6 @@
       </tr>
     @endforeach
 
+  </table>
+  
 @stop

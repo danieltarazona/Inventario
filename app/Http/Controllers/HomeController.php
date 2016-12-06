@@ -21,6 +21,7 @@ use App\Issue;
 use App\Repair;
 use App\Product;
 use App\Region;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth');
     }
 
     /**

@@ -28,7 +28,7 @@
     <header class="main-header">
 
       <!-- Logo -->
-      <a href="index2.html" class="logo">
+      <a href="/home" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>S</b>M</span>
         <!-- logo for regular state and mobile devices -->
@@ -47,10 +47,13 @@
             <!-- Messages: style can be found in dropdown.less-->
             <li class="dropdown messages-menu">
               <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <!-- <span class="label label-success">4</span> -->
+              @if(Auth::user()->role_id < 3)
+              <a href="{{ url('/cart/' . Auth::user()->id) }}" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i>
+                <span class="label label-success">{{App\Cart::find(Auth::id())->product->count()}}</span> Carrito
               </a>
+              @endif
+
               <ul class="dropdown-menu">
                 <li class="header">You have 4 messages</li>
                 <li>
@@ -85,7 +88,7 @@
               <!-- Menu toggle button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">10</span>
+                <!--<span class="label label-warning">10</span>-->
               </a>
               <ul class="dropdown-menu">
                 <li class="header">You have 10 notifications</li>
@@ -108,7 +111,7 @@
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-flag-o"></i>
-                <span class="label label-danger">9</span>
+                <!--<span class="label label-danger">9</span>-->
               </a>
               <ul class="dropdown-menu">
                 <li class="header">You have 9 tasks</li>
@@ -146,7 +149,7 @@
                 <!-- The user image in the navbar-->
                 <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                <span class="hidden-xs">{{ Auth::user()->username }}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
@@ -158,11 +161,6 @@
                     <small>Member since 2016</small>
                   </p>
                 </li>
-
-
-                @if(Auth::user()->role_id == 1 || Auth::user()->role_id > 2)
-                  <li><a href="{{ url('/cart/' . Auth::user()->cart->id) }}"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i> Carrito</a></li>
-                @endif
 
                 <!-- Menu Body -->
                 <li class="user-body">
@@ -232,11 +230,12 @@
           <div class="pull-left info">
             <p>{{ Auth::user()->username }}</p>
             <!-- Status -->
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <i class="fa fa-circle text-success"></i> Online
           </div>
         </div>
 
-        <!-- search form (Optional) -->
+        <!--Search-->
+        <!--
         <form action="#" method="get" class="sidebar-form">
           <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -246,37 +245,37 @@
             </span>
           </div>
         </form>
-        <!-- /.search form -->
+        -->
+
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-          <li class="header">HEADER</li>
+          <li class="header">LINKS</li>
           <!-- Optionally, you can add icons to the links -->
-          <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-
           @if(Auth::check())
             @if(Auth::user()->role_id != 2)
-              <li><a href="{{ url('categories') }}"><i class="fa fa-link"></i> <span>{{trans('strings.categories')}}</span></a></li>
-              <li><a href="{{ url('products') }}">{{trans('strings.products')}}</a></li>
+              <li><a href="{{ url('products') }}"><i class="fa fa-link"></i><span>{{trans('strings.products')}}</span></a></li>
+              <li><a href="{{ url('categories') }}"><i class="fa fa-link"></i><span>{{trans('strings.categories')}}</span></a></li>
             @endif
             @if(Auth::user()->role_id == 1 or Auth::user()->role_id > 2)
-              <li><a href="{{ url('orders') }}">{{trans('strings.orders')}}</a></li>
-              <li><a href="{{ url('sales') }}">{{trans('strings.sales')}}</a></li>
-              <li><a href="{{ url('events') }}">{{trans('strings.events')}}</a></li>
+              <li><a href="{{ url('orders') }}"><i class="fa fa-link"></i><span>{{trans('strings.orders')}}</span></a></li>
+              <li><a href="{{ url('sales') }}"><i class="fa fa-link"></i><span>{{trans('strings.sales')}}</span></a></li>
+              <li><a href="{{ url('events') }}"><i class="fa fa-link"></i><span>{{trans('strings.events')}}</span></a></li>
             @endif
             @if (Auth::check() && Auth::user()->role_id > 1)
-              <li><a href="{{ url('repairs') }}">{{trans('strings.repairs')}}</a></li>
+              <li><a href="{{ url('repairs') }}"><i class="fa fa-link"></i><span>{{trans('strings.repairs')}}</span></a></li>
               @if (Auth::user()->role_id > 3)
-                <li><a href="{{ url('roles') }}">{{trans('strings.roles')}}</a></li>
-                <li><a href="{{ url('states') }}">{{trans('strings.states')}}</a></li>
-                <li><a href="{{ url('regions') }}">{{trans('strings.regions')}}</a></li>
-                <li><a href="{{ url('cities') }}">{{trans('strings.cities')}}</a></li>
-                <li><a href="{{ url('stores') }}">{{trans('strings.stores')}}</a></li>
-                <li><a href="{{ url('users') }}">{{trans('strings.users')}}</a></li>
+                <li><a href="{{ url('stores') }}"><i class="fa fa-link"></i><span>{{trans('strings.stores')}}</span></a></li>
+                <li><a href="{{ url('cities') }}"><i class="fa fa-link"></i><span>{{trans('strings.cities')}}</span></a></li>
+                <li><a href="{{ url('regions') }}"><i class="fa fa-link"></i><span>{{trans('strings.regions')}}</span></a></li>
+                <li><a href="{{ url('users') }}"><i class="fa fa-link"></i><span>{{trans('strings.users')}}</span></a></li>
+                <li><a href="{{ url('states') }}"><i class="fa fa-link"></i><span>{{trans('strings.states')}}</span></a></li>
+                <li><a href="{{ url('roles') }}"><i class="fa fa-link"></i><span>{{trans('strings.roles')}}</span></a></li>
               @endif
             @endif
           @endif
 
+          <!--
           <li class="treeview">
             <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
               <span class="pull-right-container">
@@ -288,6 +287,7 @@
               <li><a href="#">Link in level 2</a></li>
             </ul>
           </li>
+          -->
         </ul>
         <!-- /.sidebar-menu -->
       </section>
