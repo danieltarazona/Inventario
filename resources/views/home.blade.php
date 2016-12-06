@@ -8,7 +8,6 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    {{ trans('strings.status_login')}}
                     Stores: {{ $stores_count }}
                     Repairs: {{$repairs_count}}
                     Products: {{$products_count}}
