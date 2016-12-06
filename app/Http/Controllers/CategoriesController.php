@@ -80,13 +80,12 @@ class CategoriesController extends Controller
         File::exists($filePath) or File::makeDirectory($filePath);
         $image = Image::make($file->getRealPath());
         $image->save($filePath . $fileName);
-        $request->photo = '/img/categories/' . $fileName;
+        $category->photo = '/img/categories/' . $fileName;
       } else {
-        $request->photo = '/img/categories/ipad.jpeg';
+        $category->photo = '/img/categories/ipad.jpeg';
       }
       $category->description = $request->description;
       $category->name = $request->name;
-      $category->photo = $request->photo;
       $category->save();
       Flash('Create Successful!', 'success');
     }

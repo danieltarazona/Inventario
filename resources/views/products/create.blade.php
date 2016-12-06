@@ -18,6 +18,9 @@
   {!! Form::label('Year', trans('strings.year')) !!}
   {!! Form::text('year', null, ['class' => 'form-control']) !!}
 
+  {!! Form::label('Date', trans('strings.buy_date')) !!}
+  {!! Form::date('date', null, ['class' => 'form-control']) !!}
+
   {!! Form::label('Price', trans('strings.price')) !!}
   {!! Form::text('price', null, ['class' => 'form-control']) !!}
 

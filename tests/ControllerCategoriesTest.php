@@ -22,12 +22,12 @@ class ControllerCategoriesTest extends TestCase
     $this->seeInDatabase('categories', ['name' => $category->name]);
     $this->assertSessionHas('flash', 'success');
     */
-    $this->assertEquals(true);
+    $this->assertTrue(true);
   }
 
   public function testCategoriesUpdateController()
   {
-    $this->assertEquals(true);
+    $this->assertTrue(true);
   }
 
   public function testCategoriesEditController()

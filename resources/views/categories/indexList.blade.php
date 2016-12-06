@@ -6,7 +6,11 @@
 
   <br>
 
-  <a href="{{ route('categories.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
+  <a href="{{ route('categories.create') }}">
+    <button class="btn btn-primary" type="submit" name="{{trans('strings.create')}}">
+      {{ trans('strings.create') }}
+    </button>
+  </a>
 
   <hr>
 
@@ -25,7 +29,9 @@
       <td><img src="{{ $category->photo }}" alt="{{ $category->name }}" style="weight:50px; height:50px;"/></td>
       <td><a href="/categories/{{ $category->id }}">{{ $category->name or 'Blank' }}</a></td>
       <td>
-        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+        {!! Form::open(['route' => ['categories.edit', $category->id], 'method' => 'GET']) !!}
+          <button class="btn btn-warning" type="submit" name="{{ trans('strings.edit') }}"><i class="fa fa-pencil-square-o" type="submit"></i></button>
+        {!! Form::close() !!}
       </td>
       <td>
         {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}

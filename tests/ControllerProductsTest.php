@@ -16,7 +16,7 @@ class ControllerProductsTest extends TestCase
 
   public function testProductsUpdateController()
   {
-    $this->assertEquals(true);
+    $this->assertTrue(true);
   }
 
   public function testProductsShowController()

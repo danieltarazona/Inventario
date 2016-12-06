@@ -16,12 +16,12 @@ class ControllerCitiesTest extends TestCase
 
   public function testCitiesStoreController()
   {
-    $this->assertEquals(true);
+    $this->assertTrue(true);
   }
 
   public function testCitiesUpdateController()
   {
-    $this->assertEquals(true);
+    $this->assertTrue(true);
   }
 
   public function testCitiesEditController()

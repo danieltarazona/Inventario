@@ -115,13 +115,10 @@ public function store(Request $request)
       $image = Image::make($file->getRealPath());
       $image->save($filePath . $fileName);
       $request->photo = '/img/products/' . $fileName;
-    } else {
-      $request->photo = '/img/products/ipad.jpeg';
-    }
-    $input = $request->all();
-    $product = Product::create($input);
-    $product->photo = $request->photo;
-    $product->state_id = 200;
+    } 
+    $request->photo = '/img/products/ipad.jpeg';
+    $product = Product::create($request->all());
+    $product->state_active();
     $product->save();
 
     Flash('Create Product Complete!', 'success');
@@ -212,9 +209,10 @@ public function rules()
   return [
     'name'    => 'required|max:255',
     'serial'  => 'required|max:255',
-    'year'    => 'numeric',
-    'price'   => 'numeric',
-    'warranty'=> 'numeric',
+    'year'    => 'required|numeric',
+    'price'   => 'required|numeric',
+    'warranty'=> 'required|numeric',
+    'date'    => 'required|date',
     'photo' => 'image',
     'category_id' => 'required|numeric',
     'provider_id' => 'required|numeric',

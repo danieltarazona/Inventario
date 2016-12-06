@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
   protected $fillable = [
-    'name', 'photo', 'serial', 'year', 'price', 'warranty',
-    'store_id', 'category_id', 'provider_id', 'state_id'
+    'name', 'date', 'photo', 'serial', 'year', 'price', 'warranty',
+    'store_id', 'category_id', 'provider_id',
   ];
+
+  public function state_active()
+  {
+    return $this->state_id = 200;
+  }
 
   public function event()
   {
@@ -98,7 +103,7 @@ class Product extends Model
 
   public function state_id()
   {
-    return $this->state->pluck('id');
+    return $this->state->id;
   }
 
   public function cart()

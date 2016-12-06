@@ -22,6 +22,9 @@
   {!! Form::label('Price', trans('strings.price')) !!}
   {!! Form::text('price', $product->price, ['class' => 'form-control']) !!}
 
+  {!! Form::label('Date', trans('strings.buy_date')) !!}
+  {!! Form::date('date', $product->date, ['class' => 'form-control']) !!}
+
   {!! Form::label('State', trans('strings.state')) !!}
   {!! Form::select('state_id', $states, $product->state_id, ['class' => 'form-control']) !!}
 

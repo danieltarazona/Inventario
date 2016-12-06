@@ -34,7 +34,7 @@ class ControllerRepairsTest extends TestCase
 
   public function testrepairsUpdateController()
   {
-    $this->assertEquals(true);
+    $this->assertTrue(true);
   }
 
   public function testrepairsShowController()
