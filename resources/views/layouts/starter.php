@@ -111,21 +111,18 @@
                   </div>
 
                   <div class="pull-right">
-
                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     {{ trans('strings.logout') }}
-                  </a>
-
-                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form>
-
-                </div>
-              </li>
-            </ul>
-          </li>
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                    </form>
+                  </div>
+                </li>
+              </ul>
+            </li>
         </ul>
       </div>
     </div>
@@ -153,6 +150,6 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/app.js"></script>
+<script src="{{ URL::asset('js/app.js') }}"></script>
 </body>
 </html>

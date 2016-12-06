@@ -48,7 +48,7 @@
             <li class="dropdown messages-menu">
               <!-- Menu toggle button -->
               @if(Auth::user()->role_id < 3)
-              <a href="{{ url('/cart/' . Auth::user()->id) }}" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="{{ url('/cart/' . Auth::user()->id) }}">
                 <i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i>
                 <span class="label label-success">{{App\Cart::find(Auth::id())->product->count()}}</span> Carrito
               </a>
@@ -168,20 +168,17 @@
                   </div>
 
                   <div class="pull-right">
-
                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     {{ trans('strings.logout') }}
-                  </a>
-
-                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form>
-
-                </div>
-              </li>
-            </ul>
+                    </a>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                    </form>
+                  </div>
+                </li>
+              </ul>
             </li>
             <!-- Control Sidebar Toggle Button -->
             <li>
@@ -389,11 +386,9 @@
     <div class="control-sidebar-bg"></div>
   </div>
 
-  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <script src="js/bootstrap-3.3.7/bootstrap.min.js"></script>
-  <script src="js/AdminLTE/AdminLTE.min.js"></script>
-  <script src="js/app.js"></script>
-
+  <script src="{{ URL::asset('js/AdminLTE/AdminLTE.min.js') }}"></script>
+  <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+  <script src="{{ URL::asset('js/bootstrap-3.3.7/bootstrap.min.js') }}"></script>
 
   </body>
 </html>
