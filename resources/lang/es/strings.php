@@ -2,6 +2,7 @@
 
 return array(
 
+	'more_info' => 'Mas Informacion',
 	'add' => 'Agregar',
 	'address' => 'Dirección',
 	'first_name' => 'Nombre',
