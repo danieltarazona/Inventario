@@ -30,7 +30,7 @@
                   <!-- small box -->
                   <div class="small-box bg-green">
                     <div class="inner">
-                      <h3>{{$repairs_count}}<sup style="font-size: 20px">%</sup></h3>
+                      <h3>{{$repairs_count}}</h3>
 
                       <p>Mantenimientos</p>
                     </div>
