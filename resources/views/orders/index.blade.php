@@ -4,6 +4,21 @@
 
   <h1>{{trans('strings.orders')}}</h1>
 
+  {!! Form::open(['route' => ['orders.search'], 'method' => 'POST']) !!}
+
+  <br>
+    <div class="col-md-12">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <input type="text" class="form-control" name="search" placeholder="Search" style="width:50%">
+          <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </span>
+      </div>
+    </div>
+  <br>
+
+  {!! Form::close() !!}
+
   <hr>
 
   <table class="table table-bordered table-hover table-responsive">
@@ -46,5 +61,5 @@
     @endforeach
 
   </table>
-  
+
 @stop

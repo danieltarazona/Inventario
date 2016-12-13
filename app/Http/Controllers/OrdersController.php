@@ -52,7 +52,8 @@ class OrdersController extends Controller
         'out' => Carbon::now(-5)->toTimeString(),
         'state_id' => 401,
         'user_id' => Auth::id(),
-        'order_id' => $order->id
+        'order_id' => $order->id,
+        'date' => Carbon::now()
       ]);
 
       foreach ($order->product as $product) {
@@ -94,6 +95,17 @@ class OrdersController extends Controller
     $cart->product()->detach();
 
     return redirect('orders');
+  }
+
+  /**
+  * Process datatables ajax request.
+  *
+  * @return \Illuminate\Http\JsonResponse
+  */
+  public function search(Request $request)
+  {
+    $orders = Order::search($request->search)->get();
+    return view('orders.index', compact('orders'));
   }
 
   /**

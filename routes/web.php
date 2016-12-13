@@ -31,6 +31,7 @@ Route::post('/sales/{sales}/complete', array('uses' => 'SalesController@complete
 Route::resource('orders', 'OrdersController', ['except' => 'destroy']);
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));
 Route::post('/orders/{orders}/cancel', array('uses' => 'OrdersController@cancel', 'as' => 'orders.cancel'));
+Route::post('/orders/search', array('uses' => 'OrdersController@search', 'as' => 'orders.search'));
 
 Route::resource('roles', 'RolesController');
 Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', 'as' => 'roles.assign'));

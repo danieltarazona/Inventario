@@ -11,7 +11,7 @@ class Sale extends Model
   use Searchable;
 
   protected $fillable = [
-    'out', 'state_id', 'user_id', 'order_id'
+    'out', 'state_id', 'user_id', 'order_id', 'date'
   ];
 
   public function user()
