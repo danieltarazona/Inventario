@@ -114,7 +114,7 @@ class RolesController extends Controller
       ->withInput();
     } else {
       $input = $request->all();
-      $role->fill($input)->save();
+      $role->fill($input)->saveOrFail();
       Flash('Update Successful!', 'success');
       return redirect('roles');
     }

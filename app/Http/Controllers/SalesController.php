@@ -55,7 +55,7 @@ class SalesController extends Controller
     $sale = Sale::findOrFail($id);
     $state->sale()->save($sale);
     $sale->in = Carbon::now(-5)->toTimeString();
-    $sale->save();
+    $sale->saveOrFail();
 
     foreach ($sale->product as $product) {
       $product->update(['state_id' => 300]);

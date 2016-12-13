@@ -79,7 +79,7 @@ class RegionsController extends Controller
   {
     $input = $request->all();
     $region = Region::findOrFail($id);
-    $region->fill($input)->save();
+    $region->fill($input)->saveOrFail();
     return redirect('regions');
   }
 

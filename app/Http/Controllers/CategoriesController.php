@@ -86,7 +86,7 @@ class CategoriesController extends Controller
       }
       $category->description = $request->description;
       $category->name = $request->name;
-      $category->save();
+      $category->saveOrFail();
       Flash('Create Successful!', 'success');
     }
     return redirect('categories');
@@ -126,7 +126,7 @@ class CategoriesController extends Controller
     }
     $category->photo = $request->photo;
     $category->name = $request->name;
-    $category->save();
+    $category->saveOrFail();
     Flash('Update Complete!', 'success');
     return redirect('categories');
   }

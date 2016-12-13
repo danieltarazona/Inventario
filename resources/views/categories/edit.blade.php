@@ -9,13 +9,13 @@
 {!! Form::open(['route' => array('categories.update', $category->id), 'files' => true, 'method' => 'PATCH']) !!}
 
   {!! Form::label('Name', trans('strings.name')) !!}
-  {!! Form::text('name', $category->name, ['class' => 'form-control']) !!}
+  {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
 
   {!! Form::label('Photo', trans('strings.image')) !!}
   {!! Form::file('photo', null, ['class' => 'form-control']) !!}
 
   {!! Form::label('Description', trans('strings.description')) !!}
-  {!! Form::textarea('description', $category->description, ['class' => 'form-control']) !!}
+  {!! Form::textarea('description', old('description'), ['class' => 'form-control']) !!}
 
   {{ Form::submit(trans('strings.update'), ['name' => trans('strings.update'), 'class' => 'btn btn-success']) }}
 

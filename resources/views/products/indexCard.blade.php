@@ -6,6 +6,19 @@
 
   <hr>
 
+  <div class="search">
+    <div class="col-md-12">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <input type="text" class="form-control" name="search" placeholder="Search" style="width:50%">
+          <button class="btn btn-default" type="submit" name="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+
   @foreach ($products->chunk(4) as $items)
     <div class="row">
       @foreach ($items as $product)

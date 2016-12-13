@@ -37,15 +37,32 @@ class ProductsController extends Controller
   */
   public function index()
   {
-
     if (Auth::id() == 1)
     {
-      $products = Product::where('state_id', 300)->paginate(10);
+      $products = Product::where('state_id', 300);
       return view('products.indexCard', compact('products'));
     } else {
       $products = Product::paginate(10);
       return view('products.indexList', compact('products'));
     }
+  }
+
+  /**
+  * Process datatables ajax request.
+  *
+  * @return \Illuminate\Http\JsonResponse
+  */
+  public function search($request)
+  {
+    if (Auth::id() == 1)
+    {
+      $products = Product::search($request->search)->get();
+      return view('products.indexCard', compact('products'));
+    } else {
+      $products = Product::search($request->search)->get();
+      return view('product.indexList', compact('products'));
+    }
+
   }
 
   /**
@@ -62,164 +79,159 @@ class ProductsController extends Controller
     $regions = Region::pluck('name', 'id');
 
     return view('products.create', compact(
-    'categories', 'providers',
-    'stores', 'cities', 'regions'
+      'categories', 'providers',
+      'stores', 'cities', 'regions'
     ));
   }
 
-/**
-* Show the form for editing the specified resource.
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function edit($id)
-{
-  $product = Product::findOrFail($id);
+  /**
+  * Show the form for editing the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function edit($id)
+  {
+    $product = Product::findOrFail($id);
 
-  $categories = Category::pluck('name', 'id');
-  $providers = User::where('role_id', 2)->pluck('username', 'id');
-  $stores = Store::pluck('name', 'id');
-  $cities = City::pluck('name', 'id');
-  $regions = Region::pluck('name', 'id');
-  $states = State::pluck('name', 'id');
+    $categories = Category::pluck('name', 'id');
+    $providers = User::where('role_id', 2)->pluck('username', 'id');
+    $stores = Store::pluck('name', 'id');
+    $cities = City::pluck('name', 'id');
+    $regions = Region::pluck('name', 'id');
+    $states = State::pluck('name', 'id');
 
-  return view('products.edit', compact(
-  'product', 'categories', 'providers',
-  'stores', 'cities', 'regions', 'states'
-  ));
-}
-
-/**
-* Store a newly created resource in storage.
-*
-* @param  \Illuminate\Http\Request  $request
-* @return \Illuminate\Http\Response
-*/
-public function store(Request $request)
-{
-  $validator = Validator::make($request->all(), $this->rules());
-
-  if ($validator->fails()) {
-    Flash('Validation Fail!', 'danger');
-    return redirect('products.create')
-    ->withErrors($validator)
-    ->withInput();
-  } else {
-    $file = Input::file('photo');
-    if ($file)
-    {
-      $filePath = public_path() . '/img/products/';
-      $fileName = $file->getClientOriginalName();
-      File::exists($filePath) or File::makeDirectory($filePath);
-      $image = Image::make($file->getRealPath());
-      $image->save($filePath . $fileName);
-      $request->photo = '/img/products/' . $fileName;
-    } 
-    $request->photo = '/img/products/ipad.jpeg';
-    $product = Product::create($request->all());
-    $product->state_active();
-    $product->save();
-
-    Flash('Create Product Complete!', 'success');
-    return redirect('products');
+    return view('products.edit', compact(
+      'product', 'categories', 'providers',
+      'stores', 'cities', 'regions', 'states'
+    ));
   }
-}
 
-/**
-* Display the specified resource.
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function show($id)
-{
-  $product = Product::findOrFail($id);
-  $repairs = Repair::where('state_id', 401)->get();
+  /**
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  public function store(Request $request)
+  {
+    $validator = Validator::make($request->all(), $this->rules());
 
-  $products = Product::all()->take(4);
-  return view('products.show', compact('product', 'repairs'));
-}
+    if ($validator->fails()) {
+      Flash('Validation Fail!', 'danger');
+      return redirect('products.create')
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      $file = Input::file('photo');
+      if ($file)
+      {
+        $filePath = public_path() . '/img/products/';
+        $fileName = $file->getClientOriginalName();
+        File::exists($filePath) or File::makeDirectory($filePath);
+        $image = Image::make($file->getRealPath());
+        $image->save($filePath . $fileName);
+        $request->photo = '/img/products/' . $fileName;
+      }
+      $request->photo = '/img/products/ipad.jpeg';
+      $product = Product::create($request->all());
+      $product->state_active();
+      $product->saveOrFail();
 
-/**
-* Display the specified resource.
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function damage($id)
-{
-  $product = Product::findOrFail($id);
-  $product->update(['state_id' => 304]);
-
-  Flash('Item Update to Damage!', 'success');
-
-  return redirect('products/' . $id);
-}
-
-
-
-/**
-* Update the specified resource in storage.
-*
-* @param  \Illuminate\Http\Request  $request
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function update(Request $request, $id)
-{
-  $product = Product::find($id);
-
-  $validator = Validator::make($request->all(), $this->rules());
-
-  if ($validator->fails()) {
-    Flash('Validation Fail!', 'danger');
-    return redirect('products/' . $product->id . '/edit')
-    ->withErrors($validator)
-    ->withInput();
-  } else {
-    $input = $request->all();
-    $product->fill($input)->save();
-
-    Flash('Update Complete!', 'success');
-    return redirect('products');
+      Flash('Create Product Complete!', 'success');
+      return redirect('products');
+    }
   }
-}
 
-public function search(Request $request)
-{
-  return redirect('products');
-}
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function show($id)
+  {
+    $product = Product::findOrFail($id);
+    $repairs = Repair::where('state_id', 401)->get();
 
-/**
-* Remove the specified resource from storage.
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function destroy($id)
-{
-  Product::findOrFail($id)->delete();
-  return redirect('products');
-  Flash('Delete Successful!', 'success');
-}
+    $products = Product::all()->take(4);
+    return view('products.show', compact('product', 'repairs'));
+  }
 
-public function rules()
-{
-  return [
-    'name'    => 'required|max:255',
-    'serial'  => 'required|max:255',
-    'year'    => 'required|numeric',
-    'price'   => 'required|numeric',
-    'warranty'=> 'required|numeric',
-    'date'    => 'required|date',
-    'photo' => 'image',
-    'category_id' => 'required|numeric',
-    'provider_id' => 'required|numeric',
-    'city_id' => 'required|numeric',
-    'region_id' => 'required|numeric',
-    'store_id' => 'required|numeric',
-  ];
-}
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function damage($id)
+  {
+    $product = Product::findOrFail($id);
+    $product->update(['state_id' => 304]);
+
+    Flash('Item Update to Damage!', 'success');
+
+    return redirect('products/' . $id);
+  }
+
+
+
+  /**
+  * Update the specified resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function update(Request $request, $id)
+  {
+    $product = Product::find($id);
+
+    $validator = Validator::make($request->all(), $this->rules());
+
+    if ($validator->fails()) {
+      Flash('Validation Fail!', 'danger');
+      return redirect('products/' . $product->id . '/edit')
+      ->withErrors($validator)
+      ->withInput();
+    } else {
+      $input = $request->all();
+      $product->fill($input)->saveOrFail();
+
+      Flash('Update Complete!', 'success');
+      return redirect('products');
+    }
+  }
+
+  /**
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function destroy($id)
+  {
+    Product::findOrFail($id)->delete();
+    return redirect('products');
+    Flash('Delete Successful!', 'success');
+  }
+
+  public function rules()
+  {
+    return [
+      'name'    => 'required|max:255',
+      'serial'  => 'required|max:255',
+      'year'    => 'required|numeric',
+      'price'   => 'required|numeric',
+      'warranty'=> 'required|numeric',
+      'date'    => 'required|date',
+      'photo' => 'image',
+      'category_id' => 'required|numeric',
+      'provider_id' => 'required|numeric',
+      'city_id' => 'required|numeric',
+      'region_id' => 'required|numeric',
+      'store_id' => 'required|numeric',
+    ];
+  }
 
 }

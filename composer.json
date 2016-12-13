@@ -10,7 +10,9 @@
         "intervention/image": "^2.3",
         "nesbot/carbon": "^1.21",
         "barryvdh/laravel-dompdf": "^0.7.0",
-        "maatwebsite/excel": "^2.1"
+        "maatwebsite/excel": "^2.1",
+        "laravel/scout": "^1.1",
+        "algolia/algoliasearch-client-php": "^1.12"
     },
     "require-dev": {
         "laravelcollective/html": "5.3.*",

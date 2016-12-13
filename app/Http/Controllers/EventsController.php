@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
 use App\Event;
 use App\Cart;
 use App\Order;
@@ -34,7 +37,7 @@ class EventsController extends Controller
     {
       $start = Carbon::now(-5)->toTimeString();
       $end = Carbon::now(-4)->toTimeString();
-      $date = Carbon::now()->subDay();
+      $date = Carbon::now();
       $date_search = Carbon::now();
       $cart = Cart::findOrFail(Auth::id());
       $events = Event::whereIn('product_id', $cart->product_id())
@@ -55,7 +58,7 @@ class EventsController extends Controller
     {
       $start = Carbon::now(-5)->subDay();
       $end = Carbon::now(-4)->subDay();
-      $date = Carbon::now()->subDay();
+      $date = Carbon::now();
       $date_search = $request->date_search;
       $cart = Cart::findOrFail(Auth::id());
 
@@ -78,13 +81,21 @@ class EventsController extends Controller
     public function store(Request $request)
     {
       $cart = Cart::findOrFail(Auth::id());
+      $validator = Validator::make($request->all(), $this->rules());
+
+      if ($validator->fails()) {
+        Flash('Validation Fails!', 'danger');
+        return redirect('events/create')
+        ->withErrors($validator)
+        ->withInput();
+      }
 
       $order = Order::create([
         'user_id' => Auth::id(),
         'state_id' => 401,
+        'date' => $request->date,
         'start' => $request->start,
-        'end' => $request->end,
-        'date' => $request->date
+        'end' => $request->end
       ]);
 
       foreach ($cart->product as $product) {
@@ -98,7 +109,7 @@ class EventsController extends Controller
       }
 
       $cart->product()->detach();
-
+      Flash('Update Successful!', 'success');
       return redirect('orders');
     }
 
@@ -123,5 +134,22 @@ class EventsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Return the Validation Rules
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rules()
+    {
+      $five = Carbon::now()->addDays(5);
+
+      return [
+        'date'    => 'required|date|after:yesterday|before:' . $five,
+        'start'    => 'required|after:08:00:00|before:18:45:00',
+        'end'    => 'required|after:08:15:00|before:18:00:00',
+      ];
     }
 }

@@ -74,7 +74,7 @@ public function update(Request $request, $id)
 {
   $user = User::FindOrFail($id);
   $input = $request->all();
-  $user->fill($input)->save();
+  $user->fill($input)->saveOrFail();
   Flash('User Update Successful!', 'success');
   return redirect('users');
 }

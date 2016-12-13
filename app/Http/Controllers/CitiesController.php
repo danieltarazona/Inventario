@@ -104,7 +104,7 @@ class CitiesController extends Controller
       ->withInput();
     } else {
       $input = $request->all();
-      $city->fill($input)->save();
+      $city->fill($input)->saveOrFail();
       Flash('Update Successful!', 'success');
       return redirect('cities');
     }

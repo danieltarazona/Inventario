@@ -148,7 +148,7 @@ class OrdersController extends Controller
       $order->date = $request->date;
       $order->start = $request->start;
       $order->end = $request->end;
-      $order->save();
+      $order->saveOrFail();
       Flash('Update Successful!', 'success');
       return redirect('orders');
     }
@@ -177,7 +177,7 @@ class OrdersController extends Controller
   public function rules()
   {
     return [
-      'date'    => 'required',
+      'date'    => 'required|date',
       'start'    => 'required',
       'end'    => 'required',
     ];

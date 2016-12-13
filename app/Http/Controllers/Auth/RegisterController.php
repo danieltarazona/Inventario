@@ -82,7 +82,7 @@ class RegisterController extends Controller
         $cart = Cart::create();
         $cart->user()->save($user);
 
-        $user->save();
+        $user->saveOrFail();
 
         return $user;
     }

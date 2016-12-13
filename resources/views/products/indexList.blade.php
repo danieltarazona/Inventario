@@ -10,21 +10,19 @@
   {!! Form::open(['route' => ['products.search'], 'method' => 'GET']) !!}
 
   <br>
-  <div class="search">
     <div class="col-md-12">
       <div class="input-group">
-        <input type="text" class="form-control" name="search" placeholder="Search">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <input type="text" class="form-control" name="search" placeholder="Search" style="width:50%">
+          <button class="btn btn-default" type="submit" name="find"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
       </div>
     </div>
-  </div>
   <br>
 
   {!! Form::close() !!}
 
-  <table class="table table-bordered table-hover table-responsive">
+  <table id="productsTable" class="table table-bordered table-hover table-responsive">
     <thead>
       <tr>
         <th>ID</th>

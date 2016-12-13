@@ -70,7 +70,7 @@ class RepairsController extends Controller
       $repair->provider_id = $request->provider;
       $repair->storer_id = Auth::id();
       $repair->state_id = 401;
-      $repair->save();
+      $repair->saveOrFail();
 
       $cart = Cart::findOrFail(Auth::id());
 
@@ -198,7 +198,7 @@ class RepairsController extends Controller
         $repair->description = $request->description;
       }
       $repair->name = $request->name;
-      $repair->save();
+      $repair->saveOrFail();
       Flash('Update Successful!', 'success');
       return redirect('repairs');
     }

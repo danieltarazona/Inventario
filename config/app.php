@@ -171,6 +171,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
         //
 
         /*
@@ -234,6 +236,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Carbon' => 'Carbon\Carbon',
 
 

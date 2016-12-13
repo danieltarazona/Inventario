@@ -343,7 +343,7 @@
                 <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
                 <div class="menu-info">
-                  <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                  <h4 class="control-sidebar-subheading">Langdons Birthday</h4>
 
                   <p>Will be 23 on April 24th</p>
                 </div>
@@ -398,12 +398,10 @@
       </div>
     </aside>
     <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
+    <!-- Add the sidebars background. This div must be placed
     immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
   </div>
-
-
 
   <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
   <script src="{{ URL::asset('js/bootstrap-3.3.7/bootstrap.min.js') }}"></script>

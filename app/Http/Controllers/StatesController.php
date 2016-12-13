@@ -78,7 +78,7 @@ class StatesController extends Controller
       ->withInput();
     } else {
       $input = $request->all();
-      $state->fill($input)->save();
+      $state->fill($input)->saveOrFail();
       return redirect('states');
     }
   }

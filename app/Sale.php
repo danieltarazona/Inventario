@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
+
+  use Searchable;
 
   protected $fillable = [
     'out', 'state_id', 'user_id', 'order_id'
@@ -49,6 +52,20 @@ class Sale extends Model
   public function product_id()
   {
     return $this->product->pluck('id');
+  }
+
+  /**
+   * Get the indexable data array for the model.
+   *
+   * @return array
+   */
+  public function toSearchableArray()
+  {
+      $array = $this->toArray();
+
+      // Customize array...
+
+      return $array;
   }
 
 }
