@@ -60,4 +60,4 @@ Route::post('/repairs/{repairs}/complete', array('uses' => 'RepairsController@co
 Route::post('/repairs/{repairs}/returned', array('uses' => 'RepairsController@returned', 'as' => 'repairs.returned'));
 Route::post('/repairs/{repairs}/canceled', array('uses' => 'RepairsController@canceled', 'as' => 'repairs.canceled'));
 
-Route::resource('dashboard', 'DashboardController');
+Route::resource('reports', 'ReportsController');

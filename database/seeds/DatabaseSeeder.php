@@ -27,6 +27,6 @@ class DatabaseSeeder extends Seeder
       $this->call(RepairsTableSeeder::class);
       $this->call(EventsTableSeeder::class);
       $this->call(OrdersTableSeeder::class);
-      $this->call(ReportsTableSeeder::class);
+      $this->call(TypesTableSeeder::class);
     }
 }

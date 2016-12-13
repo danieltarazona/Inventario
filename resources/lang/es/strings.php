@@ -2,6 +2,8 @@
 
 return array(
 
+	'generate' => 'Generar',
+	'reports' => 'Reportes',
 	'more_info' => 'Mas Informacion',
 	'add' => 'Agregar',
 	'address' => 'Dirección',

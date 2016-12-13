@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading">Dashboard</div>
 
@@ -17,7 +16,7 @@
                     <div class="inner">
                       <h3>{{ $stores_count }}</h3>
 
-                      <p>Locales</p>
+                      <p>{{ trans('strings.stores' )}}</p>
                     </div>
                     <div class="icon">
                       <i class="ion ion-bag"></i>
@@ -32,7 +31,7 @@
                     <div class="inner">
                       <h3>{{$repairs_count}}</h3>
 
-                      <p>Mantenimientos</p>
+                      <p>{{ trans('strings.repairs')}}</p>
                     </div>
                     <div class="icon">
                       <i class="ion ion-stats-bars"></i>
@@ -76,5 +75,4 @@
           </div>
         </div>
       </div>
-    </div>
   @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Type;
 use App\Report;
 
 class ReportsController extends Controller
@@ -14,7 +15,8 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        return view('reports.index');
+        $reports = Report::all();
+        return view('reports.index', compact('reports'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        return view('reports.create');
+        $types = Type::pluck('name', 'id');
+        return view('reports.create', compact('types'));
     }
 
     /**

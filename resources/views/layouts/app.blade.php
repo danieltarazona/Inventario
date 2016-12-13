@@ -249,6 +249,7 @@
             @if (Auth::check() && Auth::user()->role_id > 1)
               <li><a href="{{ url('repairs') }}"><i class="fa fa-link"></i><span>{{trans('strings.repairs')}}</span></a></li>
               @if (Auth::user()->role_id > 3)
+                <li><a href="{{ url('reports') }}"><i class="fa fa-link"></i><span>{{trans('strings.reports')}}</span></a></li>
                 <li><a href="{{ url('stores') }}"><i class="fa fa-link"></i><span>{{trans('strings.stores')}}</span></a></li>
                 <li><a href="{{ url('cities') }}"><i class="fa fa-link"></i><span>{{trans('strings.cities')}}</span></a></li>
                 <li><a href="{{ url('regions') }}"><i class="fa fa-link"></i><span>{{trans('strings.regions')}}</span></a></li>
