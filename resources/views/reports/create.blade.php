@@ -6,11 +6,7 @@
 
   <hr>
 
-  <div class="row">
-    <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Dashboard</div>
-
         <div class="panel-body">
           <section class="content">
             <!-- Small boxes (Stat box) -->
@@ -25,11 +21,20 @@
                     <div class="icon">
                       <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="/report/users" class="small-box-footer">{{trans('strings.generate')}} <i class="fa fa-arrow-circle-right"></i></a>
+
+                    {!! Form::open(['route' => ['reports.generate',  $type->id], 'method' => 'POST']) !!}
+                      <button class="btn btn-success" type="submit" name="{{ trans('strings.next') }}">
+                        {{trans('strings.next')}}</button>
+                    {!! Form::close() !!}
+
                   </div>
                 </div>
             @endforeach
 
           </section>
         </div>
+      </div>
+
+
+
       @stop

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Type;
+use App\Range;
 use App\Report;
+
 
 class ReportsController extends Controller
 {
@@ -26,8 +28,19 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        $types = Type::pluck('name', 'id');
+        $types = Type::all();
         return view('reports.create', compact('types'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function generate()
+    {
+        $ranges = Range::all();
+        return view('reports.generate', compact('ranges'));
     }
 
     /**
@@ -75,6 +88,20 @@ class ReportsController extends Controller
     public function update(Request $request, $id)
     {
         return view('reports.index');
+    }
+
+    /**
+     * Return the Validation Rules
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rules()
+    {
+      return [
+        'start'    => 'required|date',
+        'end'    => 'required|before:today',
+      ];
     }
 
 }

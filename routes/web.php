@@ -61,3 +61,4 @@ Route::post('/repairs/{repairs}/returned', array('uses' => 'RepairsController@re
 Route::post('/repairs/{repairs}/canceled', array('uses' => 'RepairsController@canceled', 'as' => 'repairs.canceled'));
 
 Route::resource('reports', 'ReportsController');
+Route::post('/reports/{type}/generate', array('uses' => 'ReportsController@generate', 'as' => 'reports.generate'));

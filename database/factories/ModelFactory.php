@@ -39,6 +39,12 @@ $factory->define(App\Type::class, function (Faker\Generator $faker) {
   ];
 });
 
+$factory->define(App\Range::class, function (Faker\Generator $faker) {
+  return [
+    'name' => $faker->unique()->userName
+  ];
+});
+
 $factory->define(App\Report::class, function (Faker\Generator $faker) {
   return [
     'start' => Carbon::now(),

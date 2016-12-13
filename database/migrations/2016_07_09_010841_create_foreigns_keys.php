@@ -123,6 +123,8 @@ class CreateForeignsKeys extends Migration
     Schema::table('reports', function ($table) {
       $table->foreign('type_id')->references('id')->on('types')
       ->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('range_id')->references('id')->on('types')
+      ->onDelete('cascade')->onUpdate('cascade');
     });
 
   }

@@ -2,6 +2,12 @@
 
 return array(
 
+	'ranges' => 'Rangos',
+	'bimestre' => 'Bimestre',
+	'trimestre' => 'Trimestre',
+	'semester' => 'Semestre',
+	'month' => 'Mes',
+	'next' => 'Siguiente',
 	'generate' => 'Generar',
 	'reports' => 'Reportes',
 	'more_info' => 'Mas Informacion',
@@ -18,7 +24,7 @@ return array(
 	'id' => 'ID',
 	'not_reclaim' => 'No Reclamado',
 	'hour' => 'Hora',
-	'day' => 'Day',
+	'day' => 'Dia',
 	'confirm_password' => 'Confirmar Contraseña',
 	'monday' => 'Lunes',
 	'tuesday' => 'Martes',

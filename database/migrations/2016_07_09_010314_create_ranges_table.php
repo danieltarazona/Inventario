@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReportsTable extends Migration
+class CreateRangesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('ranges', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type_id')->unsigned()->nullable();
-            $table->integer('range_id')->unsigned()->nullable();
-            $table->date('start');
-            $table->date('end');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('reports');
+        Schema::drop('ranges');
     }
 }
