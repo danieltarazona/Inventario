@@ -3,8 +3,6 @@
 
   <h1>{{trans('strings.products')}}</h1>
 
-  <br>
-
   <a href="{{ route('products.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
   {!! Form::open(['route' => ['products.search'], 'method' => 'POST']) !!}
@@ -13,7 +11,7 @@
     <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-btn">
-          <input type="text" class="form-control" name="search" placeholder="Search" style="width:50%">
+          <input type="text" class="form-control" name="search" placeholder="{{ trans('strings.search') }}" style="width:50%">
           <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
       </div>
@@ -21,6 +19,10 @@
   <br>
 
   {!! Form::close() !!}
+
+  {{ $products->links() }}
+
+  <hr>
 
   <table id="productsTable" class="table table-bordered table-hover table-responsive">
     <thead>
@@ -33,8 +35,6 @@
         <th colspan="3">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
-
-    {{ $products->links() }}
 
     @foreach ($products as $product)
       <tr>

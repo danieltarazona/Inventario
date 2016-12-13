@@ -27,7 +27,7 @@ class SalesController extends Controller
   */
   public function index()
   {
-    $sales = Sale::all();
+    $sales = Sale::paginate(10);
     return view('sales.index', compact('sales'));
   }
 
@@ -63,6 +63,22 @@ class SalesController extends Controller
 
     Flash('Sale has been Complete!', 'success');
     return redirect('sales');
+  }
+
+  /**
+  * Process datatables ajax request.
+  *
+  * @return \Illuminate\Http\JsonResponse
+  */
+  public function search(Request $request)
+  {
+    $sales = Sale::search($request->search)->paginate(10);
+    if ($sales->count() > 0) {
+      Flash($sales->count() . ' Registers Found!', 'success');
+    } else {
+      Flash('No Registers Found!', 'danger');
+    }
+    return view('sales.index', compact('sales'));
   }
 
 }

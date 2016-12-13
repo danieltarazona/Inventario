@@ -25,7 +25,7 @@ class UsersController extends Controller
   */
   public function index()
   {
-    $users = User::paginate(15);
+    $users = User::paginate(50);
 
     return view('users.index', compact('users'));
   }
@@ -61,35 +61,52 @@ class UsersController extends Controller
     'user', 'cities', 'stores', 'states', 'regions'
   ));
 
-}
+  }
 
-/**
-* Update the specified resource in storage.
-*
-* @param  \Illuminate\Http\Request  $request
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function update(Request $request, $id)
-{
-  $user = User::FindOrFail($id);
-  $input = $request->all();
-  $user->fill($input)->saveOrFail();
-  Flash('User Update Successful!', 'success');
-  return redirect('users');
-}
+  /**
+  * Update the specified resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function update(Request $request, $id)
+  {
+    $user = User::FindOrFail($id);
+    $input = $request->all();
+    $user->fill($input)->saveOrFail();
+    Flash('User Update Successful!', 'success');
+    return redirect('users');
+  }
 
-/**
-* Remove the specified resource from storage.
-*
-* @param  int  $id
-* @return \Illuminate\Http\Response
-*/
-public function destroy($id)
-{
-  User::findOrFail($id)->delete();
-  Flash('User Delete Successful!', 'success');
-  return redirect('users');
-  // return redirect()->route('users.index');
-}
+  /**
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function destroy($id)
+  {
+    User::findOrFail($id)->delete();
+    Flash('User Delete Successful!', 'success');
+    return redirect('users');
+    // return redirect()->route('users.index');
+  }
+
+  /**
+  * Process datatables ajax request.
+  *
+  * @return \Illuminate\Http\JsonResponse
+  */
+  public function search(Request $request)
+  {
+    $users = User::search($request->search)->paginate(50);
+    if ($users->count() > 0) {
+      Flash($users->count() . ' Registers Found!', 'success');
+    } else {
+      Flash('No Registers Found!', 'danger');
+    }
+    return view('users.index', compact('users'));
+  }
+
 }

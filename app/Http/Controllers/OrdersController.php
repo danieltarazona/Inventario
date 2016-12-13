@@ -29,7 +29,7 @@ class OrdersController extends Controller
   */
   public function index()
   {
-    $orders = Order::all();
+    $orders = Order::paginate(10);
     return view('orders.index', compact('orders'));
   }
 
@@ -94,6 +94,7 @@ class OrdersController extends Controller
 
     $cart->product()->detach();
 
+    Flash('Order Store Successful', 'success');
     return redirect('orders');
   }
 
@@ -104,7 +105,12 @@ class OrdersController extends Controller
   */
   public function search(Request $request)
   {
-    $orders = Order::search($request->search)->get();
+    $orders = Order::search($request->search)->paginate(10);
+    if ($orders->count() > 0) {
+      Flash($orders->count() . ' Registers Found', 'success');
+    } else {
+      Flash('No Registers Found', 'danger');
+    }
     return view('orders.index', compact('orders'));
   }
 

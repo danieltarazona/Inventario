@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('users', 'UsersController');
+Route::post('/users/search', array('uses' => 'UsersController@search', 'as' => 'users.search'));
+
 Route::resource('issues', 'IssuesController');
 
 Route::resource('events', 'EventsController');
@@ -27,6 +29,7 @@ Route::get('/events/create/search', array('uses' => 'EventsController@search', '
 
 Route::resource('sales', 'SalesController', ['except' => 'destroy', 'update']);
 Route::post('/sales/{sales}/complete', array('uses' => 'SalesController@complete', 'as' => 'sales.complete'));
+Route::post('/sales/search', array('uses' => 'SalesController@search', 'as' => 'sales.search'));
 
 Route::resource('orders', 'OrdersController', ['except' => 'destroy']);
 Route::post('/orders/{orders}/sale', array('uses' => 'OrdersController@sale', 'as' => 'orders.sale'));

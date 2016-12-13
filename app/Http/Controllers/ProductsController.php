@@ -39,7 +39,7 @@ class ProductsController extends Controller
   {
     if (Auth::id() == 1)
     {
-      $products = Product::where('state_id', 300);
+      $products = Product::where('state_id', 300)->paginate(10);
       return view('products.indexCard', compact('products'));
     } else {
       $products = Product::paginate(10);
@@ -54,12 +54,18 @@ class ProductsController extends Controller
   */
   public function search(Request $request)
   {
+    $products = Product::search($request->search)->paginate(10);
+
+    if ($products->count() > 0) {
+      Flash($products->count() . ' Registers Found', 'success');
+    } else {
+      Flash('No Registers Found', 'danger');
+    }
+
     if (Auth::id() == 1)
     {
-      $products = Product::search($request->search)->get();
       return view('products.indexCard', compact('products'));
     } else {
-      $products = Product::search($request->search)->paginate(10);
       return view('products.indexList', compact('products'));
     }
   }

@@ -1,8 +1,24 @@
 @extends('layouts.app')
-
 @section('content')
 
   <h1>{{trans('strings.sales')}}</h1>
+
+  {!! Form::open(['route' => ['sales.search'], 'method' => 'POST']) !!}
+
+  <br>
+    <div class="col-md-12">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <input type="text" class="form-control" name="search" placeholder="{{ trans('strings.search') }}" style="width:50%">
+          <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </span>
+      </div>
+    </div>
+  <br>
+
+  {!! Form::close() !!}
+
+  {{ $sales->links() }}
 
   <hr>
 
