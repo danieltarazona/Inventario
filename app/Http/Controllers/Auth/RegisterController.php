@@ -72,7 +72,8 @@ class RegisterController extends Controller
           'email' => $data['email'],
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
-          'password' => bcrypt($data['password'])
+          'password' => bcrypt($data['password']),
+          'photo' => 'img/users/profile.png'
         ]);
 
         $user->role_id = 1;
