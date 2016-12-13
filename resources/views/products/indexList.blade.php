@@ -7,14 +7,14 @@
 
   <a href="{{ route('products.create') }}" class="btn btn-primary">{{trans('strings.create')}}</a>
 
-  {!! Form::open(['route' => ['products.search'], 'method' => 'GET']) !!}
+  {!! Form::open(['route' => ['products.search'], 'method' => 'POST']) !!}
 
   <br>
     <div class="col-md-12">
       <div class="input-group">
         <span class="input-group-btn">
           <input type="text" class="form-control" name="search" placeholder="Search" style="width:50%">
-          <button class="btn btn-default" type="submit" name="find"><i class="fa fa-search" aria-hidden="true"></i></button>
+          <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
       </div>
     </div>

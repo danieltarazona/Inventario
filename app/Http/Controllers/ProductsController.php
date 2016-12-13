@@ -52,17 +52,16 @@ class ProductsController extends Controller
   *
   * @return \Illuminate\Http\JsonResponse
   */
-  public function search($request)
+  public function search(Request $request)
   {
     if (Auth::id() == 1)
     {
       $products = Product::search($request->search)->get();
       return view('products.indexCard', compact('products'));
     } else {
-      $products = Product::search($request->search)->get();
-      return view('product.indexList', compact('products'));
+      $products = Product::search($request->search)->paginate(10);
+      return view('products.indexList', compact('products'));
     }
-
   }
 
   /**

@@ -37,7 +37,7 @@ Route::post('/roles/{roles}/assign', array('uses' => 'RolesController@assign', '
 
 Route::resource('products', 'ProductsController');
 Route::post('/products/{products}/damage', array('uses' => 'ProductsController@damage', 'as' => 'products.damage'));
-Route::get('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
+Route::post('/products/search', array('uses' => 'ProductsController@search', 'as' => 'products.search'));
 
 Route::resource('regions', 'RegionsController');
 Route::resource('states', 'StatesController', ['except' => 'show']);
