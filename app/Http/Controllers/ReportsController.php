@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Report;
 
 class ReportsController extends Controller
 {
@@ -13,7 +14,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        //
+        return view('reports.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        //
+        return view('reports.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class ReportsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('reports');
     }
 
     /**
@@ -45,7 +46,8 @@ class ReportsController extends Controller
      */
     public function show($id)
     {
-        //
+        $report = Report::findOrFail($id);
+        return view('report.show', compact('report'));
     }
 
     /**
@@ -56,7 +58,8 @@ class ReportsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $report = Report::findOrFail($id);
+        return view('report.edit', compact('report'));
     }
 
     /**
@@ -68,17 +71,7 @@ class ReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('reports.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
