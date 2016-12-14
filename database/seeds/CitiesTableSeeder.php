@@ -11,7 +11,7 @@ class CitiesTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\City::class, 10)->create()->each(function($city)
+      factory(App\City::class, 100)->create()->each(function($city)
       {
         $region = App\Region::find(1);
         $region->city()->save($city);

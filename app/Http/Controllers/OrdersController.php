@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 
+use App\Notifications\CancelOrderNotification as CancelNotification;
+use App\Notifications\OrderStoreNotification as StoreNotification;
+use App\Notifications\SaleNotification;
+
 use App\Http\Requests;
 
 use App\Order;
@@ -63,6 +67,7 @@ class OrdersController extends Controller
 
       $order->update(['state_id' => 400]);
       Flash('Order to Sale Complete!', 'success');
+      Auth::user()->notify(new SaleNotification($order));
       return redirect('sales');
 
     } else {
@@ -95,6 +100,7 @@ class OrdersController extends Controller
     $cart->product()->detach();
 
     Flash('Order Store Successful', 'success');
+    Auth::user()->notify(new StoreNotification($order));
     return redirect('orders');
   }
 
@@ -185,6 +191,7 @@ class OrdersController extends Controller
       $order->update(['state_id' => 403]);
       $event = Event::find($order->event_id);
       Flash('Order Cancel Successful!', 'success');
+      Auth::user()->notify(new CancelNotification($order));
       return redirect('orders');
     } else {
       Flash('Order has not Waiting Status!', 'danger');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 
+use App\Notifications\ReturnSaleNotification as ReturnNotification;
+
 use App\Http\Requests;
 
 use App\Sale;
@@ -62,6 +64,7 @@ class SalesController extends Controller
     }
 
     Flash('Sale has been Complete!', 'success');
+    Auth::user()->notify(new ReturnNotification($sale));
     return redirect('sales');
   }
 
