@@ -19,8 +19,6 @@
 
   {!! Form::close() !!}
 
-  {{ $users->links() }}
-
   <hr>
 
   <table class="table table-bordered table-hover table-responsive">
@@ -35,8 +33,6 @@
         <th colspan="3">{{trans('strings.actions')}}</th>
       </tr>
     </thead>
-
-    {{ $users->links() }}
 
     @foreach ($users as $user)
 

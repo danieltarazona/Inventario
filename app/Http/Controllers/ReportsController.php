@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Type;
 use App\Range;
 use App\Report;
-
+use App\User;
+use Carbon;
+use PDF;
 
 class ReportsController extends Controller
 {
@@ -28,8 +29,8 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
-        return view('reports.create', compact('types'));
+        $ranges = Range::all();
+        return view('reports.create', compact('ranges'));
     }
 
     /**
@@ -39,8 +40,9 @@ class ReportsController extends Controller
      */
     public function generate()
     {
-        $ranges = Range::all();
-        return view('reports.generate', compact('ranges'));
+        $users = User::whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->get();
+        $pdf = PDF::loadView('users.index', compact('users'));
+        return $pdf->stream();
     }
 
     /**
@@ -62,8 +64,9 @@ class ReportsController extends Controller
      */
     public function show($id)
     {
+        $ranges = Range::all();
         $report = Report::findOrFail($id);
-        return view('report.show', compact('report'));
+        return view('reports.show', compact('report', 'ranges'));
     }
 
     /**
@@ -75,7 +78,7 @@ class ReportsController extends Controller
     public function edit($id)
     {
         $report = Report::findOrFail($id);
-        return view('report.edit', compact('report'));
+        return view('reports.edit', compact('report'));
     }
 
     /**

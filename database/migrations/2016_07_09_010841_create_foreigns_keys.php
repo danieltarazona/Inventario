@@ -120,13 +120,6 @@ class CreateForeignsKeys extends Migration
       ->onDelete('cascade')->onUpdate('cascade');
     });
 
-    Schema::table('reports', function ($table) {
-      $table->foreign('type_id')->references('id')->on('types')
-      ->onDelete('cascade')->onUpdate('cascade');
-      $table->foreign('range_id')->references('id')->on('types')
-      ->onDelete('cascade')->onUpdate('cascade');
-    });
-
   }
 
   /**

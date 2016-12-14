@@ -2,6 +2,7 @@
 
 return array(
 
+	'select' => 'Seleccionar',
 	'ranges' => 'Rangos',
 	'bimestre' => 'Bimestre',
 	'trimestre' => 'Trimestre',

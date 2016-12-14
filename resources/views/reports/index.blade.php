@@ -4,31 +4,33 @@
 
   <h1>{{trans('strings.reports')}}</h1>
 
-  <a href="{{ route('reports.create') }}">
-    <button class="btn btn-primary" type="submit" name="{{trans('strings.create')}}">
-      {{ trans('strings.create') }}
-    </button>
-  </a>
-
   <hr>
 
-  <table class="table table-bordered table-hover table-responsive">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>{{trans('strings.name')}}</th>
-        <th>{{trans('strings.type')}}</th>
-        <th>{{trans('strings.start')}}</th>
-        <th>{{trans('strings.end')}}</th>
-        <th colspan="3">{{trans('strings.actions')}}</th>
-      </tr>
-    </thead>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <section class="content">
+        <!-- Small boxes (Stat box) -->
 
-  @foreach ($reports as $report)
-    <tr>
-      <td>{{ $report->id or 'Blank'  }}</td>
-    </tr>
-  @endforeach
+    @foreach ($reports as $report)
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h3>{{$report->name}}</h3>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+
+          <a href="{{ route('reports.show', $report->id) }}" class="small-box-footer">{{trans('strings.select')}}<i class="fa fa-arrow-circle-right"></i></a>
+
+          </div>
+        </div>
+      @endforeach
+
+    </section>
+  </div>
+</div>
 
 </table>
 
