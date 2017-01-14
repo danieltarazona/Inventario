@@ -320,10 +320,10 @@
     <footer class="main-footer">
       <!-- To the right -->
       <div class="pull-right hidden-xs">
-        ADSI 107
+        
       </div>
       <!-- Default to the left -->
-      Copyright &copy; 2016 <a href="#">SENA</a>. All rights reserved.
+      Copyright &copy; 2017 <a href="#">CODEAPPS</a>. All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->

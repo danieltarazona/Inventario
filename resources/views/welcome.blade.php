@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    SAPEIM
+                    {{ config('app.name', 'Laravel') }}
                 </div>
 
                 <div class="links">
