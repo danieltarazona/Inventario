@@ -2,6 +2,7 @@
 
 return array(
 
+	'validation_fails' => 'Validacion Fallida. Intenta de Nuevo.',
 	'select' => 'Seleccionar',
 	'ranges' => 'Rangos',
 	'bimestre' => 'Bimestre',

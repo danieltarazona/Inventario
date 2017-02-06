@@ -84,7 +84,7 @@ class EventsController extends Controller
       $validator = Validator::make($request->all(), $this->rules());
 
       if ($validator->fails()) {
-        Flash('Validation Fails!', 'danger');
+        Flash(trans('strings.validation_fails'), 'danger');
         return redirect('events/create')
         ->withErrors($validator)
         ->withInput();

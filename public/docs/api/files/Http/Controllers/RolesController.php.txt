@@ -44,7 +44,7 @@ class RolesController extends Controller
   {
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      Flash('Validation Fails!', 'error');
+      Flash(trans('strings.validation_fails'), 'error');
       return redirect('roles/create')
       ->withErrors($validator)
       ->withInput();
@@ -108,7 +108,7 @@ class RolesController extends Controller
 
     $validator = Validator::make($request->all(), $this->rules());
     if ($validator->fails()) {
-      Flash('Validation Fails!', 'error');
+      Flash(trans('strings.validation_fails'), 'error');
       return redirect('roles/' . $id . '/edit')
       ->withErrors($validator)
       ->withInput();

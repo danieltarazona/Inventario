@@ -45,7 +45,7 @@ class RegionsController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      Flash('Validation Fails!', 'error');
+      Flash(trans('strings.validation_fails'), 'error');
       return redirect('regions/create')
       ->withErrors($validator)
       ->withInput();

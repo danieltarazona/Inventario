@@ -139,7 +139,7 @@ class OrdersController extends Controller
     $validator = Validator::make($request->all(), $this->rules());
 
     if ($validator->fails()) {
-      Flash('Validation Fails!', 'danger');
+      Flash(trans('strings.validation_fails'), 'danger');
       return redirect('orders/' . $order->id . '/edit')
       ->withºs($validator)
       ->withInput();
