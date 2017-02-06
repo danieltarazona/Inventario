@@ -2,13 +2,13 @@
 
 namespace App;
 
-use Laravel\Scout\Searchable;
+/*use Laravel\Scout\Searchable;*/
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
 
-  use Searchable;
+  /*use Searchable;*/
 
   protected $fillable = [
     'name', 'date', 'photo', 'serial', 'year', 'price', 'warranty',

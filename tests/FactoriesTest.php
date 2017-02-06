@@ -103,7 +103,8 @@ class FactoriesTest extends TestCase
       $this->seeInDatabase('sales', [
         'order_id' => $order->id,
         'state_id' => $state->id,
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'date' => Carbon::now()
       ]);
     }
 }

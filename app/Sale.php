@@ -2,13 +2,12 @@
 
 namespace App;
 
-use Laravel\Scout\Searchable;
+/*use Laravel\Scout\Searchable;*/
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
-
-  use Searchable;
+  /*use Searchable;*/
 
   protected $fillable = [
     'out', 'state_id', 'user_id', 'order_id', 'date'

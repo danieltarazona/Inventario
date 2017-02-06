@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'InventAR.io',
+    'name' => 'SAPEIM',
 
     /*
     |--------------------------------------------------------------------------
@@ -171,7 +171,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class,
         //
 
         /*
